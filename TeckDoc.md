@@ -44,13 +44,13 @@ Espace collaboratif ==> Forum (loomio) + Cloud (a voir...)
 
 Connexion utilisateur :
 
-  <?php if( is_user_logged_in() ){
-     $current_user = wp_get_current_user();?>
-     <li id="menu-item-178" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-178"><a href="/wp-admin/profile.php"><?php echo $current_user->user_login; ?></a></li><li id="menu-item-177" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-177"><a href="<?php echo wp_logout_url(); ?>">Déconnexion</a></li><?php
-    } else {
-       ?><li id="menu-item-178" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-178"><a href="/wp-admin/profile.php"><a href="/wp-login.php">connexion</a></li><?php
-    }
-  ?>
+    <?php if( is_user_logged_in() ){
+       $current_user = wp_get_current_user();?>
+       <li id="menu-item-178" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-178"><a href="/wp-admin/profile.php"><?php echo $current_user->user_login; ?></a></li><li id="menu-item-177" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-177"><a href="<?php echo wp_logout_url(); ?>">Déconnexion</a></li><?php
+      } else {
+         ?><li id="menu-item-178" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-178"><a href="/wp-admin/profile.php"><a href="/wp-login.php">connexion</a></li><?php
+      }
+    ?>
 
   2. LE FOOTER
 
