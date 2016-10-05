@@ -32,15 +32,15 @@ Nous aborderons les differentes etapes de productions afin de mettre en place un
         * Ajout Ressources
         * Formulaire d'adhésion
 
-## II.Les differents elements ##
+## II.Les fonctionnalités par elements et par page ##
 
-### a.LE HEADER ###
+### a.Header ###
 
 le header contient les accés aux differents espaces. Il se compose de deux etages.
 En Haut : Espace Collaboratif / Connexion utilisateur
 En Bas : Logo / Acceuil / Evenements Ressources Le collectif / contact
 
-#### Espace collaboratif ####
+#### Espace collaboratif : ####
 Forum (loomio) + Cloud (a voir...) ==> Liens href
 
 #### Connexion utilisateur : ####
@@ -55,15 +55,16 @@ On mettra la boucle à l'interieur de la boucle du menu ou alors dans une struct
       }
     ?>
 
-Le menu :
+#### Le menu nav : ####
+
     <?php wp_nav_menu( array('menu' => 'menuName' ) ); ?>
 
-  2. LE FOOTER
+### b.Footer ###
 
 Le footer contient les principaux element liées au suivis de la structure
 Dans l'ordre : Social network / Adresse / Tel / Mail
-On fera l'ensemble en liens href
+On fera l'ensemble en liens href mis en page celon le design fournis
 
-  3. Page d'Acceuil
+###  c.Page d'Acceuil ###
 
 La page d'accueil est le hub qui donne accés au reste du site internet.
