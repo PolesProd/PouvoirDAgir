@@ -55,7 +55,7 @@ function wpsimplecalendar_stylesheet() {
 			plugins_url('/includes/js/datepicker-fr.js', __FILE__ ),
 			array( 'jquery' )
 		);
-		
+
 		wp_enqueue_script(
 			'wpsimplecalendarcolorbox',
 			plugins_url('/includes/js/colorbox/jquery.colorbox.js', __FILE__ ),
@@ -260,7 +260,7 @@ function wpsimplecalendar_handle_last_ajax() {
 
 function wpsimplecalendar_setup_grid( $month, $year, $eventcategory = '', $eventlocation = '' ) {
 	$time = current_time( 'timestamp', $gmt = 0 );
-	
+
 	$running_day       = date( 'w', mktime( 0, 0, 0, $month, 1, $year ) );
 	$days_in_month     = date( 't', mktime( 0, 0, 0, $month, 1, $year ) );
 	$days_in_this_week = 1;
