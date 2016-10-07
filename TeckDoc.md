@@ -1,61 +1,71 @@
-# CAHIER DES CHARGES TECHNIQUES DU PROJET POUVOIR D'AGIR  #
+# CAHIER DES CHARGES TECHNIQUES DU PROJET POUVOIR D'AGIR  
 
 > Le cahier des charges technique à pour but de formaliser les fonctionnalités à developper pour le projet Pouvoir d'Agir.
 
 Nous aborderons les differentes etapes de productions afin de mettre en place un backoffice fonctionnel pour la réalisation du site du collectif.
 
-## I.l'arborescence ## [TOP ^](/#user-content-cahier-des-charges-techniques-du-projet-pouvoir-dagir)
+## I.l'arborescence
 
-    * HOME PAGE
-    * EVENEMENTS
-      [Dans la même page]
+    * HOME PAGE (1)
+    * EVENEMENTS (1)
+      [Dans cette page]
       * Calendrier
       * Initiative à venir
       * Initiative en cours
       * initiatives passées
         [Page / Page]
-        * Calendrier
-        * Initiative a venir
-        * Initiative en cours
-        * Initiatives passées
-    * RESSOURCES
-      [Dans la même page]
+        * Calendrier (2)
+        * Initiative a venir (2)
+        * Initiative en cours (2)
+        * Initiatives passées (2)
+    * RESSOURCES (1)
+      [Dans cette page]
       * Partage d'analyse
       * Partage d'ecperience
       * Methodologie
       [Page à part]
-      * Galerie Photos / Vidéos
+      * Galerie Photos / Vidéos (2)
         [Page / Page]
-        * Partage d'analyse
-        * Partage d'ecperience
-        * Methodologie
-        * Galerie Photos / Vidéos
-
-    * Le collectif
-      [Dans la même page]
+        * Partage d'analyse (2)
+        * Partage d'ecperience (2)
+        * Methodologie (2)
+    * LE COLLECTIF (1)
+      [Dans cette page]
       * Qui sommes nous?
       * Les reseaux impliqués
-      * Les actiones du collectif
-    * Contact
+      * Les actions du collectif (2)
+    * CONTACT (1)
       * Inscription a la Newsletter
       * Formulaire de contacts
-        [Possibilité de switcher entre les differents formulaire]
+        Plusieurs formulaires sont disponibles]
         * Ajout d'Evenements
         * Ajout Ressources
         * Formulaire d'adhésion
+    * GLOSSAIRE
+    * RECHERCHES
+    * CATEGORIES
+    * AUTEURS
+    * MOTS TAGS
+    * MENTIONS LEGALES
 
-## II.Les fonctionnalités par elements et par page ## [TOP ^](/#user-content-cahier-des-charges-techniques-du-projet-pouvoir-dagir)
+## II.Les fonctionnalités par elements et par page
 
-### a.Header ### [TOP ^](/#user-content-cahier-des-charges-techniques-du-projet-pouvoir-dagir)
+### a.Header
 
-le header contient les accés aux differents espaces. Il se compose de deux etages.
+Le header contient les accés aux differents espaces. Il se compose de deux etages.
 En Haut : Espace Collaboratif / Connexion utilisateur
-En Bas : Logo / Acceuil / Evenements Ressources Le collectif / contact
+Au milieu : Logo + texte / contact + Social media + Newsletter / Recherche
 
-#### Espace collaboratif : #### [TOP ^](/#user-content-cahier-des-charges-techniques-du-projet-pouvoir-dagir)
-Forum (loomio) + Cloud (a voir...) ==> Liens href
+##### RECHERCHES
+Il sera intégré un plug-in d'autocompletion fait maison qui va chercher le contenus des articles et l'integre directement dans une variable JS qui permet l'autocompletion sur une base Jquery.
+Voila le code a adapter pour le site PVA
 
-#### Connexion utilisateur : #### [TOP ^](/#user-content-cahier-des-charges-techniques-du-projet-pouvoir-dagir)
+En Bas : Nav =>  Acceuil / Evenements / Ressources / Le collectif
+
+#### Espace collaboratif :  
+Forum (loomio) ==> Liens href sortant target: blank
+
+#### Connexion utilisateur :
 
 On mettra la boucle à l'interieur de la boucle du menu ou alors dans une structure similaire pour la traiter de la meme façon (ul>li...)
 
@@ -67,17 +77,80 @@ On mettra la boucle à l'interieur de la boucle du menu ou alors dans une struct
       }
     ?>
 
-#### Le menu nav : #### [TOP ^](/#user-content-cahier-des-charges-techniques-du-projet-pouvoir-dagir)
+#### Le menu nav :
 
     <?php wp_nav_menu( array('menu' => 'menuName' ) ); ?>
 
-### b.Footer ### [TOP ^](/#user-content-cahier-des-charges-techniques-du-projet-pouvoir-dagir)
+### b.Footer  
 
 Le footer contient les principaux element liées au suivis de la structure
 Dans l'ordre : Social network / Adresse / Tel / Mail
-On fera l'ensemble en liens href mis en page celon le design fournis
+On fera l'ensemble en liens href mis en page celon le design fournis avec le frameword fondation 6
 
-###  c.Page d'Accueil ### [TOP ^](/#user-content-cahier-des-charges-techniques-du-projet-pouvoir-dagir)
+###  1.Page d'Accueil
 
 La page d'accueil est le hub qui donne accés au reste du site internet.
-Elle contient plusieurs
+Elle contient plusieurs elements assemblé ensemble. (cf zoning)
+
+##### Slideshow :
+Le slide show doit contenir une boucle qui génere un nombre definis de tuilles a partir des articles dans evenement / article / ressource.
+Il prend tous les elements de type post.
+
+le model AVEC BOOTSTRAP à adapter sur Fondation 6 :
+
+    <div id="pushActus" class="carousel slide vertical row col-lg-12" data-ride="carousel" data-interval="9000">
+      <div class="carousel-inner" role="listbox">
+      <?php if ( have_posts() ) : while ( have_posts() ) the_post();
+        $args = array( 'post_type' =>'post','post__in'  => get_option( 'sticky_posts' ),'ignore_sticky_posts' => 'false', 'numberposts' => 3, 'order'=> 'DESC', 'orderby' => 'date' );
+        $postslist = get_posts( $args );
+        $i = 0;
+        foreach ($postslist as $post) : setup_postdata($post);
+        ?>
+        <div id="post-<?php the_ID(); ?>" class="item <?php if($i==0){echo 'active';};?>">
+        <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );?>
+          <div class="">
+            <img class="parrallaxImg" src="<?php echo $url; ?>" alt="<?php the_title(); ?>">
+              </div>
+                <div class="carousel-caption">
+                  <h5 class="taxonomy"><?php the_category();?></h5>
+                  <h3 class="titleCar"><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h3>
+                  <span class="exerpt"><p><span><?php echo excerpt(25); ?></span></p></span>
+                </div>
+              </div>
+              <?php $i++; ?>
+            <?php endforeach; ?>
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#prev" role="button" data-slide="prev" onclick="jQuery.noConflict()('#pushActus').carousel('prev')"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Prec.</span></a>
+            <a class="right carousel-control" href="#next" role="button" data-slide="next"Onclick="jQuery.noConflict()('#pushActus').carousel('next')"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Suiv.</span></a>
+      <?php endif ?>
+      </div>
+
+##### Ressources :
+
+Un simple affichage d'icone avec titre avec liens sur les pages specifiques
+
+##### Calendrier :
+
+Calendrier Jquery :
+Utiliser la representation classic du calendrier Jquery en adaptant les couleurs au theme chhoisis
+
+##### Cartographie des menmbres
+
+Une carte open street map des structures de Pouvoir d'Agir existe déjà. Il faut simplement faire un embed a l'endroit indiqué.
+
+[La carte]('http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384#6/48.422/4.900')
+
+Voici le code pour l'embed dans la partie :
+
+    <iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384">See full screen</a></p>
+
+### 2.Evenements / Ressources / articles
+
+#### Les modules communs :
+##### a.Espace
+#### Les specificités :
+
+###
