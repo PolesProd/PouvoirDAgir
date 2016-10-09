@@ -1,6 +1,9 @@
-<p>
-  Footer is in the place too
-</p>
+
+
+      <div class="off-canvas-content" data-off-canvas-content>
+    </div>
+  </div>
+</div>
 
 <script src="js/vendor/jquery.js"></script>
 <script src="js/vendor/foundation.min.js"></script>

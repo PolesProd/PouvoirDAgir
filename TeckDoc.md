@@ -87,14 +87,14 @@ Le footer contient les principaux element liées au suivis de la structure
 Dans l'ordre : Social network / Adresse / Tel / Mail
 On fera l'ensemble en liens href mis en page celon le design fournis avec le frameword fondation 6
 
-###  1.Page d'Accueil
+###  c.Page d'Accueil
 
 La page d'accueil est le hub qui donne accés au reste du site internet.
 Elle contient plusieurs elements assemblé ensemble. (cf zoning)
 
 ##### Slideshow :
 Le slide show doit contenir une boucle qui génere un nombre definis de tuilles a partir des articles dans evenement / article / ressource.
-Il prend tous les elements de type post.
+Il prend tous les elements de type post. A factoriser celon le nombre de post que l'on voudra mettre en avant.
 
 le model AVEC BOOTSTRAP à adapter sur Fondation 6 :
 
@@ -130,7 +130,7 @@ le model AVEC BOOTSTRAP à adapter sur Fondation 6 :
 
 ##### Ressources :
 
-Un simple affichage d'icone avec titre avec liens sur les pages specifiques
+Un simple affichage d'icone avec titre / liens sur les pages specifiques
 
 ##### Calendrier :
 
@@ -147,10 +147,12 @@ Voici le code pour l'embed dans la partie :
 
     <iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384">See full screen</a></p>
 
-### 2.Evenements / Ressources / articles
+### d.Evenements / Ressources / articles
 
-#### Les modules communs :
-##### a.Espace
-#### Les specificités :
+Que ce soit l'une ou l'autre, ces trois pages ont une structure similaire. Les posts sur la colonnes de gauche, classé par date du plus recent. A droite une colonne specifique par page construite sur le meme model, deux bloc l'un sur l'autre avec une nav pour le bloc d'en bas.
 
-###
+### e.Focus article
+
+Recuperation de la video ou de l'image de front affiché en premier en haut aprés le titre et la catgorie de l'element. en dessous, deux bloc
+le premier concernera les meta de l'article, le second le texte.
+et enfin, la Cartographie.
