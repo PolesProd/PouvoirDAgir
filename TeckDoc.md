@@ -56,11 +56,11 @@ Dans l'admin il est important de pouvoir integrer les contenus de maniere fluide
 Mettre en place un evenement doit se reporter directement sur le calendrier.
 On aura donc besoin :
 
-  Un champs date
-  Un champs lieu
-  Titre de l'Evenement
-  Contenus
-  Thumbnail
+  * Un champs date
+  * Un champs lieu
+  * Titre de l'Evenement
+  * Contenus
+  * Thumbnail
 
 La date de levenement doit pouvoir etre recupéré et incorporé dans un calendrier automatiquement. Il et important de noter que l'auteur de levenement a son importance car il devra etre recupéré.
 
@@ -69,9 +69,9 @@ La date de levenement doit pouvoir etre recupéré et incorporé dans un calendr
 Les ressources se divisent en 3 sous categories. Il faut donc avoir une liste deroulante qui nous permette de categoriser cela.
 C'est une meta importante qui se repercute directement sur l'article.
 
-  Analyses
-  Methodologies
-  Temoignages
+  * Analyses
+  * Methodologies
+  * Temoignages
 
 ### 3.Glossaire
 
@@ -80,9 +80,9 @@ Les mots seront presenté par la suite par ordre alphabetique.
 Dans l'administration il nous faut donc un onglet reservé a cet usage. On doit pouvoir ajouter/modifier/supprimer un mot.
 Il nous faut donc :
 
-  Un titre
-  Un contenus
-  l'auteur
+  * Un titre
+  * Un contenus
+  * l'auteur
 
 ### 4.Actions
 
@@ -107,6 +107,9 @@ Il sera intégré un plug-in d'autocompletion fait maison qui va chercher le con
 Voila le code a adapter pour le site PVA
 
 En Bas : Nav =>  Acceuil / Evenements / Ressources / Le collectif
+
+La page recherche se base sur la page Archives.php
+Elle permet d'avoir accé a un contenus personnalisé.
 
 #### Espace collaboratif :  
 Forum (loomio) ==> Liens href sortant target: blank
@@ -200,9 +203,3 @@ Voici le code pour l'embed dans la partie :
 ### d.Evenements / Ressources / articles
 
 Que ce soit l'une ou l'autre, ces trois pages ont une structure similaire. Les posts sur la colonnes de gauche, classé par date du plus recent. A droite une colonne specifique par page construite sur le meme model, deux bloc l'un sur l'autre avec une nav pour le bloc d'en bas.
-
-### e.Focus article
-
-Recuperation de la video ou de l'image de front affiché en premier en haut aprés le titre et la catgorie de l'element. en dessous, deux bloc
-le premier concernera les meta de l'article, le second le texte.
-et enfin, la Cartographie.
