@@ -47,8 +47,54 @@ Nous aborderons les differentes etapes de productions afin de mettre en place un
     * AUTEURS
     * MOTS TAGS
     * MENTIONS LEGALES
+## II. L'admin de wordpress
 
-## II.Les fonctionnalités par elements et par page
+Dans l'admin il est important de pouvoir integrer les contenus de maniere fluide et simple pour l'utilisateur.
+
+### 1.Evenements
+
+Mettre en place un evenement doit se reporter directement sur le calendrier.
+On aura donc besoin :
+
+  Un champs date
+  Un champs lieu
+  Titre de l'Evenement
+  Contenus
+  Thumbnail
+
+La date de levenement doit pouvoir etre recupéré et incorporé dans un calendrier automatiquement. Il et important de noter que l'auteur de levenement a son importance car il devra etre recupéré.
+
+### 2.Ressources
+
+Les ressources se divisent en 3 sous categories. Il faut donc avoir une liste deroulante qui nous permette de categoriser cela.
+C'est une meta importante qui se repercute directement sur l'article.
+
+  Analyses
+  Methodologies
+  Temoignages
+
+### 3.Glossaire
+
+Le glossaire se fait via un formulaire dans la categorie article.
+Les mots seront presenté par la suite par ordre alphabetique.
+Dans l'administration il nous faut donc un onglet reservé a cet usage. On doit pouvoir ajouter/modifier/supprimer un mot.
+Il nous faut donc :
+
+  Un titre
+  Un contenus
+  l'auteur
+
+### 4.Actions
+
+Les articles de base seront dans la page actions.
+Ils sont donc déja existants et ne necessitent pas de traitement particulier.
+
+### 5.Les pages
+
+Pour le reste des pages nous utiliserons le content() de wordpress sans passer pâr l'editeur de texte html.
+En ce qui concerne le contenus descriptif il est important d'utiliser le contenus de la sorte.
+
+## III.L'integration des pages avec leur fonctionnalités respactives
 
 ### a.Header
 
@@ -136,6 +182,10 @@ Un simple affichage d'icone avec titre / liens sur les pages specifiques
 
 Calendrier Jquery :
 Utiliser la representation classic du calendrier Jquery en adaptant les couleurs au theme chhoisis
+
+Le calendrier doit pouvoir servir de navigation dans la page evenements. Encliquant sur une date, on arrive a la date choisis et la liste d'evenements s'affiche. Si aucun evenement n'a étét enregistré a ce jour il doit etre possible de se caler sur un entre deux.
+###### Exemple :
+[Meetup](http://www.meetup.com/fr-FR/cities/fr/paris/events/?country=fr&zipstatecity=paris&state=&radius=25&events=true) le fonctionnement d'un tel system.
 
 ##### Cartographie des menmbres
 
