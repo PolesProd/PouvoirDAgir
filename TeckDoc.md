@@ -100,7 +100,11 @@ Les reseaux apparaissent dans la page qui sommes nous mais necessitent un traite
   * texte explicatif
   * lien vers le site partenaire
 
-### 6.Les pages
+### 6.La galerie photo
+
+La galerie photo via le content wordpress dans une page specifique galerie. Voir si on peut trouver un plug-in de galerie pour intégrer cel en short code dans deux pages différentes.
+
+### 7.Les pages
 
   Pour le reste des pages nous utiliserons le content() de wordpress sans passer par l'éditeur de texte html.
   Le contenus se fait via l'administration Wordpress.
