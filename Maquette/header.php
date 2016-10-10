@@ -11,6 +11,8 @@
   <body>
     <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper >
+
+      <!-- Menu en responsive -->
       <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-options data-force-top="true">
 
         <!-- Close button -->
@@ -20,26 +22,25 @@
 
         <!-- Menu masqué -->
         <ul class="vertical menu">
-          <li><a href="#">Foundation</a></li>
-          <li><a href="#">Dot</a></li>
-          <li><a href="#">ZURB</a></li>
-          <li><a href="#">Com</a></li>
-          <li><a href="#">Slash</a></li>
-          <li><a href="#">Sites</a></li>
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#">Evenements</a></li>
+          <li><a href="#">ressources</a></li>
+          <li><a href="#">Le collectif</a></li>
+          <li><a href="#">Adhérer</a></li>
         </ul>
       </div>
       <!-- Page content -->
 
       <!-- menu off canvas small-screen -->
       <div class="title-bar  clearfix hide-for-medium">
-        <div class="title-bar-lef float-left">
+        <div class="title-bar-lef float-left clearfix">
           <!-- Bouton d'action pour le menu off canvas -->
           <button type="button" class="menu-icon " data-toggle="offCanvas"></button>
-          <span class="">Pouvoir d'agir</span>
         </div>
+        <img class="float-center small-2" src="assets/img/logoPVA.png">
 
-        <div class="title-bar-left float-right">
-          <ul class="menu align-right">
+        <div class="title-bar-right">
+          <ul class="menu">
             <li><a href="#">recherche</a></li>
             <li><a href="#">connexion</a></li>
             <li><a href="#">espace Coop</a></li>

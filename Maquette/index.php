@@ -34,33 +34,43 @@
     </nav>
   </div>
 </section>
-<section id="socialMedia" class="small-12">
-  <h3>Social Media</h3>
-  <a href="#"><i class="fi-social-facebook"></i></a>
-  <a href="#"><i class="fi-social-twitter"></i></a>
+<section id="socialTouch">
+  <div class="small-12">
+    <h3>Social Media</h3>
+    <a href="#"><i class="fi-social-facebook"></i></a>
+    <a href="#"><i class="fi-social-twitter"></i></a>
+  </div>
+  <div class="small-12">
+    <h3>Newsletter</h3>
+    <p>ici se trouve le module de news letter</p>
+  </div>
 </section>
 <section id="ressources" class="small-12">
   <h3>Ressources</h3>
-  <ul class="row">
-    <li class="small-3 columns">
-      <h5>Analyses</h5>
-      <i class="fi-heart large"></i>
-    </li>
-    <li class="small-3 columns">
-      <h5>Methodologie</h5>
-      <i class="fi-guide-dog large"></i>
-    </li>
-    <li class="small-3 columns">
-      <h5>Temoignages</h5>
-      <i class="fi-social-myspace large"></i>
-    </li>
-    <li class="small-3 columns">
-      <h5>Glossaire</h5>
-      <i class="fi-book large"></i>
-    </li>
-  </ul>
+  <div class="row">
+    <dl class="small-2 columns small-offset-1">
+      <dt>Analyses</dt>
+      <dd><i class="fi-heart small-large"></i></dd>
+    </dl>
+    <dl class="small-2 columns">
+      <dt>Methodologie</dt>
+      <dd><i class="fi-guide-dog large"></i></dd>
+    </dl>
+    <dl class="small-2 columns">
+      <dt>Temoignages</dt>
+      <dd><i class="fi-social-myspace large"></i></dd>
+    </dl>
+    <dl class="small-2 columns">
+      <dt>Glossaire</dt>
+      <dd><i class="fi-book large"></i></dd>
+    </dl>
+    <dl class="small-2 columns end">
+      <dt>Galeries</dt>
+      <dd><i class="fi-photo large"></i></dd>
+    </dl>
+  </div>
 </section>
-<section id="cartographie" class="row">
+<section id="cartographie" class="expanded row">
   <h3>cartographie des membres de pouvoir d'agir</h3>
   <iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384">See full screen</a></p>
 </section>
