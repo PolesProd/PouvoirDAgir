@@ -69,9 +69,10 @@ On aura donc besoin :
 
 ### 2.Ressources
 
-Les ressources se divisent en 3 sous catégories qui doivent être selectionné au moment de la publication.
+(en attente d'information)
+[Les ressources se divisent en 3 sous-catégories qui doivent être selectionnées au moment de la publication.
 C'est une meta importante qui se repercute directement sur l'article, elle est donc indispensable.
-L'article ne doit pas pouvoir être validé si l'information manque.
+L'article ne doit pas pouvoir être validé si l'information est manquante.]
 
   * Analyses
     * (En attente des informations liées aux champs specifiques)
@@ -82,14 +83,8 @@ L'article ne doit pas pouvoir être validé si l'information manque.
 
 ### 3.Glossaire
 
-Le glossaire se fait via un formulaire dans la categorie article.
-Les mots seront presenté par la suite par ordre alphabetique.
-Dans l'administration il nous faut donc un onglet reservé a cet usage. On doit pouvoir ajouter/modifier/supprimer un mot.
-Il nous faut donc :
-
-  * Un titre
-  * Un contenus
-  * l'auteur
+Le glossaire se fait via un plug-in glossaire
+Les champs specifique seront géré directement via ce dernier.
 
 ### 4.Actions
 
@@ -98,25 +93,27 @@ Ils sont donc déja existants et ne necessitent pas de traitement particulier.
 
 ### 5.Les pages
 
-Pour le reste des pages nous utiliserons le content() de wordpress sans passer pâr l'editeur de texte html.
-En ce qui concerne le contenus descriptif il est important d'utiliser le contenus de la sorte.
+Pour le reste des pages nous utiliserons le content() de wordpress sans passer par l'éditeur de texte html.
+Le contenus se fait via l'administration Wordpress.
 
-## III.L'integration des pages avec leur fonctionnalités respactives
+## III.L'intégration des pages avec leurs fonctionnalités réspéctives
 
 ### a.Header
 
-Le header contient les accés aux differents espaces. Il se compose de deux etages.
+Le header contient les accés aux différents espaces. Il se compose de deux étages.
 En Haut : Espace Collaboratif / Connexion utilisateur
 Au milieu : Logo + texte / contact + Social media + Newsletter / Recherche
 
 ##### RECHERCHES
-Il sera intégré un plug-in d'autocompletion fait maison qui va chercher le contenus des articles et l'integre directement dans une variable JS qui permet l'autocompletion sur une base Jquery.
+Il sera intégré un plug-in d'autocompletion fait maison qui va chercher le contenu des articles et l'intègre directement dans une variable JS qui permet l'autocompletion sur une base Jquery.
 Voila le code a adapter pour le site PVA
 
-En Bas : Nav =>  Acceuil / Evenements / Ressources / Le collectif
+
+
+En Bas : Nav =>  Accueil / Événements / Ressources / Le collectif
 
 La page recherche se base sur la page Archives.php
-Elle permet d'avoir accé a un contenus personnalisé.
+Elle permet d'avoir accé à un contenus personnalisé.
 
 #### Espace collaboratif :  
 Forum (loomio) ==> Liens href sortant target: blank
@@ -124,6 +121,7 @@ Forum (loomio) ==> Liens href sortant target: blank
 #### Connexion utilisateur :
 
 On mettra la boucle à l'interieur de la boucle du menu ou alors dans une structure similaire pour la traiter de la meme façon (ul>li...)
+Il est basé sur une straucture bootstrap --> a adapter sur foundation
 
     <?php if( is_user_logged_in() ){
       $current_user = wp_get_current_user();?>
@@ -135,24 +133,24 @@ On mettra la boucle à l'interieur de la boucle du menu ou alors dans une struct
 
 #### Le menu nav :
 
-    <?php wp_nav_menu( array('menu' => 'menuName' ) ); ?>
+    <?php wp_nav_menu( array('menu' => '[menuName]' ) ); ?>
 
 ### b.Footer  
 
-Le footer contient les principaux element liées au suivis de la structure
-Dans l'ordre : Social network / Adresse / Tel / Mail
-On fera l'ensemble en liens href mis en page celon le design fournis avec le frameword fondation 6
+Le footer contient les principaux element liés au suivi de la structure
+dans l'ordre : Social network / Adresse / Tel / Mail
+Ensemble en liens Href mis en page selon le design fourni.
 
 ###  c.Page d'Accueil
 
 La page d'accueil est le hub qui donne accés au reste du site internet.
-Elle contient plusieurs elements assemblé ensemble. (cf zoning)
+Elle contient plusieurs éléments assemblés ensemble. (cf zoning)
 
 ##### Slideshow :
-Le slide show doit contenir une boucle qui génere un nombre definis de tuilles a partir des articles dans evenement / article / ressource.
-Il prend tous les elements de type post. A factoriser celon le nombre de post que l'on voudra mettre en avant.
+Le slide show doit contenir une boucle qui génère un nombre défini de tuiles à partir des articles dans événement / article / ressources.
+Il prend tous les elements de type post. A factoriser selon le nombre de post que l'on voudra mettre en avant.
 
-le model AVEC BOOTSTRAP à adapter sur Fondation 6 :
+le model avec BOOTSTRAP à adapter sur Fondation 6 :
 
     <div id="pushActus" class="carousel slide vertical row col-lg-12" data-ride="carousel" data-interval="9000">
       <div class="carousel-inner" role="listbox">
@@ -186,20 +184,20 @@ le model AVEC BOOTSTRAP à adapter sur Fondation 6 :
 
 ##### Ressources :
 
-Un simple affichage d'icone avec titre / liens sur les pages specifiques
+Un simple affichage d'icone avec titre / liens sur les pages spécifiques
 
 ##### Calendrier :
 
 Calendrier Jquery :
-Utiliser la representation classic du calendrier Jquery en adaptant les couleurs au theme chhoisis
+Utiliser la représentation classique du calendrier Jquery en adaptant les couleurs au thème choisis
 
-Le calendrier doit pouvoir servir de navigation dans la page evenements. Encliquant sur une date, on arrive a la date choisis et la liste d'evenements s'affiche. Si aucun evenement n'a étét enregistré a ce jour il doit etre possible de se caler sur un entre deux.
+Le calendrier doit pouvoir servir de navigation dans la page événements. En cliquant sur une date, on arrive à la date choisis et la liste d'evenements s'affiche. Si aucun événement n'a été enregistré à ce jour, il doit être possible de se caler sur un entre deux dates.
 ###### Exemple :
-[Meetup](http://www.meetup.com/fr-FR/cities/fr/paris/events/?country=fr&zipstatecity=paris&state=&radius=25&events=true) le fonctionnement d'un tel system.
+[Meetup](http://www.meetup.com/fr-FR/cities/fr/paris/events/?country=fr&zipstatecity=paris&state=&radius=25&events=true) le fonctionnement d'un tel systeme.
 
-##### Cartographie des menmbres
+##### Cartographie des membres
 
-Une carte open street map des structures de Pouvoir d'Agir existe déjà. Il faut simplement faire un embed a l'endroit indiqué.
+Une carte open street map des structures de Pouvoir d'Agir existe déjà. Il faut simplement faire un embed à l'endroit indiqué.
 
 [La carte]('http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384#6/48.422/4.900')
 
@@ -209,4 +207,4 @@ Voici le code pour l'embed dans la partie :
 
 ### d.Evenements / Ressources / articles
 
-Que ce soit l'une ou l'autre, ces trois pages ont une structure similaire. Les posts sur la colonnes de gauche, classé par date du plus recent. A droite une colonne specifique par page construite sur le meme model, deux bloc l'un sur l'autre avec une nav pour le bloc d'en bas.
+Que ce soit l'une ou l'autre, ces trois pages ont une structure similaire. Les posts sur la colonnes de gauche, classés par date du plus récent. A droite une colonne spécifique par page construite sur le même modèle, deux blocs l'un sur l'autre avec une nav sur le second bloc.
