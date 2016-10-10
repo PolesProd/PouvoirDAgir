@@ -47,11 +47,16 @@ function ressources() {
     'labels'          => $labels,
     'menu_position'   => 7,
     'capability_type' => 'post',// Utilise les mêmes permissions que pour les articles.
+<<<<<<< HEAD
     'taxonomies'      => array('post_tag'),
+=======
+    'taxonomies'      => array('category', 'post_tag'),
+>>>>>>> 5f4b7d728f27209218bec9ae31d01b435528ea4d
     'supports'        => array('title','editor','author','category','comments','thumbnail')
   ));
 }
 
+<<<<<<< HEAD
 /************************************************************
           Création des Custom Taxonomies(Ressource).
 ************************************************************/
@@ -84,6 +89,8 @@ function ressourcecategory_taxonomy() {
   ));
 }
 
+=======
+>>>>>>> 5f4b7d728f27209218bec9ae31d01b435528ea4d
 /*******************************************************
           Création du Custom Post(Evenement).
 *******************************************************/
@@ -122,6 +129,7 @@ function evenements() {
 }
 
 /************************************************************
+<<<<<<< HEAD
           Category Field Required
 ************************************************************/
 
@@ -156,6 +164,8 @@ function my_publish_admin_hook(){
 
 
 /************************************************************
+=======
+>>>>>>> 5f4b7d728f27209218bec9ae31d01b435528ea4d
           Création des Custom Taxonomies(Evenement).
 ************************************************************/
 add_action( 'init', 'eventcategory_taxonomy');
