@@ -55,7 +55,8 @@ Dans l'admin il est important de pouvoir integrer les contenus de maniere fluide
 
 ### 1.Evenements
 
-Mettre en place un evenement doit se reporter directement sur le calendrier.
+Un marqueur apparait la ou des Evênements ont été ajouté.
+Cont affiché le lieu et la date en front.
 On aura donc besoin :
 
   * Un champs date
@@ -64,11 +65,12 @@ On aura donc besoin :
   * Contenus
   * Thumbnail
 
-La date de levenement doit pouvoir etre recupéré et incorporé dans un calendrier automatiquement. Il et important de noter que l'auteur de levenement a son importance car il devra etre recupéré.
+La date de levenement doit pouvoir être recupéré et incorporé dans un calendrier automatiquement.
 
 ### 2.Ressources
 
-Les ressources se divisent en 3 sous categories. Il faut donc avoir une liste deroulante qui nous permette de categoriser cela.
+Les ressources se divisent en 3 sous categories.
+Il faut donc avoir une liste deroulante qui nous permette de categoriser cela.
 C'est une meta importante qui se repercute directement sur l'article.
 
   * Analyses
