@@ -27,11 +27,17 @@ Nous aborderons les differentes etapes de productions afin de mettre en place un
         * Methodologie (2)
         * Analyse (2)
         * Temoignages (2)
+        * categories
+        * Auteur
+        * Tags
     * LE COLLECTIF (1)
       [Dans cette page]
       * Qui sommes nous?
       * Les reseaux impliqués
-      * Les actions du collectif (2)
+      * Actions (2)
+        * Categories
+        * Auteurs
+        * Tags
     * CONTACT (1)
       * Inscription à la Newsletter
       * Formulaire de contacts
@@ -40,11 +46,9 @@ Nous aborderons les differentes etapes de productions afin de mettre en place un
         * lien Ajout d'Evenements
         * lien Ajout Ressources
     * RECHERCHES (via bar de recherche --> amene sur page)
-    * CATEGORIES
-    * AUTEURS
-    * MOTS TAGS (page categories)
     * PLAN DU SITE
     * MENTIONS LEGALES
+
 ## II. L'admin de wordpress
 
 Dans l'admin il est important de pouvoir integrer les contenus de maniere fluide et simple pour l'utilisateur.
