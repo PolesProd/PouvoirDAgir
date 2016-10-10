@@ -9,43 +9,41 @@ Nous aborderons les differentes etapes de productions afin de mettre en place un
     * HOME PAGE (1)
     * EVENEMENTS (1)
       [Dans cette page]
-      * Calendrier
-      * Initiative à venir
-      * Initiative en cours
-      * initiatives passées
+      * Calendrier (sert de navigation dans les evenements)
+      * Evenements (Par dates)
         [Page / Page]
-        * Calendrier (2)
-        * Initiative a venir (2)
-        * Initiative en cours (2)
-        * Initiatives passées (2)
+        * Page de l'Evenements
+        * Page Categories Evenements
+        * Page Lieux Evenements
     * RESSOURCES (1)
       [Dans cette page]
-      * Partage d'analyse
-      * Partage d'ecperience
-      * Methodologie
+      * Methodologies
+      * Analyses
+      * Temoignages
       [Page à part]
       * Galerie Photos / Vidéos (2)
+      * Glossaire (2)
         [Page / Page]
-        * Partage d'analyse (2)
-        * Partage d'ecperience (2)
         * Methodologie (2)
+        * Analyse (2)
+        * Temoignages (2)
     * LE COLLECTIF (1)
       [Dans cette page]
       * Qui sommes nous?
       * Les reseaux impliqués
       * Les actions du collectif (2)
     * CONTACT (1)
-      * Inscription a la Newsletter
+      * Inscription à la Newsletter
       * Formulaire de contacts
-        Plusieurs formulaires sont disponibles]
-        * Ajout d'Evenements
-        * Ajout Ressources
-        * Formulaire d'adhésion
-    * GLOSSAIRE
-    * RECHERCHES
+      * Formulaire d'adhésion
+      [L'ajout devenements se fait via l'admin]
+        * lien Ajout d'Evenements
+        * lien Ajout Ressources
+    * RECHERCHES (via bar de recherche --> amene sur page)
     * CATEGORIES
     * AUTEURS
-    * MOTS TAGS
+    * MOTS TAGS (page categories)
+    * PLAN DU SITE
     * MENTIONS LEGALES
 ## II. L'admin de wordpress
 
