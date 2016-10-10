@@ -91,11 +91,6 @@ Les champs specifique seront géré directement via ce dernier.
 Les articles de base seront dans la page actions.
 Ils sont donc déja existants et ne necessitent pas de traitement particulier.
 
-### 5.Les pages
-
-Pour le reste des pages nous utiliserons le content() de wordpress sans passer par l'éditeur de texte html.
-Le contenus se fait via l'administration Wordpress.
-
 ### 5.Les reseaux impliqués
 
 Les reseaux apparaissent dans la page qui sommes nous mais necessitent un traitement particulier.
@@ -104,6 +99,11 @@ Les reseaux apparaissent dans la page qui sommes nous mais necessitent un traite
   * logo
   * texte explicatif
   * lien vers le site partenaire
+
+### 6.Les pages
+
+  Pour le reste des pages nous utiliserons le content() de wordpress sans passer par l'éditeur de texte html.
+  Le contenus se fait via l'administration Wordpress.
 
 ## III.L'intégration des pages avec leurs fonctionnalités réspéctives
 
