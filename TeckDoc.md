@@ -20,6 +20,7 @@ Nous aborderons les differentes etapes de productions afin de mettre en place un
       * Methodologies
       * Analyses
       * Temoignages
+      * Ajout de Ressource (via admin)
       [Page à part]
       * Galerie Photos / Vidéos (2)
       * Glossaire (2)
@@ -35,6 +36,7 @@ Nous aborderons les differentes etapes de productions afin de mettre en place un
       * Qui sommes nous?
       * Les reseaux impliqués
       * Actions (2)
+        [Page à part]
         * Categories
         * Auteurs
         * Tags
@@ -49,33 +51,34 @@ Nous aborderons les differentes etapes de productions afin de mettre en place un
     * PLAN DU SITE
     * MENTIONS LEGALES
 
-## II. L'admin de wordpress
+## II. L'administration de wordpress
 
-Dans l'admin il est important de pouvoir integrer les contenus de maniere fluide et simple pour l'utilisateur.
+Dans l'administration il est important de pouvoir intégrer les contenus de manière fluide et simple pour l'utilisateur.
 
-### 1.Evenements
+### 1.Événements
 
-Un marqueur apparait la ou des Evênements ont été ajouté.
-Cont affiché le lieu et la date en front.
+Un marqueur apparait sur le calendrier là ou des événements ont été ajouté.
+Le lieu et la date affiché en front.
 On aura donc besoin :
 
-  * Un champs date
-  * Un champs lieu
   * Titre de l'Evenement
+  * Un champ date
+  * Un champ lieu
   * Contenus
-  * Thumbnail
-
-La date de levenement doit pouvoir être recupéré et incorporé dans un calendrier automatiquement.
+  * Thumbnail (image)
 
 ### 2.Ressources
 
-Les ressources se divisent en 3 sous categories.
-Il faut donc avoir une liste deroulante qui nous permette de categoriser cela.
-C'est une meta importante qui se repercute directement sur l'article.
+Les ressources se divisent en 3 sous catégories qui doivent être selectionné au moment de la publication.
+C'est une meta importante qui se repercute directement sur l'article, elle est donc indispensable.
+L'article ne doit pas pouvoir être validé si l'information manque.
 
   * Analyses
+    * (En attente des informations liées aux champs specifiques)
   * Methodologies
+    * (En attente des informations liées aux champs specifiques)
   * Temoignages
+    * (En attente des informations liées aux champs specifiques)
 
 ### 3.Glossaire
 
