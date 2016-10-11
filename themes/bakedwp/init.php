@@ -537,12 +537,12 @@ function cmb_scripts( $hook ) {
 			$cmb_script_array[] = 'farbtastic';
 			$cmb_style_array[] = 'farbtastic';
 		}
-		wp_register_script( 'cmb-timepicker', CMB_META_BOX_URL . 'js/jquery.timePicker.min.js' );
-		wp_register_script( 'cmb-scripts', CMB_META_BOX_URL . 'js/cmb.js', $cmb_script_array, '0.9.1' );
+		wp_register_script( 'cmb-timepicker', CMB_META_BOX_URL . 'assets/js/jquery.timePicker.min.js' );
+		wp_register_script( 'cmb-scripts', CMB_META_BOX_URL . 'assets/js/cmb.js', $cmb_script_array, '0.9.1' );
 		wp_localize_script( 'cmb-scripts', 'cmb_ajax_data', array( 'ajax_nonce' => wp_create_nonce( 'ajax_nonce' ), 'post_id' => get_the_ID() ) );
 		wp_enqueue_script( 'cmb-timepicker' );
 		wp_enqueue_script( 'cmb-scripts' );
-		wp_register_style( 'cmb-styles', CMB_META_BOX_URL . 'style.css', $cmb_style_array );
+		wp_register_style( 'cmb-styles', CMB_META_BOX_URL . 'assets/css/style.css', $cmb_style_array );
 		wp_enqueue_style( 'cmb-styles' );
 	}
 }
