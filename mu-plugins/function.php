@@ -84,11 +84,3 @@ function partners_metaboxes( array $meta_boxes ) {
 	// Add other metaboxes as needed
 	return $meta_boxes;
 }
-
-
-
-add_action( 'init', 'partners_initialize_partners_meta_boxes', 9999 );
-function partners_initialize_partners_meta_boxes() {
-	if ( ! class_exists( 'cmb_Meta_Box' ) )
-	 include(TEMPLATEPATH . "\init.php");
-}
