@@ -1,7 +1,7 @@
 <?php include('header.php')?>
-<section class="small-12" id="intro">
+<section class="small-11 small-centered" id="intro">
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
   </p>
 </section>
 <section class="small-12" id="slideHome">
@@ -35,43 +35,45 @@
   </div>
 </section>
 <section id="socialTouch">
-  <div class="small-12">
-    <h3>Social Media</h3>
-    <a href="#"><i class="fi-social-facebook"></i></a>
-    <a href="#"><i class="fi-social-twitter"></i></a>
+  <div class="small-12 text-center">
+    <h3 class="subheader">Social Media</h3>
+    <div class="row">
+      <a href="#" class="small-6 columns"><i class="fi-social-facebook icon-size-small"></i></a>
+      <a href="#" class="small-6 columns end "><i class="fi-social-twitter icon-size-small"></i></a>
+    </div>
   </div>
   <div class="small-12">
-    <h3>Newsletter</h3>
+    <h3 class="subheader text-center">Newsletter</h3>
     <p>ici se trouve le module de news letter</p>
   </div>
 </section>
-<section id="ressources" class="small-12">
-  <h3>Ressources</h3>
+<section id="ressources" class="small-12 text-center">
+  <h3 class="subheader">Ressources</h3>
   <div class="row">
-    <dl class="small-2 columns small-offset-1">
+    <dl class="small-4 columns">
       <dt>Analyses</dt>
-      <dd><i class="fi-heart small-large"></i></dd>
+      <dd><i class="fi-heart icon-size-small"></i></dd>
     </dl>
-    <dl class="small-2 columns">
+    <dl class="small-4 columns">
       <dt>Methodologie</dt>
-      <dd><i class="fi-guide-dog large"></i></dd>
+      <dd><i class="fi-guide-dog icon-size-small"></i></dd>
     </dl>
-    <dl class="small-2 columns">
+    <dl class="small-4 columns">
       <dt>Temoignages</dt>
-      <dd><i class="fi-social-myspace large"></i></dd>
+      <dd><i class="fi-social-myspace icon-size-small"></i></dd>
     </dl>
-    <dl class="small-2 columns">
+    <dl class="small-6 columns ">
       <dt>Glossaire</dt>
-      <dd><i class="fi-book large"></i></dd>
+      <dd><i class="fi-book icon-size-small"></i></dd>
     </dl>
-    <dl class="small-2 columns end">
+    <dl class="small-6 columns end">
       <dt>Galeries</dt>
-      <dd><i class="fi-photo large"></i></dd>
+      <dd><i class="fi-photo icon-size-small"></i></dd>
     </dl>
   </div>
 </section>
-<section id="cartographie" class="expanded row">
-  <h3>cartographie des membres de pouvoir d'agir</h3>
+<section id="cartographie" class="expanded row text-center">
+  <h3 class="subheader">cartographie des membres de pouvoir d'agir</h3>
   <iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384">See full screen</a></p>
 </section>
 <?php include('footer.php')?>

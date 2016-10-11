@@ -7,6 +7,7 @@
     <title>Foundation Starter Template</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="assets/foundation-icons/foundation-icons.css" />
+    <link rel="stylesheet" href="css/custom.css" />
   </head>
   <body>
     <div class="off-canvas-wrapper">
@@ -32,19 +33,15 @@
       <!-- Page content -->
 
       <!-- menu off canvas small-screen -->
-      <div class="title-bar  clearfix hide-for-medium">
-        <div class="title-bar-lef float-left clearfix">
+      <div class="title-bar hide-for-medium">
+        <div class="title-bar-left">
           <!-- Bouton d'action pour le menu off canvas -->
           <button type="button" class="menu-icon " data-toggle="offCanvas"></button>
         </div>
-        <img class="float-center small-2" src="assets/img/logoPVA.png">
-
+        <a href="index.php"><img role="logo" class="thumbnail" src="assets/img/logoPVA.png"></a>
         <div class="title-bar-right">
-          <ul class="menu">
-            <li><a href="#">recherche</a></li>
-            <li><a href="#">connexion</a></li>
-            <li><a href="#">espace Coop</a></li>
-          </ul>
+          <a role="button" class="button" href="#"><i class="fi-plus"></i></a><a role="button" class="button" href="#" ><i class="fi-link"></i></a><a role="button" class="button" href="#"><i class="fi-magnifying-glass"></i></a>
         </div>
+
       </div>
       <!-- menu off canvas medium-screen -->
