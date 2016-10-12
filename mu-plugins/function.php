@@ -160,4 +160,23 @@ if( function_exists('register_sidebar')){
 // if ( !function_exists(‘dynamic_sidebar’) || !dynamic_sidebar(« sidebar ») ) :
 //endif;
 
-    ?>
+/*************************************************
+                Gallerie
+*************************************************/
+
+function gallery_func(){
+    $argsThumb = array(
+      'order'          => 'ASC',
+      'post_type'      => 'attachment',
+      'post_mime_type' => 'image',
+      'post_status'    => null
+  );
+  $attachments = get_posts($argsThumb);
+  if ($attachments) {
+      foreach ($attachments as $attachment) {
+          //echo apply_filters('the_title', $attachment->post_title);
+                  echo '<img src="'.wp_get_attachment_url($attachment->ID, 'testsize', false, false).'" />';
+      }
+  }
+}
+add_shortcode('gallery','gallery_func');
