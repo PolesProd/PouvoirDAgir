@@ -173,10 +173,16 @@ function gallery_func(){
   );
   $attachments = get_posts($argsThumb);
   if ($attachments) {
+    ?>
+    <ul class="grid-thumb">
+    <?php
       foreach ($attachments as $attachment) {
           //echo apply_filters('the_title', $attachment->post_title);
-                  echo '<img src="'.wp_get_attachment_url($attachment->ID, 'testsize', false, false).'" />';
+                  echo '<li><img src="'.wp_get_attachment_url($attachment->ID, 'testsize', false, false).'" /></li>';
       }
+      ?>
+    </ul>
+      <?php
   }
 }
 add_shortcode('gallery','gallery_func');
