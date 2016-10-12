@@ -1,4 +1,5 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+
 	<header class="article-header">
 		<?php get_template_part( 'parts/content', 'byline' ); ?>
     </header> <!-- end article header -->
@@ -16,5 +17,7 @@
 	<footer class="article-footer">
 		<?php joints_related_posts(); ?>
 	</footer> <!-- end article footer -->
+
 	<?php comments_template(); ?>
+
 </article> <!-- end article -->

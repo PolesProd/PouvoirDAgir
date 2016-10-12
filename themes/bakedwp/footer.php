@@ -1,13 +1,21 @@
-<div class="off-canvas-content" data-off-canvas-content>
+<div id="footer-widgets" class="row">
+	<div id="inner-footer-widgers" class="large-10 medium-10 small-centered columns">
+		<div class="row">
+				<?php get_sidebar('sidebar1'); ?>
+				<?php get_sidebar('sidebar2'); ?>
+				<?php get_sidebar('sidebar3'); ?>
+		</div>
 	</div>
 </div>
-</div>
 
-<script src="js/vendor/jquery.js"></script>
-<script src="js/vendor/foundation.min.js"></script>
-<script src="js/vendor/what-input.js"></script>
-<script src="js/app.js"></script>
-<script> $(document).foundation(); </script>
-
+<footer class="footer row" role="contentinfo">
+			<div class="large-10 medium-10 small-centered columns">
+		<p class="source-org copyright"><?php echo get_theme_mod( 'footer_text', 'BakedWP Theme. Built with <a href="http://jointswp.com">JointsWP.</a>' ); ?></p>
+	</div>
+</footer> <!-- end .footer -->
+</div> <!-- end #container -->
+</div> <!-- end .inner-wrap -->
+</div> <!-- end .off-canvas-wrap -->
+<?php wp_footer(); ?>
 </body>
-</html>
+</html> <!-- end page -->

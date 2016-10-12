@@ -232,7 +232,7 @@ function partners_metaboxes( array $meta_boxes ) {
 				'name' => 'Lien du Site',
 				'desc' => '',
 				'id'   => $prefix . 'lien_du_site',
-				'type' => 'text_date',
+				'type' => 'text',
 			),
 		),
 	);
