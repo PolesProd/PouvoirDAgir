@@ -84,3 +84,57 @@ function partners_metaboxes( array $meta_boxes ) {
 	// Add other metaboxes as needed
 	return $meta_boxes;
 }
+
+/*************************************************
+                Auto Complete
+*************************************************/
+
+function auto_search(){
+    global $wpdb;
+    // the query
+    $args = array('posts_per_page' => 100, 'order'=> 'ASC', 'orderby' => 'date');
+    $the_query = new WP_Query( $args );
+
+    echo "<script type='text/javascript'>var availableTags = [";
+    $url_pattern = '/((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\.([a-zA-Z0-9\&\.\/\?\:@\-_=#])*/';
+    $url_replace = ' ';
+    if ( $the_query->have_posts() ) : ?>
+        <?php $completion = '';
+        while ( $the_query->have_posts() ) : $the_query->the_post();
+            $post_id =  get_the_ID();;
+            $sqlTitleContent = 'SELECT post_content, post_title
+                                FROM  wp_posts
+                                WHERE  ID ="'.$post_id.'"';
+
+            $result = $wpdb->get_results($sqlTitleContent);
+
+            $completion .= strip_tags(strtolower($result[0]->post_title));
+            $completion .= strip_tags(strtolower($result[0]->post_content));
+            $completion = preg_replace('@<a[^>]*?>.*?</a>@si', '', $completion);
+        endwhile;
+            $completionFormat = str_replace( array( '?', ',', '.', ':', '!', '"','/>','&nbsp;'), ' ', $completion );
+            $completion = str_replace( array('É'), 'é', $completionFormat );
+            $completionFormat = str_replace(array("\r\n", "\r", "\n"), "<br />", $completion);
+            $tablComplet = explode(" ", $completionFormat);
+            $cleanTab = array_unique($tablComplet);
+
+
+        $tablComplet = [];
+
+
+        for( $i=0; $i<count($cleanTab); $i++ ){
+
+            if(isset($cleanTab[$i]) && !preg_match("/[0-9]{1,2}$/", $cleanTab[$i]) && strlen($cleanTab[$i]) > 3 ){
+                echo '"'.rtrim(strtolower($cleanTab[$i])).'",';
+
+            }
+        }
+        wp_reset_postdata();
+    else : endif;
+            echo "];console.table(availableTags);";
+            echo "jQuery('#s').autocomplete({source:availableTags});";
+            echo "jQuery('#s01').autocomplete({source:availableTags});";
+            echo "</script>";
+
+}
+add_action( 'wp_footer', 'auto_search' );
