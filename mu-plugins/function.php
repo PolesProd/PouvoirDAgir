@@ -185,4 +185,4 @@ function gallery_func(){
       <?php
   }
 }
-add_shortcode('gallery','gallery_func');
+add_shortcode('my_function','gallery_func');
