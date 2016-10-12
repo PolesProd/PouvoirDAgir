@@ -9,6 +9,7 @@ Template Name: Réseaux Impliqués
   <div id="content">
 
      <div id="inner-content" class="row">
+       <?php dynamic_sidebar('Aside');?>
        <?php echo do_shortcode('[gallery]'); ?>
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
             <?php
