@@ -9,7 +9,7 @@ Template Name: Réseaux Impliqués
   <div id="content">
 
      <div id="inner-content" class="row">
-
+       <?php dynamic_sidebar('Aside');?>Hey Wake Up
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
             <?php
             $args = array( 'post_type' => 'partenaires', 'posts_per_page' => 6 );

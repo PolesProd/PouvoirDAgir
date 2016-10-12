@@ -133,8 +133,31 @@ function auto_search(){
     else : endif;
             echo "];console.table(availableTags);";
             echo "jQuery('#s').autocomplete({source:availableTags});";
-            echo "jQuery('#s01').autocomplete({source:availableTags});";
+            //echo "jQuery('#s01').autocomplete({source:availableTags});";
             echo "</script>";
 
 }
 add_action( 'wp_footer', 'auto_search' );
+
+/*************************************************
+                Aside Widget
+*************************************************/
+
+if( function_exists('register_sidebar')){
+
+  $args = array(
+  	'name'          => __( 'Aside', 'theme_text_domain' ),
+  	'id'            => 'aside',
+  	'description'   => '',
+          'class'         => '',
+  	'before_widget' => '<aside">',
+  	'after_widget'  => '</aside>',
+  	'before_title'  => '<h2 class="widgettitle">',
+  	'after_title'   => '</h2>' );
+
+    register_sidebar($args);
+}
+// if ( !function_exists(‘dynamic_sidebar’) || !dynamic_sidebar(« sidebar ») ) :
+//endif;
+
+    ?>
