@@ -10,7 +10,10 @@ Template Name: Réseaux Impliqués
 
      <div id="inner-content" class="row">
        <?php dynamic_sidebar('Aside');?>
-       <?php echo do_shortcode('[my_function]'); ?>
+       <?php echo do_shortcode('[my_gallery]'); ?>
+       <br>
+       <?php echo do_shortcode('[map]'); ?>
+       <?php echo do_shortcode('[my_fb]'); ?>
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
             <?php
             $args = array( 'post_type' => 'partenaires', 'posts_per_page' => 6 );

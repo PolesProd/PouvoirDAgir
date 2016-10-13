@@ -181,4 +181,19 @@ function gallery_func(){
       echo '</ul>';
   }
 }
-add_shortcode('my_function','gallery_func');
+add_shortcode('my_gallery','gallery_func');
+
+
+
+function street_map(){
+
+  echo '<iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384">Voir en plein écran</a></p>';
+}
+add_shortcode('map','street_map');
+
+
+
+function facebook_func(){
+echo '<iframe src="https://www.facebook.com/Pouvoir-dAgir-133589283382990/" width="300" height="380" style="overflow:hidden;margin-bottom: 20px;border: 6px solid rgba(58,57,61,0.7);width:100%;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>';
+}
+add_shortcode('my_fb','facebook_func');
