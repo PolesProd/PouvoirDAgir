@@ -8,7 +8,6 @@
         </div>
     </div>
 </div>
-
 <div id="content">
     <div id="inner-content" class="row">
         <div id="main" class="large-12 medium-10 small-centered columns" role="main">
