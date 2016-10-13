@@ -194,6 +194,13 @@ add_shortcode('map','street_map');
 
 
 function facebook_func(){
-echo '<iframe src="https://www.facebook.com/Pouvoir-dAgir-133589283382990/" width="300" height="380" style="overflow:hidden;margin-bottom: 20px;border: 6px solid rgba(58,57,61,0.7);width:100%;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>';
+  ?><iframe src="https://www.facebook.com/Pouvoir-dAgir-133589283382990/" width="300" height="380" style="overflow:hidden;margin-bottom: 20px;border: 6px solid rgba(58,57,61,0.7);width:100%;" scrolling="no" frameborder="0" allowtransparency="true"></iframe><?php
 }
 add_shortcode('my_fb','facebook_func');
+
+
+
+
+function get_post_by_tag(){
+  
+}

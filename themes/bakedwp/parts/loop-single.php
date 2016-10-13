@@ -7,15 +7,12 @@
     <section class="entry-content" itemprop="articleBody">
 		<p><?php the_post_thumbnail('full'); ?></p>
 		<?php the_content(); ?>
-	</section> <!-- end article section -->
+		</section> <!-- end article section -->
+		<aside><footer class="article-footer">
+			<?php joints_related_posts(); ?>
+		</footer> <!-- end article footer --></aside>
 
 	<footer class="article-footer">
-		<p class="tags">
-			<?php the_tags('<span class="tags-title">' . __('Tags:', 'bakedwp') . '</span> ', ', ', ''); ?></p>
-	</footer> <!-- end article footer -->
-
-	<footer class="article-footer">
-		<?php joints_related_posts(); ?>
 	</footer> <!-- end article footer -->
 
 	<?php comments_template(); ?>
