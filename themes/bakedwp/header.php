@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		
+
 		<!-- Force IE to use the latest rendering engine available -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -21,5 +21,5 @@
 			<div class="inner-wrap">
 				<div id="container">
 					<header class="header" role="banner">
-						 <?php get_template_part( 'parts/nav', 'top-topbar' ); ?>			 	
+						 <?php get_template_part( 'parts/nav', 'top-topbar' ); ?>
 					</header> <!-- end .header -->
