@@ -171,13 +171,11 @@ function events_metaboxes( array $meta_boxes ) {
 	// Add other metaboxes as needed
 	return $meta_boxes;
 }
-
 add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
 function cmb_initialize_cmb_meta_boxes() {
-
 	if ( ! class_exists( 'cmb_Meta_Box' ) )
-		include '../wp-content/themes/bakedwp/init.php';
-
+		//include '../wp-content/themes/bakedwp/init.php';
+		include get_template_directory().'/init.php';
 }
 /*************************************************
     Création du Custom Post(Réseaux Impliqués)
@@ -250,10 +248,10 @@ function auto_search(){
   echo "<script type='text/javascript'>var availableTags = [";
     $url_pattern = '/((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\.([a-zA-Z0-9\&\.\/\?\:@\-_=#])*/';
     $url_replace = ' ';
-    if ( $the_query->have_posts() ) : ?>
-      <?php $completion = '';
+    if ( $the_query->have_posts() ) :
+      $completion = '';
       while ( $the_query->have_posts() ) : $the_query->the_post();
-        $post_id =  get_the_ID();;
+        $post_id =  get_the_ID();
         $sqlTitleContent = 'SELECT post_content, post_title FROM wp_posts WHERE  ID ="'.$post_id.'"';
         $result = $wpdb->get_results($sqlTitleContent);
         $completion .= strip_tags(strtolower($result[0]->post_title));
@@ -269,14 +267,14 @@ function auto_search(){
     for( $i=0; $i<count($cleanTab); $i++ ){
       if(isset($cleanTab[$i]) && !preg_match("/[0-9]{1,2}$/", $cleanTab[$i]) && strlen($cleanTab[$i]) > 3 ){
         echo '"'.rtrim(strtolower($cleanTab[$i])).'",';
+      }
     }
     wp_reset_postdata();
-    else : endif;
+    else:endif;
     echo "];console.table(availableTags);";
     echo "jQuery('#s').autocomplete({source:availableTags});";
     echo "jQuery('#s01').autocomplete({source:availableTags});";
-  echo "</script>";
-  }
+    echo "</script>";
 }
 /*************************************************
                 Query page auteur.
@@ -292,71 +290,3 @@ function my_post_queries( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'my_post_queries' );
-/*************************************************
-                Galerie Photo.
-*************************************************/
-add_shortcode( 'slider-post', 'slider_post_shortcode' );
-function slider_post_shortcode( $attr ) {
-
-// On valide la déclaration orderby pour pouvoir l'utiliser dans le shortcode
- if ( isset( $attr['orderby'] ) ) {
- $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
- if ( !$attr['orderby'] )
- unset( $attr['orderby'] );
- }
-
-// On définit les attributs du shortcode
- extract( shortcode_atts( array(
- 'order' => 'ASC',
- 'orderby' => 'menu_order ID', //permet de modifier l'ordre désiré dans le gestionnaire des médias
- 'id' => get_the_ID(),
- 'size' => 'slider-post', // taille définit au départ les tailles personnalisées que vous avez mises en place avec la fonction add_image_size
- 'itemtag' => 'li', // on travaille en ul dans ce cas
- 'include' => '',
- 'exclude' => get_post_thumbnail_id() //commenter cette ligne (attention à la virgule finale) si vous désirez exclure l'image à la une de la galerie
- ), $attr ) );
-
-$id = (int) $id;
-$orderby = ( 'RAND' == $order ) ? 'none' : $orderby;
-
- if ( ! empty( $include ) ) {
- $include = preg_replace( '/[^0-9,]+/', '', $include );
- $_attachments = get_posts( array( 'include' => $include, 'post_status' => '', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby ) );
- $attachments = array();
- foreach ( $_attachments as $key => $val ) {
- $attachments[$val->ID] = $_attachments[$key];
- }
- } elseif ( ! empty( $exclude ) ) {
- $exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
- $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby ) );
- } else {
- $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby ) );
- }
- if ( empty( $attachments ) )
- return '';
- if ( is_feed() ) {
- $output = "\n";
- foreach ( $attachments as $att_id => $attachment )
- $output .= wp_get_attachment_link( $att_id, 'thumbnail', true ) . "\n";
- return $output;
- }
-
- $i = 1;
- $output = '<div class="flexslider sliderpost"><ul class="slides">';
- foreach ( $attachments as $id => $attachment ) {
- $full_image_src = wp_get_attachment_image_src( $id, 'full' );
- $image_src = wp_get_attachment_image_src( $id, 'postlist' );
- $alt = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
- $image_title = $attachment->post_title;
- $post_id = get_the_ID();
-
-$output .= '<li>';
- $output .= '<a href="' . esc_url( $full_image_src[0] ) . '" class="lightbox" rel="lightbox'.$post_id.'"  title="'. $image_title .'"><img class="img-' . $i . '" src="' . esc_url( $image_src[0] ) . '" alt="'. $image_title .'" /></a>';
- $output .= '<div class="texte"><span>' .$image_title.'</span></div>';
- $output .= '</li>';
- $i++;
- }
-
-$output .= '</ul></div>';
- return $output;
- }
