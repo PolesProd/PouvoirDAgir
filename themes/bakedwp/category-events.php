@@ -14,16 +14,10 @@
 				<div id="inner-content" class="row">
 				    <div id="main" class="large-10 medium-10 small-centered columns" role="main">
 					      <?php
-                $args = array( 'category_name'  => 'Actions', 'posts_per_page' => 6 );
+                $args = array( 'post_type' => 'events', 'posts_per_page' => 10);
                 $loop = new WP_Query( $args );
                 while ( $loop->have_posts() ) : $loop->the_post();
-                  the_title();
-                  echo '<div class="entry-content">';
-									echo '<div class="">';
-										the_post_thumbnail();
-									echo '</div>';
-                    the_content();
-                  echo '</div>';
+                  the_category();
                 endwhile;
 					    	?>
     				</div> <!-- end #main -->
