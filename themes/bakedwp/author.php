@@ -22,19 +22,22 @@
                     endif;
                     ?>
 
-                    <h2>Les articles de <?php echo $curauth->nickname; ?> sur <a href="#">Pouvoir d'agir</a> :</h2>
 
+                    <h2>Liste des Auteurs:</h2>
+                    <ul>
+                        <?php wp_list_authors(); ?>
+                        <?php the_author_meta( 'user_login' ); ?><!--Displays the authors login name. -->
+                        <a href="#"><?php the_author_meta( 'user_email' ); ?></a><!--Displays the authors email address. -->
+                        <?php the_author_meta( 'user_url' ); ?><!--Displays the authors URL. -->
+                    </ul>
                     <?php while (have_posts()) : the_post(); ?>
-                        <h2>Liste des Auteurs:</h2>
-                        <ul>
-                            <?php wp_list_authors(); ?>
-                        </ul>
+                    <?php the_time('j/n/Y'); ?></span>, <?php $category = get_the_category(); echo $category[0]->cat_name;?>, <?php the_title(); ?>
                     <h3>
                         <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>">
                             <?php the_title(); ?>
+                            <?php the_excerpt(); ?>
                         </a>
                     <h3>
-                    <?php the_time('j/n/Y'); ?></span>, <?php $category = get_the_category(); echo $category[0]->cat_name;?>
 
                     <?php endwhile; wp_reset_query(); ?>
                 </div>
