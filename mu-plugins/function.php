@@ -23,34 +23,6 @@ function query_post_type($query) {
     return $query;
   }
 }
-/****************************************************
-          Création du Custom Post(Ressource).
-****************************************************/
-add_action('init', 'ressources');
-function ressources() {
-  $labels = array(
-    'name'					      =>	__('Ressources'),
-    'menu_name'           => 	__('Ressources'),
-    'singular_name'		    =>	__('Ressources'),
-    'add_new_item'		    =>	__('Ajouter'),
-    'all_items'				    =>	__('Toutes les Ressources'),
-    'edit_item'				    =>	__('Modifier la Ressources'),
-    'new_item'				    =>	__('Nouvelle Ressource'),
-    'view_item'				    =>	__('Voir Ressources'),
-    'not_found'				    =>	__('Aucune Ressource trouvé'),
-    'not_found_in_trash'	=>	__('Aucune Ressource trouvée dans la corbeille')
-  );
-
-  register_post_type('ressources', array(
-    'slug'            => 'ressources',
-    'public'          => true,
-    'labels'          => $labels,
-    'menu_position'   => 7,
-    'capability_type' => 'post',// Utilise les mêmes permissions que pour les articles.
-    'taxonomies'      => array('category', 'post_tag'),
-    'supports'        => array('title','editor','author','wpsclocation','comments','thumbnail')
-  ));
-}
 
 /*******************************************************
           Création du Custom Post(Evenement).
@@ -327,3 +299,104 @@ function my_post_queries( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'my_post_queries' );
+
+
+/*************************************************
+                Ressources
+*************************************************/
+add_action('init', 'ressources');
+function ressources(){
+	$labels = array(
+		'name'								=> _x( 'Ressource', 'post type general name' ),
+		'singular_name'				=> _x( 'Ressource', 'post type singular name' ),
+		'add_new'							=> _x( 'Ajouter', 'une Ressource' ),
+		'add_new_item'				=> __( 'Ajouter des Ressources' ),
+		'edit_item'						=> __( 'Editer une Ressource' ),
+		'new_item'						=> __( 'Nouveau' ),
+		'all_items'						=> __( 'Toutes les Ressources' ),
+		'view_item'						=> __( 'Voir Ressources' ),
+		'search_items'				=> __( 'Chercher Ressources' ),
+		'not_found'						=>  __( 'Aucune Ressource Trouvée' ),
+		'not_found_in_trash'	=> __( 'Aucune Ressource Trouvée Dans La Corbeille' ),
+		'parent_item_colon'		=> '',
+		'menu_name'						=> 'Ressources'
+	);
+	$args = array(
+		'labels' 							=> $labels,
+		'public' 							=> true,
+		'publicly_queryable' 	=> true,
+		'show_ui' 						=> true,
+		'show_in_menu' 				=> true,
+		'query_var' 					=> true,
+		'rewrite' 						=> false,
+		'capability_type' 		=> 'post',
+		'has_archive' 				=> true,
+		'hierarchical' 				=> false,
+		'menu_position' 			=> 6,
+		'supports' 						=> array('title','editor','thumbnail','author','category'),
+    'taxonomies'         => array('ressources'),
+	);
+	register_post_type('ressources',$args);
+}
+
+add_action('init', 'ressources_taxonomies', 0);
+function ressources_taxonomies(){
+	$labels = array(
+		'name'					=> _x( 'Catégorie', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Catégorie', 'taxonomy singular name' ),
+		'search_items'	=> __( 'Chercher une catégorie' ),
+		'all_items'			=> __( 'Toutes les catégories' ),
+		'edit_item'			=> __( 'Editer une Catégorie' ),
+		'update_item'		=> __( 'Mise a jour de la Catégorie' ),
+		'add_new_item'	=> __( 'Ajouter' ),
+		'new_item_name'	=> __( 'Nouvelle Catégorie' ),
+		'menu_name'			=> __( 'Catégorie' )
+	);
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false,
+  );
+	register_taxonomy('ressources', 'ressources', $args);
+}
+
+
+
+add_filter( 'meta_boxes', 'ressources_metaboxes' );
+function ressources_metaboxes( array $meta_boxes ) {
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = 'ressources_';
+	$meta_boxes[] = array(
+		'id'         => 'ressources_meta',
+		'title'      => 'Méta des ressources',
+		'pages'      => array( 'ressources', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields'     => array(
+			array(
+				'name' => 'Date : ',
+				'desc' => '',
+				'id'   => $prefix . 'date',
+				'type' => 'text',
+			),
+			array(
+				'name' => ' Lien vers la Ressource Externe :',
+				'desc' => '',
+				'id'   => $prefix . 'externes',
+				'type' => 'text',
+			),
+			array(
+	      'name' => 'En-tête de l\'article',
+	      'desc' => '',
+	      'id'   => $prefix . 'chapeau',
+	      'type' => 'textarea',
+	    ),
+		),
+	);
+	// Add other metaboxes as needed
+	return $meta_boxes;
+}
