@@ -8,39 +8,35 @@
         </div>
     </div>
 </div>
+
 <div id="content">
     <div id="inner-content" class="row">
         <div id="main" class="large-12 medium-10 small-centered columns" role="main">
             <div class="columns">
                 <div class="row">
-                    <!-- This sets the $curauth variable -->
                     <?php
-                        $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+                    if(isset($_GET['author_name'])) :
+                        $curauth = get_userdatabylogin($author_name);
+                    else :
+                        $curauth = get_userdata(intval($author));
+                    endif;
                     ?>
 
-                    <h2>About: <?php echo $curauth->nickname; ?></h2>
-                    <dl>
-                        <dt>Website</dt>
-                        <dd><a href="<?php echo $curauth->user_url; ?>"><?php echo $curauth->user_url; ?></a></dd>
-                        <dt>Profile</dt>
-                        <dd><?php echo $curauth->user_description; ?></dd>
-                    </dl>
+                    <h2>Les articles de <?php echo $curauth->nickname; ?> sur <a href="#">Pouvoir d'agir</a> :</h2>
 
-                    <h2>Posts by <?php echo $curauth->nickname; ?>:</h2>
-                    <ul>
-                    <!-- The Loop -->
-                        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-                        <li>
-                            <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link: <?php the_title(); ?>">
-                            <?php the_title(); ?></a>,
-                            <?php the_time('d M Y'); ?> in <?php the_category('&');?>
-                        </li>
+                    <?php while (have_posts()) : the_post(); ?>
+                        <h2>Liste des Auteurs:</h2>
+                        <ul>
+                            <?php wp_list_authors(); ?>
+                        </ul>
+                    <h3>
+                        <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>">
+                            <?php the_title(); ?>
+                        </a>
+                    <h3>
+                    <?php the_time('j/n/Y'); ?></span>, <?php $category = get_the_category(); echo $category[0]->cat_name;?>
 
-                        <?php endwhile; else: ?>
-                            <p><?php _e('No posts by this author.'); ?></p>
-                        <?php endif; ?>
-                        <!-- End Loop -->
-                    </ul>
+                    <?php endwhile; wp_reset_query(); ?>
                 </div>
             </div>
         </div>
