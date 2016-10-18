@@ -52,6 +52,65 @@ function ressources() {
   ));
 }
 
+add_action('init', 'ressources_taxonomies', 0);
+function ressources_taxonomies(){
+	$labels = array(
+		'name'					=> _x('Catégorie', 'taxonomy general name'),
+		'singular_name'	=> _x('Catégorie', 'taxonomy singular name'),
+		'search_items'	=> __('Chercher une catégorie'),
+		'all_items'			=> __('Toutes les catégories'),
+		'edit_item'			=> __('Editer une Catégorie'),
+		'update_item'		=> __('Mise a jour de la Catégorie'),
+		'add_new_item'	=> __('Ajouter'),
+		'new_item_name'	=> __('Nouvelle Catégorie'),
+		'menu_name'			=> __('Catégorie')
+	);
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false,
+  );
+	register_taxonomy('ressources', 'ressources', $args);
+}
+
+add_filter('meta_boxes', 'ressources_metaboxes');
+function ressources_metaboxes(array $meta_boxes) {
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = 'ressources_';
+	$meta_boxes[] = array(
+		'id'         => 'ressources_meta',
+		'title'      => 'Méta des ressources',
+		'pages'      => array('ressources'), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields'     => array(
+			array(
+				'name' => 'Date : ',
+				'desc' => '',
+				'id'   => $prefix . 'date',
+				'type' => 'text',
+			),
+			array(
+				'name' => ' Lien vers la Ressource Externe :',
+				'desc' => '',
+				'id'   => $prefix . 'externes',
+				'type' => 'text',
+			),
+			array(
+	      'name' => 'En-tête de l\'article',
+	      'desc' => '',
+	      'id'   => $prefix . 'chapeau',
+	      'type' => 'textarea',
+	    ),
+		),
+	);
+	// Add other metaboxes as needed
+	return $meta_boxes;
+}
 /*******************************************************
           Création du Custom Post(Evenement).
 *******************************************************/
@@ -87,8 +146,9 @@ function events()
 		'hierarchical'       => false,
 		'menu_position'      => 6,
 		'taxonomies'         => array('wpsclocation','category'),
-		'supports'           => array('title','editor','thumbnail')
+		'supports'           => array('title','editor','thumbnail','author')
 	);
+
 	register_post_type('events',$args);
 }
 
@@ -172,51 +232,50 @@ function events_metaboxes( array $meta_boxes ) {
 	return $meta_boxes;
 }
 
-add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
-function cmb_initialize_cmb_meta_boxes() {
-
-	if ( ! class_exists( 'cmb_Meta_Box' ) )
+add_action( 'init', 'initialize_events_meta_boxes', 9999 );
+function initialize_events_meta_boxes() {
+	if (! class_exists( 'cmb_Meta_Box' ))
 		include '../wp-content/themes/bakedwp/init.php';
 
 }
 /*************************************************
-    Création du Custom Post(Réseaux Impliqués)
+        Création des Réseaux Impliqués
 *************************************************/
 add_action('init', 'partners');
-function partners(){
+function partners()
+{
 	$labels = array(
-		'name'								=> _x( 'Réseaux Impliqués', 'post type general name' ),
-		'singular_name'				=> _x( 'Réseau Impliqué', 'post type singular name' ),
-		'add_new'							=> _x( 'Ajouter', 'Réseaux Impliqués' ),
-		'add_new_item'				=> __( 'Ajouter des Réseaux Impliqués' ),
-		'edit_item'						=> __( 'Editer Réseau Impliqué' ),
-		'new_item'						=> __( 'Nouveau' ),
-		'all_items'						=> __( 'Tous les Réseaux Impliqués' ),
-		'view_item'						=> __( 'Voir Réseau Impliqué' ),
-		'search_items'				=> __( 'Chercher Réseaux Impliqués' ),
-		'not_found'						=>  __( 'Aucun Réseaux Impliqués Trouvé' ),
+		'name'					=> _x('Réseaux Impliqués', 'post type general name' ),
+		'singular_name'			=> _x( 'Réseau Impliqué', 'post type singular name' ),
+		'add_new'				=> _x( 'Ajouter', 'Réseaux Impliqués' ),
+		'add_new_item'			=> __( 'Ajouter des Réseaux Impliqués' ),
+		'edit_item'				=> __( 'Editer Réseau Impliqué' ),
+		'new_item'				=> __( 'Nouveau' ),
+		'all_items'				=> __( 'Tous les Réseaux Impliqués' ),
+		'view_item'				=> __( 'Voir Réseau Impliqué' ),
+		'search_items'			=> __( 'Chercher Réseaux Impliqués' ),
+		'not_found'				=>  __( 'Aucun Réseaux Impliqués Trouvé' ),
 		'not_found_in_trash'	=> __( 'Aucun Réseaux Impliqués Trouvé Dans La Corbeille' ),
 		'parent_item_colon'		=> '',
-		'menu_name'						=> 'Réseaux Impliqués'
+		'menu_name'				=> 'Réseaux Impliqués'
 	);
 	$args = array(
-		'labels' 							=> $labels,
-		'public' 							=> true,
-		'publicly_queryable' 	=> true,
-		'show_ui' 						=> true,
-		'show_in_menu' 				=> true,
-		'query_var' 					=> true,
-		'rewrite' 						=> false,
-		'capability_type' 		=> 'post',
-		'has_archive' 				=> true,
-		'hierarchical' 				=> false,
-		'menu_position' 			=> 6,
-		'supports' 						=> array('title','editor','thumbnail')
+		'labels' => $labels,
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'query_var' => true,
+		'rewrite' => false,
+		'capability_type' => 'post',
+		'has_archive' => true,
+		'hierarchical' => false,
+		'menu_position' => 6,
+		'supports' => array('title','editor','thumbnail')
 	);
 	register_post_type('partenaires',$args);
 }
-
-add_filter( 'meta_boxes', 'partners_metaboxes' );
+add_filter('meta_boxes', 'partners_metaboxes');
 function partners_metaboxes( array $meta_boxes ) {
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = 'part_';
@@ -240,58 +299,113 @@ function partners_metaboxes( array $meta_boxes ) {
 	return $meta_boxes;
 }
 /*************************************************
-                Auto-Complétion.
+                Auto Complete
 *************************************************/
-add_action('wp_footer', 'auto_search');
 function auto_search(){
-  global $wpdb;
-  $args = array('posts_per_page' => 100, 'order'=> 'ASC', 'orderby' => 'date');
-  $the_query = new WP_Query( $args );
-  echo "<script type='text/javascript'>var availableTags = [";
+    global $wpdb;
+    // the query
+    $args = array('posts_per_page' => 100, 'order'=> 'ASC', 'orderby' => 'date');
+    $the_query = new WP_Query( $args );
+    echo "<script type='text/javascript'>var availableTags = [";
     $url_pattern = '/((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\.([a-zA-Z0-9\&\.\/\?\:@\-_=#])*/';
     $url_replace = ' ';
     if ( $the_query->have_posts() ) : ?>
-      <?php $completion = '';
-      while ( $the_query->have_posts() ) : $the_query->the_post();
-        $post_id =  get_the_ID();;
-        $sqlTitleContent = 'SELECT post_content, post_title FROM wp_posts WHERE  ID ="'.$post_id.'"';
-        $result = $wpdb->get_results($sqlTitleContent);
-        $completion .= strip_tags(strtolower($result[0]->post_title));
-        $completion .= strip_tags(strtolower($result[0]->post_content));
-        $completion = preg_replace('@<a[^>]*?>.*?</a>@si', '', $completion);
-      endwhile;
-    $completionFormat = str_replace( array( '?', ',', '.', ':', '!', '"','/>','&nbsp;'), ' ', $completion );
-    $completion = str_replace( array('É'), 'é', $completionFormat );
-    $completionFormat = str_replace(array("\r\n", "\r", "\n"), "<br />", $completion);
-    $tablComplet = explode(" ", $completionFormat);
-    $cleanTab = array_unique($tablComplet);
-    $tablComplet = [];
-    for( $i=0; $i<count($cleanTab); $i++ ){
-      if(isset($cleanTab[$i]) && !preg_match("/[0-9]{1,2}$/", $cleanTab[$i]) && strlen($cleanTab[$i]) > 3 ){
-        echo '"'.rtrim(strtolower($cleanTab[$i])).'",';
-    }
-    wp_reset_postdata();
-    else : endif;
+        <?php $completion = '';
+        while ( $the_query->have_posts() ) : $the_query->the_post();
+            $post_id =  get_the_ID();;
+            $sqlTitleContent = 'SELECT post_content, post_title
+                                FROM  wp_posts
+                                WHERE  ID ="'.$post_id.'"';
+            $result = $wpdb->get_results($sqlTitleContent);
+            $completion .= strip_tags(strtolower($result[0]->post_title));
+            $completion .= strip_tags(strtolower($result[0]->post_content));
+            $completion = preg_replace('@<a[^>]*?>.*?</a>@si', '', $completion);
+        endwhile;
+            $completionFormat = str_replace( array( '?', ',', '.', ':', '!', '"','/>','&nbsp;'), ' ', $completion );
+            $completion = str_replace( array('É'), 'é', $completionFormat );
+            $completionFormat = str_replace(array("\r\n", "\r", "\n"), "<br />", $completion);
+            $tablComplet = explode(" ", $completionFormat);
+            $cleanTab = array_unique($tablComplet);
+        $tablComplet = [];
+        for( $i=0; $i<count($cleanTab); $i++ ){
+            if(isset($cleanTab[$i]) && !preg_match("/[0-9]{1,2}$/", $cleanTab[$i]) && strlen($cleanTab[$i]) > 3 ){
+                echo '"'.rtrim(strtolower($cleanTab[$i])).'",';
+            }
+        }
+        wp_reset_postdata();
+    else:endif;
     echo "];console.table(availableTags);";
     echo "jQuery('#s').autocomplete({source:availableTags});";
     echo "jQuery('#s01').autocomplete({source:availableTags});";
-  echo "</script>";
-  }
+    echo "</script>";
+}
+add_action( 'wp_footer', 'auto_search' );
+/*************************************************
+                Aside Widget
+*************************************************/
+if( function_exists('register_sidebar')){
+  $args = array(
+  	'name'          => __( 'Aside', 'theme_text_domain' ),
+  	'id'            => 'aside',
+  	'description'   => '',
+          'class'         => '',
+  	'before_widget' => '<aside">',
+  	'after_widget'  => '</aside>',
+  	'before_title'  => '<h2 class="widgettitle">',
+  	'after_title'   => '</h2>' );
+    register_sidebar($args);
 }
 /*************************************************
-                Query page auteur.
+                Galerie
 *************************************************/
-function my_post_queries( $query ) {
+function gallery_func(){
+    $argsThumb = array(
+      'order'          => 'ASC',
+      'post_type'      => 'attachment',
+      'post_mime_type' => 'image',
+      'post_status'    => null
+  );
+  $attachments = get_posts($argsThumb);
+  if ($attachments) {
+      foreach ($attachments as $attachment) {
+        echo '<img src="'.wp_get_attachment_url($attachment->ID, 'testsize', false, false).'" />';
+      }
+  }
+}
+add_shortcode('gallery','gallery_func');
+/*************************************************
+    Trier les articles selon une taxonomie
+*************************************************/
+//allows queries to be sorted by taxonomy term name
+add_filter('posts_clauses', 'posts_clauses_with_tax', 10, 2);
+function posts_clauses_with_tax( $clauses, $wp_query ) {
+	global $wpdb;
+	//array of sortable taxonomies
+	$taxonomies = array('wpsclocation');
+	if (isset($wp_query->query['orderby']) && in_array($wp_query->query['orderby'], $taxonomies)) {
+		$clauses['join'] .= "
+			LEFT OUTER JOIN {$wpdb->term_relationships} AS rel2 ON {$wpdb->posts}.ID = rel2.object_id
+			LEFT OUTER JOIN {$wpdb->term_taxonomy} AS tax2 ON rel2.term_taxonomy_id = tax2.term_taxonomy_id
+			LEFT OUTER JOIN {$wpdb->terms} USING (term_id)
+		";
+		$clauses['where'] .= " AND (taxonomy = '{$wp_query->query['orderby']}' OR taxonomy IS NULL)";
+		$clauses['groupby'] = "rel2.object_id";
+		$clauses['orderby'] = "GROUP_CONCAT({$wpdb->terms}.name ORDER BY name ASC) ";
+		$clauses['orderby'] .= ( 'ASC' == strtoupper( $wp_query->get('order') ) ) ? 'ASC' : 'DESC';
+	}
+	return $clauses;
+}
+/*************************************************
+                Query page auteurs.
+*************************************************/
+function my_post_queries($query){
     // vérifier qu'on n'est pas sur une page admin
-    if ( !is_admin() && $query->is_main_query() ) {
-        if ( is_author() ) {
+    if (!is_admin() && $query->is_main_query()){
+        if (is_author()){
             // montrer tous les articles
-            $query->set( 'posts_per_page', -1 );
-            $query->set( 'post_type', array( 'post' ) );
+            $query->set('posts_per_page', -1);
+            $query->set('post_type', array('post'));
         }
     }
 }
-add_action( 'pre_get_posts', 'my_post_queries' );
-/*************************************************
-                Galerie Photo.
-*************************************************/
+add_action('pre_get_posts', 'my_post_queries');
