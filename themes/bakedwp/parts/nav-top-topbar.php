@@ -10,7 +10,7 @@
 					  }
 					?>
 		</ul>
-		<section class="row align-top text-center">
+		<section class="expanded row align-top text-center">
 			<!-- partie concernant le log et le titre -->
 			<ul class="title-area medium-6 columns">
 				<!-- Title Area -->

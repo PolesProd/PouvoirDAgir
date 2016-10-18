@@ -10,8 +10,8 @@ register_nav_menus(
 function joints_top_nav() {
 	 wp_nav_menu(array(
         'container' => false,                           // Remove nav container
-        'container_class' => '',              // Class of container
-        'menu_class' => 'top-bar-menu right',           // Adding custom nav class
+        'container_class' => '',              					// Class of container
+        'menu_class' => 'top-bar-menu row text-center',           // Adding custom nav class
         'theme_location' => 'main-nav',                 // Where it's located in the theme
         'before' => '',                                 // Before each link <a>
         'after' => '',                                  // After each link </a>
