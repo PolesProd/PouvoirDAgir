@@ -74,12 +74,16 @@ On aura donc besoin :
 C'est une meta importante qui se repercute directement sur l'article, elle est donc indispensable.
 L'article ne doit pas pouvoir être validé si l'information est manquante.]
 
-  * Analyses
-    * (En attente des informations liées aux champs specifiques)
-  * Methodologies
-    * (En attente des informations liées aux champs specifiques)
-  * Temoignages
-    * (En attente des informations liées aux champs specifiques)
+#### Analyses / Methodologies / Temoignages
+
+  * Titre
+  * date
+  * Auteur
+  * image (optionnel)
+  * Chapeau article
+  * texte
+  * liens externe (optionnel)
+  * attachement fichier (optionnel)
 
 ### 3.Glossaire
 
