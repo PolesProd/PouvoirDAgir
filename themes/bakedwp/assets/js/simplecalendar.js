@@ -4,7 +4,6 @@
 		init: function(ajax) {
 
 			if (ajax) {
-
 	      // ajax call to print json
 	      $.ajax({
 	  				url: 'wp-content/themes/bakedwp/assets/data/events.json',
@@ -12,36 +11,30 @@
 	  			})
 	  			.done(function(data) {
 	          var events = data.events;
-
 	          // loop json & append to dom
 	          for (var i = 0; i < events.length; i++) {
-	            $('.list').append('<div class="day-event" date-day="'+ events[i].day +'" date-month="' + events[i].month +'" date-year="'+ events[i].year +'" data-number="'+ i +'"><a href="#" class="close fontawesome-remove"></a><h2 class="title">'+ events[i].title +'</h2><p>'+ events[i].description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span>Save to personal list!</span></label></div>');
+	            $('.list').append('<div class="day-event" date-day="'+ events[i].day +'" date-month="' + events[i].month +'" date-year="'+ events[i].year +'" data-number="'+ i +'"><a href="#" class="close fontawesome-remove"></a><h2 class="title">'+ events[i].title +'</h2><p>'+ events[i].description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span>Enresgistrer dans ma liste perso!</span></label></div>');
 	          }
-
 	          // start calendar
 	          calendar.startCalendar();
-
 	  			})
 	  			.fail(function(data) {
 	  				console.log(data);
 	  			});
 			} else {
-
 	      // if not using ajax start calendar
 	      calendar.startCalendar();
 	    }
-
 		},
 
 	  startCalendar: function() {
-	    var mon = 'Mon';
-			var tue = 'Tue';
-			var wed = 'Wed';
-			var thur = 'Thur';
-			var fri = 'Fri';
-			var sat = 'Sat';
-			var sund = 'Sun';
-
+	    var mon = 'Lundi';
+			var tue = 'Mardi';
+			var wed = 'Mercredi';
+			var thur = 'Jeudi';
+			var fri = 'Vendredi';
+			var sat = 'Samedi';
+			var sund = 'Dimanche';
 			/**
 			 * Get current date
 			 */
@@ -54,7 +47,7 @@
 			var monthNumber = d.getMonth() + 1;
 
 			function GetMonthName(monthNumber) {
-				var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+				var months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 				return months[monthNumber - 1];
 			}
 
@@ -70,24 +63,22 @@
 				var monthNumber = $('.month').attr('data-month');
 				if (monthNumber > 11) {
 					$('.month').attr('data-month', '0');
-					var monthNumber = $('.month').attr('data-month');
 					yearNumber = yearNumber + 1;
 					setMonth(parseInt(monthNumber) + 1, mon, tue, wed, thur, fri, sat, sund);
 				} else {
 					setMonth(parseInt(monthNumber) + 1, mon, tue, wed, thur, fri, sat, sund);
-				};
+				}
 			});
 
 			$('.btn-prev').on('click', function(e) {
 				var monthNumber = $('.month').attr('data-month');
 				if (monthNumber < 2) {
 					$('.month').attr('data-month', '13');
-					var monthNumber = $('.month').attr('data-month');
 					yearNumber = yearNumber - 1;
 					setMonth(parseInt(monthNumber) - 1, mon, tue, wed, thur, fri, sat, sund);
 				} else {
 					setMonth(parseInt(monthNumber) - 1, mon, tue, wed, thur, fri, sat, sund);
-				};
+				}
 			});
 
 			/**
@@ -121,22 +112,9 @@
 
 				function setDaysInOrder(mon, tue, wed, thur, fri, sat, sund) {
 					var monthDay = getDaysInMonth(monthNumber - 1, yearNumber)[0].toString().substring(0, 3);
-					if (monthDay === 'Mon') {
-						$('thead.event-days tr').append('<td>' + mon + '</td><td>' + tue + '</td><td>' + wed + '</td><td>' + thur + '</td><td>' + fri + '</td><td>' + sat + '</td><td>' + sund + '</td>');
-					} else if (monthDay === 'Tue') {
-						$('thead.event-days tr').append('<td>' + tue + '</td><td>' + wed + '</td><td>' + thur + '</td><td>' + fri + '</td><td>' + sat + '</td><td>' + sund + '</td><td>' + mon + '</td>');
-					} else if (monthDay === 'Wed') {
-						$('thead.event-days tr').append('<td>' + wed + '</td><td>' + thur + '</td><td>' + fri + '</td><td>' + sat + '</td><td>' + sund + '</td><td>' + mon + '</td><td>' + tue + '</td>');
-					} else if (monthDay === 'Thu') {
-						$('thead.event-days tr').append('<td>' + thur + '</td><td>' + fri + '</td><td>' + sat + '</td><td>' + sund + '</td><td>' + mon + '</td><td>' + tue + '</td><td>' + wed + '</td>');
-					} else if (monthDay === 'Fri') {
-						$('thead.event-days tr').append('<td>' + fri + '</td><td>' + sat + '</td><td>' + sund + '</td><td>' + mon + '</td><td>' + tue + '</td><td>' + wed + '</td><td>' + thur + '</td>');
-					} else if (monthDay === 'Sat') {
-						$('thead.event-days tr').append('<td>' + sat + '</td><td>' + sund + '</td><td>' + mon + '</td><td>' + tue + '</td><td>' + wed + '</td><td>' + thur + '</td><td>' + fri + '</td>');
-					} else if (monthDay === 'Sun') {
-						$('thead.event-days tr').append('<td>' + sund + '</td><td>' + mon + '</td><td>' + tue + '</td><td>' + wed + '</td><td>' + thur + '</td><td>' + fri + '</td><td>' + sat + '</td>');
-					}
-				};
+					$('thead.event-days tr').append('<td>' + mon + '</td><td>' + tue + '</td><td>' + wed + '</td><td>' + thur + '</td><td>' + fri + '</td><td>' + sat + '</td><td>' + sund + '</td>');
+				}
+
 				$(getDaysInMonth(monthNumber - 1, yearNumber)).each(function(index) {
 					var index = index + 1;
 					if (index < 8) {
@@ -171,7 +149,7 @@
 						$('tbody.event-calendar td[date-day="' + d.getDate() + '"]').addClass('current-day');
 					}
 				}
-			};
+			}
 
 			/**
 			 * Add class '.active' on calendar date
@@ -182,7 +160,7 @@
 					$(this).addClass('active');
 				} else {
 					$('tbody.event-calendar td').removeClass('active');
-				};
+				}
 			});
 
 			/**
@@ -201,7 +179,7 @@
 						$('tbody.event-calendar tr td[date-month="' + eventMonth + '"][date-day="' + eventDay + '"]').addClass(eventClass);
 					}
 				});
-			};
+			}
 
 			/**
 			 * Get current day on click in calendar
@@ -214,7 +192,7 @@
 					var dayEvent = $(this).text();
 					$('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]').slideDown('fast');
 				});
-			};
+			}
 
 			/**
 			 * Close day-event
@@ -228,7 +206,7 @@
 			 */
 			$('.save').click(function() {
 				if (this.checked) {
-					$(this).next().text('Remove from personal list');
+					$(this).next().text('Effacer de la liste perso');
 					var eventHtml = $(this).closest('.day-event').html();
 					var eventMonth = $(this).closest('.day-event').attr('date-month');
 					var eventDay = $(this).closest('.day-event').attr('date-day');
@@ -241,10 +219,7 @@
 					remove();
 					sortlist();
 				} else {
-					$(this).next().text('Save to personal list');
-					var eventMonth = $(this).closest('.day-event').attr('date-month');
-					var eventDay = $(this).closest('.day-event').attr('date-day');
-					var eventNumber = $(this).closest('.day-event').attr('data-number');
+					$(this).next().text('Enregistrer dans la liste perso');
 					$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').slideUp('slow');
 					setTimeout(function() {
 						$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
@@ -255,13 +230,13 @@
 			function remove() {
 				$('.remove').click(function() {
 					if (this.checked) {
-						$(this).next().text('Remove from personal list');
+						$(this).next().text('Effacer de la liste perso');
 						var eventMonth = $(this).closest('.day').attr('date-month');
 						var eventDay = $(this).closest('.day').attr('date-day');
 						var eventNumber = $(this).closest('.day').attr('data-number');
 						$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').slideUp('slow');
 						$('.day-event[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').find('.save').attr('checked', false);
-						$('.day-event[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').find('span').text('Save to personal list');
+						$('.day-event[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').find('span').text('Enregistrer dans la liste perso');
 						setTimeout(function() {
 							$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
 						}, 1500);
@@ -287,11 +262,9 @@
 				window.print();
 			});
 	  },
-
 	};
 
-
-jQuery(function($) {
-	calendar.init('ajax');
-});
+	jQuery(function($) {
+		calendar.init('ajax');
+	});
 })(jQuery);
