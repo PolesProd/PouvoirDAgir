@@ -17,7 +17,6 @@
 			<li class="name">
 				<h1 class="site-title"> <a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
 			</li>
-			<li></li>
 			<li>
 				<h3 class="menu-text"><?php bloginfo('description'); ?></h3>
 			</li>
