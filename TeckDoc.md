@@ -64,6 +64,8 @@ On aura donc besoin :
   * Titre de l'Evenement
   * Un champ date
   * Un champ lieu
+  * Un champ 'nom de la structure organisatrice'
+  * un champs lien vers le site de la structure (il se met ensuite en lien Href blank sur le nom de la strucure)
   * Contenus
   * Thumbnail (image)
 
@@ -74,12 +76,17 @@ On aura donc besoin :
 C'est une meta importante qui se repercute directement sur l'article, elle est donc indispensable.
 L'article ne doit pas pouvoir être validé si l'information est manquante.]
 
-  * Analyses
-    * (En attente des informations liées aux champs specifiques)
-  * Methodologies
-    * (En attente des informations liées aux champs specifiques)
-  * Temoignages
-    * (En attente des informations liées aux champs specifiques)
+#### Analyses / Methodologies / Temoignages
+
+  * Titre
+  * Date
+  * Auteur
+  * image(optionnel)
+  * chapeaur article
+  * texte
+  * liens vers references exterieurs
+  * attacher fichiers
+
 
 ### 3.Glossaire
 
