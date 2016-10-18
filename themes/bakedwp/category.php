@@ -17,7 +17,7 @@
         printf( __( 'Category Archives: %s', 'bakedwp' ), '<span>' . single_cat_title( '', false ) . '</span>' );
         ?></h1>
         <?php
-            get_template_part( 'parts/loop', 'archive-grid' );
+            get_template_part( 'parts/loop', 'page' );
         ?>
 </div><!-- #content -->
 </div><!-- #container -->
