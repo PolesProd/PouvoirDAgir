@@ -15,6 +15,7 @@ Template Name: Ressources
           $args = array( 'post_type' => 'ressources', 'posts_per_page' => 6 );
           $loopy = new WP_Query( $args );
           $count = 1;
+          echo 'Hello';
           if($loopy->have_posts()){
             while ( $loopy->have_posts() ) {
                 $loopy->the_post();
