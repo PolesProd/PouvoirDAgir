@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 					<div id="footer-widgets" class="row">
 						<div id="inner-footer-widgers" class="large-10 medium-10 small-centered columns">
 							<div class="row">

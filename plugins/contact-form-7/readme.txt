@@ -62,7 +62,7 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 
 For more information, see [Releases](http://contactform7.com/category/releases/).
 
-<<<<<<< HEAD
+
 = 4.5.1 =
 
 * Avoids JavaScript strict-mode errors seen with ill-designed themes.
@@ -71,9 +71,6 @@ For more information, see [Releases](http://contactform7.com/category/releases/)
 * Corrects language tags for locale codes with modifying suffix like '_formal'.
 * Corrects wpcf7_is_rtl() output. Added 5 locales to the RTL locales list.
 * Language Packs: Language files for Portuguese (Brazil) (pt_BR) and Hebrew (he_IL) have been removed.
-
-=======
->>>>>>> b69d17ae7985335636cd1f981660a8cb0e2b291c
 = 4.5 =
 
 * The default contact form template is revised.
@@ -82,8 +79,6 @@ For more information, see [Releases](http://contactform7.com/category/releases/)
 * The config validator is revised. The wpcf7_config_validator_validate action hook is introduced to allow 3rd-party to cut in.
 * A bug in character count form-tag is fixed.
 * Language Packs: Language files for Danish (da_DK), Polish (pl_PL), and Czech (cs_CZ) have been removed from the plugin package.
-<<<<<<< HEAD
-=======
 
 = 4.4.2 =
 
@@ -106,4 +101,3 @@ For more information, see [Releases](http://contactform7.com/category/releases/)
 * Attach a plain text version of the message when sending HTML mail.
 * Added do_not_store additional setting to tell data storage add-ons not to store data through the contact form.
 * The minimum required WordPress version has been changed from 4.2 to 4.3.
->>>>>>> b69d17ae7985335636cd1f981660a8cb0e2b291c

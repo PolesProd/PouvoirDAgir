@@ -34,7 +34,7 @@ Template Name: Événements
 				        							</div><!-- Fin de la div imgArticle --><br>
 				                      <?php the_title(); ?><br>
 				                      <?php the_excerpt();?>
-				                      <?php echo '<a href='.implode(get_post_meta(get_the_ID(), part_lien_du_site)).' target="__blank">'.implode(get_post_meta(get_the_ID(), part_lien_du_site)).'</a><br><br>';
+				                      <?php //echo '<a href='.implode(get_post_meta(get_the_ID(), part_lien_du_site)).' target="__blank">'.implode(get_post_meta(get_the_ID(), part_lien_du_site)).'</a><br><br>';
 				                      $count++;
 				                  echo '</div>';
 				              }
