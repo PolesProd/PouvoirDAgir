@@ -4,7 +4,7 @@ Plugin Name: Fonctions WordPress
 Description: L'ensemble des fonctions globales du site.
 Version: 0.1
 License: No fucking licence
-Author: LePoleS
+Author: Kevin CHERUEL
 Author URI: https://www.lepoles.org/
 */
 /********************************************
