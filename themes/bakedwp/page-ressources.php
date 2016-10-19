@@ -7,7 +7,7 @@ Template Name: Ressources
 <?php get_header(); ?>
 
   <div id="content">
-    <h1>Bienvenue dans la page ressources</h1>
+    
      <div id="inner-content" class="row">
 
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
@@ -15,7 +15,6 @@ Template Name: Ressources
           $args = array( 'post_type' => 'ressources', 'posts_per_page' => 6 );
           $loopy = new WP_Query( $args );
           $count = 1;
-          echo 'Hello';
           if($loopy->have_posts()){
             while ( $loopy->have_posts() ) {
                 $loopy->the_post();
