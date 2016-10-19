@@ -32,7 +32,7 @@ Template Name: Ressources
                     <?php echo 'Date d\'écriture : '.implode(get_post_meta(get_the_ID(), 'ressources_date')).'<br>'; ?>
                     <?php echo 'Par : <strong>'.$author.'</strong><br>'; ?>
 
-                    <?php echo 'Lien vers la ressource externe :';?><a href="" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a><br>
+                    <?php echo 'Lien vers la ressource externe :';?><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a><br>
                     <?php the_title(); ?><br>
                     <?php echo '<strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong><br>'; ?>
                     <?php the_excerpt().'<br>';

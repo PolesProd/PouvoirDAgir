@@ -385,7 +385,7 @@ function ressources_metaboxes( array $meta_boxes ) {
 			),
 			array(
 				'name' => ' Lien vers la Ressource Externe :',
-				'desc' => '',
+				'desc' => 'Mettre le lien Complet http:// compris',
 				'id'   => $prefix . 'externes',
 				'type' => 'text',
 			),
