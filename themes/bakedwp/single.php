@@ -4,7 +4,7 @@
 
 				<div id="inner-content" class="row">
 			
-					<div id="main" class="large-10 medium-10 columns small-centered" role="main">
+					<div id="main" style="background-color:#ccc" class="large-10 medium-10 columns small-centered" role="main">
 					
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					
