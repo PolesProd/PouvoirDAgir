@@ -22,14 +22,15 @@ Template Name: Ressources
                     $id = get_the_ID();
                     $author = get_the_author();
                     $terms = wp_get_post_terms($id, 'ressources', $args );
-                    echo 'Ressources n<sup>o</sup> '.$count.' appartenant a la catégorie : '.$terms[0]->name.'<br>';
+                    $my_date = the_date('', '<strong>', '</strong>', FALSE);
+                    echo 'Ressources n<sup>o</sup> '.$count.' appartenant a la catégorie : <strong>'.$terms[0]->name.'</strong><br>';
                     if(has_post_thumbnail()){
                     ?>
                     <div class="imgArticle" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
                     </div><!-- Fin de la div imgArticle --><br><?php
                       }
                     ?>
-                    <?php echo 'Date d\'écriture : '.implode(get_post_meta(get_the_ID(), 'ressources_date')).'<br>'; ?>
+                    <?php echo 'Date d\'écriture : '.$my_date.'<br>'; ?>
                     <?php echo 'Par : <strong>'.$author.'</strong><br>'; ?>
 
                     <?php echo 'Lien vers la ressource externe :';?><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a><br>

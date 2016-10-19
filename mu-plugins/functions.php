@@ -378,12 +378,7 @@ function ressources_metaboxes( array $meta_boxes ) {
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
-			array(
-				'name' => 'Date : ',
-				'desc' => '',
-				'id'   => $prefix . 'date',
-				'type' => 'text',
-			),
+		
 			array(
 				'name' => ' Lien vers la Ressource Externe :',
 				'desc' => 'Mettre le lien Complet http:// compris',
