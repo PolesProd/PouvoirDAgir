@@ -55,6 +55,7 @@ function wpcf7_is_rtl( $locale = '' ) {
 		$locale = get_locale();
 	}
 
+
 	return isset( $rtl_locales[$locale] );
 }
 

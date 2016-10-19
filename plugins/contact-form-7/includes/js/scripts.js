@@ -3,7 +3,9 @@
 	'use strict';
 
 	if (typeof _wpcf7 == 'undefined' || _wpcf7 === null) {
+<<<<<<< HEAD
 		return;
+
 	}
 
 	_wpcf7 = $.extend({

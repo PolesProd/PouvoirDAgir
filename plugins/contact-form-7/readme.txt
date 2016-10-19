@@ -62,6 +62,7 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 
 For more information, see [Releases](http://contactform7.com/category/releases/).
 
+<<<<<<< HEAD
 = 4.5.1 =
 
 * Avoids JavaScript strict-mode errors seen with ill-designed themes.
@@ -71,6 +72,8 @@ For more information, see [Releases](http://contactform7.com/category/releases/)
 * Corrects wpcf7_is_rtl() output. Added 5 locales to the RTL locales list.
 * Language Packs: Language files for Portuguese (Brazil) (pt_BR) and Hebrew (he_IL) have been removed.
 
+=======
+>>>>>>> b69d17ae7985335636cd1f981660a8cb0e2b291c
 = 4.5 =
 
 * The default contact form template is revised.
@@ -79,3 +82,28 @@ For more information, see [Releases](http://contactform7.com/category/releases/)
 * The config validator is revised. The wpcf7_config_validator_validate action hook is introduced to allow 3rd-party to cut in.
 * A bug in character count form-tag is fixed.
 * Language Packs: Language files for Danish (da_DK), Polish (pl_PL), and Czech (cs_CZ) have been removed from the plugin package.
+<<<<<<< HEAD
+=======
+
+= 4.4.2 =
+
+* Language Packs: Language files for French (fr_FR), Russian (ru_RU), Slovak (sk_SK), and Turkish (tr_TR) have been removed from the plugin package.
+* Config Validation: Interoperability support for WordPress MU Domain Mapping plugin: Treats a mapping domain as the site domain when you compare an email address with the site domain.
+* Config Validation: Made email-in-site-domain verification case-insensitive.
+
+= 4.4.1 =
+
+* Config Validation: Added a link to FAQ.
+* Config Validation: Relaxed email domain validation.
+* Config Validation: Added mail header syntax check for Cc, Bcc, and Reply-To.
+* Fixed: Incorrect character count for quotation marks.
+* Language Packs: Language files for German (de_DE), Italian (it_IT), Romanian (ro_RO), Estonian (et), Spanish (es_ES), and Finnish (fi) have been removed.
+
+= 4.4 =
+
+* The configuration validator has been introduced.
+* The language selector has been removed from Add New Contact Form screen.
+* Attach a plain text version of the message when sending HTML mail.
+* Added do_not_store additional setting to tell data storage add-ons not to store data through the contact form.
+* The minimum required WordPress version has been changed from 4.2 to 4.3.
+>>>>>>> b69d17ae7985335636cd1f981660a8cb0e2b291c

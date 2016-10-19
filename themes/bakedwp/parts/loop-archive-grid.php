@@ -28,7 +28,7 @@
 				</header> <!-- end article header -->
 
 				<section class="entry-content" itemprop="articleBody">
-					<?php the_content('<button class="tiny">' .__( 'Read more...', 'bakedwp') .'</button>'); ?> 
+					<?php the_content('<button class="tiny">' .__( 'Read more...', 'bakedwp') .'</button>'); ?>
 				</section> <!-- end article section -->
 
 			</article> <!-- end article -->

@@ -11,7 +11,6 @@ Version: 4.5.1
 */
 
 define( 'WPCF7_VERSION', '4.5.1' );
-
 define( 'WPCF7_REQUIRED_WP_VERSION', '4.4' );
 
 define( 'WPCF7_PLUGIN', __FILE__ );
