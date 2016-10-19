@@ -55,11 +55,6 @@ function wpsimplecalendar_stylesheet() {
 			plugins_url('/includes/js/datepicker-fr.js', __FILE__ ),
 			array( 'jquery' )
 		);
-<<<<<<< HEAD
-		
-=======
-
->>>>>>> b69d17ae7985335636cd1f981660a8cb0e2b291c
 		wp_enqueue_script(
 			'wpsimplecalendarcolorbox',
 			plugins_url('/includes/js/colorbox/jquery.colorbox.js', __FILE__ ),
@@ -264,11 +259,7 @@ function wpsimplecalendar_handle_last_ajax() {
 
 function wpsimplecalendar_setup_grid( $month, $year, $eventcategory = '', $eventlocation = '' ) {
 	$time = current_time( 'timestamp', $gmt = 0 );
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> b69d17ae7985335636cd1f981660a8cb0e2b291c
 	$running_day       = date( 'w', mktime( 0, 0, 0, $month, 1, $year ) );
 	$days_in_month     = date( 't', mktime( 0, 0, 0, $month, 1, $year ) );
 	$days_in_this_week = 1;
@@ -417,8 +408,5 @@ function wpsimplecalendar_setup_grid( $month, $year, $eventcategory = '', $event
 	$calendar.= '</table>';	// All done, return result
 
 	return $calendar;
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> b69d17ae7985335636cd1f981660a8cb0e2b291c
