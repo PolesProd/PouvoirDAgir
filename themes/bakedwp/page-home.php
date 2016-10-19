@@ -14,9 +14,11 @@ Template Name: Accueil
 			</div>
 
 			<div id="content">
-				<div id="inner-content" class="row">
+				<div id="inner-content" class="row expanded">
 				    <div id="main" class="large-12 medium-10 small-centered columns" role="main">
-							<div class="columns" style="background:#67B7CF;height:350px;">Expand!</div>
+							<div class="columns" style="background:#67B7CF;"><!-- height:350px; -->
+								<?php include get_template_directory().'/parts/include_caroussel.php'; ?>
+							</div>
 							<div class="row">
 							  <div class="medium-6 large-4 columns" style="background:#05C3FB;height:200px;">12/6/4 columns</div>
 							  <div class="medium-6 large-8 columns" style="background:#0388af;height:200px;">

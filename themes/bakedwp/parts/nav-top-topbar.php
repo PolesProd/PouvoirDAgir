@@ -6,7 +6,7 @@
 	       			$current_user = wp_get_current_user();?>
 	      			<li id="" class="menu-item menu-item-type-post_type menu-item-object-page medium-3 columns"><a href="/wp-admin/profile.php"><?php echo $current_user->user_login; ?></a></li><li id="" class="menu-item menu-item-type-post_type menu-item-object-page medium-3 columns"><a href="<?php echo wp_logout_url(); ?>">Déconnexion</a></li><?php
 					  } else {?>
-					      <li id="menu-item-178" class="menu-item menu-item-type-post_type menu-item-object-page medium-6 columns"><a href="/wp-admin/profile.php"><a href="/wp-login.php">connexion</a></li><?php
+					      <li id="menu-item-178" class="menu-item menu-item-type-post_type menu-item-object-page medium-6 columns"><a href="<?php echo get_site_url() . '/wp-login.php'; ?>">connexion</a></li><?php
 					  }
 					?>
 		</ul>
