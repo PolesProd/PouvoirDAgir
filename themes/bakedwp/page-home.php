@@ -17,7 +17,9 @@ Template Name: Accueil
 				<div id="inner-content" class="">
 				    <div id="main" class="large-12 medium-10 small-centered" role="main">
 							<div class="" style="background:#67B7CF;"><!-- height:350px; -->
+
 								<?php include get_template_directory().'/parts/include_caroussel.php'; ?>
+
 							</div>
 							<div class="">
 							  <div class="medium-6 large-4 columns" style="background:#05C3FB;height:200px;">12/6/4 columns</div>

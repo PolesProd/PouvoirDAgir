@@ -7,14 +7,6 @@ Template Name: Ressources
 <?php get_header(); ?>
 
   <div id="content">
-<<<<<<< HEAD
-
-     <div id="inner-content" class="row">
-
-        <div id="main" class="large-10 medium-10 small-centered columns" role="main">
-
-=======
-    <h1>Bienvenue dans la page ressources</h1>
      <div id="inner-content" class="row">
 
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
@@ -51,7 +43,6 @@ Template Name: Ressources
             echo 'Sorry no post matched';
           }
           ?>
->>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
         </div> <!-- end #main -->
 
     </div> <!-- end #inner-content -->
