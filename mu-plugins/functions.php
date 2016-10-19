@@ -22,7 +22,7 @@ function query_post_type($query) {
     $query->set('post_type',$post_type);
     return $query;
   }
-}
+};
 /****************************************************
           Création du Custom Post(Ressource).
 ****************************************************/
