@@ -37,6 +37,7 @@ function wpcf7_is_valid_locale( $locale ) {
 }
 
 function wpcf7_is_rtl( $locale = '' ) {
+<<<<<<< HEAD
 	if ( empty( $locale ) ) {
 		return function_exists( 'is_rtl' ) ? is_rtl() : false;
 	}
@@ -45,6 +46,25 @@ function wpcf7_is_rtl( $locale = '' ) {
 		'ar' => 'Arabic',
 		'he_IL' => 'Hebrew',
 		'fa_IR' => 'Persian' );
+=======
+	static $rtl_locales = array(
+		'ar' => 'Arabic',
+		'ary' => 'Moroccan Arabic',
+		'azb' => 'South Azerbaijani',
+		'fa_IR' => 'Persian',
+		'haz' => 'Hazaragi',
+		'he_IL' => 'Hebrew',
+		'ps' => 'Pashto',
+		'ug_CN' => 'Uighur' );
+
+	if ( empty( $locale ) && function_exists( 'is_rtl' ) ) {
+		return is_rtl();
+	}
+
+	if ( empty( $locale ) ) {
+		$locale = get_locale();
+	}
+>>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
 
 	return isset( $rtl_locales[$locale] );
 }

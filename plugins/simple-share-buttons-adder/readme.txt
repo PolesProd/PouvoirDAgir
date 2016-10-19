@@ -3,7 +3,11 @@ Contributors: DavidoffNeal
 Tags: share buttons, facebook, twitter, google+, share, share links, stumble upon, linkedin, pinterest, yummly, vk
 Requires at least: 3.9
 Tested up to: 4.6.1
+<<<<<<< HEAD
 Stable tag: 6.3.1
+=======
+Stable tag: 6.3.2
+>>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +67,12 @@ A step by step guide on how to configure this plugin can be found <a href="http:
 
 == Changelog ==
 
+<<<<<<< HEAD
+=======
+= 6.3.2 =
+* Minor bug fixes
+
+>>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
 = 6.3.1 =
 * Added a caching layer on top of Facebook's API to ensure fallback share counts.
 

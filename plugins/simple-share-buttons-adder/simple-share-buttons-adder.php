@@ -3,7 +3,11 @@
 Plugin Name: Simple Share Buttons Adder
 Plugin URI: https://simplesharebuttons.com
 Description: A simple plugin that enables you to add share buttons to all of your posts and/or pages.
+<<<<<<< HEAD
 Version: 6.3.1
+=======
+Version: 6.3.2
+>>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
 Author: Simple Share Buttons
 Author URI: https://simplesharebuttons.com
 License: GPLv2
@@ -33,7 +37,11 @@ GNU General Public License for more details.
 
 	define('SSBA_FILE', __FILE__);
     define('SSBA_ROOT', dirname(__FILE__));
+<<<<<<< HEAD
 	define('SSBA_VERSION', '6.3.1');
+=======
+	define('SSBA_VERSION', '6.3.2');
+>>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
 
 //======================================================================
 // 		 SSBA SETTINGS

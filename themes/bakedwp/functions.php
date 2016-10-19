@@ -30,6 +30,12 @@ require_once(get_template_directory().'/assets/functions/related-posts.php');
 // Customizer support
 require_once(get_template_directory().'/assets/functions/customizer.php');
 
+<<<<<<< HEAD
+=======
+//SDK Facebook
+//require_once(get_template_directory().'/assets/js/sdk.js');
+
+>>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
 function callLib(){
 //Call Lib JS (jQuery et jQuery UI)
     wp_enqueue_script('jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js', array('jquery'), '1.8.6');

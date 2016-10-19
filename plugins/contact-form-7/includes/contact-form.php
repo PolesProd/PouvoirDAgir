@@ -258,12 +258,25 @@ class WPCF7_ContactForm {
 
 		$this->unit_tag = self::get_unit_tag( $this->id );
 
+<<<<<<< HEAD
+=======
+		$lang_tag = str_replace( '_', '-', $this->locale );
+
+		if ( preg_match( '/^([a-z]+-[a-z]+)-/i', $lang_tag, $matches ) ) {
+			$lang_tag = $matches[1];
+		}
+
+>>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
 		$html = sprintf( '<div %s>', wpcf7_format_atts( array(
 			'role' => 'form',
 			'class' => 'wpcf7',
 			'id' => $this->unit_tag,
 			( get_option( 'html_type' ) == 'text/html' ) ? 'lang' : 'xml:lang'
+<<<<<<< HEAD
 				=> str_replace( '_', '-', $this->locale ),
+=======
+				=> $lang_tag,
+>>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
 			'dir' => wpcf7_is_rtl( $this->locale ) ? 'rtl' : 'ltr' ) ) ) . "\n";
 
 		$html .= $this->screen_reader_response() . "\n";
