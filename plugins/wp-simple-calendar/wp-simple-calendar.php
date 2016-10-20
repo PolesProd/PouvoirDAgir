@@ -55,7 +55,6 @@ function wpsimplecalendar_stylesheet() {
 			plugins_url('/includes/js/datepicker-fr.js', __FILE__ ),
 			array( 'jquery' )
 		);
-
 		wp_enqueue_script(
 			'wpsimplecalendarcolorbox',
 			plugins_url('/includes/js/colorbox/jquery.colorbox.js', __FILE__ ),
@@ -409,4 +408,5 @@ function wpsimplecalendar_setup_grid( $month, $year, $eventcategory = '', $event
 	$calendar.= '</table>';	// All done, return result
 
 	return $calendar;
+
 }

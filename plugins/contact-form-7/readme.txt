@@ -3,8 +3,8 @@ Contributors: takayukister
 Donate link: http://contactform7.com/donate/
 Tags: contact, form, contact form, feedback, email, ajax, captcha, akismet, multilingual
 Requires at least: 4.4
-Tested up to: 4.6
-Stable tag: 4.5
+Tested up to: 4.6.1
+Stable tag: 4.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +62,15 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 
 For more information, see [Releases](http://contactform7.com/category/releases/).
 
+
+= 4.5.1 =
+
+* Avoids JavaScript strict-mode errors seen with ill-designed themes.
+* Fixed a bug around reCAPTCHA's callback and expired-callback options.
+* Specifies cursor style for file uploading fields.
+* Corrects language tags for locale codes with modifying suffix like '_formal'.
+* Corrects wpcf7_is_rtl() output. Added 5 locales to the RTL locales list.
+* Language Packs: Language files for Portuguese (Brazil) (pt_BR) and Hebrew (he_IL) have been removed.
 = 4.5 =
 
 * The default contact form template is revised.

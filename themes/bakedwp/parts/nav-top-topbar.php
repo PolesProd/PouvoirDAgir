@@ -1,3 +1,4 @@
+
 <div class=""> <!-- class="fixed contain-to-grid" -->
 	<nav class="top-bar" data-topbar data-options="scrolltop : false">
 		<ul class="row text-center">
@@ -31,9 +32,11 @@
 				<li><a href="*">Newsletter</a></li>
 			</ul>
 			<div class="medium-2 columns">
-				<i class="fi-magnifying-glass large"></i>
+				<button><i class="fi-magnifying-glass large"></i></button>
+				<?php get_search_form();?>
 			</div>
 		</section>
+
 		<section class="top-bar-section">
 			<?php joints_top_nav(); ?>
 		</section>

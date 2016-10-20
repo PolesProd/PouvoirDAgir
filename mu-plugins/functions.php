@@ -1,10 +1,11 @@
+
 <?php
 /*
 Plugin Name: Fonctions WordPress
 Description: L'ensemble des fonctions globales du site.
 Version: 0.1
 License: No fucking licence
-Author: LePoleS
+Author: Kevin CHERUEL
 Author URI: https://www.lepoles.org/
 */
 /********************************************
@@ -22,34 +23,6 @@ function query_post_type($query) {
     $query->set('post_type',$post_type);
     return $query;
   }
-}
-/****************************************************
-          Création du Custom Post(Ressource).
-****************************************************/
-add_action('init', 'ressources');
-function ressources() {
-  $labels = array(
-    'name'					      =>	__('Ressources'),
-    'menu_name'           => 	__('Ressources'),
-    'singular_name'		    =>	__('Ressources'),
-    'add_new_item'		    =>	__('Ajouter'),
-    'all_items'				    =>	__('Toutes les Ressources'),
-    'edit_item'				    =>	__('Modifier la Ressources'),
-    'new_item'				    =>	__('Nouvelle Ressource'),
-    'view_item'				    =>	__('Voir Ressources'),
-    'not_found'				    =>	__('Aucune Ressource trouvé'),
-    'not_found_in_trash'	=>	__('Aucune Ressource trouvée dans la corbeille')
-  );
-
-  register_post_type('ressources', array(
-    'slug'            => 'ressources',
-    'public'          => true,
-    'labels'          => $labels,
-    'menu_position'   => 7,
-    'capability_type' => 'post',// Utilise les mêmes permissions que pour les articles.
-    'taxonomies'      => array('category', 'post_tag'),
-    'supports'        => array('title','editor','author','wpsclocation','comments','thumbnail')
-  ));
 }
 
 /*******************************************************
@@ -276,6 +249,43 @@ function auto_search(){
     echo "jQuery('#s01').autocomplete({source:availableTags});";
     echo "</script>";
 }
+
+/*************************************************
+                Gallery
+*************************************************/
+
+function gallery_func(){
+    $argsThumb = array(
+      'order'          => 'ASC',
+      'post_type'      => 'attachment',
+      'post_mime_type' => 'image',
+      'post_status'    => null
+  );
+  $attachments = get_posts($argsThumb);
+  if ($attachments) {
+     echo '<ul class="grid-thumb">';
+      foreach ($attachments as $attachment) {
+          //echo apply_filters('the_title', $attachment->post_title);
+                  echo '<li><img src="'.wp_get_attachment_url($attachment->ID, 'testsize', false, false).'" /></li>';
+      }
+      echo '</ul>';
+  }
+}
+add_shortcode('my_gallery','gallery_func');
+
+/*************************************************
+                Street_Map
+*************************************************/
+
+function street_map(){
+
+  echo '<iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/carte-du-pouvoir-dagir_63384">Voir en plein écran</a></p>';
+}
+add_shortcode('map','street_map');
+
+
+
+
 /*************************************************
                 Query page auteur.
 *************************************************/
@@ -290,3 +300,173 @@ function my_post_queries( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'my_post_queries' );
+
+
+/*************************************************
+                Ressources
+*************************************************/
+add_action('init', 'ressources');
+function ressources(){
+	$labels = array(
+		'name'								=> _x( 'Ressource', 'post type general name' ),
+		'singular_name'				=> _x( 'Ressource', 'post type singular name' ),
+		'add_new'							=> _x( 'Ajouter', 'une Ressource' ),
+		'add_new_item'				=> __( 'Ajouter des Ressources' ),
+		'edit_item'						=> __( 'Editer une Ressource' ),
+		'new_item'						=> __( 'Nouveau' ),
+		'all_items'						=> __( 'Toutes les Ressources' ),
+		'view_item'						=> __( 'Voir Ressources' ),
+		'search_items'				=> __( 'Chercher Ressources' ),
+		'not_found'						=>  __( 'Aucune Ressource Trouvée' ),
+		'not_found_in_trash'	=> __( 'Aucune Ressource Trouvée Dans La Corbeille' ),
+		'parent_item_colon'		=> '',
+		'menu_name'						=> 'Ressources'
+	);
+	$args = array(
+		'labels' 							=> $labels,
+		'public' 							=> true,
+		'publicly_queryable' 	=> true,
+		'show_ui' 						=> true,
+		'show_in_menu' 				=> true,
+		'query_var' 					=> true,
+		'rewrite' 						=> false,
+		'capability_type' 		=> 'post',
+		'has_archive' 				=> true,
+		'hierarchical' 				=> false,
+		'menu_position' 			=> 6,
+		'supports' 						=> array('title','editor','thumbnail','author','category'),
+    'taxonomies'         => array('ressources'),
+	);
+	register_post_type('ressources',$args);
+}
+
+add_action('init', 'analyse_taxonomies', 0);
+function analyse_taxonomies(){
+	$labels = array(
+		'name'					=> _x( 'Analyse', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Analyse', 'taxonomy singular name' ),
+		'search_items'	=> __( 'Chercher une Analyse' ),
+		'all_items'			=> __( 'Toutes les Analyse' ),
+		'edit_item'			=> __( 'Editer une Analyse' ),
+		'update_item'		=> __( 'Mise a jour de la Analyse' ),
+		'add_new_item'	=> __( 'Ajouter' ),
+		'new_item_name'	=> __( 'Nouvelle Analyse' ),
+		'menu_name'			=> __( 'Analyse' )
+	);
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false,
+  );
+	register_taxonomy('analyse', 'ressources', $args);
+}
+
+add_action('init', 'methodologie_taxonomies', 0);
+function methodologie_taxonomies(){
+	$labels = array(
+		'name'					=> _x( 'Méthodologie', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Méthodologie', 'taxonomy singular name' ),
+		'search_items'	=> __( 'Chercher une Méthodologie' ),
+		'all_items'			=> __( 'Toutes les Méthodologie' ),
+		'edit_item'			=> __( 'Editer une Méthodologie' ),
+		'update_item'		=> __( 'Mise a jour de la Méthodologie' ),
+		'add_new_item'	=> __( 'Ajouter' ),
+		'new_item_name'	=> __( 'Nouvelle Méthodologie' ),
+		'menu_name'			=> __( 'Méthodologie' )
+	);
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false,
+  );
+	register_taxonomy('methodologie', 'ressources', $args);
+}
+
+add_action('init', 'temoignage_taxonomies', 0);
+function temoignage_taxonomies(){
+	$labels = array(
+		'name'					=> _x( 'Témoignage', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Témoignage', 'taxonomy singular name' ),
+		'search_items'	=> __( 'Chercher une Témoignage' ),
+		'all_items'			=> __( 'Toutes les Témoignage' ),
+		'edit_item'			=> __( 'Editer une Témoignage' ),
+		'update_item'		=> __( 'Mise a jour de la Témoignage' ),
+		'add_new_item'	=> __( 'Ajouter' ),
+		'new_item_name'	=> __( 'Nouvelle Témoignage' ),
+		'menu_name'			=> __( 'Témoignage' )
+	);
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false,
+  );
+	register_taxonomy('temoignage', 'ressources', $args);
+}
+
+
+add_filter( 'meta_boxes', 'ressources_metaboxes' );
+function ressources_metaboxes( array $meta_boxes ) {
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = 'ressources_';
+	$meta_boxes[] = array(
+		'id'         => 'ressources_meta',
+		'title'      => 'Méta des ressources',
+		'pages'      => array( 'ressources', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields'     => array(
+
+      array(
+	      'name' => 'En-tête de l\'article',
+	      'desc' => '',
+	      'id'   => $prefix . 'chapeau',
+	      'type' => 'textarea',
+	    ),
+			array(
+				'name' => ' Lien vers la Ressource Externe :',
+				'desc' => 'Mettre le lien Complet http:// compris',
+				'id'   => $prefix . 'externes',
+				'type' => 'text',
+			),
+
+		),
+	);
+	// Add other metaboxes as needed
+	return $meta_boxes;
+}
+
+
+
+add_filter( 'meta_boxes', 'post_metaboxes' );
+function post_metaboxes( array $meta_boxes ) {
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = 'post_';
+	$meta_boxes[] = array(
+		'id'         => 'post_meta',
+		'title'      => 'Post Méta',
+		'pages'      => array( 'post', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields'     => array(
+			array(
+	      'name' => 'En-tête de l\'article',
+	      'desc' => '',
+	      'id'   => $prefix . 'chapeau',
+	      'type' => 'textarea',
+	    ),
+		),
+	);
+	// Add other metaboxes as needed
+	return $meta_boxes;
+}
