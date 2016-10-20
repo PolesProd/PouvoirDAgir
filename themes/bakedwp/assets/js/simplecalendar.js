@@ -261,7 +261,6 @@
 			});
 	  },
 	};
-
 	jQuery(function($) {
 		calendar.init('ajax');
 	});

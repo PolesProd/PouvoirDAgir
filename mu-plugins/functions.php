@@ -65,6 +65,7 @@ function ressources_taxonomies(){
 		'new_item_name'	=> __('Nouvelle Catégorie'),
 		'menu_name'			=> __('Catégorie')
 	);
+
 	$args = array(
 		'hierarchical'			=> true,
 		'labels'						=> $labels,
@@ -118,7 +119,7 @@ add_filter('manage_wpscevents_posts_columns', 'events_add_column'/*, 10*/);
 function events_add_column($defaults) {
 	unset( $defaults['date'] );
 	$new = array();
-	//shift the order so that it's not the last column
+	// Changer l'ordre pour que ce soit pas la dernière colonne
 	foreach($defaults as $key => $value) {
 		if ($key=='taxonomy-wpsccategory') {
 			$new['wpsc_start_date'] = 'Event Start Date';
@@ -129,8 +130,7 @@ function events_add_column($defaults) {
 }
 
 add_action('init', 'events');
-function events()
-{
+function events(){
 	$labels = array(
 		'name'								=> _x( 'Evénements', 'post type general name' ),
 		'singular_name'				=> _x( 'Event', 'post type singular name' ),
@@ -168,7 +168,7 @@ function events()
 
 add_action('init', 'events_taxonomies'/*, 0*/);
 function events_taxonomies(){
-	// Définition de la taxonomie pour les catégories>
+	// Définition de la taxonomie pour les catégories.
 	$labels = array(
 		'name'							=> _x('Catégories', 'taxonomy general name'),
 		'singular_name'			=> _x('Catégorie', 'taxonomy singular name'),
@@ -193,16 +193,17 @@ function events_taxonomies(){
   );
 	register_taxonomy( 'wpsccategory', array( 'events' ), $args );
 
+	// Définition de la taxonomie pour les lieux.
 	$labels = array(
-		'name'					=> _x( 'Lieu', 'taxonomy general name' ),
-		'singular_name'	=> _x( 'Location', 'taxonomy singular name' ),
-		'search_items'	=> __( 'Chercher lieu' ),
-		'all_items'			=> __( 'Tous les lieux' ),
-		'edit_item'			=> __( 'Editer Lieu' ),
-		'update_item'		=> __( 'Update Location' ),
-		'add_new_item'	=> __( 'Ajouter' ),
-		'new_item_name'	=> __( 'New Location Name' ),
-		'menu_name'			=> __( 'Lieux' )
+		'name'					=> _x('Lieu', 'taxonomy general name'),
+		'singular_name'	=> _x('Location', 'taxonomy singular name'),
+		'search_items'	=> __('Chercher lieu'),
+		'all_items'			=> __('Tous les lieux'),
+		'edit_item'			=> __('Editer Lieu'),
+		'update_item'		=> __('Update Location'),
+		'add_new_item'	=> __('Ajouter'),
+		'new_item_name'	=> __('New Location Name'),
+		'menu_name'			=> __('Lieux')
 	);
 
 	$args = array(
@@ -225,16 +226,16 @@ function events_columns_content($column_name, $post_ID) {
 
 add_filter( 'meta_boxes', 'events_metaboxes' );
 function events_metaboxes( array $meta_boxes ) {
-	// Start with an underscore to hide fields from custom fields list
+	// Commencez avec un trait de soulignement pour cacher les champs de la liste des champs personnalisés
 	$prefix = 'wpsc_';
 
 	$meta_boxes[] = array(
 		'id'         => 'events_event_meta',
 		'title'      => 'Détails de l\'évènement',
-		'pages'      => array( 'events', ), // Post type
+		'pages'      => array( 'events', ), // Type de post
 		'context'    => 'normal',
 		'priority'   => 'high',
-		'show_names' => true, // Show field names on the left
+		'show_names' => true, // Afficher les noms des champs sur la gauche
 		'fields'     => array(
 			array(
 				'name' => 'Début le:',
@@ -274,7 +275,7 @@ function events_metaboxes( array $meta_boxes ) {
 			),
 		),
 	);
-	// Add other metaboxes as needed
+	// Ajouter d'autres Metaboxes au besoin
 	return $meta_boxes;
 }
 
@@ -288,36 +289,36 @@ function initialize_events_meta_boxes() {
         Création des Réseaux Impliqués
 *************************************************/
 add_action('init', 'partners');
-function partners()
-{
+function partners(){
 	$labels = array(
-		'name'					=> _x('Réseaux Impliqués', 'post type general name' ),
-		'singular_name'			=> _x( 'Réseau Impliqué', 'post type singular name' ),
-		'add_new'				=> _x( 'Ajouter', 'Réseaux Impliqués' ),
-		'add_new_item'			=> __( 'Ajouter des Réseaux Impliqués' ),
-		'edit_item'				=> __( 'Editer Réseau Impliqué' ),
-		'new_item'				=> __( 'Nouveau' ),
-		'all_items'				=> __( 'Tous les Réseaux Impliqués' ),
-		'view_item'				=> __( 'Voir Réseau Impliqué' ),
-		'search_items'			=> __( 'Chercher Réseaux Impliqués' ),
-		'not_found'				=>  __( 'Aucun Réseaux Impliqués Trouvé' ),
+		'name'								=> _x('Réseaux Impliqués', 'post type general name' ),
+		'singular_name'				=> _x( 'Réseau Impliqué', 'post type singular name' ),
+		'add_new'							=> _x( 'Ajouter', 'Réseaux Impliqués' ),
+		'add_new_item'				=> __( 'Ajouter des Réseaux Impliqués' ),
+		'edit_item'						=> __( 'Editer Réseau Impliqué' ),
+		'new_item'						=> __( 'Nouveau' ),
+		'all_items'						=> __( 'Tous les Réseaux Impliqués' ),
+		'view_item'						=> __( 'Voir Réseau Impliqué' ),
+		'search_items'				=> __( 'Chercher Réseaux Impliqués' ),
+		'not_found'						=>  __( 'Aucun Réseaux Impliqués Trouvé' ),
 		'not_found_in_trash'	=> __( 'Aucun Réseaux Impliqués Trouvé Dans La Corbeille' ),
 		'parent_item_colon'		=> '',
-		'menu_name'				=> 'Réseaux Impliqués'
+		'menu_name'						=> 'Réseaux Impliqués'
 	);
+
 	$args = array(
-		'labels' => $labels,
-		'public' => true,
-		'publicly_queryable' => true,
-		'show_ui' => true,
-		'show_in_menu' => true,
-		'query_var' => true,
-		'rewrite' => false,
-		'capability_type' => 'post',
-		'has_archive' => true,
-		'hierarchical' => false,
-		'menu_position' => 6,
-		'supports' => array('title','editor','thumbnail')
+		'labels' 							=> $labels,
+		'public' 							=> true,
+		'publicly_queryable' 	=> true,
+		'show_ui' 						=> true,
+		'show_in_menu'				=> true,
+		'query_var' 					=> true,
+		'rewrite' 						=> false,
+		'capability_type' 		=> 'post',
+		'has_archive' 				=> true,
+		'hierarchical' 				=> false,
+		'menu_position' 			=> 6,
+		'supports' 						=> array('title','editor','thumbnail')
 	);
 	register_post_type('partenaires',$args);
 }
@@ -455,39 +456,30 @@ function my_post_queries($query){
     }
 }
 add_action('pre_get_posts', 'my_post_queries');
-
 /*************************************************
-                Requête Ajax.
+                Query page auteurs.
 *************************************************/
-function notre_fonction_ajax(){
-   // ce switch lancera les fonctions selon la valeur qu'aura notre variable 'fn'
-     switch($_REQUEST['fn']){
-          case 'get_latest_posts':
-               $output = ajax_get_latest_posts($_REQUEST['count']);
-          break;
-          default:
-              $output = 'No function specified, check your jQuery.ajax() call';
-          break;
+add_action('wp_enqueue_scripts', 'add_js_scripts');
+function add_js_scripts() {
+	wp_enqueue_script( 'script', get_template_directory_uri().'/assets/js/test.js', array('jquery'), '1.0', true );
 
-     }
-
-   // Maintenant nous allons transformer notre résultat en JSON et l'afficher
-     $output=json_encode($output);
-     if(is_array($output)){
-        print_r($output);
-     }
-     else{
-        echo $output;
-     }
-     die;
-
+	// pass Ajax Url to script.js
+	wp_localize_script('script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
 }
-function ajax_get_latest_posts($count){
-     $posts = get_posts('numberposts='.$count);
-     return $posts;
+
+add_action( 'wp_ajax_call_events_ajax', 'call_events_ajax' );
+add_action( 'wp_ajax_nopriv_call_events_ajax', 'call_events_ajax' );
+function call_events_ajax() {
+	$args = array(
+		    'post_type' => 'events',
+		    'posts_per_page' => 10
+		);
+		$ajax_query = new WP_Query($args);
+		//var_dump($ajax_query);
+		if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
+				get_template_part( 'article' );
+			endwhile;
+		endif;
+
+		die();
 }
-/*add_action('wp_ajax_get_events', 'get_events');
-function get_portfolio() {
-    $events = get_post($_POST['post_type']); // do some sanitation as well
-    echo json_encode($events);
-}*/
