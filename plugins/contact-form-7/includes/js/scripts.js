@@ -3,11 +3,8 @@
 	'use strict';
 
 	if (typeof _wpcf7 == 'undefined' || _wpcf7 === null) {
-<<<<<<< HEAD
-		_wpcf7 = {};
-=======
+
 		return;
->>>>>>> e3c70a52925841d0d4fdc9d0a5b313eceab1b9d9
 	}
 
 	_wpcf7 = $.extend({

@@ -9,3 +9,24 @@
 .top-bar{
   height: auto;
 }
+#content #inner-content{
+  padding: 0;
+}
+/**********************\
+    OWL CAROUSEL
+\**********************/
+#owl-demo .owl-item{
+  display: inline;
+}
+#owl-demo .owl-item img, #owl-demo .owl-item div{
+    display: inline-block;
+    width: 99.1vw;
+    height: auto;
+}
+#owl-demo .owl-item div{
+  height:500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#owl-demo .

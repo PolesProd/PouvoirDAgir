@@ -243,7 +243,7 @@ function auto_search(){
     }
     wp_reset_postdata();
     else:endif;
-    echo "];console.table(availableTags);";
+    echo "];";
     echo "jQuery('#s').autocomplete({source:availableTags});";
     echo "jQuery('#s01').autocomplete({source:availableTags});";
     echo "</script>";
