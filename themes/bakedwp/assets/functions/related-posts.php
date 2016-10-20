@@ -5,7 +5,7 @@ function joints_related_posts() {
 	$tags = wp_get_post_tags( $post->ID );
 	if($tags) {
 		foreach( $tags as $tag ) {
-			$tag_arr .= $tag->slug . ',';
+			$tag_arr = '';
 		}
 		$args = array(
 			'tag' => $tag_arr,

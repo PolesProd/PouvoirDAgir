@@ -11,6 +11,7 @@
 		<!-- Mobile Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+    <!-- <link rel="stylesheet" href="assets/typo/foundation-icons/foundation-icons.css"> -->
 
 		<?php wp_head(); ?>
 

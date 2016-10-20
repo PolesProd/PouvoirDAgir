@@ -47,7 +47,7 @@ function ressources() {
     'labels'          => $labels,
     'menu_position'   => 7,
     'capability_type' => 'post',// Utilise les mêmes permissions que pour les articles.
-    'taxonomies'      => array('category', 'post_tag'),
+    'taxonomies'      => array('post_tag'),
     'supports'        => array('title','editor','author','wpsclocation','comments','thumbnail')
   ));
 }
@@ -114,6 +114,20 @@ function ressources_metaboxes(array $meta_boxes) {
 /*******************************************************
           Création du Custom Post(Evenement).
 *******************************************************/
+add_filter('manage_wpscevents_posts_columns', 'events_add_column'/*, 10*/);
+function events_add_column($defaults) {
+	unset( $defaults['date'] );
+	$new = array();
+	//shift the order so that it's not the last column
+	foreach($defaults as $key => $value) {
+		if ($key=='taxonomy-wpsccategory') {
+			$new['wpsc_start_date'] = 'Event Start Date';
+		}
+		$new[$key] = $value;
+	}
+	return $new;
+}
+
 add_action('init', 'events');
 function events()
 {
@@ -145,15 +159,40 @@ function events()
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => 6,
-		'taxonomies'         => array('wpsclocation','category'),
+		'taxonomies'         => array('wpsclocation','wpsccategory'),
 		'supports'           => array('title','editor','thumbnail','author')
 	);
 
 	register_post_type('events',$args);
 }
 
-add_action('init', 'events_taxonomies', 0);
+add_action('init', 'events_taxonomies'/*, 0*/);
 function events_taxonomies(){
+	// Définition de la taxonomie pour les catégories>
+	$labels = array(
+		'name'							=> _x('Catégories', 'taxonomy general name'),
+		'singular_name'			=> _x('Catégorie', 'taxonomy singular name'),
+		'search_items'			=> __('Recherche Catégories'),
+		'all_items'					=> __('Toutes les Catégories'),
+		'parent_item'				=> __('Catégories Parentes'),
+		'parent_item_colon'	=> __('Categorie Parente:'),
+		'edit_item'					=> __('Editer Catégorie'),
+		'update_item'				=> __('Mettre à jour Catégorie'),
+		'add_new_item'			=> __('Ajouter Catégorie'),
+		'new_item_name'			=> __('Nouveau Nom Catégorie'),
+		'menu_name'					=> __('Catégories')
+	);
+
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false
+  );
+	register_taxonomy( 'wpsccategory', array( 'events' ), $args );
+
 	$labels = array(
 		'name'					=> _x( 'Lieu', 'taxonomy general name' ),
 		'singular_name'	=> _x( 'Location', 'taxonomy singular name' ),
@@ -175,6 +214,13 @@ function events_taxonomies(){
 		'rewrite'						=> false,
   );
 	register_taxonomy('wpsclocation', array('events'), $args);
+}
+
+add_action('manage_wpscevents_posts_custom_column', 'events_columns_content'/*, 10, 2*/);
+function events_columns_content($column_name, $post_ID) {
+	if ($column_name == 'wpsc_start_date') {
+		echo get_post_meta( $post_ID, $column_name, true );
+	}
 }
 
 add_filter( 'meta_boxes', 'events_metaboxes' );
@@ -312,7 +358,7 @@ function auto_search(){
     if ( $the_query->have_posts() ) : ?>
         <?php $completion = '';
         while ( $the_query->have_posts() ) : $the_query->the_post();
-            $post_id =  get_the_ID();;
+            $post_id =  get_the_ID();
             $sqlTitleContent = 'SELECT post_content, post_title
                                 FROM  wp_posts
                                 WHERE  ID ="'.$post_id.'"';
@@ -334,7 +380,7 @@ function auto_search(){
         }
         wp_reset_postdata();
     else:endif;
-    echo "];console.table(availableTags);";
+    echo "];";
     echo "jQuery('#s').autocomplete({source:availableTags});";
     echo "jQuery('#s01').autocomplete({source:availableTags});";
     echo "</script>";
@@ -348,7 +394,7 @@ if( function_exists('register_sidebar')){
   	'name'          => __( 'Aside', 'theme_text_domain' ),
   	'id'            => 'aside',
   	'description'   => '',
-          'class'         => '',
+    'class'         => '',
   	'before_widget' => '<aside">',
   	'after_widget'  => '</aside>',
   	'before_title'  => '<h2 class="widgettitle">',
@@ -409,3 +455,39 @@ function my_post_queries($query){
     }
 }
 add_action('pre_get_posts', 'my_post_queries');
+
+/*************************************************
+                Requête Ajax.
+*************************************************/
+function notre_fonction_ajax(){
+   // ce switch lancera les fonctions selon la valeur qu'aura notre variable 'fn'
+     switch($_REQUEST['fn']){
+          case 'get_latest_posts':
+               $output = ajax_get_latest_posts($_REQUEST['count']);
+          break;
+          default:
+              $output = 'No function specified, check your jQuery.ajax() call';
+          break;
+
+     }
+
+   // Maintenant nous allons transformer notre résultat en JSON et l'afficher
+     $output=json_encode($output);
+     if(is_array($output)){
+        print_r($output);
+     }
+     else{
+        echo $output;
+     }
+     die;
+
+}
+function ajax_get_latest_posts($count){
+     $posts = get_posts('numberposts='.$count);
+     return $posts;
+}
+/*add_action('wp_ajax_get_events', 'get_events');
+function get_portfolio() {
+    $events = get_post($_POST['post_type']); // do some sanitation as well
+    echo json_encode($events);
+}*/

@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 <?php get_header(); ?>
+=======
+<?php get_header();
+
+?>
+>>>>>>> c8ac7e5e929a92d3a297c24e2f6a32bbfbad3b13
 
 			<div id="content">
 
@@ -15,6 +21,7 @@
 					   		<?php get_template_part( 'parts/content', 'missing' ); ?>
 
 					    <?php endif; ?>
+<<<<<<< HEAD
 							<div class="">
 								<?php
 									// date
@@ -64,6 +71,9 @@
 								?>
 								</p>
 							</div><!-- Fin de la div metaArticle -->
+=======
+
+>>>>>>> c8ac7e5e929a92d3a297c24e2f6a32bbfbad3b13
 					</div> <!-- end #main -->
 
 				</div> <!-- end #inner-content -->

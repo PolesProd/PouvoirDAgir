@@ -10,15 +10,20 @@
 				</div>
 			</div>
 
-			<div id="content">
+      <div id="content">
 				<div id="inner-content" class="row">
 				    <div id="main" class="large-10 medium-10 small-centered columns" role="main">
 					      <?php
-                $args = array( 'post_type' => 'ressources', 'posts_per_page' => 10 );
-                $loop = new WP_Query( $args );
-                while ( $loop->have_posts() ) : $loop->the_post();
-                  the_category();
-                endwhile;
+                /*$args = array('taxonomy' => 'wpsccategory');
+                $loop = new WP_Query($args);
+                while ($loop->have_posts()) : $loop->the_post();*/
+                  /*wp_list_cats('sort_order=desc&optioncount=1');*/
+									wp_list_categories(array(
+										'taxonomy'=>'ressources',
+										'show_count'=>1,
+										'order'=>'DESC'
+									));
+                /*endwhile;*/
 					    	?>
     				</div> <!-- end #main -->
 				</div> <!-- end #inner-content -->

@@ -50,6 +50,3 @@
 	<?php get_template_part( 'parts/content', 'missing' ); ?>
 
 <?php endif; ?>
-
-0
-Mouchards
