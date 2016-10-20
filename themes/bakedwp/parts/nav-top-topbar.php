@@ -32,7 +32,8 @@
 				<li><a href="*">Newsletter</a></li>
 			</ul>
 			<div class="medium-2 columns">
-				<i class="fi-magnifying-glass large"></i>
+				<button><i class="fi-magnifying-glass large"></i></button>
+				<?php get_search_form();?>
 			</div>
 		</section>
 

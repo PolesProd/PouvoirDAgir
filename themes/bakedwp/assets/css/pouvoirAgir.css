@@ -9,3 +9,11 @@
 .top-bar{
   height: auto;
 }
+.columns>.search-form>input[type=text]{
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+.columns>.search-form>input[type=text]:focus {
+    width: 100%;
+}

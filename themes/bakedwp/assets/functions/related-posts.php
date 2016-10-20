@@ -19,6 +19,7 @@ function joints_related_posts() {
 			foreach ( $related_posts as $post ) : setup_postdata( $post ); ?>
 				<li class="related_post">
 					<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+						<?php the_excerpt();?>
 					<?php get_template_part( 'parts/content', 'byline' ); ?>
 				</li>
 			<?php endforeach; }
