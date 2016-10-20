@@ -1,9 +1,7 @@
 (function($) {
 	var calendar = {
-
 		init: function(ajax) {
-
-			if (ajax) {
+		if (ajax) {
 	      // ajax call to print json
 	      $.ajax({
 	  				url: 'wp-content/themes/bakedwp/assets/data/events.json',
@@ -263,7 +261,6 @@
 			});
 	  },
 	};
-
 	jQuery(function($) {
 		calendar.init('ajax');
 	});
