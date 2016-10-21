@@ -32,7 +32,7 @@ Template Name: Ressources
               while ( $loopy->have_posts() ) {
                   $loopy->the_post();
                   if (get_category($sqlTemoignage[$i]->term_id)->category_count > 0){
-                  echo '<div class="ressoure">';
+                  echo '<div class="ressoure row">';
                       $id = get_the_ID();
                       $author = get_the_author();
                       $terms = wp_get_post_terms($id, 'analyse', $args );
@@ -41,22 +41,22 @@ Template Name: Ressources
                       echo 'Ressources n<sup>o</sup>'.$id.' appartenant a la catégorie : <strong>'.$terms[0]->name.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong><br>';
                       if(has_post_thumbnail()){
                       ?>
-                        <div class="imgArticle" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                        </div><!-- Fin de la div imgArticle --><br><?php
+                        <div class="imgArticle row" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
+                        </div><!-- Fin de la div imgArticle --><?php
                       }
                       else{
                         ?>
-                          <div class="imgArticle" style="font-family: 'Ruda', sans-serif;background-image:url('http://lorempixel.com/output/city-q-c-640-480-10.jpg');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                          </div><!-- Fin de la div imgArticle --><br><?php
+                          <div class="imgArticle row" style="font-family: 'Ruda', sans-serif;background-image:url('http://lorempixel.com/output/city-q-c-640-480-10.jpg');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
+                          </div><!-- Fin de la div imgArticle --><?php
                       }
                       ?>
-                      <?php echo 'Date d\'écriture : <strong>'.$my_date.'</strong><br>'; ?>
-                      <?php echo 'Par : <strong>'.$author.'</strong><br>'; ?>
+                      <?php echo '<div class="row">Date d\'écriture : <strong>'.$my_date.'</strong></div>'; ?>
+                      <?php echo '<div class="row">Par : <strong>'.$author.'</strong></div>'; ?>
 
-                      <?php echo 'Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong><br>
-                      <?php the_title(); ?><br>
-                      <?php echo '<strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong><br>'; ?>
-                      <?php the_excerpt().'<br>';
+                      <?php echo '<div class="row">Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong></div>
+                      <div class="row"><?php the_title(); ?></div>
+                      <?php echo '<div class="row"><strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong></div>'; ?>
+                      <div class="row"><?php the_excerpt().'</div>';
                   echo '</div>';
 
               }
@@ -64,7 +64,7 @@ Template Name: Ressources
               }
 
             }
-            echo '<form action="?page_id=47" method="post">
+            echo '<form action="?page_id=47" method="post" class="row">
               <input type="hidden" value="'.$sqlTemoignage[0]->taxonomy.'" name="post_type">
               <input type="submit" value="En Voir plus">
             </form>';
@@ -91,26 +91,31 @@ Template Name: Ressources
             while ( $loopy->have_posts() ) {
               $loopy->the_post();
               if (get_category($sqlTemoignage[$i]->term_id)->category_count > 0){
-                echo '<div class="ressoure">';
+                echo '<div class="ressoure row">';
                   $id = get_the_ID();
                   $author = get_the_author();
                   $terms = wp_get_post_terms($id, 'methodologie', $args );
                   $my_date = get_the_date( 'l j F Y' );
                   $myterms = get_terms('methodologie', array( 'parent' => 0, 'hide_empty' => 0 ) );
-                  echo 'Ressources n<sup>o</sup> '.$id.' appartenant a la catégorie : <strong>'.$terms[0]->name.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong><br>';
+                  echo 'Ressources n<sup>o</sup>'.$id.' appartenant a la catégorie : <strong>'.$terms[0]->name.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong><br>';
                   if(has_post_thumbnail()){
                   ?>
-                    <div class="imgArticle" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                    </div><!-- Fin de la div imgArticle --><br><?php
+                    <div class="imgArticle row" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
+                    </div><!-- Fin de la div imgArticle --><?php
+                  }
+                  else{
+                    ?>
+                      <div class="imgArticle row" style="font-family: 'Ruda', sans-serif;background-image:url('http://lorempixel.com/output/city-q-c-640-480-10.jpg');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
+                      </div><!-- Fin de la div imgArticle --><?php
                   }
                   ?>
-                  <?php echo 'Date d\'écriture : <strong>'.$my_date.'</strong><br>'; ?>
-                  <?php echo 'Par : <strong>'.$author.'</strong><br>'; ?>
+                  <?php echo '<div class="row">Date d\'écriture : <strong>'.$my_date.'</strong></div>'; ?>
+                  <?php echo '<div class="row">Par : <strong>'.$author.'</strong></div>'; ?>
 
-                  <?php echo 'Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong><br>
-                  <?php the_title(); ?><br>
-                  <?php echo '<strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong><br>'; ?>
-                  <?php the_excerpt().'<br>';
+                  <?php echo '<div class="row">Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong></div>
+                  <div class="row"><?php the_title(); ?></div>
+                  <?php echo '<div class="row"><strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong></div>'; ?>
+                  <div class="row"><?php the_excerpt().'</div>';
                 echo '</div>';
 
               }
@@ -152,21 +157,25 @@ Template Name: Ressources
                   $terms = wp_get_post_terms($id, 'temoignage', $args );
                   $my_date = get_the_date( 'l j F  Y' );
                   $myterms = get_terms('temoignage', array( 'parent' => 0, 'hide_empty' => 0 ) );
-                  echo 'Ressources n<sup>o</sup> '.$id.' appartenant a la catégorie : <strong>'.$terms[0]->name.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong><br>';
+                  echo 'Ressources n<sup>o</sup>'.$id.' appartenant a la catégorie : <strong>'.$terms[0]->name.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong><br>';
                   if(has_post_thumbnail()){
                   ?>
-                    <div class="imgArticle" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                    </div><!-- Fin de la div imgArticle --><br><?php
+                    <div class="imgArticle row" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
+                    </div><!-- Fin de la div imgArticle --><?php
+                  }
+                  else{
+                    ?>
+                      <div class="imgArticle row" style="font-family: 'Ruda', sans-serif;background-image:url('http://lorempixel.com/output/city-q-c-640-480-10.jpg');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
+                      </div><!-- Fin de la div imgArticle --><?php
                   }
                   ?>
-                  <?php echo 'Date d\'écriture : <strong>'.$my_date.'</strong><br>'; ?>
-                  <?php echo 'Par : <strong>'.$author.'</strong><br>'; ?>
+                  <?php echo '<div class="row">Date d\'écriture : <strong>'.$my_date.'</strong></div>'; ?>
+                  <?php echo '<div class="row">Par : <strong>'.$author.'</strong></div>'; ?>
 
-                  <?php echo 'Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong><br>
-                  <?php the_title(); ?><br>
-                  <?php echo '<strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong><br>'; ?>
-                  <?php the_excerpt().'<br>';
-
+                  <?php echo '<div class="row">Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong></div>
+                  <div class="row"><?php the_title(); ?></div>
+                  <?php echo '<div class="row"><strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong></div>'; ?>
+                  <div class="row"><?php the_excerpt().'</div>';
               echo '</div>';
 
           }
