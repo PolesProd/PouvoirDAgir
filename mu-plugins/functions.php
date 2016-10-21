@@ -394,11 +394,11 @@ function temoignage_taxonomies(){
 		'name'					=> _x( 'Témoignage', 'taxonomy general name' ),
 		'singular_name'	=> _x( 'Témoignage', 'taxonomy singular name' ),
 		'search_items'	=> __( 'Chercher une Témoignage' ),
-		'all_items'			=> __( 'Toutes les Témoignage' ),
+		'all_items'			=> __( 'Tous les Témoignage' ),
 		'edit_item'			=> __( 'Editer une Témoignage' ),
 		'update_item'		=> __( 'Mise a jour de la Témoignage' ),
 		'add_new_item'	=> __( 'Ajouter' ),
-		'new_item_name'	=> __( 'Nouvelle Témoignage' ),
+		'new_item_name'	=> __( 'Nouveau Témoignage' ),
 		'menu_name'			=> __( 'Témoignage' )
 	);
 	$args = array(

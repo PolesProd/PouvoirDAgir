@@ -24,55 +24,20 @@ Template Name: Ressources
                     'taxonomy' => 'analyse',
                     'terms' => $sqlTemoignage[$i]->term_id,
                   )
-              )
-            );
 
-            $loopy = new WP_Query( $args );
-            if($loopy->have_posts()){
-              while ( $loopy->have_posts() ) {
-                  $loopy->the_post();
-                  if (get_category($sqlTemoignage[$i]->term_id)->category_count > 0){
-                  echo '<div class="ressoure row">';
-                      $id = get_the_ID();
-                      $author = get_the_author();
-                      $terms = wp_get_post_terms($id, 'analyse', $args );
-                      $my_date = get_the_date( 'l j F  Y' );
-                      $myterms = get_terms('analyse', array( 'parent' => 0, 'hide_empty' => 0 ) );
-                      echo 'Ressources n<sup>o</sup>'.$id.' appartenant a la catégorie : <strong>'.$terms[0]->name.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong><br>';
-                      if(has_post_thumbnail()){
-                      ?>
-                        <div class="imgArticle row" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                        </div><!-- Fin de la div imgArticle --><?php
-                      }
-                      else{
-                        ?>
-                          <div class="imgArticle row" style="font-family: 'Ruda', sans-serif;background-image:url('http://lorempixel.com/output/city-q-c-640-480-10.jpg');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                          </div><!-- Fin de la div imgArticle --><?php
-                      }
-                      ?>
-                      <?php echo '<div class="row">Date d\'écriture : <strong>'.$my_date.'</strong></div>'; ?>
-                      <?php echo '<div class="row">Par : <strong>'.$author.'</strong></div>'; ?>
+                )
+              );
+            include get_template_directory().'/parts/loop-posts.php';
+          }?>
+            <form action="?page_id=47" method="post">
+              <input type="hidden" value="<?= $sqlTemoignage[0]->taxonomy; ?>" name="post_type">
 
-                      <?php echo '<div class="row">Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong></div>
-                      <div class="row"><?php the_title(); ?></div>
-                      <?php echo '<div class="row"><strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong></div>'; ?>
-                      <div class="row"><?php the_excerpt().'</div>';
-                  echo '</div>';
-
-              }
-              }
-              }
-
-            }
-            echo '<form action="?page_id=47" method="post" class="row">
-              <input type="hidden" value="'.$sqlTemoignage[0]->taxonomy.'" name="post_type">
               <input type="submit" value="En Voir plus">
-            </form>';
-          ?>
-        </div> <!--Fin Div Méthodologie -->
-
+            </form>
+        </div>
+        <!--Fin Div Méthodologie -->
         <div class="temoignage" style='border:solid 1px #ccc;'>
-                  <?php
+      <?php
         //Témoignage
         $sqlTemoignage = $wpdb->get_results('SELECT * FROM  wp_term_taxonomy WHERE  taxonomy =  "methodologie"');
         $countTemoignage = count($sqlTemoignage);
@@ -86,50 +51,14 @@ Template Name: Ressources
               )
             )
           );
-          $loopy = new WP_Query( $args );
-          if($loopy->have_posts()){
-            while ( $loopy->have_posts() ) {
-              $loopy->the_post();
-              if (get_category($sqlTemoignage[$i]->term_id)->category_count > 0){
-                echo '<div class="ressoure row">';
-                  $id = get_the_ID();
-                  $author = get_the_author();
-                  $terms = wp_get_post_terms($id, 'methodologie', $args );
-                  $my_date = get_the_date( 'l j F Y' );
-                  $myterms = get_terms('methodologie', array( 'parent' => 0, 'hide_empty' => 0 ) );
-                  echo 'Ressources n<sup>o</sup>'.$id.' appartenant a la catégorie : <strong>'.$terms[0]->name.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong><br>';
-                  if(has_post_thumbnail()){
-                  ?>
-                    <div class="imgArticle row" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                    </div><!-- Fin de la div imgArticle --><?php
-                  }
-                  else{
-                    ?>
-                      <div class="imgArticle row" style="font-family: 'Ruda', sans-serif;background-image:url('http://lorempixel.com/output/city-q-c-640-480-10.jpg');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                      </div><!-- Fin de la div imgArticle --><?php
-                  }
-                  ?>
-                  <?php echo '<div class="row">Date d\'écriture : <strong>'.$my_date.'</strong></div>'; ?>
-                  <?php echo '<div class="row">Par : <strong>'.$author.'</strong></div>'; ?>
+          include get_template_directory().'/parts/loop-posts.php';
+        }?>
+        <form action="?page_id=47" method="post">
+          <input type="hidden" value="<?= $sqlTemoignage[0]->taxonomy; ?>" name="post_type">
 
-                  <?php echo '<div class="row">Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong></div>
-                  <div class="row"><?php the_title(); ?></div>
-                  <?php echo '<div class="row"><strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong></div>'; ?>
-                  <div class="row"><?php the_excerpt().'</div>';
-                echo '</div>';
-
-              }
-            }
-          }
-
-        }
-        echo '<form action="?page_id=47" method="post">
-          <input type="hidden" value="'.$sqlTemoignage[0]->taxonomy.'" name="post_type">
           <input type="submit" value="En Voir plus">
-        </form>';
-        ?>
-
-      </div> <!--Fin Div Méthodologie -->
+        </form>
+      </div><!--Fin Div Méthodologie -->
 
       <div class="temoignage" style='border:solid 1px #ccc;'>
 
@@ -141,62 +70,22 @@ Template Name: Ressources
         $args = array( 'post_type' => 'ressources',
         'posts_per_page' => 2,
         'tax_query' => array(
-      array(
-          'taxonomy' => 'temoignage',
-          'terms' => $sqlTemoignage[$i]->term_id,
-      )
-      ) );
-        $loopy = new WP_Query( $args );
-        if($loopy->have_posts()){
-          while ( $loopy->have_posts() ) {
-              $loopy->the_post();
-              if (get_category($sqlTemoignage[$i]->term_id)->category_count > 0){
-              echo '<div class="ressoure">';
-                  $id = get_the_ID();
-                  $author = get_the_author();
-                  $terms = wp_get_post_terms($id, 'temoignage', $args );
-                  $my_date = get_the_date( 'l j F  Y' );
-                  $myterms = get_terms('temoignage', array( 'parent' => 0, 'hide_empty' => 0 ) );
-                  echo 'Ressources n<sup>o</sup>'.$id.' appartenant a la catégorie : <strong>'.$terms[0]->name.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong><br>';
-                  if(has_post_thumbnail()){
-                  ?>
-                    <div class="imgArticle row" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                    </div><!-- Fin de la div imgArticle --><?php
-                  }
-                  else{
-                    ?>
-                      <div class="imgArticle row" style="font-family: 'Ruda', sans-serif;background-image:url('http://lorempixel.com/output/city-q-c-640-480-10.jpg');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-                      </div><!-- Fin de la div imgArticle --><?php
-                  }
-                  ?>
-                  <?php echo '<div class="row">Date d\'écriture : <strong>'.$my_date.'</strong></div>'; ?>
-                  <?php echo '<div class="row">Par : <strong>'.$author.'</strong></div>'; ?>
 
-                  <?php echo '<div class="row">Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong></div>
-                  <div class="row"><?php the_title(); ?></div>
-                  <?php echo '<div class="row"><strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong></div>'; ?>
-                  <div class="row"><?php the_excerpt().'</div>';
-              echo '</div>';
-
-          }
-        }
-
-      }
-
-      }
-      echo '<form action="?page_id=47" method="post">
-        <input type="hidden" value="'.$sqlTemoignage[0]->taxonomy.'" name="post_type">
-        <input type="submit" value="En Voir plus">
-      </form>';
-
-      ?>
-    </div> <!--Fin Div Méthodologie -->
-
-
-        </div> <!-- end #main -->
-
-    </div> <!-- end #inner-content -->
-
-  </div> <!-- end #content -->
-
+          array(
+              'taxonomy' => 'temoignage',
+              'terms' => $sqlTemoignage[$i]->term_id,
+              )
+            )
+          );
+        include get_template_directory().'/parts/loop-posts.php';
+      }?>
+            <form action="?page_id=47" method="post">
+              <input type="hidden" value="<?= $sqlTemoignage[0]->taxonomy; ?>" name="post_type">
+              <input type="submit" value="En Voir plus">
+            </form>
+        </div>
+      </div> <!--Fin Div Méthodologie -->
+    </div> <!-- end #main -->
+  </div> <!-- end #inner-content -->
+</div> <!-- end #content -->
 <?php get_footer(); ?>
