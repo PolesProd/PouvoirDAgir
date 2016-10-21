@@ -26,6 +26,7 @@ Template Name: Ressources
                   )
               )
             );
+
             $loopy = new WP_Query( $args );
             if($loopy->have_posts()){
               while ( $loopy->have_posts() ) {
@@ -42,6 +43,11 @@ Template Name: Ressources
                       ?>
                         <div class="imgArticle" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
                         </div><!-- Fin de la div imgArticle --><br><?php
+                      }
+                      else{
+                        ?>
+                          <div class="imgArticle" style="font-family: 'Ruda', sans-serif;background-image:url('http://lorempixel.com/output/city-q-c-640-480-10.jpg');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
+                          </div><!-- Fin de la div imgArticle --><br><?php
                       }
                       ?>
                       <?php echo 'Date d\'écriture : <strong>'.$my_date.'</strong><br>'; ?>
