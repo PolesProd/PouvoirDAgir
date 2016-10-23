@@ -54,12 +54,13 @@
 		<?php the_content(); ?>
 	</section> <!-- end article section -->
    
-    <!--
+    <!-- TAG
 	<footer class="article-footer">
 		<p class="tags">
-			<?php the_tags('<span class="tags-title">' . __('Tags:', 'bakedwp') . '</span> ', ', ', ''); ?></p>
+			<?php/* the_tags('<span class="tags-title">' . __('Tags:', 'bakedwp') . '</span> ', ', ', ''); */?></p>
 	</footer> --><!-- end article footer -->
 	
+	<!-- Article récent -->
 	<footer class="article-footer">
 		<?php joints_related_posts(); ?>
 	</footer><!-- end article footer -->
