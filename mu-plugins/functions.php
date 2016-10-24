@@ -283,7 +283,7 @@ function events_metaboxes( array $meta_boxes ) {
 add_action( 'init', 'initialize_events_meta_boxes', 9999 );
 function initialize_events_meta_boxes() {
 	if (! class_exists( 'cmb_Meta_Box' ))
-		include 'wp-content/themes/bakedwp/init.php';
+		include '../wp-content/themes/bakedwp/init.php';
 }
 /*************************************************
         Création des Réseaux Impliqués
