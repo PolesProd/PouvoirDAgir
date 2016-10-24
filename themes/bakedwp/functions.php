@@ -30,11 +30,9 @@ require_once(get_template_directory().'/assets/functions/related-posts.php');
 // Customizer support
 require_once(get_template_directory().'/assets/functions/customizer.php');
 
-<<<<<<< HEAD
 //SDK Facebook
 //require_once(get_template_directory().'/assets/js/sdk.js');
-=======
->>>>>>> 91b9eea58a8c17d7a8e03422b98680f5a8b182b5
+
 
 function callLib(){
 //Call Lib JS (jQuery et jQuery UI)
