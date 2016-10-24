@@ -339,18 +339,18 @@ function ressources(){
 	register_post_type('ressources',$args);
 }
 
-add_action('init', 'ressources_taxonomies', 0);
-function ressources_taxonomies(){
+add_action('init', 'analyse_taxonomies', 0);
+function analyse_taxonomies(){
 	$labels = array(
-		'name'					=> _x( 'Catégorie', 'taxonomy general name' ),
-		'singular_name'	=> _x( 'Catégorie', 'taxonomy singular name' ),
-		'search_items'	=> __( 'Chercher une catégorie' ),
-		'all_items'			=> __( 'Toutes les catégories' ),
-		'edit_item'			=> __( 'Editer une Catégorie' ),
-		'update_item'		=> __( 'Mise a jour de la Catégorie' ),
+		'name'					=> _x( 'Analyse', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Analyse', 'taxonomy singular name' ),
+		'search_items'	=> __( 'Chercher une Analyse' ),
+		'all_items'			=> __( 'Toutes les Analyse' ),
+		'edit_item'			=> __( 'Editer une Analyse' ),
+		'update_item'		=> __( 'Mise a jour de la Analyse' ),
 		'add_new_item'	=> __( 'Ajouter' ),
-		'new_item_name'	=> __( 'Nouvelle Catégorie' ),
-		'menu_name'			=> __( 'Catégorie' )
+		'new_item_name'	=> __( 'Nouvelle Analyse' ),
+		'menu_name'			=> __( 'Analyse' )
 	);
 	$args = array(
 		'hierarchical'			=> true,
@@ -360,9 +360,56 @@ function ressources_taxonomies(){
 		'query_var'					=> true,
 		'rewrite'						=> false,
   );
-	register_taxonomy('ressources', 'ressources', $args);
+	register_taxonomy('analyse', 'ressources', $args);
 }
 
+add_action('init', 'methodologie_taxonomies', 0);
+function methodologie_taxonomies(){
+	$labels = array(
+		'name'					=> _x( 'Méthodologie', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Méthodologie', 'taxonomy singular name' ),
+		'search_items'	=> __( 'Chercher une Méthodologie' ),
+		'all_items'			=> __( 'Toutes les Méthodologie' ),
+		'edit_item'			=> __( 'Editer une Méthodologie' ),
+		'update_item'		=> __( 'Mise a jour de la Méthodologie' ),
+		'add_new_item'	=> __( 'Ajouter' ),
+		'new_item_name'	=> __( 'Nouvelle Méthodologie' ),
+		'menu_name'			=> __( 'Méthodologie' )
+	);
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false,
+  );
+	register_taxonomy('methodologie', 'ressources', $args);
+}
+
+add_action('init', 'temoignage_taxonomies', 0);
+function temoignage_taxonomies(){
+	$labels = array(
+		'name'					=> _x( 'Témoignage', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Témoignage', 'taxonomy singular name' ),
+		'search_items'	=> __( 'Chercher une Témoignage' ),
+		'all_items'			=> __( 'Toutes les Témoignage' ),
+		'edit_item'			=> __( 'Editer une Témoignage' ),
+		'update_item'		=> __( 'Mise a jour de la Témoignage' ),
+		'add_new_item'	=> __( 'Ajouter' ),
+		'new_item_name'	=> __( 'Nouvelle Témoignage' ),
+		'menu_name'			=> __( 'Témoignage' )
+	);
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false,
+  );
+	register_taxonomy('temoignage', 'ressources', $args);
+}
 
 
 add_filter( 'meta_boxes', 'ressources_metaboxes' );
@@ -377,18 +424,40 @@ function ressources_metaboxes( array $meta_boxes ) {
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
-			array(
-				'name' => 'Date : ',
-				'desc' => '',
-				'id'   => $prefix . 'date',
-				'type' => 'text',
-			),
+
+      array(
+	      'name' => 'En-tête de l\'article',
+	      'desc' => '',
+	      'id'   => $prefix . 'chapeau',
+	      'type' => 'textarea',
+	    ),
 			array(
 				'name' => ' Lien vers la Ressource Externe :',
 				'desc' => 'Mettre le lien Complet http:// compris',
 				'id'   => $prefix . 'externes',
 				'type' => 'text',
 			),
+
+		),
+	);
+	// Add other metaboxes as needed
+	return $meta_boxes;
+}
+
+
+
+add_filter( 'meta_boxes', 'post_metaboxes' );
+function post_metaboxes( array $meta_boxes ) {
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = 'post_';
+	$meta_boxes[] = array(
+		'id'         => 'post_meta',
+		'title'      => 'Post Méta',
+		'pages'      => array( 'post', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields'     => array(
 			array(
 	      'name' => 'En-tête de l\'article',
 	      'desc' => '',
