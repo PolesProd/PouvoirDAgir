@@ -1,16 +1,10 @@
-<<<<<<< HEAD
 <?php get_header(); ?>
-=======
-<?php get_header();
-
-?>
->>>>>>> c8ac7e5e929a92d3a297c24e2f6a32bbfbad3b13
 
 			<div id="content">
 
-				<div id="inner-content" class="row">
+				<div id="inner-content" class="row" style="max-width: none;">
 
-					<div id="main" class="large-10 medium-10 columns small-centered" role="main">
+					<div id="main" style="" class="large-10 medium-10 columns small-centered" role="main">
 
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -21,7 +15,7 @@
 					   		<?php get_template_part( 'parts/content', 'missing' ); ?>
 
 					    <?php endif; ?>
-<<<<<<< HEAD
+
 							<div class="">
 								<?php
 									// date
@@ -71,9 +65,6 @@
 								?>
 								</p>
 							</div><!-- Fin de la div metaArticle -->
-=======
-
->>>>>>> c8ac7e5e929a92d3a297c24e2f6a32bbfbad3b13
 					</div> <!-- end #main -->
 
 				</div> <!-- end #inner-content -->
