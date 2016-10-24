@@ -457,29 +457,46 @@ function my_post_queries($query){
 }
 add_action('pre_get_posts', 'my_post_queries');
 /*************************************************
-                Query page auteurs.
+            Requête Ajax événements.
 *************************************************/
 add_action('wp_enqueue_scripts', 'add_js_scripts');
 function add_js_scripts() {
 	wp_enqueue_script( 'script', get_template_directory_uri().'/assets/js/test.js', array('jquery'), '1.0', true );
 
-	// pass Ajax Url to script.js
+	// Passer Ajax Url à script.js
 	wp_localize_script('script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
 }
 
 add_action( 'wp_ajax_call_events_ajax', 'call_events_ajax' );
 add_action( 'wp_ajax_nopriv_call_events_ajax', 'call_events_ajax' );
 function call_events_ajax() {
-	$args = array(
+	/*$args = array(
 		    'post_type' => 'events',
-		    'posts_per_page' => 10
+		    'posts_per_page' => -1
 		);
 		$ajax_query = new WP_Query($args);
 		//var_dump($ajax_query);
+		if ($ajax_query->have_posts()) : while ($ajax_query->have_posts()) : $ajax_query->the_post();*/
+				get_template_part('article');
+			/*endwhile;
+		endif;
+		die();*/
+
+		/*global $post;
+	  $offset = $_POST['offset'];
+	  $args = array(
+		   'post_type' =>'events',
+		   'offset' => $offset
+		);
+
+		$ajax_query = new WP_Query($args);
 		if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
-				get_template_part( 'article' );
-			endwhile;
+	    get_template_part( 'article' );
+	    // OU
+	    include(locate_template('article.php'));
+	    // si vous avez besoin d'accéder aux variables dans le template
+		 endwhile;
 		endif;
 
-		die();
+		die();*/
 }
