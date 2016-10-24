@@ -10,7 +10,16 @@
 		<section class="entry-content" itemprop="articleBody">
 			<p><a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full'); ?></a></p>
 			<p><?php the_excerpt();?></p>
-			<?php //the_content('<button class="tiny">' .__( 'Read more...', 'bakedwp') .'</button>'); ?>
+			<?php //the_content('<button class="tiny">' .__( 'Read more...', 'bakedwp') .'</button>');
+				// Si vous avez besoin d'accéder à $post->ID par exemple
+        global $post;
+
+        get_template_part('article');
+
+       	// OU
+      	include(locate_template('article.php'));
+      	// si vous avez besoin d'accéder aux variables dans le template
+			?>
 		</section> <!-- end article section -->
 
 	</article> <!-- end article -->
