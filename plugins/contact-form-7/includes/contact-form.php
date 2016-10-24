@@ -264,7 +264,6 @@ class WPCF7_ContactForm {
 			$lang_tag = $matches[1];
 		}
 
-
 		$html = sprintf( '<div %s>', wpcf7_format_atts( array(
 			'role' => 'form',
 			'class' => 'wpcf7',

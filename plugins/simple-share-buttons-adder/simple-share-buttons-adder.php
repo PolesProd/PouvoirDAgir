@@ -33,8 +33,7 @@ GNU General Public License for more details.
 
 	define('SSBA_FILE', __FILE__);
     define('SSBA_ROOT', dirname(__FILE__));
-
-	define('SSBA_VERSION', '6.3.2');
+		define('SSBA_VERSION', '6.3.2');
 
 
 //======================================================================

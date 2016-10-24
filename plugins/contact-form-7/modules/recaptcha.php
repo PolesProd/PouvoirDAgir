@@ -261,7 +261,6 @@ var recaptchaCallback = function() {
 			var sitekey = divs[j].getAttribute('data-sitekey');
 
 			if (divs[j].className && divs[j].className.match(pattern) && sitekey) {
-
 				var params = {
 					'sitekey': sitekey,
 					'theme': divs[j].getAttribute('data-theme'),
@@ -318,9 +317,7 @@ function wpcf7_recaptcha_shortcode_handler( $tag ) {
 	$atts['data-tabindex'] = $tag->get_option( 'tabindex', 'int', true );
 	$atts['data-callback'] = $tag->get_option( 'callback', '', true );
 	$atts['data-expired-callback'] =
-
 		$tag->get_option( 'expired_callback', '', true );
-
 
 	$atts['class'] = $tag->get_class_option(
 		wpcf7_form_controls_class( $tag->type, 'g-recaptcha' ) );

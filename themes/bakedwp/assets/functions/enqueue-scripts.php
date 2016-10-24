@@ -7,40 +7,43 @@ function joints_scripts_and_styles() {
     wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/vendor/foundation/js//modernizr-min.js', array(), '2.8.3', true );
 
     // Adding Foundation scripts file in the footer
-<<<<<<< HEAD
     wp_enqueue_script( 'foundation', get_template_directory_uri() . '/assets/vendor/foundation/js/foundation.min.js', array( 'jquery' ), '', true );
-=======
-   wp_enqueue_script( 'foundation', get_template_directory_uri() . '/assets/vendor/foundation/js/foundation.min.js', array( 'jquery' ), '', true );
->>>>>>> c8ac7e5e929a92d3a297c24e2f6a32bbfbad3b13
 
     // Adding scripts file in the footer
     wp_enqueue_script( 'bakedwo-site-js', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), '', true );
 
-<<<<<<< HEAD
     // Adding scripts file in the footer
     wp_enqueue_script( 'simplecalendar', get_template_directory_uri() . '/assets/js/simplecalendar.js', array( 'jquery' ), '', true );
 
     // Register customized Foundation stylesheets, includes normalize
-    wp_enqueue_style( 'foundation', get_template_directory_uri() . '/assets/css/foundation.css', array(), '', 'all' );
+    wp_enqueue_style( 'foundationcss', get_template_directory_uri() . '/assets/css/foundation.css', array(), '', 'all' );
 
     // Register main stylesheet
     wp_enqueue_style( 'bakedwp-site-css', get_template_directory_uri() . '/style.css', array(), '', 'all' );
 
     // Register calendar style
     wp_enqueue_style( 'calendar', get_template_directory_uri() . '/assets/css/style-personal.css', array(), '', 'all' );
-=======
+
     // Register customized Foundation stylesheets, includes normalize
     wp_enqueue_style( 'foundation', get_template_directory_uri() . '/assets/css/foundation.css', array(), '', 'all' );
 
     // Register customized Foundation font 3
     wp_enqueue_style( 'foundationFont', get_template_directory_uri() . '/assets/typo/foundation-icons/foundation-icons.css', array(), '', 'all' );
 
-    // Register main stylesheet
-    wp_enqueue_style( 'bakedwp-site-css', get_template_directory_uri() . '/style.css', array(), '', 'all' );
-
-    // Register main stylesheet
+    // Register perso stylesheet
     wp_enqueue_style( 'custom-css', get_template_directory_uri() . '/assets/css/pouvoirAgir.css', array(), '', 'all' );
->>>>>>> c8ac7e5e929a92d3a297c24e2f6a32bbfbad3b13
+
+
+    // Register owl carousel CSS
+    wp_enqueue_style( 'owl-css', get_template_directory_uri() . '/assets/owl-carousel/owl.carousel.css', array(), '', 'all' );
+
+    wp_enqueue_style( 'owl-theme-css', get_template_directory_uri() . '/assets/owl-carousel/owl.theme.css', array(), '', 'all' );
+
+    // Adding scripts file in the footer
+    wp_enqueue_script( 'owl-js', get_template_directory_uri() . '/assets/owl-carousel/owl.carousel.js', array( 'jquery' ), '', true );
+
+    // wp_enqueue_script( 'bakedwo-site-js', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), '', true );
+
 
     // Comment reply script for threaded comments
     if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {

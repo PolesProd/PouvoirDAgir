@@ -1,33 +1,24 @@
-<?php
-echo 'inside includer of the carroussel';
-?>
-<section class="small-12" id="slideHome">
-  <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-    <ul class="orbit-container">
-      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-      <li class="is-active orbit-slide">
-        <img class="orbit-image" src="http://loremflickr.com/400/200" alt="Space">
-        <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
-      </li>
-      <li class="orbit-slide">
-        <img class="orbit-image" src="http://loremflickr.com/400/200" alt="Space">
-        <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-      </li>
-      <li class="orbit-slide">
-        <img class="orbit-image" src="http://loremflickr.com/400/200" alt="Space">
-        <figcaption class="orbit-caption">Encapsulating</figcaption>
-      </li>
-      <li class="orbit-slide">
-        <img class="orbit-image" src="http://loremflickr.com/400/200" alt="Space">
-        <figcaption class="orbit-caption">Outta This World</figcaption>
-      </li>
-    </ul>
-    <nav class="orbit-bullets">
-      <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-      <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-      <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-      <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-    </nav>
+
+<section id="owl-demo" class="owl-carousel owl-theme">
+  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city0.jpg');">
+
+    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city0.jpg" alt="image01" /> -->
   </div>
+  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city1.jpg');">
+    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city1.jpg" alt="image02" /> -->
+  </div>
+  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city2.jpg');">
+    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city2.jpg" alt="image03" /> -->
+  </div>
+  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city3.jpg');">
+    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city3.jpg" alt="image04" /> -->
+  </div>
+  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city4.jpg');">
+    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city4.jpg" alt="image05" /> -->
+  </div>
+  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city5.png');">
+    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city5.png" alt="image06" /> -->
+  </div>
+
+
 </section>
