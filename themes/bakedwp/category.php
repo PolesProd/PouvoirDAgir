@@ -1,29 +1,25 @@
 <?php
-/**
-* A Simple Category Template
-*/
-get_header(); ?>
-
-<section id="primary" class="site-content">
-  <div id="content" role="main">
-    <?php if ( have_posts() ) : ?>
-      <header class="archive-header">
-        <h1 class="archive-title">Category: <?php single_cat_title( '', false ); ?></h1>
-        <?php if ( category_description() ) : ?>
-          <div class="archive-meta"><?php echo category_description(); ?></div>
-        <?php endif; ?>
-      </header>
-      <?php while ( have_posts() ) : the_post(); ?>
-        <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-        <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
-        <div class="entry">
-          <?php the_content(); ?>
-          <p class="postmetadata"><?php comments_popup_link( 'No comments yet', '1 comment', '% comments', 'comments-link', 'Comments closed'); ?></p>
+/* template name: Posts by Category! */
+?>
+<?php get_header(); ?>
+<div class="hero">
+    <div class="row">
+        <div class="large-12 columns">
+            <?php single_cat_title(); ?></h1>
         </div>
-      <?php endwhile;
-      else: ?>
-      <p>Sorry, no posts matched your criteria.</p>
-    <?php endif; ?>
-  </div>
-</section>
-<?php get_footer(); ?>
+    </div>
+</div>
+
+<div id="container">
+    <div id="content" role="main">
+
+        <h1 class="page-title"><?php
+        printf( __( 'Category Archives: %s', 'bakedwp' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+        ?></h1>
+        <?php
+            get_template_part( 'parts/loop', 'page' );
+        ?>
+</div><!-- #content -->
+</div><!-- #container -->
+
+<?php get_footer();?>

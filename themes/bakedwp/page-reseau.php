@@ -10,7 +10,6 @@ Template Name: Réseaux Impliqués
 
      <div id="inner-content" class="row">
        <?php dynamic_sidebar('Aside');?>
-       <br>
        <?php echo do_shortcode('[map]'); ?>
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
             <?php
@@ -32,6 +31,7 @@ Template Name: Réseaux Impliqués
                       <?php the_title(); ?><br>
                       <?php the_excerpt();?>
                       <?php echo '<a href='.implode(get_post_meta(get_the_ID(), 'part_lien_du_site')).' target="__blank">'.implode(get_post_meta(get_the_ID(), 'part_lien_du_site')).'</a><br><br>';
+
                       $count++;
                   echo '</div>';
               }
@@ -42,9 +42,6 @@ Template Name: Réseaux Impliqués
             joints_related_posts();
              ?>
         </div> <!-- end #main -->
-
     </div> <!-- end #inner-content -->
-
   </div> <!-- end #content -->
-
 <?php get_footer(); ?>

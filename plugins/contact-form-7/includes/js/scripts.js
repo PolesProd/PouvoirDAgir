@@ -5,7 +5,6 @@
 	if (typeof _wpcf7 == 'undefined' || _wpcf7 === null) {
 
 		return;
-
 	}
 
 	_wpcf7 = $.extend({

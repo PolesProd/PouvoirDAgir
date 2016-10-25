@@ -63,8 +63,10 @@ A step by step guide on how to configure this plugin can be found <a href="http:
 
 == Changelog ==
 
+
 = 6.3.2 =
 * Minor bug fixes
+
 = 6.3.1 =
 * Added a caching layer on top of Facebook's API to ensure fallback share counts.
 

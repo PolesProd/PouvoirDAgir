@@ -8,10 +8,10 @@ Template Name: Galerie
 
   <div id="content">
 
+
      <div id="inner-content" class="row">
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
           <?php echo do_shortcode('[foogallery id="160"]');?>
-
 
         </div> <!-- end #main -->
 

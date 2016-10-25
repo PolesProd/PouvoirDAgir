@@ -9,7 +9,6 @@ function ssba_page_scripts() {
     // get settings
 	$arrSettings = get_ssba_settings();
 
-
     // add call to st_insights.js with params
     $url = add_query_arg( array(
         'publisher' => '4d48b7c5-0ae3-43d4-bfbe-3ff8c17a8ae6',

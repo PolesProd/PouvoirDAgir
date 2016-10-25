@@ -408,5 +408,3 @@ function wpsimplecalendar_setup_grid( $month, $year, $eventcategory = '', $event
 	$calendar.= '</table>';	// All done, return result
 
 	return $calendar;
-
-}

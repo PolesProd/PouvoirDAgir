@@ -5,15 +5,144 @@
 \**********************\
     RETOUCHE ZONING
 \**********************/
-
 .top-bar{
-  height: auto;
+	height: auto;
 }
-.columns>.search-form>input[type=text]{
-  width: 130px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+
+.callout {
+	margin: 0 0 1rem 0;
+    padding: 0.6rem;
+    border: 1px solid #000;
+    border-radius: 0;
+    position: relative;
+    color: #0a0a0a;
+    background-color: white;
+    
 }
-.columns>.search-form>input[type=text]:focus {
-    width: 100%;
+
+/* Article
+   ========================================================================== */
+
+/**
+ * Catégorie
+ */
+.article--cat{
+	text-align: left;
 }
+
+/**
+ * Image d'en-tête
+ */
+.image__entete{
+	height:350px;
+	line-height:200px;
+	overflow:hidden;
+	width:100%;
+	vertical-align: middle;
+	/* Image par défaut si aucune img intégrée */
+	background:url('http://spi.filmboxtv.com/img/spiintro_poster.jpg') no-repeat center center; 
+	background-repeat:no-repeat;
+	background-size: cover;
+}
+/*
+.image__entete img{
+	max-width: initial;
+}*/
+
+/**
+ * Légende de l'article sur l'image d'en-tête
+ */
+.image_entete--legende{
+	list-style: none; 
+	float: right; 
+	position: absolute; 
+	top: 0; 
+	padding: 10px; 
+	right: 15px; 
+	font-size:0,9rem;
+	background: rgba(255,255,255,0.3);	
+}
+
+/**
+ * Titre de l'article
+ */
+.article-title{
+	text-align: left;
+}
+
+/**
+ * Chapeau de l'article
+ */
+.article-chapeau{
+	font-weight:bold;
+	text-align: left;
+}
+
+/**
+ * Responsive Légende de l'article
+ */
+@media only screen and (max-width:640px) {
+.image_entete--legende{
+	position: relative!important;
+	float: left!important;
+}
+}
+
+/* Page Ressource & loop-posts
+   ========================================================================== */
+
+.ressource__date{
+	float: left;
+}
+.ressource__taxonomy{
+	float: right;
+}
+.ressource__image{
+	padding: 0px;
+}
+.ressource__analyse, .ressource__temoignage, .ressource__methodologie{
+	background: #D2D2D2;
+    padding: 1rem;
+    border: 2px solid #000;
+    margin-bottom: 1rem;
+}
+.ressource__button{
+	padding:10px 30px 10px 30px;
+}
+.ressource__sidebar{
+	border: 2px solid;
+}
+
+/* Page Related-posts
+   ========================================================================== */
+
+.related__colonne--image{
+	float: right;
+}
+.related__image{
+	padding: 5px;
+}
+.related__colonne--legende{
+	float: left;
+}
+#content #inner-content{
+  padding: 0;
+}
+/**********************\
+    OWL CAROUSEL
+\**********************/
+#owl-demo .owl-item{
+  display: inline;
+}
+#owl-demo .owl-item img, #owl-demo .owl-item div{
+    display: inline-block;
+    width: 99.1vw;
+    height: auto;
+}
+#owl-demo .owl-item div{
+  height:500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#owl-demo .

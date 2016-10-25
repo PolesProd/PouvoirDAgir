@@ -37,6 +37,7 @@ function wpcf7_is_valid_locale( $locale ) {
 }
 
 function wpcf7_is_rtl( $locale = '' ) {
+
 	static $rtl_locales = array(
 		'ar' => 'Arabic',
 		'ary' => 'Moroccan Arabic',
@@ -54,7 +55,6 @@ function wpcf7_is_rtl( $locale = '' ) {
 	if ( empty( $locale ) ) {
 		$locale = get_locale();
 	}
-
 
 	return isset( $rtl_locales[$locale] );
 }
