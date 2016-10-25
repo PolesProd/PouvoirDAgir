@@ -14,30 +14,35 @@
 			  }?>
 		</ul>
 
-		<section class="expanded row align-top text-center">
+		<section class=" text-center align-middle row">
 			<!-- partie concernant le log et le titre -->
-			<ul class="title-area medium-6 columns">
+
 				<!-- Title Area -->
-				<li class="name">
-					<h1 class="site-title"> <a href="<?php echo home_url(); ?>" rel="nofollow"><img src="" alt="<?php bloginfo('name'); ?>"/></a></h1>
-				</li>
-				<li class="menu-text">
-					<h3 class="site-title"><?php bloginfo('description'); ?></h3>
-				</li>
-				<li class="toggle-topbar menu-icon">
+				<div class="title-area medium-6 columns">
+					<ul>
+						<li class="name medium-4 columns">
+							<h1 class="site-title"><a class="" href="<?php echo home_url(); ?>" rel="nofollow"><img class="thumbnail" src="<?=get_site_url().'/wp-content/uploads/2016/10/logo-gf.png'?>" alt="<?php bloginfo('name'); ?>"/></a></h1>
+						</li>
+						<li class="menu-text medium-8 columns text-left">
+							<h3 class="site-title"><?php bloginfo('description'); ?></h3>
+						</li>
+					</ul>
+				</div>
+				<div class="toggle-topbar menu-icon end">
 					<a href="#"><span>Menu</span></a>
-				</li>
-			</ul>
-			<ul class="medium-4 columns title-area">
-				<li><a href="<?php echo esc_url(home_url()); ?>/?page_id=5">contact</a></li>
-				<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank">Facebook</a></li>
-				<li><a href="https://twitter.com/collectif_pa" target="_blank">Twitter</a></li>
-				<li><a href="*">Newsletter</a></li>
-			</ul>
-			<div class="medium-2 columns">
-				<button><i class="fi-magnifying-glass large"></i></button>
-				<?php get_search_form();?>
-			</div>
+				</div>
+				<div class="medium-2 columns">
+					<a href="*">Newsletter</a>
+				</div>
+				<ul class="medium-2 columns title-area">
+					<li><a href="<?php echo esc_url(home_url()); ?>/?page_id=5">contact</a></li>
+					<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank">Facebook</a></li>
+					<li><a href="https://twitter.com/collectif_pa" target="_blank">Twitter</a></li>
+				</ul>
+				<div class="medium-2 columns">
+					<button><i class="fi-magnifying-glass large"></i></button>
+					<?php get_search_form();?>
+				</div>
 		</section>
 		<section class="top-bar-section">
 			<?php joints_top_nav(); ?>

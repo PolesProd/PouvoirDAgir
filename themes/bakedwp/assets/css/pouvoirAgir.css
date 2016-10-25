@@ -5,21 +5,48 @@
 \**********************\
     RETOUCHE ZONING
 \**********************/
+.callout {
+	margin: 0 0 1rem 0;
+  padding: 0.6rem;
+  border: 1px solid #000;
+  border-radius: 0;
+  position: relative;
+  color: #0a0a0a;
+  background-color: white;
+
+}
+/**********************\
+				HEADER
+\**********************/
+header .thumbnail{
+	max-width:10vw;
+	width:500px;
+}
 .top-bar{
 	height: auto;
 }
-
-.callout {
-	margin: 0 0 1rem 0;
-    padding: 0.6rem;
-    border: 1px solid #000;
-    border-radius: 0;
-    position: relative;
-    color: #0a0a0a;
-    background-color: white;
-    
+.top-bar .name{
+  height: auto;
+}
+.align-middle li{
+	vertical-align: middle;
+}
+.top-bar,.top-bar-section ul li, #container .top-bar li a{
+	background: white;
+}
+.top-bar-section ul li > a {
+	color: black;
+}
+#container header h3{
+	font-size:1vw;
 }
 
+
+@media only screen and (min-width: 64.0625em){
+	.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button){
+		color: black;
+	}
+}
 /* Article
    ========================================================================== */
 
@@ -40,7 +67,7 @@
 	width:100%;
 	vertical-align: middle;
 	/* Image par défaut si aucune img intégrée */
-	background:url('http://spi.filmboxtv.com/img/spiintro_poster.jpg') no-repeat center center; 
+	background:url('http://spi.filmboxtv.com/img/spiintro_poster.jpg') no-repeat center center;
 	background-repeat:no-repeat;
 	background-size: cover;
 }
@@ -53,14 +80,14 @@
  * Légende de l'article sur l'image d'en-tête
  */
 .image_entete--legende{
-	list-style: none; 
-	float: right; 
-	position: absolute; 
-	top: 0; 
-	padding: 10px; 
-	right: 15px; 
+	list-style: none;
+	float: right;
+	position: absolute;
+	top: 0;
+	padding: 10px;
+	right: 15px;
 	font-size:0,9rem;
-	background: rgba(255,255,255,0.3);	
+	background: rgba(255,255,255,0.3);
 }
 
 /**
@@ -112,9 +139,9 @@
 .ressource__sidebar{
 	border: 2px solid;
 }
-
-/* Page Related-posts
-   ========================================================================== */
+/**********************\
+  Articles similaires
+\**********************/
 
 .related__colonne--image{
 	float: right;

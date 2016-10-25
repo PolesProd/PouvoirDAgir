@@ -1,5 +1,5 @@
 
-					<div class="<?php if( !is_home() ){echo'display:none;';}?> ">
+					<div> <!--style="<?php //if( !is_home() ){echo'display:none;';}?> -->
 						<iframe width="100%" height="300px" frameBorder="0" src="https://umap.openstreetmap.fr/fr/map/carte-du-pouvoir-dagir_63384?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe>
 						<div class="row"><a href="https://umap.openstreetmap.fr/fr/map/carte-du-pouvoir-dagir_63384" target="_blank" class="small-center columns button">Ouvrir sur OpenStreetMap</a></div>
 					</div>
