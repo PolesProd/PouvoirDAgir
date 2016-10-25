@@ -52,6 +52,7 @@ function query_post_type($query) {
 //   ));
 // }
 
+
 // add_action('init', 'ressources_taxonomies', 0);
 
 // function ressources_taxonomies(){
@@ -546,7 +547,7 @@ add_action( 'pre_get_posts', 'my_post_queries' );
 
 
 /*************************************************
-                Ressources
+        Ressources (Custom Type Englobant)
 *************************************************/
 add_action('init', 'ressources');
 function ressources(){
@@ -557,7 +558,7 @@ function ressources(){
 		'add_new_item'				=> __( 'Ajouter des Ressources' ),
 		'edit_item'						=> __( 'Editer une Ressource' ),
 		'new_item'						=> __( 'Nouveau' ),
-		'all_items'						=> __( 'Toutes les Ressources' ),
+		'all_items'						=> __( ''),
 		'view_item'						=> __( 'Voir Ressources' ),
 		'search_items'				=> __( 'Chercher Ressources' ),
 		'not_found'						=>  __( 'Aucune Ressource Trouvée' ),
@@ -579,22 +580,65 @@ function ressources(){
 		'menu_position' 			=> 6,
 		'supports' 						=> array('title','editor','thumbnail','author','category'),
     'taxonomies'         => array('ressources'),
+    'capabilities' => array(
+      'create_posts' => 'do_not_allow', // Removes support for the "Add New" function, including Super Admin's
+    ),
 	);
 	register_post_type('ressources',$args);
+}
+
+/*************************************************
+                    Bloc Analyse
+*************************************************/
+add_action('init', 'analyse');
+function analyse(){
+	$labels = array(
+		'name'								=> _x( 'Analyse', 'post type general name' ),
+		'singular_name'				=> _x( 'Analyse', 'post type singular name' ),
+		'add_new'							=> _x( 'Ajouter', 'une Analyse' ),
+		'add_new_item'				=> __( 'Ajouter des Analyses' ),
+		'edit_item'						=> __( 'Editer une Analyse' ),
+		'new_item'						=> __( 'Nouveau' ),
+		'all_items'						=> __( 'Toutes les Analyses' ),
+		'view_item'						=> __( 'Voir Analyse' ),
+		'search_items'				=> __( 'Chercher Analyse' ),
+		'not_found'						=>  __( 'Aucune Analyse Trouvée' ),
+		'not_found_in_trash'	=> __( 'Aucune Analyse Trouvée Dans La Corbeille' ),
+		'parent_item_colon'		=> '',
+		'menu_name'						=> 'Analyse'
+	);
+	$args = array(
+		'labels' 							=> $labels,
+		'public' 							=> true,
+		'publicly_queryable' 	=> true,
+		'show_ui' 						=> true,
+		'show_in_menu' 				=> true,
+		'query_var' 					=> true,
+		'rewrite' 						=> false,
+		'capability_type' 		=> 'post',
+		'has_archive' 				=> true,
+		'hierarchical' 				=> false,
+		'menu_position' 			=> 6,
+		'supports' 						=> array('title','editor','thumbnail','author','category'),
+    'taxonomies'         => array('analyse'),
+    'show_in_menu' => 'edit.php?post_type=ressources',
+	);
+	register_post_type('analyse',$args);
 }
 
 add_action('init', 'analyse_taxonomies', 0);
 function analyse_taxonomies(){
 	$labels = array(
-		'name'					=> _x( 'Analyse', 'taxonomy general name' ),
-		'singular_name'	=> _x( 'Analyse', 'taxonomy singular name' ),
+		'name'					=> _x( 'Catégorie d\' Analyse', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Catégorie d\' Analyse', 'taxonomy singular name' ),
 		'search_items'	=> __( 'Chercher une Analyse' ),
 		'all_items'			=> __( 'Toutes les Analyse' ),
 		'edit_item'			=> __( 'Editer une Analyse' ),
-		'update_item'		=> __( 'Mise a jour de la Analyse' ),
+		'update_item'		=> __( 'Mise a jour de l\' Analyse' ),
 		'add_new_item'	=> __( 'Ajouter' ),
-		'new_item_name'	=> __( 'Nouvelle Analyse' ),
-		'menu_name'			=> __( 'Analyse' )
+		'new_item_name'	=> __( 'Nouvelle catégorie dans Analyse' ),
+		'menu_name'			=> __( 'Catégorie de l\' Analyse'),
+      'show_in_menu' => 'edit.php?post_type=analyse',
 	);
 	$args = array(
 		'hierarchical'			=> true,
@@ -604,66 +648,17 @@ function analyse_taxonomies(){
 		'query_var'					=> true,
 		'rewrite'						=> false,
   );
-	register_taxonomy('analyse', 'ressources', $args);
+	register_taxonomy('analyse', 'analyse', $args);
 }
 
-add_action('init', 'methodologie_taxonomies', 0);
-function methodologie_taxonomies(){
-	$labels = array(
-		'name'					=> _x( 'Méthodologie', 'taxonomy general name' ),
-		'singular_name'	=> _x( 'Méthodologie', 'taxonomy singular name' ),
-		'search_items'	=> __( 'Chercher une Méthodologie' ),
-		'all_items'			=> __( 'Toutes les Méthodologie' ),
-		'edit_item'			=> __( 'Editer une Méthodologie' ),
-		'update_item'		=> __( 'Mise a jour de la Méthodologie' ),
-		'add_new_item'	=> __( 'Ajouter' ),
-		'new_item_name'	=> __( 'Nouvelle Méthodologie' ),
-		'menu_name'			=> __( 'Méthodologie' )
-	);
-	$args = array(
-		'hierarchical'			=> true,
-		'labels'						=> $labels,
-		'show_ui'						=> true,
-		'show_admin_column'	=> true,
-		'query_var'					=> true,
-		'rewrite'						=> false,
-  );
-	register_taxonomy('methodologie', 'ressources', $args);
-}
-
-add_action('init', 'temoignage_taxonomies', 0);
-function temoignage_taxonomies(){
-	$labels = array(
-		'name'					=> _x( 'Témoignage', 'taxonomy general name' ),
-		'singular_name'	=> _x( 'Témoignage', 'taxonomy singular name' ),
-		'search_items'	=> __( 'Chercher une Témoignage' ),
-		'all_items'			=> __( 'Toutes les Témoignage' ),
-		'edit_item'			=> __( 'Editer une Témoignage' ),
-		'update_item'		=> __( 'Mise a jour de la Témoignage' ),
-		'add_new_item'	=> __( 'Ajouter' ),
-		'new_item_name'	=> __( 'Nouvelle Témoignage' ),
-		'menu_name'			=> __( 'Témoignage' )
-	);
-	$args = array(
-		'hierarchical'			=> true,
-		'labels'						=> $labels,
-		'show_ui'						=> true,
-		'show_admin_column'	=> true,
-		'query_var'					=> true,
-		'rewrite'						=> false,
-  );
-	register_taxonomy('temoignage', 'ressources', $args);
-}
-
-
-add_filter( 'meta_boxes', 'ressources_metaboxes' );
-function ressources_metaboxes( array $meta_boxes ) {
+add_filter( 'meta_boxes', 'analyse_metaboxes' );
+function analyse_metaboxes( array $meta_boxes ) {
 	// Start with an underscore to hide fields from custom fields list
-	$prefix = 'ressources_';
+	$prefix = 'analyse_';
 	$meta_boxes[] = array(
-		'id'         => 'ressources_meta',
-		'title'      => 'Méta des ressources',
-		'pages'      => array( 'ressources', ), // Post type
+		'id'         => 'Analyse_meta',
+		'title'      => 'Méta des Analyse',
+		'pages'      => array( 'analyse', ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
@@ -688,8 +683,200 @@ function ressources_metaboxes( array $meta_boxes ) {
 	return $meta_boxes;
 }
 
+/*************************************************
+                    Bloc Méthodologie
+*************************************************/
+add_action('init', 'methodologie');
+function methodologie(){
+	$labels = array(
+		'name'								=> _x( 'Méthodologie', 'post type general name' ),
+		'singular_name'				=> _x( 'Méthodologie', 'post type singular name' ),
+		'add_new'							=> _x( 'Ajouter', 'une Méthodologie' ),
+		'add_new_item'				=> __( 'Ajouter des Méthodologies' ),
+		'edit_item'						=> __( 'Editer une Méthodologie' ),
+		'new_item'						=> __( 'Nouveau' ),
+		'all_items'						=> __( 'Toutes les Méthodologie' ),
+		'view_item'						=> __( 'Voir Méthodologie' ),
+		'search_items'				=> __( 'Chercher Méthodologie' ),
+		'not_found'						=>  __( 'Aucune Méthodologie Trouvée' ),
+		'not_found_in_trash'	=> __( 'Aucune Méthodologie Trouvée Dans La Corbeille' ),
+		'parent_item_colon'		=> '',
+		'menu_name'						=> 'Méthodologie'
+	);
+	$args = array(
+		'labels' 							=> $labels,
+		'public' 							=> true,
+		'publicly_queryable' 	=> true,
+		'show_ui' 						=> true,
+		'show_in_menu' 				=> true,
+		'query_var' 					=> true,
+		'rewrite' 						=> false,
+		'capability_type' 		=> 'post',
+		'has_archive' 				=> true,
+		'hierarchical' 				=> false,
+		'menu_position' 			=> 6,
+		'supports' 						=> array('title','editor','thumbnail','author','category'),
+    'taxonomies'         => array('methodologie'),
+    'show_in_menu' => 'edit.php?post_type=ressources',
+	);
+	register_post_type('methodologie',$args);
+}
 
+add_action('init', 'methodologie_taxonomies', 0);
+function methodologie_taxonomies(){
+	$labels = array(
+		'name'					=> _x( 'Catégorie de Méthodologie', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Catégorie de Méthodologie', 'taxonomy singular name' ),
+		'search_items'	=> __( 'Chercher une Méthodologie' ),
+		'all_items'			=> __( 'Toutes les Méthodologie' ),
+		'edit_item'			=> __( 'Editer une Méthodologie' ),
+		'update_item'		=> __( 'Mise a jour de la Méthodologie' ),
+		'add_new_item'	=> __( 'Ajouter' ),
+		'new_item_name'	=> __( 'Nouvelle catégorie dans Méthodologie' ),
+		'menu_name'			=> __( 'Catégorie de la Méthodologie')
+	);
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false,
+  );
+	register_taxonomy('methodologie', 'methodologie', $args);
+}
 
+add_filter( 'meta_boxes', 'methodologie_metaboxes' );
+function methodologie_metaboxes( array $meta_boxes ) {
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = 'methodologie_';
+	$meta_boxes[] = array(
+		'id'         => 'methodologie_meta',
+		'title'      => 'Méta des methodologie',
+		'pages'      => array( 'methodologie', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields'     => array(
+
+      array(
+	      'name' => 'En-tête de l\'article',
+	      'desc' => '',
+	      'id'   => $prefix . 'chapeau',
+	      'type' => 'textarea',
+	    ),
+			array(
+				'name' => ' Lien vers la Ressource Externe :',
+				'desc' => 'Mettre le lien Complet http:// compris',
+				'id'   => $prefix . 'externes',
+				'type' => 'text',
+			),
+
+		),
+	);
+	// Add other metaboxes as needed
+	return $meta_boxes;
+}
+
+/*************************************************
+                    Bloc Témoignage
+*************************************************/
+
+add_action('init', 'temoignage');
+function temoignage(){
+	$labels = array(
+		'name'								=> _x( 'Témoignage', 'post type general name' ),
+		'singular_name'				=> _x( 'Témoignage', 'post type singular name' ),
+		'add_new'							=> _x( 'Ajouter', 'un Témoignage' ),
+		'add_new_item'				=> __( 'Ajouter des Témoignages' ),
+		'edit_item'						=> __( 'Editer une Méthodologie' ),
+		'new_item'						=> __( 'Nouveau' ),
+		'all_items'						=> __( 'Tous les Témoignages' ),
+		'view_item'						=> __( 'Voir Témoignage' ),
+		'search_items'				=> __( 'Chercher Témoignage' ),
+		'not_found'						=>  __( 'Aucune Témoignage Trouvé' ),
+		'not_found_in_trash'	=> __( 'Aucune Témoignage Trouvé Dans La Corbeille' ),
+		'parent_item_colon'		=> '',
+		'menu_name'						=> 'Méthodologie'
+	);
+	$args = array(
+		'labels' 							=> $labels,
+		'public' 							=> true,
+		'publicly_queryable' 	=> true,
+		'show_ui' 						=> true,
+		'show_in_menu' 				=> true,
+		'query_var' 					=> true,
+		'rewrite' 						=> false,
+		'capability_type' 		=> 'post',
+		'has_archive' 				=> true,
+		'hierarchical' 				=> false,
+		'menu_position' 			=> 6,
+		'supports' 						=> array('title','editor','thumbnail','author','category'),
+    'taxonomies'         => array('temoignage'),
+    'show_in_menu' => 'edit.php?post_type=ressources',
+	);
+	register_post_type('temoignage',$args);
+}
+
+add_action('init', 'temoignage_taxonomies', 0);
+function temoignage_taxonomies(){
+	$labels = array(
+		'name'					=> _x( 'Catégorie de Témoignage', 'taxonomy general name' ),
+		'singular_name'	=> _x( 'Catégorie de Témoignage', 'taxonomy singular name' ),
+		'search_items'	=> __( 'Chercher un Témoignage' ),
+		'all_items'			=> __( 'Tous les Témoignage' ),
+		'edit_item'			=> __( 'Editer un Témoignage' ),
+		'update_item'		=> __( 'Mise a jour du Témoignage' ),
+		'add_new_item'	=> __( 'Ajouter' ),
+		'new_item_name'	=> __( 'Nouvelle catégorie dans Témoignage' ),
+		'menu_name'			=> __( 'Catégorie du Témoignage')
+	);
+	$args = array(
+		'hierarchical'			=> true,
+		'labels'						=> $labels,
+		'show_ui'						=> true,
+		'show_admin_column'	=> true,
+		'query_var'					=> true,
+		'rewrite'						=> false,
+  );
+	register_taxonomy('temoignage', 'temoignage', $args);
+}
+
+add_filter( 'meta_boxes', 'temoignage_metaboxes' );
+function temoignage_metaboxes( array $meta_boxes ) {
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = 'temoignage_';
+	$meta_boxes[] = array(
+		'id'         => 'temoignage_meta',
+		'title'      => 'Méta des temoignage',
+		'pages'      => array( 'temoignage', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields'     => array(
+
+      array(
+	      'name' => 'En-tête de l\'article',
+	      'desc' => '',
+	      'id'   => $prefix . 'chapeau',
+	      'type' => 'textarea',
+	    ),
+			array(
+				'name' => ' Lien vers la Ressource Externe :',
+				'desc' => 'Mettre le lien Complet http:// compris',
+				'id'   => $prefix . 'externes',
+				'type' => 'text',
+			),
+
+		),
+	);
+	// Add other metaboxes as needed
+	return $meta_boxes;
+}
+
+/*************************************************
+                    Metabox post
+*************************************************/
 add_filter( 'meta_boxes', 'post_metaboxes' );
 function post_metaboxes( array $meta_boxes ) {
 	// Start with an underscore to hide fields from custom fields list
@@ -713,3 +900,33 @@ function post_metaboxes( array $meta_boxes ) {
 	// Add other metaboxes as needed
 	return $meta_boxes;
 }
+
+
+function custom_js_to_head() {
+    ?>
+    <script>
+    jQuery(function(){
+      var childMenu = jQuery(jQuery(jQuery('#menu-posts-ressources').children())[1]).children()
+      var defType = '';
+      //Change default routing ressources post type
+
+      jQuery('li>.menu-icon-ressources').attr('href','edit.php?post_type=analyse');
+
+      //Append sub menu categories
+      for(var i= 0; i<childMenu.length;i++){
+        if(jQuery(childMenu[i]).hasClass('current') == true){
+          var type = jQuery(jQuery(childMenu[i]).children()[0]).attr('href').split("=")[1]
+          if(type == 'analyse'){
+            jQuery(jQuery(childMenu[i]).children()[0]).append('<ul><li><a href="edit-tags.php?taxonomy=analyse&post_type=analyse" class="page-title-action">Catégorie Analyse</a></li></ul>');
+          }else if( type == 'temoignage' ){
+            jQuery(jQuery(childMenu[i]).children()[0]).append('<ul><li><a href="edit-tags.php?taxonomy=temoignage&post_type=temoignage" class="page-title-action">Catégorie Temoignage</a></li></ul>');
+          }else if ( type == 'methodologie' ){
+            jQuery(jQuery(childMenu[i]).children()[0]).append('<ul><li><a href="edit-tags.php?taxonomy=methodologie&post_type=methodologie" class="page-title-action">Catégorie Methodologie</a></li></ul>');
+          }
+        }
+      }
+    });
+    </script>
+    <?php
+}
+add_action('admin_head', 'custom_js_to_head');
