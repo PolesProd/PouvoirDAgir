@@ -66,7 +66,7 @@ Template Name: Événements
 																?>
 																</p>
 															</div><!-- Fin de la div metaArticle -->
-				                      <?php echo '<a href='.implode(get_post_meta(get_the_ID(), part_lien_du_site)).' target="__blank">'.implode(get_post_meta(get_the_ID(), part_lien_du_site)).'</a><br><br>';
+				                      <?php //echo '<a href='.implode(get_post_meta(get_the_ID(),'part_lien_du_site')).' target="__blank">'.implode(get_post_meta(get_the_ID(), part_lien_du_site)).'</a><br><br>';
 				                      $count++;
 				                  echo '</div>';
 				              }
