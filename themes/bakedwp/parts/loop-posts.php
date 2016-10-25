@@ -13,6 +13,7 @@
           echo '<div class="ressoure">';
               $id = get_the_ID();
               $author = get_the_author();
+              $author_id=$post->post_author;
               $terms = wp_get_post_terms( $id, $taxo , $args );
               $my_date = get_the_date( 'l j F  Y' );
               $myterms = get_terms($taxo, array( 'parent' => 0, 'hide_empty' => 0 ) );
@@ -29,7 +30,10 @@
               }
               ?>
               <?php echo 'Date d\'écriture : <strong>'.$my_date.'</strong><br>'; ?>
-              <?php echo 'Par : <strong>'.$author.'</strong><br>'; ?>
+              <?php echo 'Par : <strong><a href="'.get_author_posts_url($author_id).'">'.$author.'</a></strong><br>'; ?>
+
+
+
 
               <?php echo 'Lien vers la ressource externe : ';?><strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong><br>
               <?php the_title(); ?><br>
