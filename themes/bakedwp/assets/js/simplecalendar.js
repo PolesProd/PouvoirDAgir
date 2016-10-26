@@ -1,47 +1,49 @@
 (function($) {
 	var calendar = {
 		init: function(ajax) {
-		if (ajax) {
-	      // ajax call to print json
-	      $.ajax({
-	  				url: 'wp-content/themes/bakedwp/assets/data/events.json',
-	  				type: 'GET',
-	  			})
-	  			.done(function(data) {
-	          var events = data.events;
-	          // loop json & append to dom
-	          for (var i = 0; i < events.length; i++) {
-	            $('.list').append('<div class="day-event" date-day="'+ events[i].day +'" date-month="' + events[i].month +'" date-year="'+ events[i].year +'" data-number="'+ i +'"><a href="#" class="close fontawesome-remove"></a><h2 class="title">'+ events[i].title +'</h2><p>'+ events[i].description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span>Enresgistrer dans ma liste perso!</span></label></div>');
-	          }
-	          // start calendar
-	          calendar.startCalendar();
-	  			})
-	  			.fail(function(data) {
-	  				console.log(data);
-	  			});
+			if (ajax) {
+				// Appeler ajax pour imprimer du json.
+				$.ajax({
+					url: 'wp-content/themes/bakedwp/assets/data/events.json',
+					type: 'GET',
+				})
+				.done(function(data) {
+					var events = data.events;
+					// Créé la boucle json et l'ajouter au DOM.
+					for (var i = 0; i < events.length; i++) {
+						$('.list').append('<div class="day-event" date-day="'+ events[i].day +'" date-month="' + events[i].month +'" date-year="'+ events[i].year +'" data-number="'+ i +'"><a href="#" class="close fontawesome-remove"></a><h2 class="title">'+ events[i].title +'</h2><p>'+ events[i].description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span>Enresgistrer dans ma liste perso!</span></label></div>');
+					}
+					// Commencer le calendrier.
+					calendar.startCalendar();
+				})
+				.fail(function(data) {
+					console.log(data);
+				});
 			} else {
-	      // if not using ajax start calendar
-	      calendar.startCalendar();
-	    }
+				// Sinon en utilisant le calendrier de démarrage ajax.
+				calendar.startCalendar();
+			}
 		},
 
-	  startCalendar: function() {
-	    var mon = 'Lundi';
+		startCalendar: function() {
+			var mon = 'Lundi';
 			var tue = 'Mardi';
 			var wed = 'Mercredi';
 			var thur = 'Jeudi';
 			var fri = 'Vendredi';
 			var sat = 'Samedi';
 			var sund = 'Dimanche';
+
 			/**
-			 * Get current date
-			 */
+			* Obtenir la date actuelle
+			*/
 			var d = new Date();
 			var strDate = yearNumber + "/" + (d.getMonth() + 1) + "/" + d.getDate();
-			var yearNumber = (new Date).getFullYear();
+			var yearNumber = (new Date()).getFullYear();
+
 			/**
-			 * Get current month and set as '.current-month' in title
-			 */
+			* Obtenir le mois en cours et définir comme «.current month» dans le titre.
+			*/
 			var monthNumber = d.getMonth() + 1;
 
 			function GetMonthName(monthNumber) {
@@ -80,9 +82,8 @@
 			});
 
 			/**
-			 * Get all dates for current month
-			 */
-
+			* Obtenir toutes les dates pour le mois en cours.
+			*/
 			function printDateNumber(monthNumber, mon, tue, wed, thur, fri, sat, sund) {
 
 				$($('tbody.event-calendar tr')).each(function(index) {
@@ -94,7 +95,7 @@
 				});
 
 				function getDaysInMonth(month, year) {
-					// Since no month has fewer than 28 days
+					// Défini qu'il y a aucun mois à moins de 28 jours.
 					var date = new Date(year, month, 1);
 					var days = [];
 					while (date.getMonth() === month) {
@@ -114,7 +115,7 @@
 				}
 
 				$(getDaysInMonth(monthNumber - 1, yearNumber)).each(function(index) {
-					var index = index + 1;
+					/*var index = index + 1;*/
 					if (index < 8) {
 						$('tbody.event-calendar tr.1').append('<td date-month="' + monthNumber + '" date-day="' + index + '" date-year="' + yearNumber + '">' + index + '</td>');
 					} else if (index < 15) {
@@ -137,8 +138,8 @@
 			}
 
 			/**
-			 * Get current day and set as '.current-day'
-			 */
+			* Obtenir la journée en cours et définir comme '.current-day'
+			*/
 			function setCurrentDay(month, year) {
 				var viewMonth = $('.month').attr('data-month');
 				var eventYear = $('.event-days').attr('date-year');
@@ -150,8 +151,8 @@
 			}
 
 			/**
-			 * Add class '.active' on calendar date
-			 */
+			* Ajoute la classe '.active' à la date du calendrier
+			*/
 			$('tbody td').on('click', function(e) {
 				if ($(this).hasClass('event')) {
 					$('tbody.event-calendar td').removeClass('active');
@@ -162,8 +163,8 @@
 			});
 
 			/**
-			 * Add '.event' class to all days that has an event
-			 */
+			* Ajoute la classe '.event' à tous les jours qui ont un événement.
+			*/
 			function setEvent() {
 				$('.day-event').each(function(i) {
 					var eventMonth = $(this).attr('date-month');
@@ -180,9 +181,9 @@
 			}
 
 			/**
-			 * Get current day on click in calendar
-			 * and find day-event to display
-			 */
+			* Obtenir le jour en cours lors d'un clic dans le calendrier
+			* Et trouver l'événement de ce jour pour l'afficher.
+			*/
 			function displayEvent() {
 				$('tbody.event-calendar td').on('click', function(e) {
 					$('.day-event').slideUp('fast');
@@ -193,15 +194,15 @@
 			}
 
 			/**
-			 * Close day-event
-			 */
+			* Fermer l'événement du jour
+			*/
 			$('.close').on('click', function(e) {
 				$(this).parent().slideUp('fast');
 			});
 
 			/**
-			 * Save & Remove to/from personal list
-			 */
+			* Enregistrer & Supprimer la liste personnelle.
+			*/
 			$('.save').click(function() {
 				if (this.checked) {
 					$(this).next().text('Effacer de la liste perso');
@@ -218,7 +219,7 @@
 					sortlist();
 				} else {
 					$(this).next().text('Enregistrer dans la liste perso');
-					$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').slideUp('slow');
+					$('.day[date-month="' + date-month + '"][date-day="' + date-day + '"][data-number="' + date-number + '"]').slideUp('slow');
 					setTimeout(function() {
 						$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
 					}, 1500);
@@ -243,8 +244,8 @@
 			}
 
 			/**
-			 * Sort personal list
-			 */
+			* Trier liste personnelle.
+			*/
 			function sortlist() {
 				var personList = $('.person-list');
 
@@ -254,44 +255,14 @@
 			}
 
 			/**
-			 * Print button
-			 */
+			* Bouton Imprimer
+			*/
 			$('.print-btn').click(function() {
 				window.print();
 			});
-	  },
+		},
 	};
 	jQuery(function($) {
 		calendar.init('ajax');
 	});
 })(jQuery);
-
-
-
-/*jQuery(document).ready(function(){
-     jQuery('#json_click_handler').click(function(){
-          doAjaxRequest();
-     });
-});
-function doAjaxRequest(){
-
-     jQuery.ajax({
-          url: 'http://localhost/wordpress/wp-admin/admin-ajax.php',
-          data:{
-               'action':'do_ajax',
-               'fn':'get_latest_posts',
-               'count':10
-               },
-          dataType: 'JSON',
-          success:function(data){
-              jQuery("#json_response_box").html(data);
-         },
-          error: function(errorThrown){
-               alert('error');
-               console.log(errorThrown);
-          }
-
-     });
-
-}
-*/

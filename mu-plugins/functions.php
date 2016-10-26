@@ -55,7 +55,7 @@ function ressources() {
 add_action('init', 'ressources_taxonomies', 0);
 function ressources_taxonomies(){
 	$labels = array(
-		'name'					=> _x('Catégorie', 'taxonomy general name'),
+		'name'					=> _x('Catégories', 'taxonomy general name'),
 		'singular_name'	=> _x('Catégorie', 'taxonomy singular name'),
 		'search_items'	=> __('Chercher une catégorie'),
 		'all_items'			=> __('Toutes les catégories'),
@@ -63,7 +63,7 @@ function ressources_taxonomies(){
 		'update_item'		=> __('Mise a jour de la Catégorie'),
 		'add_new_item'	=> __('Ajouter'),
 		'new_item_name'	=> __('Nouvelle Catégorie'),
-		'menu_name'			=> __('Catégorie')
+		'menu_name'			=> __('Catégories')
 	);
 
 	$args = array(
@@ -74,7 +74,7 @@ function ressources_taxonomies(){
 		'query_var'					=> true,
 		'rewrite'						=> false,
   );
-	register_taxonomy('ressources', 'ressources', $args);
+	register_taxonomy('ressources', array('ressources'), $args);
 }
 
 add_filter('meta_boxes', 'ressources_metaboxes');
@@ -424,7 +424,7 @@ add_shortcode('gallery','gallery_func');
     Trier les articles selon une taxonomie
 *************************************************/
 //allows queries to be sorted by taxonomy term name
-add_filter('posts_clauses', 'posts_clauses_with_tax', 10, 2);
+/*add_filter('posts_clauses', 'posts_clauses_with_tax', 10, 2);
 function posts_clauses_with_tax( $clauses, $wp_query ) {
 	global $wpdb;
 	//array of sortable taxonomies
@@ -441,7 +441,7 @@ function posts_clauses_with_tax( $clauses, $wp_query ) {
 		$clauses['orderby'] .= ( 'ASC' == strtoupper( $wp_query->get('order') ) ) ? 'ASC' : 'DESC';
 	}
 	return $clauses;
-}
+}*/
 /*************************************************
                 Query page auteurs.
 *************************************************/
@@ -457,13 +457,13 @@ function my_post_queries($query){
 }
 add_action('pre_get_posts', 'my_post_queries');
 /*************************************************
-            Requête Ajax événements.
+                Query page auteurs.
 *************************************************/
 add_action('wp_enqueue_scripts', 'add_js_scripts');
 function add_js_scripts() {
 	wp_enqueue_script( 'script', get_template_directory_uri().'/assets/js/test.js', array('jquery'), '1.0', true );
 
-	// Passer Ajax Url à script.js
+	// pass Ajax Url to script.js
 	wp_localize_script('script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
 }
 
@@ -471,32 +471,52 @@ add_action( 'wp_ajax_call_events_ajax', 'call_events_ajax' );
 add_action( 'wp_ajax_nopriv_call_events_ajax', 'call_events_ajax' );
 function call_events_ajax() {
 	/*$args = array(
-		    'post_type' => 'events',
-		    'posts_per_page' => -1
-		);
-		$ajax_query = new WP_Query($args);
-		//var_dump($ajax_query);
-		if ($ajax_query->have_posts()) : while ($ajax_query->have_posts()) : $ajax_query->the_post();*/
-				get_template_part('article');
-			/*endwhile;
-		endif;
-		die();*/
+		'post_type' => 'events',
+		'posts_per_page' => -1
+	);
+	$ajax_query = new WP_Query($args);
+	//var_dump($ajax_query);
+	if ($ajax_query->have_posts()) : while ($ajax_query->have_posts()) : $ajax_query->the_post();*/
+	/*get_template_part('article');*/
+	/*endwhile;
+	endif;
+	die();*/
 
-		/*global $post;
-	  $offset = $_POST['offset'];
-	  $args = array(
-		   'post_type' =>'events',
-		   'offset' => $offset
-		);
+	/*global $post;
+		$offset = $_POST['offset'];
+		$args = array(
+		'post_type' =>'events',
+		'offset' => $offset
+	);
 
-		$ajax_query = new WP_Query($args);
-		if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
-	    get_template_part( 'article' );
-	    // OU
-	    include(locate_template('article.php'));
-	    // si vous avez besoin d'accéder aux variables dans le template
-		 endwhile;
-		endif;
+	$ajax_query = new WP_Query($args);
+	if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
+	get_template_part( 'article' );
+	// OU
+	include(locate_template('article.php'));
+	// si vous avez besoin d'accéder aux variables dans le template
+	endwhile;
+	endif;
+	die();*/
 
-		die();*/
+	$args = array('post_type' => 'events','post_status' => 'publish','posts_per_page' => -1);
+	$loop = new WP_Query($args);
+	$date = date_i18n(get_option('date_format'),strtotime(get_post_meta( get_the_ID(),'wpsc_start_date', true)));
+	/*$taxonomies = get_taxonomy('wpsclocation');*/
+	$taxonomies=get_taxonomies('wpsclocation');
+	$array = array();
+	while ($loop->have_posts()) : $loop->the_post();
+	  global $events;
+	  $array[] = array(
+	    'id' => get_the_ID(),
+	    'title' => get_the_title(),
+			'date' => $date,
+			'locations' => $taxonomies
+	  );
+	endwhile;
+
+	wp_reset_query();
+	ob_clean();
+	echo json_encode($array);
+	exit();
 }
