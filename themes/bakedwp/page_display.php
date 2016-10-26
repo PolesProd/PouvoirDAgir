@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Analyse_category
+Template Name: Category_Centrale
 */
 get_header();
 //$post_type = $_POST['post_type'];
@@ -74,7 +74,18 @@ get_header();
               }
           echo '</div>';
       }
-    }
-  // }?>
+      //print_r($post_array);
+      for($x = 0;$x <count($post_array);$x++){
+            echo '<article>';
+            echo '<p><h2>'.$post_array[$x]->post_title.'</h2></p>';
+            echo '<p>'.$post_array[$x]->post_content.'</p>';
+            echo '</article><hr>';
+      }
 
-</div> <!--Fin Div Méthodologie --><?php get_footer();?>
+    }
+?>
+</ul>
+<?php
+
+ ?>
+<?php get_footer();?>
