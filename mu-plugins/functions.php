@@ -504,7 +504,7 @@ add_action('pre_get_posts', 'my_post_queries');
 add_action('wp_enqueue_scripts', 'add_js_scripts');
 function add_js_scripts() {
 	wp_enqueue_script( 'script', get_template_directory_uri().'/assets/js/test.js', array('jquery'), '1.0', true );
-
+  wp_enqueue_script( 'isotope', get_template_directory_uri().'/assets/js/isotope.js', array('jquery'), '1.0', true );
 	// Passer Ajax Url à script.js
 	wp_localize_script('script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
 }
