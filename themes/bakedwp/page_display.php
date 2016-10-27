@@ -1,48 +1,50 @@
 <?php
 /*
-Template Name: Category_Centrale
+Template Name: Category
 */
 ?>
-<?php get_header();?>
-<h1>Ressources</h1>
-<ul>
 <?php
-$args = array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'all');
-    $url = $_SERVER['REQUEST_URI'];
-    $post_type = get_post_types();
-    $string_arr = implode(',',$post_type);
-    $tab_array = explode(',',$string_arr);
+get_header();
 
-
-    foreach($tab_array as $menu){
-      echo '<form action="" method="get">';
-        echo '<input type="hidden" value="'.$menu.'" name="post_type">';
-        echo '<input type="submit" value="'.$menu.'">';
-      echo '</form>';
-    }
-    die();
-    for($i = 0; $i<count($tab_array);$i++){
-    $posts = array();
-    //echo $tab_array[$i];
-      //print_r($tab_array);
-      ?>
-      <?php
-      $post_array = get_posts(array( 'posts_per_page' => -1, 'post_type' => $tab_array[$i]));
-      if(count($post_array) !== 0){
-        echo '<p>il y a '.count($post_array).' article dans '.$tab_array[$i].'</p>';
-      }
-      //print_r($post_array);
-      for($x = 0;$x <count($post_array);$x++){
-            echo '<article>';
-            echo '<p><h2>'.$post_array[$x]->post_title.'</h2></p>';
-            echo '<p>'.$post_array[$x]->post_content.'</p>';
-            echo '</article><hr>';
-      }
-
-    }
+$post_type = get_post_types();
+$string_arr = implode(',',$post_type);
+$tab_array = explode(',',$string_arr);
 ?>
-</ul>
-<?php
+<div class='button-group float-center'>
+  <button  data-filter="*">Tous</button><?php
+  foreach($tab_array as $menu){
+    if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form'){
+    }else{
+     //var_dump($ajax_query);
+     echo '<button  data-filter=".'.$menu.'">'.$menu.'</button>';
+   }
+  }
+echo '</div>';
+echo '<div class="isotope">';
+for($i = 0; $i<count($tab_array);$i++){
+  $args = array(
+      'post_type' => $tab_array[$i],
+      'posts_per_page' => 10
+  );
 
- ?>
-<?php get_footer();?>
+  $ajax_query = new WP_Query($args);
+  if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
+
+    if($args['post_type'] === 'page' || $args['post_type'] === 'attachment' || $args['post_type'] === 'revision' || $args['post_type'] === 'nav_menu_item' || $args['post_type'] === 'ressources' || $args['post_type'] === 'wpcf7_contact_form'){
+    }else{
+     ?>
+       <div class="grid-item <?=$tab_array[$i];?>" data-category='transtition'>
+
+       <h2><?php the_title(); ?></h2>
+
+       	<?php the_excerpt(); ?>
+       	<a href="<?php the_permalink(); ?>">Lire</a>
+       </div>
+     <?php
+      }
+endwhile;
+endif;
+}
+
+echo '</div>';
+get_footer();
