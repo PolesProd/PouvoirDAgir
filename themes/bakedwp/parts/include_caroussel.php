@@ -1,33 +1,28 @@
 <?php
-echo 'inside includer of the carroussel';
+  $args = array( 'post_type' => array('post','events'),
+    'posts_per_page' => 5,
+    );
 ?>
-<section class="small-12" id="slideHome">
-  <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-    <ul class="orbit-container">
-      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-      <li class="is-active orbit-slide">
-        <img class="orbit-image" src="http://loremflickr.com/400/200" alt="Space">
-        <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
-      </li>
-      <li class="orbit-slide">
-        <img class="orbit-image" src="http://loremflickr.com/400/200" alt="Space">
-        <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-      </li>
-      <li class="orbit-slide">
-        <img class="orbit-image" src="http://loremflickr.com/400/200" alt="Space">
-        <figcaption class="orbit-caption">Encapsulating</figcaption>
-      </li>
-      <li class="orbit-slide">
-        <img class="orbit-image" src="http://loremflickr.com/400/200" alt="Space">
-        <figcaption class="orbit-caption">Outta This World</figcaption>
-      </li>
-    </ul>
-    <nav class="orbit-bullets">
-      <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-      <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-      <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-      <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-    </nav>
-  </div>
+<section id="owl-demo" class="owl-carousel owl-theme">
+  <?php
+  $loopy = new WP_Query( $args );
+  if($loopy->have_posts()){
+    while ( $loopy->have_posts() ) {
+        $loopy->the_post();
+        $id = get_the_ID();
+        $author = get_the_author();
+        $terms = wp_get_post_terms( $id, $taxo , $args );
+        $my_date = get_the_date( 'l j F  Y' );
+        $myterms = get_terms($taxo, array( 'parent' => 0, 'hide_empty' => 0 ) );?>
+
+  <div class="" style="background-image:url('<?php the_post_thumbnail_url( "full" ); ?>');">
+    <h2><a href="<?php the_permalink();?>"> <?php the_title(); ?></a></h2>
+    <?php echo $my_date;
+    the_taxonomies();
+    wp_get_post_terms();
+    ?>
+    <p><?php the_excerpt(); ?></p>
+  </div><?php
+    }
+  };?>
 </section>

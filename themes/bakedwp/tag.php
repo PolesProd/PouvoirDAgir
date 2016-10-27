@@ -3,6 +3,10 @@
 Template Name: Tags
 */
 ?>
+<<<<<<< HEAD
+
+=======
+>>>>>>> samba
 <?php get_header(); ?>
 			<div class="hero">
 				<div class="row">
@@ -11,6 +15,10 @@ Template Name: Tags
 					</div>
 				</div>
 			</div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> samba
 			<div id="content">
 				<div id="inner-content" class="row">
 				    <div id="main" class="large-12 medium-10 small-centered columns" role="main">

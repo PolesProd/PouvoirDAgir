@@ -1,4 +1,3 @@
-
 					<div id="footer-widgets" class="row">
 						<div id="inner-footer-widgers" class="large-10 medium-10 small-centered columns">
 							<div class="row">
@@ -10,8 +9,8 @@
 					</div>
 
 					<footer class="footer row" role="contentinfo">
-			        	<div class="large-10 medium-10 small-centered columns">
-							<p class="source-org copyright"><?php echo get_theme_mod( 'footer_text', 'BakedWP Theme. Custom par <a href="http://lepoles.org">LePoleS Prod.</a>' ); ?></p>
+	        	<div class="large-10 medium-10 small-centered columns">
+							<p class="source-org copyright"><?php echo get_theme_mod( 'footer_text', 'BakedWP Theme. Custom by <a href="http://lepoles.org">LePoleS Prod.</a>' ); ?></p>
 						</div>
 					</footer> <!-- end .footer -->
 				</div> <!-- end #container -->

@@ -5,42 +5,90 @@ Template Name: Accueil
 ?>
 
 <?php get_header(); ?>
-			<div class="hero">
+			<!-- <div class="hero">
 				<div class="row">
 					<div class="large-12 columns">
 						<h1><?php the_title(); ?></h1>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<div id="content">
 				<div id="inner-content" class="">
-				    <div id="main" class="large-12 medium-10 small-centered" role="main">
+				    <div id="main" class="small-centered" role="main">
+
+							<!-- CAROUSSEL -->
 							<div class="" style="background:#67B7CF;"><!-- height:350px; -->
 								<?php include get_template_directory().'/parts/include_caroussel.php'; ?>
 							</div>
-							<div class="">
-							  <div class="medium-6 large-4 columns" style="background:#05C3FB;height:200px;">12/6/4 columns</div>
-							  <div class="medium-6 large-8 columns" style="background:#0388af;height:200px;">
-									<?php
-	                $args = array( 'post_type' => 'events', 'posts_per_page' => 1);
-	                $loop = new WP_Query( $args );
-	                while ( $loop->have_posts() ) : $loop->the_post();
-	                  the_title();
-										echo '<div class="row">';
-										  echo '<div class="small-4 columns">';
-												the_post_thumbnail();
-											echo '</div>';
-										  echo '<div class="columns">';
-												the_excerpt();
-											echo '</div>';
-										echo '</div>';
-	                endwhile;
-						    	?>
+
+							<!-- RESSOURCES -->
+							<div>
+							  <div id="encartRessource" class="text-center small-12 medium-6 large-7 columns">
+									<h3>ressources</h3>
+									<div class="small-4 columns">
+										<div class="btn-box colorBoxContours">
+											<h5>Analyses</h5>
+											<!-- <p><i class="fi-heart icon-size-small"></i></p> -->
+										</div>
+									</div>
+									<div class="small-4 columns">
+										<div class="btn-box colorBoxContours">
+											<a href="#"><h5>Methodologie</h5></a>
+											<!-- <p><i class="fi-guide-dog icon-size-small"></i></p> -->
+										</div>
+									</div>
+									<div class="small-4 columns">
+										<div class="btn-box colorBoxContours">
+											<a href="#"><h5>Temoignages</h5></a>
+											<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
+										</div>
+									</div>
+									<div class="small-offset-2 small-4 columns ">
+										<div class="btn-box colorBoxContours">
+											<a href="#"><h5>Glossaire</h5></a>
+											<!-- <p><i class="fi-book icon-size-small"></i></p> -->
+										</div>
+									</div>
+									<div class="small-4 columns end">
+										<div class="btn-box colorBoxContours">
+											<a href="#"><h5>Galeries</h5></a>
+											<!-- <p><i class="fi-photo icon-size-small"></i></p> -->
+										</div>
+									</div>
+								</div>
+
+							  <div class="small-12 medium-6 large-5 columns">
+									<?php include get_template_directory().'/parts/calendar-links.php';
+									?>
 							  </div>
 							</div>
-							<div class="large-12 medium-10 small-centrered columns" style="background:#002834;height:400px;">
 
+							<!-- CARTE -->
+							<div> <!--style="<?php //if( !is_home() ){echo'display:none;';}?> -->
+								<iframe width="100%" height="300px" frameBorder="0" src="https://umap.openstreetmap.fr/fr/map/carte-du-pouvoir-dagir_63384?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe>
+								<div class="row"><a href="https://umap.openstreetmap.fr/fr/map/carte-du-pouvoir-dagir_63384" target="_blank" class="small-center columns button">Ouvrir sur OpenStreetMap</a></div>
+							</div>
+
+							<div class="small-12 comlomns text-center">
+								<div class="small-4 columns">
+									<div class="btn-box colorBoxContours">
+										<a href="#"><h5>Newsletter</h5></a>
+										<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
+									</div>
+								</div>
+								<div class="small-4 columns">
+									<ul id="social-box" class="Back-Red-Dark colorBoxContours title-area">
+										<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank">Facebook</a></li>
+										<li><a href="https://twitter.com/collectif_pa" target="_blank">Twitter</a></li>
+									</ul>
+								</div>
+								<div class="small-4 columns">
+									<div class="btn-box colorBoxContours">
+										<a href="#"><h5>Adherer</h5></a>
+										<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
+									</div>
+								</div>
 							</div>
     				</div> <!-- end #main -->
 				</div> <!-- end #inner-content -->
