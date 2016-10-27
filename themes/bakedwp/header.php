@@ -21,6 +21,6 @@
 		<div class="off-canvas-wrap" data-offcanvas>
 			<div class="inner-wrap">
 				<div id="container">
-					<header class="header" role="banner">
+					<header id="Wrap-Header"class="header" role="banner">
 						 <?php get_template_part( 'parts/nav', 'top-topbar' ); ?>
 					</header> <!-- end .header -->

@@ -7,13 +7,12 @@
   if($loopy->have_posts()){
     while ( $loopy->have_posts() ) {
         $loopy->the_post();
-        echo '<div class="ressoure">';
+        if (get_category($sqlTemoignage[$i]->term_id)->category_count > 0){
+          echo '<div class="ressoure">';
             $id = get_the_ID();
             $author = get_the_author();
-            $author_id=$post->post_author;
             $terms = wp_get_post_terms( $id, $taxo , $args );
             $my_date = get_the_date( 'l j F  Y' );
-
             $myterms = get_terms($taxo, array( 'parent' => 0, 'hide_empty' => 0 ) );?>
 
             <!-- Structure Date et Catégorie -->
@@ -69,14 +68,14 @@
                     <!-- Colonne auteur -->
                     <div class="large-8 columns">
                       <div class="primary callout">
-                          <?php echo 'Par : <strong><a href="'.get_author_posts_url($author_id).'">'.$author.'</a></strong><br>'; ?>
+                        <?php echo 'Par : <strong>'.$author.'</strong><br>'; ?>
                       </div>
                     </div><!-- Fin colonne titre -->
 
                     <!-- Colonne Chapeau -->
                     <div class="large-8 columns">
                       <div class="primary callout">
-                        <?php echo '<strong><em>'.implode(get_post_meta(get_the_ID(), $taxo .'_chapeau')).'</em></strong><br>'; ?>
+                        <?php echo '<strong><em>'.implode(get_post_meta(get_the_ID(), 'ressources_chapeau')).'</em></strong><br>'; ?>
                       </div>
                     </div><!-- Fin colonne chapeau -->
 
@@ -98,7 +97,8 @@
                     <div class="large-8 medium-8 columns">
                       <div class="primary callout">
                         <?php echo 'Lien vers la ressource externe : ';?>
-                          <strong><a href="<?=implode(get_post_meta(get_the_ID(), $taxo.'_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), $taxo.'_externes'));?></a></strong>
+                          <strong><a href="<?=implode(get_post_meta(get_the_ID(), 'ressources_externes'))?>" target="_blank"><?=implode(get_post_meta(get_the_ID(), 'ressources_externes'));?></a></strong>
+
                       </div>
                     </div><!-- Fin colonne lien -->
                   </div>
@@ -107,8 +107,8 @@
             </div><!-- Fin Structure Principale (Extrait d'Article) -->
 
            <?php
-
-        echo '</div>';
+          echo '</div>';
+        }
       }
     }
 ?>
