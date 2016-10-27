@@ -1,4 +1,4 @@
-<form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url( '/' ) ); ?>">
+<form id="headSearch" role="search" method="get" class="search-form" action="<?php echo esc_url(home_url( '/' ) ); ?>">
 	<!-- <label>
 		<span class="screen-reader-text"><?php //echo _x( 'Search for:', 'label', 'bakedwp' ) ?></span>
 	</label> -->
