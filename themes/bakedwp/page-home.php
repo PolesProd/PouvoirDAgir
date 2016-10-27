@@ -50,18 +50,17 @@ Template Name: Accueil
 	                $args = array( 'post_type' => 'events', 'posts_per_page' => 1);
 	                $loop = new WP_Query( $args );
 	                while ( $loop->have_posts() ) : $loop->the_post();
-	                  the_title();
-										echo '<div class="row">';
-										  echo '<div class="small-4 columns">';
-												the_post_thumbnail();
-											echo '</div>';
-										  echo '<div class="columns">';
-												the_excerpt();
-											echo '</div>';
-										echo '</div>';
-	                endwhile;
-						    	?>
-							  </div>
+	                  the_title();?>
+										<div class="row">
+										  <div class="small-4 columns">
+												<?php the_post_thumbnail(); ?>
+											</div>
+										  <div class="columns">
+												<?php the_excerpt();?>
+											</div>
+										</div>
+            			<?php endwhile; ?>
+						  	</div>
 							</div>
     				</div> <!-- end #main -->
 				</div> <!-- end #inner-content -->
