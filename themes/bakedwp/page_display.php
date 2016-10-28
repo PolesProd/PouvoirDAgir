@@ -15,35 +15,28 @@ $tab_array = explode(',',$string_arr);
     }else{
      //var_dump($ajax_query);
      echo '<button  data-filter=".'.$menu.'">'.$menu.'</button>';
-   }
+    }
   }
-echo '</div>';
-echo '<div class="isotope">';
-for($i = 0; $i<count($tab_array);$i++){
-  $args = array(
-      'post_type' => $tab_array[$i],
-      'posts_per_page' => 10
-  );
-
+  ?></div>
+    <div class="isotope"><?php
+  for($i = 0; $i<count($tab_array);$i++){
+    $args = array(
+        'post_type' => $tab_array[$i],
+        'posts_per_page' => 10
+      );
   $ajax_query = new WP_Query($args);
   if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
-
     if($args['post_type'] === 'page' || $args['post_type'] === 'attachment' || $args['post_type'] === 'revision' || $args['post_type'] === 'nav_menu_item' || $args['post_type'] === 'ressources' || $args['post_type'] === 'wpcf7_contact_form'){
-    }else{
-     ?>
-       <div class="grid-item <?=$tab_array[$i];?>" data-category='transtition'>
-
-       <h2><?php the_title(); ?></h2>
-
+    }else{?>
+      <div class="grid-item <?=$tab_array[$i];?>" data-category='transtition'>
+      <h2><?php the_title(); ?></h2>
        	<?php the_excerpt(); ?>
        	<a href="<?php the_permalink(); ?>">Lire</a>
        </div>
      <?php
-
-      }
-endwhile;
-endif;
-}
-
-echo '</div>';
+    }
+    endwhile;
+    endif;
+  }
+?></div><?php
 get_footer();

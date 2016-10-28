@@ -127,7 +127,6 @@ header .thumbnail{
 #encartRessource h3{
 	text-transform: uppercase;
 }
-
 /* Article
    ========================================================================== */
 
@@ -242,14 +241,22 @@ header .thumbnail{
 #owl-demo .owl-item{
   display: inline;
 }
-#owl-demo .owl-item img, #owl-demo .owl-item div{
+#owl-demo .owl-item img, #owl-demo .owl-item > div{
     display: inline-block;
     width: 99.1vw;
     height: auto;
 }
-#owl-demo .owl-item div{
+#owl-demo .owl-item > div{
+	position: relative;
   height:500px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+#owl-demo .sliderCont{
+	position: absolute;
+	width: 50%;
+	right: 25%;
+	height: 250px;
+	top: 250px;
 }
