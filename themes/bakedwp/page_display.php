@@ -11,7 +11,14 @@ $string_arr = implode(',',$post_type);
 $tab_array = explode(',',$string_arr);
 ?>
 <div class='button-group float-center'>
-  <button  data-filter="*">Tous</button><?php
+<button  data-filter="*">Toutes Les Catégories</button><?php
+  // $taxonomies = get_taxonomies();
+  // foreach ( $taxonomies as $taxonomy ) {
+  //   echo '<p>' . $taxonomy . '</p>';
+  // }
+
+   ?>
+  <button  data-filter="*">Tous Les Post Type</button><?php
   foreach($tab_array as $menu){
     if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form'){
     }else{
@@ -20,6 +27,7 @@ $tab_array = explode(',',$string_arr);
    }
   }
 echo '</div>';
+echo '<p><h1>Hello World</h1></p>';
 echo '<div class="isotope">';
 for($i = 0; $i<count($tab_array);$i++){
   $args = array(
