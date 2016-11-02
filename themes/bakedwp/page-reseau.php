@@ -7,7 +7,6 @@ Template Name: Réseaux Impliqués
 <?php get_header(); ?>
 
   <div id="content">
-
      <div id="inner-content" class="row">
        <?php dynamic_sidebar('Aside');?>
        <?php echo do_shortcode('[map]'); ?>

@@ -2,8 +2,6 @@
 /*
 Template Name: Category
 */
-?>
-<?php
 get_header();
 
 $post_type = get_post_types();
@@ -43,8 +41,9 @@ echo wp_list_categories($args);
     }else{
      //var_dump($ajax_query);
      echo '<button  data-filter=".'.$menu.'">'.$menu.'</button>';
-   }
+    }
   }
+
 echo '</p></div>';
 echo '<div class="isotope">';
 for($i = 0; $i<count($tab_array);$i++){
@@ -55,7 +54,6 @@ for($i = 0; $i<count($tab_array);$i++){
 
   $ajax_query = new WP_Query($args);
   if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
-
     if($args['post_type'] === 'page' || $args['post_type'] === 'attachment' || $args['post_type'] === 'revision' || $args['post_type'] === 'nav_menu_item' || $args['post_type'] === 'ressources' || $args['post_type'] === 'wpcf7_contact_form'){
     }else if($args['post_type'] === 'post'){
       $cat = get_the_category($post->ID);?>
@@ -94,4 +92,5 @@ endif;
 }
 
 echo '</div>';
+
 get_footer();

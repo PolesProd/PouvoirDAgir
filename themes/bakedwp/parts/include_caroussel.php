@@ -1,24 +1,29 @@
-
+<?php
+  $args = array( 'post_type' => array('post','events'),
+    'posts_per_page' => 5,
+    );
+?>
 <section id="owl-demo" class="owl-carousel owl-theme">
-  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city0.jpg');">
+  <?php
+  $loopy = new WP_Query( $args );
+  if($loopy->have_posts()){
+    while ( $loopy->have_posts() ) {
+        $loopy->the_post();
 
-    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city0.jpg" alt="image01" /> -->
-  </div>
-  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city1.jpg');">
-    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city1.jpg" alt="image02" /> -->
-  </div>
-  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city2.jpg');">
-    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city2.jpg" alt="image03" /> -->
-  </div>
-  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city3.jpg');">
-    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city3.jpg" alt="image04" /> -->
-  </div>
-  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city4.jpg');">
-    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city4.jpg" alt="image05" /> -->
-  </div>
-  <div class="" style="background-image:url('http://localhost/wordpress/wp-content/uploads/2016/10/city5.png');">
-    <!-- <img src="http://localhost/wordpress/wp-content/uploads/2016/10/city5.png" alt="image06" /> -->
-  </div>
+        $author = get_the_author();
+        $my_date = get_the_date( 'l j F  Y' );
+        ?>
 
-
+  <div class="" style="background-image:url('<?php the_post_thumbnail_url( "full" ); ?>');">
+    <div class="sliderCont ">
+      <h2><a href="<?php the_permalink();?>"> <?php the_title(); ?></a></h2>
+      <?php echo $my_date;
+      echo $author;
+      // the_taxonomies();
+      // wp_get_post_terms();?>
+      <p><?php the_excerpt(); ?></p>
+    </div>
+  </div><?php
+    }
+  };?>
 </section>

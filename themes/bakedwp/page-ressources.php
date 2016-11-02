@@ -7,6 +7,7 @@
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
           <div class="analyse" style='border:solid 1px #ccc;'>
         <?php
+
           //Analyse
           // $sqlTemoignage = $wpdb->get_results('SELECT * FROM  wp_term_taxonomy WHERE  taxonomy =  "analyse"');
           // $countTemoignage = count($sqlTemoignage);
@@ -31,6 +32,7 @@
         // }?>
         <form action="?page_id=47" method="post">
           <input type="hidden" value="<?= $taxo; ?>" name="post_type">
+
           <input type="submit" value="En Voir plus">
         </form>
       </div><!--Fin Div Méthodologie -->
@@ -58,6 +60,4 @@
     </div> <!-- end #main -->
   </div> <!-- end #inner-content -->
 </div> <!-- end #content -->
-
-
 <?php get_footer(); ?>
