@@ -5,7 +5,7 @@
 									<a href="#"><h5>Newsletter</h5></a>
 									<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
 								</div>
-							</div>
+								</div>
 							<div class="small-4 columns">
 								<ul id="social-box" class="Back-Red-Dark colorBoxContours title-area">
 									<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank">Facebook</a></li>
