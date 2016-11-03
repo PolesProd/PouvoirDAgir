@@ -1,5 +1,5 @@
 (function($) {
-  $.post(
+  /*$.post(
     ajaxurl,
     {
       'action': 'call_events_ajax',
@@ -9,9 +9,9 @@
       // on affiche la réponse ou l'on veut
       $('.list').append(response);
     }
-  );
+  );*/
 
-  /*var offset = 10;
+  var offset = 10;
   $('body').on('click','.event', function(){
 
     jQuery.post(
@@ -25,7 +25,7 @@
         $('.list').append(response);
       }
     );
-  });*/
+  });
 
   /*$.ajaxSetup({cache:false});
   $(".event").click(function(){
