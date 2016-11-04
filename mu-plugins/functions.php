@@ -471,30 +471,54 @@ $array[] = array(
 	'title' => get_the_title(),
 	'description' => get_the_excerpt($post),
 );
-// $json = json_encode(array('events' => $array));
-// //write json to file
-// if (file_put_contents("events.json", $json))
-//     echo "Fichier JSON créé avec succès...";
-// else
-//     echo "Oops! Erreur lors de la création du fichier json...";
-// exit();
-// $sql = "SELECT $wpdb->posts.*
-//    FROM $wpdb->posts, $wpdb->postmeta
-//    WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id
-//    AND $wpdb->posts.post_status = 'publish'
-//    AND $wpdb->posts.post_type = 'events'
-// ";
-// $response = array();
-// $posts = array();
-// $result=mysql_query($sql);
-// $response['posts'] = $posts;
-//
-$fp = fopen('wp-content/themes/bakedwp/assets/data/events.json', 'w');
-fwrite($fp, json_encode($response));
-fclose($fp);
-$file = "events.json";
-$json = json_decode(file_get_contents($file));
-file_put_contents($file, json_encode($json));
+$offset = $_POST['offset'];
+	$args = array(
+		'post_type' => 'events',
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
+		'meta_key' => 'wpsc_start_date',
+		'offset' => $offset
+	);
+	$loop = new WP_Query($args);
+	$array = array();
+	while ($loop->have_posts()) : $loop->the_post();
+	global $events;
+	$date = get_post_meta(get_the_ID(), 'wpsc_start_date', true);
+	$result = explode("/", $date);
+	$day = $result[1];
+	$month = $result[0];
+	$year = $result[2];
+	$array[] = array(
+	// 'id' => get_the_ID(),
+	'day'=> $day,
+	'month'=> $month,
+	'year'=> $year,
+	'title' => get_the_title(),
+	'description' => get_the_excerpt($post),
+	// 'time'=> $time,
+	// 'locations' => get_taxonomies	('wpsclocation'),
+	);
+	$storageLocation = $_SERVER['DOCUMENT_ROOT'] . '/wordpress/wp-content/themes/bakedwp/assets/data/';
+	$jsonfile = $storageLocation . 'test.json';
+	// Assurons nous que le fichier est accessible en écriture
+	if (is_writable($jsonfile)) {
+		// Dans notre exemple, nous ouvrons le fichier $jsonfile en mode d'ajout
+		// Le pointeur de fichier est placé à la fin du fichier
+		// c'est là que $somecontent sera placé
+		// if (!$handle = fopen($jsonfile, 'w')) {
+		// 	echo "Impossible d'ouvrir le fichier ($jsonfile)";
+		// 	exit;
+		// }
+		// Ecrivons quelque chose dans notre fichier.
+		if (fwrite($handle, $array) === FALSE) {
+			echo "Impossible d'écrire dans le fichier ($jsonfile)";
+			exit;
+		}
+		echo "L'écriture de ($array) dans le fichier ($jsonfile) a réussi";
+		fclose($handle);
+	} else {
+		echo "Le fichier $jsonfile n'est pas accessible en écriture.";
+	}
 echo "<br>";
 endwhile;
 
