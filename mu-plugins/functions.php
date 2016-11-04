@@ -447,31 +447,7 @@ function add_js_scripts() {
 add_action( 'wp_ajax_events_ajax', 'events_ajax' );
 add_action( 'wp_ajax_nopriv_events_ajax', 'events_ajax' );
 function events_ajax() {
-$offset = $_POST['offset'];
-$args = array(
-	'post_type' => 'events',
-	'post_status' => 'publish',
-	'posts_per_page' => -1,
-	'meta_key' => 'wpsc_start_date',
-	'offset' => $offset
-);
-$loop = new WP_Query($args);
-$array = array();
-while ($loop->have_posts()) : $loop->the_post();
-global $events;
-$date = get_post_meta(get_the_ID(), 'wpsc_start_date', true);
-$result = explode("/", $date);
-$day = $result[1];
-$month = $result[0];
-$year = $result[2];
-$array[] = array(
-	'day'=> $day,
-	'month'=> $month,
-	'year'=> $year,
-	'title' => get_the_title(),
-	'description' => get_the_excerpt($post),
-);
-$offset = $_POST['offset'];
+	$offset = $_POST['offset'];
 	$args = array(
 		'post_type' => 'events',
 		'post_status' => 'publish',
@@ -482,26 +458,24 @@ $offset = $_POST['offset'];
 	$loop = new WP_Query($args);
 	$array = array();
 	while ($loop->have_posts()) : $loop->the_post();
-	global $events;
-	$date = get_post_meta(get_the_ID(), 'wpsc_start_date', true);
-	$result = explode("/", $date);
-	$day = $result[1];
-	$month = $result[0];
-	$year = $result[2];
-	$array[] = array(
-	// 'id' => get_the_ID(),
-	'day'=> $day,
-	'month'=> $month,
-	'year'=> $year,
-	'title' => get_the_title(),
-	'description' => get_the_excerpt($post),
-	// 'time'=> $time,
-	// 'locations' => get_taxonomies	('wpsclocation'),
-	);
-	$storageLocation = $_SERVER['DOCUMENT_ROOT'] . '/wordpress/wp-content/themes/bakedwp/assets/data/';
-	$jsonfile = $storageLocation . 'test.json';
-	// Assurons nous que le fichier est accessible en écriture
-	if (is_writable($jsonfile)) {
+		global $events;
+		$date = get_post_meta(get_the_ID(), 'wpsc_start_date', true);
+		$result = explode("/", $date);
+		$day = $result[1];
+		$month = $result[0];
+		$year = $result[2];
+		$array[] = array(
+			'day'=> $day,
+			'month'=> $month,
+			'year'=> $year,
+			'title' => get_the_title(),
+			'description' => get_the_excerpt($post),
+		);
+
+		$storageLocation = $_SERVER['DOCUMENT_ROOT'] . '/wordpress/wp-content/themes/bakedwp/assets/data/';
+		$jsonfile = $storageLocation . 'test.json';
+		// Assurons nous que le fichier est accessible en écriture
+		if (is_writable($jsonfile)) {
 		// Dans notre exemple, nous ouvrons le fichier $jsonfile en mode d'ajout
 		// Le pointeur de fichier est placé à la fin du fichier
 		// c'est là que $somecontent sera placé
@@ -514,17 +488,17 @@ $offset = $_POST['offset'];
 			echo "Impossible d'écrire dans le fichier ($jsonfile)";
 			exit;
 		}
-		echo "L'écriture de ($array) dans le fichier ($jsonfile) a réussi";
-		fclose($handle);
-	} else {
-		echo "Le fichier $jsonfile n'est pas accessible en écriture.";
-	}
-echo "<br>";
-endwhile;
+			echo "L'écriture de ($array) dans le fichier ($jsonfile) a réussi";
+			fclose($handle);
+		} else {
+			echo "Le fichier $jsonfile n'est pas accessible en écriture.";
+		}
+		echo "<br>";
+	endwhile;
 
-wp_reset_query();
-ob_clean();
-echo json_encode($array);
+	wp_reset_query();
+	ob_clean();
+	echo json_encode($array);
 }
 /*************************************************
 Ressources (Custom Type Englobant)
