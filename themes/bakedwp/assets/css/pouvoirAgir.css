@@ -13,8 +13,13 @@
   position: relative;
   color: #0a0a0a;
   background-color: none;
-
 }
+
+/**********************\
+			TYPOGRAPHIES
+\**********************/
+
+
 	/**********************\
 MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 	\**********************/
@@ -28,10 +33,10 @@ MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 
 /*-_background_-*/
 .Back-Black-Dark{
-	background-color:#222;
+	background-color:#6c6c6a;
 }
 .Back-Black-Light{
-	background-color:#6E6E6E;
+	background-color:#bfbfbf;
 }
 .Back-Red-Light{
 	background-color:#F82034;
@@ -40,12 +45,23 @@ MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 	background-color:#6C0E17;
 }
 .Back-Purple-Light{
-	background-color:#7544D1;
+	background-color:#6c5c9f;
 }
 .Back-Purple-Dark{
 	background-color:#271645;
 }
+.Back-White-Light{
+	background-color:#fff8ee;
+}
+.Back-White-Mid{
+	background-color:#fff2df;
+}
+.Back-White-Dark{
 
+}
+/*.Back-White-Dark{
+	background-color:#fff8ee;
+}*/
 /*-_text_-*/
 .text-White, .text-White a, #Wrap-Header .text-White a{
 	color:#fff;
@@ -57,13 +73,17 @@ MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 	color:#6C0E17;
 }
 .text-Purple-Light{
-	color:#7544D1;
+	color:#6c5c9f;
 }
 .text-purple-Dark{
 	color:#271645;
 }
-
-
+.text-Black-Light{
+	color:#fff8ee;
+}
+.text-Black-Dark{
+	color:#fff2df;
+}
 
 /**********************\
 				HEADER
@@ -81,10 +101,16 @@ header .thumbnail{
 .align-middle li{
 	vertical-align: middle;
 }
-.top-bar,.top-bar-section ul li, #container .top-bar li a{
-	background: none;
+/*.top-bar-section ul li*/
+.top-bar, #container .top-bar li a{
+	background: inherit;
 }
-
+.top-bar-section ul li{
+	background-color: #6c6c6a;
+}
+#menu-item-37{
+	background-color: #F82034;
+}
 /*submenu style*/
 .top-bar-section .sub-menu li{
 	background-color:#6E6E6E;
@@ -92,10 +118,6 @@ header .thumbnail{
 .top-bar-section .sub-menu li:hover{
 	background-color:#222;
 }
-.top-bar-section ul li > a {
-	color: black;
-}
-
 #container header h3{
 	font-size:1vw;
 }
@@ -112,6 +134,7 @@ header .thumbnail{
 	margin: 5px 0;
   padding: 18px 0 17px;
 }
+
 				/***********SEARCH***********/
 #headSearch{
 	display: none;
@@ -259,4 +282,29 @@ header .thumbnail{
 	right: 25%;
 	height: 250px;
 	top: 250px;
+}
+#Wrap-Header nav section .name{
+	position: relative;
+	bottom: 20px;
+}
+#profil{
+	color:#F82034;
+}
+/**********************\
+    Encart ressource
+\**********************/
+#encartRessource{
+    height: 26.9vw;
+}
+#encartRessource h3{
+	padding-left: 15px;
+	color: white;
+	margin-top: 15px;
+}
+.margin-top-17px{
+  margin-top: 17px;
+}
+.ressources-box{
+	background-color: white;
+  height: 10vw;
 }

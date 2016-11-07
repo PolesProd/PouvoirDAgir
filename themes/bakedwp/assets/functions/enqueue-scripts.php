@@ -34,8 +34,6 @@ function joints_scripts_and_styles() {
     wp_enqueue_style( 'custom-css', get_template_directory_uri() . '/assets/css/pouvoirAgir.css', array(), '', 'all' );
 
 
-    // Register owl carousel CSS
-    wp_enqueue_style( 'owl-css', get_template_directory_uri() . '/assets/owl-carousel/owl.carousel.css', array(), '', 'all' );
 
     wp_enqueue_style( 'owl-theme-css', get_template_directory_uri() . '/assets/owl-carousel/owl.theme.css', array(), '', 'all' );
 
@@ -44,6 +42,8 @@ function joints_scripts_and_styles() {
 
     // wp_enqueue_script( 'bakedwo-site-js', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), '', true );
 
+    // Register owl carousel CSS
+    wp_enqueue_style( 'owl-css', get_template_directory_uri() . '/assets/owl-carousel/owl.carousel.css', array(), '', 'all' );
 
     // Comment reply script for threaded comments
     if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
