@@ -458,22 +458,43 @@ function events_ajax() {
 	$loop = new WP_Query($args);
 	$array = array();
 	while ($loop->have_posts()) : $loop->the_post();
-		global $events;
-		$date = get_post_meta(get_the_ID(), 'wpsc_start_date', true);
-		$result = explode("/", $date);
-		$day = $result[1];
-		$month = $result[0];
-		$year = $result[2];
-		$array[] = array(
-			'day'=> $day,
-			'month'=> $month,
-			'year'=> $year,
-			'title' => get_the_title(),
-			'description' => get_the_excerpt($post),
-		);
-
-		echo "<br>";
+	global $events;
+	$date = get_post_meta(get_the_ID(), 'wpsc_start_date', true);
+	$result = explode("/", $date);
+	$day = $result[1];
+	$month = $result[0];
+	$year = $result[2];
+	$array[] = array(
+		'day'=> $day,
+		'month'=> $month,
+		'year'=> $year,
+		'title' => get_the_title(),
+		'description' => get_the_excerpt($post),
+	);
+	echo "<br>";
 	endwhile;
+
+	// $file = get_template_directory_uri() . '/events.json';
+	// // Append a new person to the file
+	// $current .= $array;
+	// // Write the contents back to the file
+	// file_put_contents($file, $current);
+
+	$jsonfile = get_template_directory_uri() . '/events.json';
+	if (is_writable($jsonfile)) {
+		if (!$handle = fopen($jsonfile, 'a')) {
+			echo "Erreur!! Impossible d'ouvrir $jsonfile.";
+			exit;
+		}
+		if (fwrite($handle, $array) === FALSE) {
+			echo "Erreur !! Impossible d'écrire dans $jsonfile.";
+			exit;
+		}
+		echo "Succès !! L'écriture dans $jsonfile a réussi.";
+		fclose($handle);
+	} else {
+		echo "$jsonfile n'est pas accessible en écriture.";
+	}
 
 	wp_reset_query();
 	ob_clean();
