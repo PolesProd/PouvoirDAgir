@@ -472,8 +472,8 @@ function events_ajax() {
 			'description' => get_the_excerpt($post),
 		);
 
-		$storageLocation = $_SERVER['DOCUMENT_ROOT'] . '/wordpress/wp-content/themes/bakedwp/assets/data/';
-		$jsonfile = $storageLocation . 'test.json';
+		// $storageLocation = $_SERVER['DOCUMENT_ROOT'] . '/wordpress/wp-content/themes/bakedwp/assets/data/';
+		$jsonfile = 'events.json';
 		// Assurons nous que le fichier est accessible en écriture
 		if (is_writable($jsonfile)) {
 		// Dans notre exemple, nous ouvrons le fichier $jsonfile en mode d'ajout
