@@ -472,27 +472,26 @@ function events_ajax() {
 			'description' => get_the_excerpt($post),
 		);
 
-		// $storageLocation = $_SERVER['DOCUMENT_ROOT'] . '/wordpress/wp-content/themes/bakedwp/assets/data/';
-		$jsonfile = 'events.json';
-		// Assurons nous que le fichier est accessible en écriture
-		if (is_writable($jsonfile)) {
-		// Dans notre exemple, nous ouvrons le fichier $jsonfile en mode d'ajout
-		// Le pointeur de fichier est placé à la fin du fichier
-		// c'est là que $somecontent sera placé
-		// if (!$handle = fopen($jsonfile, 'w')) {
-		// 	echo "Impossible d'ouvrir le fichier ($jsonfile)";
+		// $jsonfile = 'events.json';
+		// // Assurons nous que le fichier est accessible en écriture
+		// if (is_writable($jsonfile)) {
+		// // Dans notre exemple, nous ouvrons le fichier $jsonfile en mode d'ajout
+		// // Le pointeur de fichier est placé à la fin du fichier
+		// // c'est là que $somecontent sera placé
+		// // if (!$handle = fopen($jsonfile, 'w')) {
+		// // 	echo "Impossible d'ouvrir le fichier ($jsonfile)";
+		// // 	exit;
+		// // }
+		// // Ecrivons quelque chose dans notre fichier.
+		// if (fwrite($handle, $array) === FALSE) {
+		// 	echo "Impossible d'écrire dans le fichier ($jsonfile)";
 		// 	exit;
 		// }
-		// Ecrivons quelque chose dans notre fichier.
-		if (fwrite($handle, $array) === FALSE) {
-			echo "Impossible d'écrire dans le fichier ($jsonfile)";
-			exit;
-		}
-			echo "L'écriture de ($array) dans le fichier ($jsonfile) a réussi";
-			fclose($handle);
-		} else {
-			echo "Le fichier $jsonfile n'est pas accessible en écriture.";
-		}
+		// 	echo "L'écriture de ($array) dans le fichier ($jsonfile) a réussi";
+		// 	fclose($handle);
+		// } else {
+		// 	echo "Le fichier $jsonfile n'est pas accessible en écriture.";
+		// }
 		echo "<br>";
 	endwhile;
 
