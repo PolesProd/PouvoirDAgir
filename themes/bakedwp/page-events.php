@@ -5,79 +5,118 @@ Template Name: Événements
 ?>
 
 <?php get_header(); ?>
-			<div class="hero">
-				<div class="row">
-					<div class="large-12 columns">
-						<h1><?php the_title(); ?></h1>
+  	<!-- sous header titre page -->
+		<div class="hero">
+			<div class="large-12 columns">
+				<h1><?php the_title(); ?></h1>
+			</div>
+		</div>
+	<!--FIN sous header titre page -->	
+	<!-- Calendrier evenement -->
+		<div id="content">
+			<div id="inner-content" >
+				<div class=" large-6 columns">
+					<div class="person-list">
+					</div>
+					<div class="list">
+					</div>
+				</div>
+				<div class="large-6 columns calend-color">
+					<div class="calendar hidden-print">
+						<header>
+							<h2 class="month"></h2>
+							<a class="btn-prev fontawesome-angle-left" href="#"></a>
+							<a class="btn-next fontawesome-angle-right" href="#"></a>
+						</header>
+					<table>
+						<thead class="event-days">
+							<tr></tr>
+						</thead>
+						<tbody class="event-calendar">
+							<tr class="1"></tr>
+							<tr class="2"></tr>
+							<tr class="3"></tr>
+							<tr class="4"></tr>
+							<tr class="5"></tr>
+						</tbody>
+					</table>
 					</div>
 				</div>
 			</div>
-
-			<div id="content">
-				<div id="inner-content" class="row">
-				    <div id="main" class="large-12 medium-10 small-centered columns" role="main">
-							<div class="columns">
-								<div class="row">
+		</div>
+		<!-- FIN Calendrier evenement -->
+		<!-- Barre de navigation des evenemnt "TAG ET CATEGORIE" -->
+		<div class="barre medium-12 large-12 columns">
+			<ul class="btn-barre">
+				<li>analyse</li>
+				<li>methodologie</li>
+				<li>temoignage</li>
+			</ul>
+			<ul class="barre-cate">
+				<li class="barre-cate">categorie</li>
+				<li>categorie</li>
+				<li>categorie</li>
+				<li>categorie</li>
+			</ul>
+		</div>
+		<!-- FIN Barre de navigation des evenemnt "TAG ET CATEGORIE" -->
+		<!-- Les tuiles devenement -->
+		<div id="inner-content" class="centerArt">
+			<div id="main" class="large-12 medium-10 small-centered columns" role="main">
+				<div class="columns">
+						<div class="relativArt">
+							<?php
+								$args = array( 'post_type' => 'events', 'posts_per_page' => 10 );
+								$loopy = new WP_Query( $args );
+								$count = 1;
+								if($loopy->have_posts()){
+									while ( $loopy->have_posts() ) {
+									$loopy->the_post();
+									echo '<div class="events large-3 medium-3 columns small-centered">';
+									$id = get_the_ID();
+								?>
+								<div class="dateArt">
+									<div class="auteurArt"><?php the_author(); ?>
+									</div>
+									<div class="positionDate">
 										<?php
-				            $args = array( 'post_type' => 'events', 'posts_per_page' => 10 );
-				            $loopy = new WP_Query( $args );
-				            $count = 1;
-				            if($loopy->have_posts()){
-				              while ( $loopy->have_posts() ) {
-				                  $loopy->the_post();
-				                  echo '<div class="events">';
-				                      $id = get_the_ID();
-				                      /*echo 'Evenement n<sup>o</sup> '.$count.'<br>';*/
-				                      ?>
-				                      <div class="imgArticle" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-				        							</div><!-- Fin de la div imgArticle --><br>
-				                      <?php the_title(); ?><br>
-															<?php the_category(); ?>
-				                      <?php the_excerpt();?>
-															 <?php the_author(); ?>
-															<div class="">
-																<?php
-																	// date
-																	// See if event is single day or multiple day
-																	if( !strlen( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) ) {
-																		// single day event
-																		$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
-																		// echo date_i18n(get_option('date_format') ,strtotime("11/15-1976"));?
-																	} else {
-																		// multi day event
-																		$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
-																		$date .= ' - ';
-																		$date .= date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) );
-																	}
-
-																	// time
-																	// see if there's a time
-																	if( strlen( get_post_meta( get_the_ID(), 'wpsc_start_time', true ) ) ) {
-																		$time = '<br />' . date( 'G:i', strtotime( get_post_meta( get_the_ID(), 'wpsc_start_time', true ) ) );
-																	}
-																	// see if there's a time
-																	if( strlen( get_post_meta( get_the_ID(), 'wpsc_end_time', true ) ) ) {
-																		$time .= ' - ' . get_post_meta( get_the_ID(), 'wpsc_end_time', true );
-																	}
-																	echo $date;
-																	echo "<br/>";
-																	if( isset( $time ) )
-																		echo $time;
-																?>
-																</p>
-															</div><!-- Fin de la div metaArticle -->
-<?php
-				                      $count++;
-				                  echo '</div>';
-				              }
-				            }
-				            else{
-				              echo 'Sorry no post matched';
-				            }
-				             ?>
+											if( !strlen( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) ) {
+												// single day event
+												$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
+											} else {
+												$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
+												$date .= ' - ';
+												$date .= date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) );
+											}
+											echo $date;
+										?>
 								</div>
 							</div>
-    				</div> <!-- end #main -->
-				</div> <!-- end #inner-content -->
-			</div> <!-- end #content -->
+							<br>
+							<div class="titreArt">
+								<?php the_title(); ?>
+								<?php the_category(); ?>
+							</div>
+							<div class="tagArt">
+								<ul>
+									<li>Tag</li>
+									<li>Tag</li>
+									<li>Tag</li>
+								</ul>
+							</div>
+							<div class="partage">
+							</div>
+						</div>
+					<?php $count++;
+						}
+						}
+						else{
+						echo 'Sorry no post matched';
+						}
+					?>
+				</div>
+ 				 <button class="btnArt">voir plus d'article</button>
+			</div>
+		</div>
+		<!--FIN Les tuiles devenement -->
 <?php get_footer(); ?>

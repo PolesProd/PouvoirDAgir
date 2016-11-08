@@ -16,7 +16,7 @@
 }
 
 /**********************\
-			TYPOGRAPHIES
+		TYPOGRAPHIES
 \**********************/
 
 
@@ -307,4 +307,157 @@ header .thumbnail{
 .ressources-box{
 	background-color: white;
   height: 10vw;
+}
+/**********************\
+    evenement
+\**********************/
+.barre{
+	background: #6c5c9f;
+	height: 260px;
+}
+.btn-barre li{
+	text-align: center;
+	list-style: none;
+	text-decoration: none;
+	display: inline-block;
+	 background: #fff2df;
+    height: 33px;
+    width: 140px;
+    color: black;
+    margin-left:20px;
+    text-transform: uppercase; 
+     padding-top: 4px;
+}
+.btn-barre{
+	text-align: center;
+	padding-top: 30px;
+}
+.barre-cate li {
+	text-align: center;
+	list-style: none;
+	text-decoration: none;
+	display: inline-block;
+	height: 25px;
+    width: 120px;
+    border: solid 1px ;
+    margin-left: 11px;
+    color: #fff2df;
+
+}
+.barre-cate{
+	text-align: center;
+	text-transform: uppercase;
+}
+#evenement{
+	    background: #fff2df;
+	    text-align: center;
+}
+.article{
+	height: 260px;
+    width: 375px;
+	background:white;
+	border: solid 1px;
+	margin-left: 100px;
+	display: inline-block;
+	margin-bottom: 45px;
+	padding-top: 10px;
+
+}
+.article li {
+	text-align: center;
+	list-style: none;
+	text-decoration: none;
+	display: inline-block;
+	border: solid 1px;
+}
+h5{
+	text-align: left;
+	color: #F82034;
+	margin-left: 20px;
+}
+.even-tag li {
+	color: grey;
+	width:60px;
+	text-transform: uppercase;
+}
+.even-tag {
+	text-align: left;
+	 margin-top: 35px;
+}
+#evenement button{
+	display: block;
+	margin :auto;
+}
+.partage{
+	background: grey;
+    height: 35px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.events{
+	background: #fff2df;
+    display: inline-block;
+    margin-bottom: 35px;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid 1px #6c5c9f;
+    height: 260px;
+}
+.auteurArt{
+	border: solid 1px red;
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+    position: static;
+    float: left;
+
+}
+
+.positionDate{
+	display: inline-block;
+	border: solid 1px red;
+	position: static;
+    float: right;
+
+}
+.centerArt{
+	    text-align: center;
+	    background: #fff2df;
+}
+.titreArt{
+	    text-transform: capitalize;
+	    color: #ac1624;
+	     font-size: 25px;
+	     margin-bottom: 70px;
+	     text-align: left;
+}
+.tagArt{
+	text-align: left;
+}
+.tagArt li{
+	text-align: center;
+	border:solid 1px grey;
+	display: inline-block;
+	width: 55px;
+	text-transform: uppercase;
+}
+.relativArt{
+	 position: relative;
+    top: -105px;
+}
+.btnArt{
+	background: rgb(108, 92, 159);
+    height: 75px;
+    width: 340px;
+    text-transform: uppercase;
+    font-weight: bold;
+     font-size: 1.5rem;
+}
+/*//////CALENDRIER/////*/
+.calend-color{
+	background: grey;
 }
