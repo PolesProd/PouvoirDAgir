@@ -459,9 +459,10 @@ h5{
     background: #c3bcbc;
     height: 42px;
     width: 100%;
+    text-align: center;
 }
 .shareImg img {
-    width: 85px;
+    width: 5.0rem;
     position: relative;
     top: -18px;
 }
@@ -488,7 +489,7 @@ h5{
     text-align: center;
     display: inline-block;
     position: static;
-    float: left;
+    float: right;
 
 }
 .derArt{
@@ -501,7 +502,7 @@ h5{
 	display: inline-block;
 	border: solid 1px red;
 	position: static;
-    float: right;
+    float: left;
     padding-left: 10px;
     padding-right: 10px;
 
@@ -530,7 +531,7 @@ h5{
 }
 .relativArt{
 	 position: relative;
-    top: -105px;
+    top: -62px;
 }
 .btnArt{
 	background: rgb(108, 92, 159);
@@ -542,5 +543,11 @@ h5{
 }
 .calend-color{
 	background: grey;
+}
+#btnRessource button{
+	background: rgba(255, 255, 239, 1);
+	margin-left: 5px;
+	color: black;
+	text-transform: uppercase;
 }
 /*//////FIN PAGE EVENEMENT/////*/

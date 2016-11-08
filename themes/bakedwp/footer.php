@@ -7,9 +7,9 @@
 								</div>
 								</div>
 							<div class="small-4 columns">
-								<ul id="social-box" class="Back-Red-Dark colorBoxContours title-area">
-									<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank">Facebook</a></li>
-									<li><a href="https://twitter.com/collectif_pa" target="_blank">Twitter</a></li>
+								<ul id="social-box" class="text-White Back-Purple-Light text-Red-Light medium-1 columns title-area">
+									<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank"><span style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/facebook-white.png');"></span></a></li>
+									<li><a href="https://twitter.com/collectif_pa" target="_blank"><span style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/twitter-white.png');"></span></a></li>
 								</ul>
 							</div>
 							<div class="Back-Red-Light small-4 columns">

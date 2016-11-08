@@ -35,8 +35,8 @@
 					<a href="*">Newsletter</a>
 				</div>
 				<ul id="social-box" class="text-White Back-Purple-Light text-Red-Light medium-1 columns title-area">
-					<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank">Facebook</a></li>
-					<li><a href="https://twitter.com/collectif_pa" target="_blank">Twitter</a></li>
+					<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank"><span style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/facebook-white.png');"></span></a></li>
+					<li><a href="https://twitter.com/collectif_pa" target="_blank"><span style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/twitter-white.png');"></span></a></li>
 				</ul>
 				<div class="Back-White-Mid btn-box medium-1 columns">
 					<button><i class="text-Red-Light fi-magnifying-glass large"></i></button>
