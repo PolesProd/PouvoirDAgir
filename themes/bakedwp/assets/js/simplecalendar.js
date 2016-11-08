@@ -4,7 +4,7 @@
 		if (ajax) {
 	      // ajax call to print json
 	      $.ajax({
-	  				url: 'wp-content/themes/bakedwp/assets/data/events.json',
+	  				url: 'wp-content/uploads/events.json',
 	  				type: 'GET',
 	  			})
 	  			.done(function(data) {
