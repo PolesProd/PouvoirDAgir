@@ -266,6 +266,7 @@
 	});
 })(jQuery);
 
+<<<<<<< HEAD
 
 
 /*jQuery(document).ready(function(){
@@ -295,3 +296,5 @@ function doAjaxRequest(){
 
 }
 */
+=======
+>>>>>>> Test fonction ajax
