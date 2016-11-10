@@ -18,40 +18,40 @@ Template Name: Accueil
 				    <div id="main" class="small-centered" role="main">
 
 							<!-- CAROUSSEL -->
-							<div class="" style="background:#67B7CF;"><!-- height:350px; -->
+							<div class=""><!-- height:350px; -->
 								<?php include get_template_directory().'/parts/include_caroussel.php'; ?>
 							</div>
 
 							<!-- RESSOURCES -->
 							<div>
-							  <div id="encartRessource" class="text-center small-12 medium-6 large-7 columns">
+							  <div id="encartRessource" class="Back-Purple-Light text-center small-12 medium-6 large-7 columns">
 									<h3>ressources</h3>
 									<div class="small-4 columns">
-										<div class="btn-box colorBoxContours">
+										<div class="btn-box ressources-box">
 											<h5>Analyses</h5>
 											<!-- <p><i class="fi-heart icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-4 columns">
-										<div class="btn-box colorBoxContours">
+										<div class="btn-box ressources-box">
 											<a href="#"><h5>Methodologie</h5></a>
 											<!-- <p><i class="fi-guide-dog icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-4 columns">
-										<div class="btn-box colorBoxContours">
+										<div class="btn-box ressources-box">
 											<a href="#"><h5>Temoignages</h5></a>
 											<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
 										</div>
 									</div>
-									<div class="small-offset-2 small-4 columns ">
-										<div class="btn-box colorBoxContours">
+									<div class="small-offset-2 small-4 columns margin-top-17px ">
+										<div class="btn-box ressources-box">
 											<a href="#"><h5>Glossaire</h5></a>
 											<!-- <p><i class="fi-book icon-size-small"></i></p> -->
 										</div>
 									</div>
-									<div class="small-4 columns end">
-										<div class="btn-box colorBoxContours">
+									<div class="small-4 columns end margin-top-17px ">
+										<div class="btn-box ressources-box">
 											<a href="#"><h5>Galeries</h5></a>
 											<!-- <p><i class="fi-photo icon-size-small"></i></p> -->
 										</div>
