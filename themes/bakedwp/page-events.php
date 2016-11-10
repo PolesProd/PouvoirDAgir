@@ -15,13 +15,13 @@ Template Name: Événements
 	<!-- Calendrier evenement -->
 		<div id="content">
 			<div id="inner-content" >
-				<div class=" large-6 columns">
+				<div class="derArt text-center small-12 medium-6 large-6 columns">
 					<div class="person-list">
 					</div>
 					<div class="list">
 					</div>
 				</div>
-				<div class="large-6 columns calend-color">
+				<div class="small-12 medium-6 large-6 columns">
 					<div class="calendar hidden-print">
 						<header>
 							<h2 class="month"></h2>
@@ -48,9 +48,11 @@ Template Name: Événements
 		<!-- Barre de navigation des evenemnt "TAG ET CATEGORIE" -->
 		<div class="barre medium-12 large-12 columns">
 			<ul class="btn-barre">
-				<li>analyse</li>
-				<li>methodologie</li>
-				<li>temoignage</li>
+				<li><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/analyse-purple.png" alt="" />analyse</li>
+				<li><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/methodologie-purple.png" alt="" />methodologie</li>
+				<li><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/temoignage-purple.png" alt="" />
+				temoignage</li>
+				<div class="plus"><a href="">+</a></div>
 			</ul>
 			<ul class="barre-cate">
 				<li class="barre-cate">categorie</li>
@@ -104,8 +106,11 @@ Template Name: Événements
 									<li>Tag</li>
 								</ul>
 							</div>
-							<div class="partage">
-							</div>
+								<div class="shareImg">
+									<p><a href="">	<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/newsletter-black.png" alt="" /></a></p>
+									<p><a href=""><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/facebook-black.png" alt="" /></a></p>
+									<p><a href=""><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/twitter-grey.png" alt="" /></a></p>
+								</div>
 						</div>
 					<?php $count++;
 						}

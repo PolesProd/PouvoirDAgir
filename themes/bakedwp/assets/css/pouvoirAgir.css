@@ -122,6 +122,7 @@ header .thumbnail{
 	font-size:1vw;
 }
 
+
 @media only screen and (min-width: 64.0625em){
 	.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button){
 		color: black;
@@ -130,9 +131,22 @@ header .thumbnail{
 #topConnexion li a{
 	font-size: 1.3vw;
 }
+/*SOCIAL BAR*/
+#social-box span{
+	background: none;
+	width: 45%;
+	height: 85px;
+	background-position: center;
+	background-size: cover;
+	display: inline-block;
+}
 #social-box{
+	height: 85px;
 	margin: 5px 0;
-  padding: 18px 0 17px;
+  /*padding: 18px 0 17px;*/
+}
+#social-box li{
+	display: inline;
 }
 
 				/***********SEARCH***********/
@@ -263,6 +277,7 @@ header .thumbnail{
 \**********************/
 #owl-demo .owl-item{
   display: inline;
+	height:800px;
 }
 #owl-demo .owl-item img, #owl-demo .owl-item > div{
     display: inline-block;
@@ -271,7 +286,7 @@ header .thumbnail{
 }
 #owl-demo .owl-item > div{
 	position: relative;
-  height:500px;
+  height:800px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -294,19 +309,26 @@ header .thumbnail{
     Encart ressource
 \**********************/
 #encartRessource{
-    height: 26.9vw;
+    height: 728px;
 }
 #encartRessource h3{
 	padding-left: 15px;
 	color: white;
-	margin-top: 15px;
+	margin-top: 36px;
+	margin-bottom: 30px;
+	font-size: 41px;
 }
 .margin-top-17px{
   margin-top: 17px;
 }
 .ressources-box{
 	background-color: white;
-  height: 10vw;
+  height: 225px;
+}
+#encartRessource img {
+    position: relative;
+    bottom: 41px;
+    width: 100%;
 }
 /**********************\
     evenement
@@ -317,31 +339,57 @@ header .thumbnail{
 }
 .btn-barre li{
 	text-align: center;
-	list-style: none;
-	text-decoration: none;
-	display: inline-block;
-	 background: #fff2df;
-    height: 33px;
-    width: 140px;
+    list-style: none;
+    text-decoration: none;
+    display: inline-block;
+    background: rgba(255, 255, 239, 1);
+    height: 50px;
+    width: 220px;
     color: black;
-    margin-left:20px;
-    text-transform: uppercase; 
-     padding-top: 4px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 18px;
+    padding-left: 57px;
+    position: relative;
+    padding-top: 15px;
+    
+}
+.plus{
+	position: absolute;
+    float: right;
+    height: 100px;
+    width: 100px;
+    background: white;
+    border-radius: 50%;
+    text-align: center;
+    padding: 10px;
+    font-size: 50px;
+    color: black;
+    margin-left: 70px;
+    display: inline-block;
 }
 .btn-barre{
 	text-align: center;
 	padding-top: 30px;
 }
+.btn-barre img{
+	 width: 62%;
+    position: absolute;
+    left: -38px;
+    top: -24px;
+}
 .barre-cate li {
 	text-align: center;
-	list-style: none;
-	text-decoration: none;
-	display: inline-block;
-	height: 25px;
-    width: 120px;
-    border: solid 1px ;
+    list-style: none;
+    text-decoration: none;
+    display: inline-block;
+    height: 40px;
+    width: 145px;
+    border: solid 1px;
     margin-left: 11px;
-    color: #fff2df;
+    color: rgba(255, 255, 239, 1);
+    font-size: 20px;
+    padding-top: 3px;
 
 }
 .barre-cate{
@@ -349,7 +397,7 @@ header .thumbnail{
 	text-transform: uppercase;
 }
 #evenement{
-	    background: #fff2df;
+	    background: rgba(255, 255, 239, 1);
 	    text-align: center;
 }
 .article{
@@ -389,15 +437,37 @@ h5{
 	margin :auto;
 }
 .partage{
-	background: grey;
+	background: #b9b7b7;
     height: 35px;
-    margin-top: 20px;
+    margin-top: 22px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
 }
+.partage img {
+    width: 30%;
+    position: absolute;
+}
+.partage li{
+	list-style: none;
+	position: relative;
+}
+.shareImg p {
+	display: inline-block;
+}
+.shareImg{
+    background: #c3bcbc;
+    height: 42px;
+    width: 100%;
+}
+.shareImg img {
+    width: 85px;
+    position: relative;
+    top: -18px;
+}
+
 .events{
-	background: #fff2df;
+	background: rgba(255, 255, 239, 1);
     display: inline-block;
     margin-bottom: 35px;
     margin-left: 20px;
@@ -406,6 +476,11 @@ h5{
     padding-right: 10px;
     border: solid 1px #6c5c9f;
     height: 260px;
+    height: 100%;
+    padding-bottom: 15px;
+}
+.events.large-3.medium-3.columns.small-centered {
+    margin-left: 50px;
 }
 .auteurArt{
 	border: solid 1px red;
@@ -416,24 +491,32 @@ h5{
     float: left;
 
 }
+.derArt{
+	 height: 495px;
+    background: rgba(255, 255, 239, 1);
+    border: solid 7px;
+}
 
 .positionDate{
 	display: inline-block;
 	border: solid 1px red;
 	position: static;
     float: right;
+    padding-left: 10px;
+    padding-right: 10px;
 
 }
 .centerArt{
 	    text-align: center;
-	    background: #fff2df;
+	    background: rgba(255, 255, 239, 1);
 }
 .titreArt{
 	    text-transform: capitalize;
 	    color: #ac1624;
 	     font-size: 25px;
-	     margin-bottom: 70px;
+	     margin-bottom: 50px;
 	     text-align: left;
+	     padding-top: 40px;
 }
 .tagArt{
 	text-align: left;
@@ -457,7 +540,7 @@ h5{
     font-weight: bold;
      font-size: 1.5rem;
 }
-/*//////CALENDRIER/////*/
 .calend-color{
 	background: grey;
 }
+/*//////FIN PAGE EVENEMENT/////*/
