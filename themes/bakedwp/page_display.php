@@ -14,7 +14,6 @@ $tab_taxo = explode(',',$str_taxo);
 $argsTaxo = array(
   'current_category' => 0
 );
-
 ?>
 <div class='button-group float-center'>
   <p>
