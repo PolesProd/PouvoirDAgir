@@ -1,4 +1,5 @@
 <?php
+
     /* Template Name: Ressources */
 ?>
 <?php get_header(); 
@@ -7,10 +8,9 @@ $string_arr = implode(',',$post_type);
 $tab_array = explode(',',$string_arr);
 ?>
   <div id="content">
-     <div id="inner-content" class="row">
-        <div id="main" class="large-10 medium-10 small-centered columns" role="main">
+    <div class="barre medium-12 large-12 columns" id="btnRessource">
          <div class='button-group float-center'>
-          <p>
+          <p class="btn-barre">
             <button  data-filter="*">Toutes Les Catégories</button><?php
               $terms = get_terms( array(
                 'taxonomy' => array('analyse','methodologie','temoignage'),
@@ -24,42 +24,53 @@ $tab_array = explode(',',$string_arr);
           </p>
         </div>
           <div class='button-group float-center'>
-            <p>
+
+            <p class="barre-cate">
               <button  data-filter="*">Tous Les Post Type</button><?php
                 foreach($tab_array as $menu){
                   if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
                   }else{
                     echo '<button  data-filter=".'.$menu.'">'.$menu.'</button>';
                   }
-                }?>
+                }
+                ?>
             </p>
           </div>
-<?php
-
+          </div>   
+          <div id="inner-content" class="centerArt">
+      <div id="main" class="large-12 medium-10 small-centered columns" role="main">
+        <div class="columns">
+            <div class="relativArt"> 
+             <?php
                   foreach($tab_array as $menu){
                     if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
                     }else{
-                    //var_dump($ajax_query);
-                    ?>
-                      <div class="isotope">
-                       <div class="<?=$menu;?>" style='border:solid 1px #ccc;'>
-                        <?php
-                          $var = str_replace(' ','_',$menu);
-                          $args = array( 'post_type' => $var,
-                                  'posts_per_page' => 9,
-                                  );
-                          //print_r($args);
-                         
-                          include get_template_directory().'/parts/loop-posts.php';
-                          echo '</div>';?>
-                        </div><?php
-                                
+              ?>
+              
+                      <div class="  isotope">
+                       <div class="<?=$menu;?>" >
+                         <?php
+                            $var = str_replace(' ','_',$menu);
+                            $args = array( 'post_type' => $menu,
+                                    'posts_per_page' => 9,
+                                    );
+                            include get_template_directory().'/parts/loop-posts.php';
+                            echo '</div>'
+                          ;?>
+                          <a href="?page_id=47">Lire &raquo;</a>
+                        </div>
+                        <?php     
+
                               }
                             }
                       //}?>
         
-        <!--Fin Div Méthodologie -->
-    </div> <!-- end #main -->
-  </div> <!-- end #inner-content -->
-</div> <!-- end #content -->
+
+       </div> 
+       </div> 
+       </div>
+        </div> 
+    </div> 
+  </div> 
+</div> 
 <?php get_footer(); ?>

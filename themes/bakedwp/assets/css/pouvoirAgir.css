@@ -459,7 +459,10 @@ h5{
     background: #c3bcbc;
     height: 42px;
     width: 100%;
+<<<<<<< HEAD
     text-align: center;
+=======
+>>>>>>> version css/html lundi 14novembre2016
 }
 .shareImg img {
     width: 5.0rem;
@@ -544,6 +547,7 @@ h5{
 .calend-color{
 	background: grey;
 }
+<<<<<<< HEAD
 #btnRessource button{
 	background: rgba(255, 255, 239, 1);
 	margin-left: 5px;
@@ -551,3 +555,6 @@ h5{
 	text-transform: uppercase;
 }
 /*//////FIN PAGE EVENEMENT/////*/
+=======
+/*//////FIN PAGE EVENEMENT/////*/
+>>>>>>> version css/html lundi 14novembre2016

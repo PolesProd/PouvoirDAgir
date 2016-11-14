@@ -78,8 +78,6 @@ Template Name: Événements
 									$id = get_the_ID();
 								?>
 								<div class="dateArt">
-									<div class="auteurArt"><?php the_author(); ?>
-									</div>
 									<div class="positionDate">
 										<?php
 											if( !strlen( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) ) {
@@ -87,12 +85,14 @@ Template Name: Événements
 												$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
 											} else {
 												$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
-												$date .= ' - ';
+												$date .= ' / ';
 												$date .= date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) );
 											}
 											echo $date;
 										?>
 								</div>
+								<div class="auteurArt"><?php the_author(); ?>
+									</div>
 							</div>
 							<br>
 							<div class="titreArt">
