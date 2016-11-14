@@ -1,62 +1,64 @@
 <?php
     /* Template Name: Ressources */
 ?>
-<?php get_header(); ?>
+<?php get_header(); 
+$post_type = get_post_types();
+$string_arr = implode(',',$post_type);
+$tab_array = explode(',',$string_arr);
+?>
   <div id="content">
      <div id="inner-content" class="row">
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
-          <div class="analyse" style='border:solid 1px #ccc;'>
-        <?php
-
-          //Analyse
-          // $sqlTemoignage = $wpdb->get_results('SELECT * FROM  wp_term_taxonomy WHERE  taxonomy =  "analyse"');
-          // $countTemoignage = count($sqlTemoignage);
-          // for($i=0;$i <$countTemoignage;$i++){
-            $args = array( 'post_type' => 'analyse',
-              'posts_per_page' => 2,
-              );
-            include get_template_directory().'/parts/loop-posts.php';
-          //}?>
-            <form action="?page_id=47" method="post">
-              <input type="hidden" value="<?= $taxo; ?>" name="post_type">
-              <input type="submit" value="En Voir plus">
-            </form>
+         <div class='button-group float-center'>
+          <p>
+            <button  data-filter="*">Toutes Les Catégories</button><?php
+              $terms = get_terms( array(
+                'taxonomy' => array('analyse','methodologie','temoignage'),
+                'hide_empty' => false,
+              ) );
+              for($j = 0; $j < sizeof($terms);$j++){
+                $var = str_replace(array(' ','-'),'_',$terms[$j]->slug);
+                echo '<button  data-filter=".'.$var.'">'.$var.'</button>';
+              }
+            ?>
+          </p>
         </div>
+          <div class='button-group float-center'>
+            <p>
+              <button  data-filter="*">Tous Les Post Type</button><?php
+                foreach($tab_array as $menu){
+                  if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
+                  }else{
+                    echo '<button  data-filter=".'.$menu.'">'.$menu.'</button>';
+                  }
+                }?>
+            </p>
+          </div>
+<?php
+
+                  foreach($tab_array as $menu){
+                    if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
+                    }else{
+                    //var_dump($ajax_query);
+                    ?>
+                      <div class="isotope">
+                       <div class="<?=$menu;?>" style='border:solid 1px #ccc;'>
+                        <?php
+                          $var = str_replace(' ','_',$menu);
+                          $args = array( 'post_type' => $var,
+                                  'posts_per_page' => 9,
+                                  );
+                          //print_r($args);
+                         
+                          include get_template_directory().'/parts/loop-posts.php';
+                          echo '</div>';?>
+                        </div><?php
+                                
+                              }
+                            }
+                      //}?>
+        
         <!--Fin Div Méthodologie -->
-
-         <!-- METHODO LOOP -->
-        <div id="methodologie" style='border:solid 1px #ccc;'>
-        <?php
-          $args = array( 'post_type' => 'methodologie', 'posts_per_page' => 3, );
-          include get_template_directory().'/parts/loop-posts.php';
-        // }?>
-        <form action="?page_id=47" method="post">
-          <input type="hidden" value="<?= $taxo; ?>" name="post_type">
-
-          <input type="submit" value="En Voir plus">
-        </form>
-      </div><!--Fin Div Méthodologie -->
-
-      <div class="temoignage" style='border:solid 1px #ccc;'>
-
-        <?php
-        //Témoignage
-        // $sqlTemoignage = $wpdb->get_results('SELECT * FROM  wp_term_taxonomy WHERE  taxonomy =  "temoignage"');
-        // $countTemoignage = count($sqlTemoignage);
-        // for($i=0;$i <$countTemoignage;$i++){
-          $args = array( 'post_type' => 'temoignage',
-            'posts_per_page' => 2,
-          );
-          include get_template_directory().'/parts/loop-posts.php';
-          echo $taxo;
-      //  }?>
-        <form action="?page_id=47" method="post">
-          <input type="hidden" value="<?= $taxo; ?>" name="post_type">
-          <input type="submit" value="En Voir plus">
-        </form>
-
-      </div>
-    </div> <!--Fin Div Témoignage -->
     </div> <!-- end #main -->
   </div> <!-- end #inner-content -->
 </div> <!-- end #content -->
