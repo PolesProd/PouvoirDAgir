@@ -7,15 +7,15 @@
         $loopy->the_post();
         if($post->post_type == 'analyse'){
           $termsFirst = wp_get_post_terms( $post->ID, 'analyse' );
-          $term = $termsFirst[0]->slug;
+          $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
           $post_type = 'analyse';
         }else if($post->post_type == 'methodologie'){
           $termsFirst = wp_get_post_terms( $post->ID, 'methodologie' );
-          $term = $termsFirst[0]->slug;
+          $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
           $post_type = 'methodologie';
         }else if($post->post_type == 'temoignage'){
           $termsFirst = wp_get_post_terms( $post->ID, 'temoignage' );
-          $term = $termsFirst[0]->slug;
+          $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
           $post_type = 'temoignage';
         }
           echo '<div class="ressource grid-item '.$post_type.' '. $term.'" data-category="transtition"">';
@@ -40,7 +40,7 @@
                 <!-- Catégorie / Taxonomy -->
                 <div class="large-4 columns ressource__taxonomy">
                   <div class="primary callout">
-                      <?php echo '<strong>'.$terms[0]->name.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong>'; ?>
+                      <?php echo '<strong>'.str_replace(array(' ','-'),'_',$terms[0]->name).'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong>'; ?>
                   </div>
                 </div><!-- Fin colonne catégorie / taxonomy -->
               </div> <!-- Fin structure Date et Catégorie -->
