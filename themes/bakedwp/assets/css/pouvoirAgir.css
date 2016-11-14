@@ -339,31 +339,57 @@ header .thumbnail{
 }
 .btn-barre li{
 	text-align: center;
-	list-style: none;
-	text-decoration: none;
-	display: inline-block;
-	 background: #fff2df;
-    height: 33px;
-    width: 140px;
+    list-style: none;
+    text-decoration: none;
+    display: inline-block;
+    background: rgba(255, 255, 239, 1);
+    height: 50px;
+    width: 220px;
     color: black;
-    margin-left:20px;
-    text-transform: uppercase; 
-     padding-top: 4px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 18px;
+    padding-left: 57px;
+    position: relative;
+    padding-top: 15px;
+    
+}
+.plus{
+	position: absolute;
+    float: right;
+    height: 100px;
+    width: 100px;
+    background: white;
+    border-radius: 50%;
+    text-align: center;
+    padding: 10px;
+    font-size: 50px;
+    color: black;
+    margin-left: 70px;
+    display: inline-block;
 }
 .btn-barre{
 	text-align: center;
 	padding-top: 30px;
 }
+.btn-barre img{
+	 width: 62%;
+    position: absolute;
+    left: -38px;
+    top: -24px;
+}
 .barre-cate li {
 	text-align: center;
-	list-style: none;
-	text-decoration: none;
-	display: inline-block;
-	height: 25px;
-    width: 120px;
-    border: solid 1px ;
+    list-style: none;
+    text-decoration: none;
+    display: inline-block;
+    height: 40px;
+    width: 145px;
+    border: solid 1px;
     margin-left: 11px;
-    color: #fff2df;
+    color: rgba(255, 255, 239, 1);
+    font-size: 20px;
+    padding-top: 3px;
 
 }
 .barre-cate{
@@ -371,7 +397,7 @@ header .thumbnail{
 	text-transform: uppercase;
 }
 #evenement{
-	    background: #fff2df;
+	    background: rgba(255, 255, 239, 1);
 	    text-align: center;
 }
 .article{
@@ -411,15 +437,37 @@ h5{
 	margin :auto;
 }
 .partage{
-	background: grey;
+	background: #b9b7b7;
     height: 35px;
-    margin-top: 20px;
+    margin-top: 22px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
 }
+.partage img {
+    width: 30%;
+    position: absolute;
+}
+.partage li{
+	list-style: none;
+	position: relative;
+}
+.shareImg p {
+	display: inline-block;
+}
+.shareImg{
+    background: #c3bcbc;
+    height: 42px;
+    width: 100%;
+}
+.shareImg img {
+    width: 5.0rem;
+    position: relative;
+    top: -18px;
+}
+
 .events{
-	background: #fff2df;
+	background: rgba(255, 255, 239, 1);
     display: inline-block;
     margin-bottom: 35px;
     margin-left: 20px;
@@ -428,6 +476,11 @@ h5{
     padding-right: 10px;
     border: solid 1px #6c5c9f;
     height: 260px;
+    height: 100%;
+    padding-bottom: 15px;
+}
+.events.large-3.medium-3.columns.small-centered {
+    margin-left: 50px;
 }
 .auteurArt{
 	border: solid 1px red;
@@ -435,27 +488,35 @@ h5{
     text-align: center;
     display: inline-block;
     position: static;
-    float: left;
+    float: right;
 
+}
+.derArt{
+	 height: 495px;
+    background: rgba(255, 255, 239, 1);
+    border: solid 7px;
 }
 
 .positionDate{
 	display: inline-block;
 	border: solid 1px red;
 	position: static;
-    float: right;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
 
 }
 .centerArt{
 	    text-align: center;
-	    background: #fff2df;
+	    background: rgba(255, 255, 239, 1);
 }
 .titreArt{
 	    text-transform: capitalize;
 	    color: #ac1624;
 	     font-size: 25px;
-	     margin-bottom: 70px;
+	     margin-bottom: 50px;
 	     text-align: left;
+	     padding-top: 40px;
 }
 .tagArt{
 	text-align: left;
@@ -479,7 +540,7 @@ h5{
     font-weight: bold;
      font-size: 1.5rem;
 }
-/*//////CALENDRIER/////*/
 .calend-color{
 	background: grey;
 }
+/*//////FIN PAGE EVENEMENT/////*/
