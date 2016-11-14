@@ -28,35 +28,41 @@ Template Name: Accueil
 									<h3>ressources</h3>
 									<div class="small-4 columns">
 										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/analyse-purple.png" alt="" />
-											<!-- <h5>Analyses</h5> -->
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/analyse-purple.png" alt="" />
+											</a><!-- <h5>Analyses</h5> -->
 											<!-- <p><i class="fi-heart icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-4 columns">
 										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/methodologie-purple.png" alt="" />
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/methodologie-purple.png" alt="" />
+											</a>
 											<!-- <p><i class="fi-guide-dog icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-4 columns">
 										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/temoignage-purple.png" alt="" />
-
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/temoignage-purple.png" alt="" />
+											</a>
 											<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-offset-2 small-4 columns margin-top-17px ">
 										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/glossaire-purple.png" alt="" />
-
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/glossaire-purple.png" alt="" />
+											</a>
 											<!-- <p><i class="fi-book icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-4 columns end margin-top-17px ">
 										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/galerie-purple.png" alt="" />
-
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/galerie-purple.png" alt="" />
+											</a>
 											<!-- <p><i class="fi-photo icon-size-small"></i></p> -->
 										</div>
 									</div>

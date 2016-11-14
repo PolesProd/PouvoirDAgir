@@ -325,8 +325,9 @@ header .thumbnail{
 	background-color: white;
   height: 225px;
 }
-#encartRessource img {
-    position: relative;
-    bottom: 41px;
-    width: 100%;
+/**********************\
+    		FOOTER
+\**********************/
+.box-height{
+	height: 7vw;
 }
