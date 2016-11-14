@@ -18,6 +18,9 @@ $tab_array = explode(',',$string_arr);
               ) );
               for($j = 0; $j < sizeof($terms);$j++){
                 $var = str_replace(array(' ','-'),'_',$terms[$j]->slug);
+                if($var === 'hello_world'){
+                  $var = 'hello';
+                }
                 echo '<button  data-filter=".'.$var.'">'.$var.'</button>';
               }
             ?>

@@ -8,6 +8,9 @@
         if($post->post_type == 'analyse'){
           $termsFirst = wp_get_post_terms( $post->ID, 'analyse' );
           $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
+          if($term === "hello_world"){
+            $term = 'hello';
+          }
           $post_type = 'analyse';
         }else if($post->post_type == 'methodologie'){
           $termsFirst = wp_get_post_terms( $post->ID, 'methodologie' );
@@ -40,7 +43,7 @@
                 <!-- Catégorie / Taxonomy -->
                 <div class="large-4 columns ressource__taxonomy">
                   <div class="primary callout">
-                      <?php echo '<strong>'.str_replace(array(' ','-'),'_',$terms[0]->name).'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong>'; ?>
+                      <?php echo '<strong>'.$term.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong>'; ?>
                   </div>
                 </div><!-- Fin colonne catégorie / taxonomy -->
               </div> <!-- Fin structure Date et Catégorie -->
