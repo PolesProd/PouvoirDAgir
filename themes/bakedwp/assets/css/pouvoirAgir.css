@@ -461,6 +461,7 @@ h5{
     width: 100%;
 }
 .shareImg img {
+
     width: 5.0rem;
     position: relative;
     top: -18px;
@@ -501,7 +502,7 @@ h5{
 	display: inline-block;
 	border: solid 1px red;
 	position: static;
-    float: left;
+    float: right;
     padding-left: 10px;
     padding-right: 10px;
 
