@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 /*
 Plugin Name: Fonctions WordPress
