@@ -12,8 +12,9 @@ $tab_taxo = explode(',',$str_taxo);
 $argsTaxo = array(
   'current_category' => 0
 );
-
+$posttags = get_the_tags();
 ?>
+<div class="barre medium-12 large-12">
 <div class='button-group float-center'>
   <p>
 <button  data-filter="*">Toutes Les Catégories</button><?php
@@ -36,8 +37,10 @@ $argsTaxo = array(
      echo '<button  data-filter=".'.$menu.'">'.$menu.'</button>';
     }
   }
-echo '</p></div>';
-echo '<div class="isotope">';
+echo '</p></div></div>';
+
+echo '<div class="isotope large-12 centerArt">';
+
 for($i = 0; $i<count($tab_array);$i++){
   $args = array(
       'post_type' => $tab_array[$i],
@@ -53,7 +56,7 @@ for($i = 0; $i<count($tab_array);$i++){
       // print_r($post);
       // echo '</p>';
       $cat = get_the_category($post->ID);?>
-       <div class="grid-item <?=$tab_array[$i];?> <?=$cat[0]->category_nicename;?> events" data-category='transtition' style="height: 240px !important;">
+       <div class="grid-item <?=$tab_array[$i];?> <?=$cat[0]->category_nicename;?> events medium-3" data-category='transtition' style="height: 240px !important;">
           <div class="dateArt">
             <?php echo '<div class="positionDate">'.$my_date.'</div>'; ?>
             <?php echo '<div class="auteurArt">'.$author.'</div>'; ?>
@@ -62,11 +65,7 @@ for($i = 0; $i<count($tab_array);$i++){
             <a href="<?php the_permalink();?>" class="titreArt"><?php the_title(); ?></a>
           </div>
           <div class="tagArt">
-            <ul>
-              <li>Tag</li>
-              <li>Tag</li>
-              <li>Tag</li>
-            </ul>
+            <?php the_tags( '<ul><li>', '</li><li>', '</li></ul>' ); ?>
           </div>
           <div class="shareImg">
             <p><a href="">  <img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/newsletter-black.png" alt="" /></a></p>
@@ -102,7 +101,7 @@ for($i = 0; $i<count($tab_array);$i++){
         }
           ?>
         
-      <div class="grid-item <?=$tab_array[$i] .' '. $terms;?> events" data-category='transtition' style="height: 240px !important;">
+      <div class="grid-item <?=$tab_array[$i] .' '. $terms;?> events medium-3" data-category='transtition' style="height: 240px !important;">
         <div class="dateArt">
           <?php echo '<div class="positionDate">'.$my_date.'</div>'; ?>
           <?php echo '<div class="auteurArt">'.$author.'</div>'; ?>
@@ -112,9 +111,7 @@ for($i = 0; $i<count($tab_array);$i++){
         </div>
         <div class="tagArt">
           <ul>
-            <li>Tag</li>
-            <li>Tag</li>
-            <li>Tag</li>
+            <?php the_tags( '<ul><li>', '</li><li>', '</li></ul>' ); ?>
           </ul>
         </div>
         <div class="shareImg">
