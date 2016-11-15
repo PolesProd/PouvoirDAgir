@@ -460,9 +460,13 @@ h5{
     height: 42px;
     width: 100%;
 <<<<<<< HEAD
+<<<<<<< HEAD
     text-align: center;
 =======
 >>>>>>> version css/html lundi 14novembre2016
+=======
+    text-align: center;
+>>>>>>> modif said 15/11/16
 }
 .shareImg img {
     width: 5.0rem;
@@ -492,7 +496,7 @@ h5{
     text-align: center;
     display: inline-block;
     position: static;
-    float: left;
+    float: right;
 
 }
 .derArt{
@@ -548,13 +552,20 @@ h5{
 	background: grey;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> modif said 15/11/16
 #btnRessource button{
 	background: rgba(255, 255, 239, 1);
 	margin-left: 5px;
 	color: black;
 	text-transform: uppercase;
 }
+<<<<<<< HEAD
 /*//////FIN PAGE EVENEMENT/////*/
 =======
 /*//////FIN PAGE EVENEMENT/////*/
 >>>>>>> version css/html lundi 14novembre2016
+=======
+/*//////FIN PAGE EVENEMENT/////*/
+>>>>>>> modif said 15/11/16
