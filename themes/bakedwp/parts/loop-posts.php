@@ -8,9 +8,6 @@
         if($post->post_type == 'analyse'){
           $termsFirst = wp_get_post_terms( $post->ID, 'analyse' );
           $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
-          if($term === "hello_world"){
-            $term = 'hello';
-          }
           $post_type = 'analyse';
         }else if($post->post_type == 'methodologie'){
           $termsFirst = wp_get_post_terms( $post->ID, 'methodologie' );
@@ -34,7 +31,7 @@
 
                 <!-- Date -->
                 <div class="large-4 columns ressource__date">
-
+               
                   <div class="primary callout">
                     <?php echo '<strong>'.$my_date.'</strong>'; ?>
                   </div>
@@ -42,8 +39,8 @@
 
                 <!-- Catégorie / Taxonomy -->
                 <div class="large-4 columns ressource__taxonomy">
-                  <div class="primary callout">
-                      <?php echo '<strong>'.$term.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong>'; ?>
+                  <div class="primary callout"><?php
+                          echo '<strong>'.$term.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong>';?>
                   </div>
                 </div><!-- Fin colonne catégorie / taxonomy -->
               </div> <!-- Fin structure Date et Catégorie -->
@@ -76,7 +73,7 @@
                       <!-- Colonne Titre -->
                       <div class="large-8 columns">
                        <div class="primary callout">
-                         <h2><?php the_title(); ?></h2>
+                         <h2><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h2>
                        </div>
                       </div><!-- Fin colonne titre -->
 

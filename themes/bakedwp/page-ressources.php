@@ -18,9 +18,6 @@ $tab_array = explode(',',$string_arr);
               ) );
               for($j = 0; $j < sizeof($terms);$j++){
                 $var = str_replace(array(' ','-'),'_',$terms[$j]->slug);
-                if($var === 'hello_world'){
-                  $var = 'hello';
-                }
                 echo '<button  data-filter=".'.$var.'">'.$var.'</button>';
               }
             ?>
@@ -55,14 +52,14 @@ $tab_array = explode(',',$string_arr);
                          
                           include get_template_directory().'/parts/loop-posts.php';
                           echo '</div>';?>
-                        </div><?php
-                                
+                        </div><a href="?page_id=47">En Voir plus &raquo;</a>
+<?php
+                                                        
                               }
                             }
                       //}?>
         
-        <!--Fin Div Méthodologie -->
-    </div> <!-- end #main -->
+      </div> <!-- end #main -->
   </div> <!-- end #inner-content -->
 </div> <!-- end #content -->
 <?php get_footer(); ?>
