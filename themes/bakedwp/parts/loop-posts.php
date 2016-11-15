@@ -31,7 +31,7 @@
 
                 <!-- Date -->
                 <div class="large-4 columns ressource__date">
-               
+
                   <div class="primary callout">
                     <?php echo '<strong>'.$my_date.'</strong>'; ?>
                   </div>
@@ -39,11 +39,12 @@
 
                 <!-- Catégorie / Taxonomy -->
                 <div class="large-4 columns ressource__taxonomy">
-                  <div class="primary callout"><?php
-                          echo '<strong>'.$term.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong>';?>
+                  <div class="primary callout">
+                      <?php echo '<strong>'.$term.'</strong> dans <strong>'.$myterms[0]->taxonomy.'</strong>'; ?>
                   </div>
                 </div><!-- Fin colonne catégorie / taxonomy -->
               </div> <!-- Fin structure Date et Catégorie -->
+
 
               <!-- Structure Principale (Extrait article) -->
               <div class="row">
@@ -74,6 +75,7 @@
                       <div class="large-8 columns">
                        <div class="primary callout">
                          <h2><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h2>
+
                        </div>
                       </div><!-- Fin colonne titre -->
 

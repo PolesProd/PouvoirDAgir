@@ -13,8 +13,13 @@
   position: relative;
   color: #0a0a0a;
   background-color: none;
-
 }
+
+/**********************\
+		TYPOGRAPHIES
+\**********************/
+
+
 	/**********************\
 MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 	\**********************/
@@ -28,10 +33,10 @@ MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 
 /*-_background_-*/
 .Back-Black-Dark{
-	background-color:#222;
+	background-color:#6c6c6a;
 }
 .Back-Black-Light{
-	background-color:#6E6E6E;
+	background-color:#bfbfbf;
 }
 .Back-Red-Light{
 	background-color:#F82034;
@@ -40,12 +45,23 @@ MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 	background-color:#6C0E17;
 }
 .Back-Purple-Light{
-	background-color:#7544D1;
+	background-color:#6c5c9f;
 }
 .Back-Purple-Dark{
 	background-color:#271645;
 }
+.Back-White-Light{
+	background-color:#fff8ee;
+}
+.Back-White-Mid{
+	background-color:#fff2df;
+}
+.Back-White-Dark{
 
+}
+/*.Back-White-Dark{
+	background-color:#fff8ee;
+}*/
 /*-_text_-*/
 .text-White, .text-White a, #Wrap-Header .text-White a{
 	color:#fff;
@@ -57,13 +73,17 @@ MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 	color:#6C0E17;
 }
 .text-Purple-Light{
-	color:#7544D1;
+	color:#6c5c9f;
 }
 .text-purple-Dark{
 	color:#271645;
 }
-
-
+.text-Black-Light{
+	color:#fff8ee;
+}
+.text-Black-Dark{
+	color:#fff2df;
+}
 
 /**********************\
 				HEADER
@@ -81,10 +101,16 @@ header .thumbnail{
 .align-middle li{
 	vertical-align: middle;
 }
-.top-bar,.top-bar-section ul li, #container .top-bar li a{
-	background: none;
+/*.top-bar-section ul li*/
+.top-bar, #container .top-bar li a{
+	background: inherit;
 }
-
+.top-bar-section ul li{
+	background-color: #6c6c6a;
+}
+#menu-item-37{
+	background-color: #F82034;
+}
 /*submenu style*/
 .top-bar-section .sub-menu li{
 	background-color:#6E6E6E;
@@ -92,13 +118,10 @@ header .thumbnail{
 .top-bar-section .sub-menu li:hover{
 	background-color:#222;
 }
-.top-bar-section ul li > a {
-	color: black;
-}
-
 #container header h3{
 	font-size:1vw;
 }
+
 
 @media only screen and (min-width: 64.0625em){
 	.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button){
@@ -108,10 +131,24 @@ header .thumbnail{
 #topConnexion li a{
 	font-size: 1.3vw;
 }
-#social-box{
-	margin: 5px 0;
-  padding: 18px 0 17px;
+/*SOCIAL BAR*/
+#social-box span{
+	background: none;
+	width: 45%;
+	height: 85px;
+	background-position: center;
+	background-size: cover;
+	display: inline-block;
 }
+#social-box{
+	height: 85px;
+	margin: 5px 0;
+  /*padding: 18px 0 17px;*/
+}
+#social-box li{
+	display: inline;
+}
+
 				/***********SEARCH***********/
 #headSearch{
 	display: none;
@@ -240,6 +277,7 @@ header .thumbnail{
 \**********************/
 #owl-demo .owl-item{
   display: inline;
+	height:800px;
 }
 #owl-demo .owl-item img, #owl-demo .owl-item > div{
     display: inline-block;
@@ -248,7 +286,7 @@ header .thumbnail{
 }
 #owl-demo .owl-item > div{
 	position: relative;
-  height:500px;
+  height:800px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -260,3 +298,250 @@ header .thumbnail{
 	height: 250px;
 	top: 250px;
 }
+#Wrap-Header nav section .name{
+	position: relative;
+	bottom: 20px;
+}
+#profil{
+	color:#F82034;
+}
+/**********************\
+    Encart ressource
+\**********************/
+#encartRessource{
+    height: 728px;
+}
+#encartRessource h3{
+	padding-left: 15px;
+	color: white;
+	margin-top: 36px;
+	margin-bottom: 30px;
+	font-size: 41px;
+}
+.margin-top-17px{
+  margin-top: 17px;
+}
+.ressources-box{
+	background-color: white;
+  height: 225px;
+}
+#encartRessource img {
+    position: relative;
+    bottom: 41px;
+    width: 100%;
+}
+/**********************\
+    evenement
+\**********************/
+.barre{
+	background: #6c5c9f;
+	height: 260px;
+}
+.btn-barre li{
+	text-align: center;
+    list-style: none;
+    text-decoration: none;
+    display: inline-block;
+    background: rgba(255, 255, 239, 1);
+    height: 50px;
+    width: 220px;
+    color: black;
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 18px;
+    padding-left: 57px;
+    position: relative;
+    padding-top: 15px;
+    
+}
+.plus{
+	position: absolute;
+    float: right;
+    height: 100px;
+    width: 100px;
+    background: white;
+    border-radius: 50%;
+    text-align: center;
+    padding: 10px;
+    font-size: 50px;
+    color: black;
+    margin-left: 70px;
+    display: inline-block;
+}
+.btn-barre{
+	text-align: center;
+	padding-top: 30px;
+}
+.btn-barre img{
+	 width: 62%;
+    position: absolute;
+    left: -38px;
+    top: -24px;
+}
+.barre-cate li {
+	text-align: center;
+    list-style: none;
+    text-decoration: none;
+    display: inline-block;
+    height: 40px;
+    width: 145px;
+    border: solid 1px;
+    margin-left: 11px;
+    color: rgba(255, 255, 239, 1);
+    font-size: 20px;
+    padding-top: 3px;
+
+}
+.barre-cate{
+	text-align: center;
+	text-transform: uppercase;
+}
+#evenement{
+	    background: rgba(255, 255, 239, 1);
+	    text-align: center;
+}
+.article{
+	height: 260px;
+    width: 375px;
+	background:white;
+	border: solid 1px;
+	margin-left: 100px;
+	display: inline-block;
+	margin-bottom: 45px;
+	padding-top: 10px;
+
+}
+.article li {
+	text-align: center;
+	list-style: none;
+	text-decoration: none;
+	display: inline-block;
+	border: solid 1px;
+}
+h5{
+	text-align: left;
+	color: #F82034;
+	margin-left: 20px;
+}
+.even-tag li {
+	color: grey;
+	width:60px;
+	text-transform: uppercase;
+}
+.even-tag {
+	text-align: left;
+	 margin-top: 35px;
+}
+#evenement button{
+	display: block;
+	margin :auto;
+}
+.partage{
+	background: #b9b7b7;
+    height: 35px;
+    margin-top: 22px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.partage img {
+    width: 30%;
+    position: absolute;
+}
+.partage li{
+	list-style: none;
+	position: relative;
+}
+.shareImg p {
+	display: inline-block;
+}
+.shareImg{
+    background: #c3bcbc;
+    height: 42px;
+    width: 100%;
+}
+.shareImg img {
+
+    width: 5.0rem;
+    position: relative;
+    top: -18px;
+}
+
+.events{
+	background: rgba(255, 255, 239, 1);
+    display: inline-block;
+    margin-bottom: 35px;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid 1px #6c5c9f;
+    height: 260px;
+    height: 100%;
+    padding-bottom: 15px;
+}
+.events.large-3.medium-3.columns.small-centered {
+    margin-left: 50px;
+}
+.auteurArt{
+	border: solid 1px red;
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+    position: static;
+    float: left;
+
+}
+.derArt{
+	 height: 495px;
+    background: rgba(255, 255, 239, 1);
+    border: solid 7px;
+}
+
+.positionDate{
+	display: inline-block;
+	border: solid 1px red;
+	position: static;
+    float: right;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.centerArt{
+	    text-align: center;
+	    background: rgba(255, 255, 239, 1);
+}
+.titreArt{
+	    text-transform: capitalize;
+	    color: #ac1624;
+	     font-size: 25px;
+	     margin-bottom: 50px;
+	     text-align: left;
+	     padding-top: 40px;
+}
+.tagArt{
+	text-align: left;
+}
+.tagArt li{
+	text-align: center;
+	border:solid 1px grey;
+	display: inline-block;
+	width: 55px;
+	text-transform: uppercase;
+}
+.relativArt{
+	 position: relative;
+    top: -105px;
+}
+.btnArt{
+	background: rgb(108, 92, 159);
+    height: 75px;
+    width: 340px;
+    text-transform: uppercase;
+    font-weight: bold;
+     font-size: 1.5rem;
+}
+.calend-color{
+	background: grey;
+}
+/*//////FIN PAGE EVENEMENT/////*/
