@@ -1,19 +1,19 @@
 					<footer class="footer" role="contentinfo">
-						<div class="Back-Red-Light small-12 comlomns text-center">
-							<div class="small-4 columns">
-								<div class="btn-box box-height Back-Black-Light">
+						<div class="small-12 comlomns text-center">
+							<div class="small-offset-1 small-4 columns">
+								<div class="box-height btn-box box-height Back-Black-Light">
 									<a href="#"><h5>Newsletter</h5></a>
 									<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
 								</div>
-								</div>
-							<div class="small-4 columns">
-								<ul id="social-box" class="box-height Back-Purple-Light medium-1 columns title-area">
-									<li style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/twitter-white.png');"><a class="box-height" href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank"></a></li>
-									<li style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/twitter-white.png');"><a class="box-height" href="https://twitter.com/collectif_pa" target="_blank"></a></li>
+							</div>
+							<div class="small-2 columns box-height">
+								<ul id="social-box-02" class="box-height btn-box text-White Back-Purple-Light text-Red-Light title-area">
+									<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank"><span style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/facebook-white.png');"></span></a></li>
+									<li><a href="https://twitter.com/collectif_pa" target="_blank"><span style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/twitter-white.png');"></span></a></li>
 								</ul>
 							</div>
-							<div class="Back-Red-Light small-4 columns">
-								<div class="btn-box colorBoxContours ">
+							<div class="padding-stuff Back-Red-Light small-4 columns end">
+								<div class="box-height margin-stuff colorBoxContours">
 									<a href="#"><h5>Adherer</h5></a>
 									<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
 								</div>
