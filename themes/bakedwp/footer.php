@@ -13,7 +13,7 @@
 								</ul>
 							</div>
 							<div class="Back-Red-Light small-4 columns">
-								<div class="btn-box colorBoxContours">
+								<div class="btn-box colorBoxContours ">
 									<a href="#"><h5>Adherer</h5></a>
 									<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
 								</div>
