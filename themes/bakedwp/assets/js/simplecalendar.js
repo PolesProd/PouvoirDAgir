@@ -265,36 +265,3 @@
 		calendar.init('ajax');
 	});
 })(jQuery);
-
-<<<<<<< HEAD
-
-
-/*jQuery(document).ready(function(){
-     jQuery('#json_click_handler').click(function(){
-          doAjaxRequest();
-     });
-});
-function doAjaxRequest(){
-
-     jQuery.ajax({
-          url: 'http://localhost/wordpress/wp-admin/admin-ajax.php',
-          data:{
-               'action':'do_ajax',
-               'fn':'get_latest_posts',
-               'count':10
-               },
-          dataType: 'JSON',
-          success:function(data){
-              jQuery("#json_response_box").html(data);
-         },
-          error: function(errorThrown){
-               alert('error');
-               console.log(errorThrown);
-          }
-
-     });
-
-}
-*/
-=======
->>>>>>> Test fonction ajax

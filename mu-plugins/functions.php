@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 /*
 Plugin Name: Fonctions WordPress
@@ -17,7 +18,6 @@ function query_post_type($query) {
     if($post_type)
       $post_type = $post_type;
     else
-      //
       $post_type = array('nav_menu_item');
     $query->set('post_type',$post_type);
     return $query;
@@ -205,18 +205,6 @@ if (is_writable($file)) {
 } else {
     echo "Le fichier $file n'est pas accessible en écriture.";
 }
-	// if (is_writable($file)) {
-	//  	$write = file_get_contents($file);
-	//  	$write .= $string;
-	//  	// FILE_APPEND pour rajouter à la suite du fichier et
-	//  	// LOCK_EX pour empêcher quiconque d'autre d'écrire dans le fichier en même temps
-	//  	file_put_contents($file, $write, FILE_APPEND | LOCK_EX);
-	//  		echo "Erreur !! Impossible d'écrire dans $file.";
-	//  		exit;
-	//  	echo "Succès !! L'écriture dans $file a réussi.";
-	// } else {
-	//  	echo "$file n'est pas accessible en écriture.";
-	// }
 }
 /*******************************************************
         Création du Custom Post(Evenement).
