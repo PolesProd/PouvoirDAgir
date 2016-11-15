@@ -173,7 +173,7 @@ header .thumbnail{
 }
 .margin-stuff{
 	padding: 5px;
-	margin: 0; 
+	margin: 0;
 }
 				/***********SEARCH***********/
 #headSearch{
@@ -189,6 +189,9 @@ header .thumbnail{
 /*HOME*/
 #encartRessource h3{
 	text-transform: uppercase;
+}
+#calendar td{
+	width: 73px;
 }
 /* Article
    ========================================================================== */
