@@ -1,94 +1,74 @@
 <?php
-/*
-Template Name: Événements
-*/
+    /* Template Name: Ressources */
 ?>
-
-<?php get_header(); ?>
-    <!-- sous header titre page -->
-    <div class="hero">
-      <div class="large-12 columns">
-        <h1><?php the_title(); ?></h1>
-      </div>
-    </div>
-  <!--FIN sous header titre page -->  
-    <!-- Barre de navigation des evenemnt "TAG ET CATEGORIE" -->
-    <div class="barre medium-12 large-12 columns">
-      <ul class="btn-barre">
-        <li><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/analyse-purple.png" alt="" />analyse</li>
-        <li><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/methodologie-purple.png" alt="" />methodologie</li>
-        <li><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/temoignage-purple.png" alt="" />
-        temoignage</li>
-        <div class="plus"><a href="">+</a></div>
-      </ul>
-      <ul class="barre-cate">
-        <li class="barre-cate">categorie</li>
-        <li>categorie</li>
-        <li>categorie</li>
-        <li>categorie</li>
-      </ul>
-    </div>
-    <!-- FIN Barre de navigation des evenemnt "TAG ET CATEGORIE" -->
-    <!-- Les tuiles devenement -->
-    <div id="inner-content" class="centerArt">
+<?php get_header(); 
+$post_type = get_post_types();
+$string_arr = implode(',',$post_type);
+$tab_array = explode(',',$string_arr);
+?>
+  <div id="content">
+    <div class="barre medium-12 large-12 columns" id="btnRessource">
+         <div class='button-group float-center'>
+          <p class="btn-barre">
+            <button  data-filter="*">Toutes Les Catégories</button><?php
+              $terms = get_terms( array(
+                'taxonomy' => array('analyse','methodologie','temoignage'),
+                'hide_empty' => false,
+              ) );
+              for($j = 0; $j < sizeof($terms);$j++){
+                $var = str_replace(array(' ','-'),'_',$terms[$j]->slug);
+                if($var === 'hello_world'){
+                  $var = 'hello';
+                }
+                echo '<button  data-filter=".'.$var.'">'.$var.'</button>';
+              }
+            ?>
+          </p>
+        </div>
+          <div class='button-group float-center'>
+            <p class="barre-cate">
+              <button  data-filter="*">Tous Les Post Type</button><?php
+                foreach($tab_array as $menu){
+                  if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
+                  }else{
+                    echo '<button  data-filter=".'.$menu.'">'.$menu.'</button>';
+                  }
+                }
+                ?>
+            </p>
+          </div>
+          </div>   
+          <div id="inner-content" class="centerArt">
       <div id="main" class="large-12 medium-10 small-centered columns" role="main">
         <div class="columns">
-            <div class="relativArt">
-              <?php
-                $args = array( 'post_type' => 'events', 'posts_per_page' => 10 );
-                $loopy = new WP_Query( $args );
-                $count = 1;
-                if($loopy->have_posts()){
-                  while ( $loopy->have_posts() ) {
-                  $loopy->the_post();
-                  echo '<div class="events large-3 medium-3 columns small-centered">';
-                  $id = get_the_ID();
-                ?>
-                <div class="dateArt">
-                  <div class="positionDate">
-                    <?php
-                      if( !strlen( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) ) {
-                        // single day event
-                        $date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ), 'dd-mm-Y');
-                      } else {
-                        $date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
-                        $date .= ' / ';
-                        $date .= date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) );
-                      }
-                      echo $date;
-                    ?>
-                </div>
-                <div class="auteurArt"><?php the_author(); ?>
-                  </div>
-              </div>
-              <br>
-              <div class="titreArt">
-                <?php the_title(); ?>
-                <?php the_category(); ?>
-              </div>
-              <div class="tagArt">
-                <ul>
-                  <li>Tag</li>
-                  <li>Tag</li>
-                  <li>Tag</li>
-                </ul>
-              </div>
-                <div class="shareImg">
-                  <p><a href="">  <img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/newsletter-black.png" alt="" /></a></p>
-                  <p><a href=""><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/facebook-black.png" alt="" /></a></p>
-                  <p><a href=""><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/twitter-grey.png" alt="" /></a></p>
-                </div>
-            </div>
-          <?php $count++;
-            }
-            }
-            else{
-            echo 'Sorry no post matched';
-            }
-          ?>
-        </div>
-         <button class="btnArt">voir plus d'article</button>
-      </div>
-    </div>
-    <!--FIN Les tuiles devenement -->
+            <div class="relativArt"> 
+             <?php
+                  foreach($tab_array as $menu){
+                    if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
+                    }else{
+              ?>
+              
+                      <div class="  isotope">
+                       <div class="<?=$menu;?>" >
+                         <?php
+                            $var = str_replace(' ','_',$menu);
+                            $args = array( 'post_type' => $menu,
+                                    'posts_per_page' => 9,
+                                    );
+                            include get_template_directory().'/parts/loop-posts.php';
+                            echo '</div>'
+                          ;?>
+                        </div>
+                        <?php     
+                              }
+                            }
+                      //}?>
+        
+       </div> 
+       </div> 
+       </div>
+        </div> 
+    </div> 
+  </div> 
+</div> 
 <?php get_footer(); ?>
