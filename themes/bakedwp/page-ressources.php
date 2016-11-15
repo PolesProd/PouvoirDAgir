@@ -57,6 +57,7 @@ $tab_array = explode(',',$string_arr);
                             include get_template_directory().'/parts/loop-posts.php';
                             echo '</div>'
                           ;?>
+                          <a href="?page_id=47">Lire &raquo;</a>
                         </div>
                         <?php     
 
