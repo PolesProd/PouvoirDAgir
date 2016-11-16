@@ -146,7 +146,7 @@ function call_events_ajax() {
 	);
 	$loop = new WP_Query($args);
 	$i = 0;
-	$file = plugins_url() . '/test.json';
+	$file = plugins_url() . '/test.txt';
 	$array = array();
 	while ($loop->have_posts()) : $loop->the_post();
 		global $events;
