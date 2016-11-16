@@ -930,3 +930,8 @@ function custom_js_to_head() {
     <?php
 }
 add_action('admin_head', 'custom_js_to_head');
+
+add_filter('term_links-post_tag','limit_to_three_tags');
+function limit_to_three_tags($terms) {
+return array_slice($terms,0,3,true);
+}

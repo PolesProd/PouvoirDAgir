@@ -24,7 +24,7 @@ Template Name: Accueil
 
 							<!-- RESSOURCES -->
 							<div>
-							  <div id="encartRessource" class="Back-Purple-Light ext-center small-12 medium-6 large-7 columns">
+							  <div id="encartRessource" class="Back-Purple-Light text-center small-12 medium-6 large-7 columns">
 									<h3>ressources</h3>
 									<div class="small-4 columns">
 										<div class="btn-box Back-White" alt="descritption" title="Analyse">

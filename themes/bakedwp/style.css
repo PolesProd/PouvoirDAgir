@@ -56,11 +56,12 @@ NAVIGATION STYLES
 HERO TEMPLATE STYLES
 *********************/
 .hero {
-  background: #008c9e;
-  color: #FFFFFF;
-  text-align: center;
+  background: #fff2df;
+  color: #BE0A25 ;
+  text-align: left;
   padding: 3rem 0;
-  margin-bottom: 1.5rem; }
+  margin-left: 25px;
+     }
   .hero .icon {
     font-size: 3.125rem;
     margin-right: 20px; }
@@ -70,13 +71,13 @@ HERO TEMPLATE STYLES
       color: #008c9e; }
   .hero h1 {
     text-transform: uppercase;
-    font-size: 3.125rem;
+    font-size: font-size: 2.25rem;
     margin-bottom: 0;
     line-height: 1;
     font-weight: 300 !important; }
     @media only screen and (min-width:40.0625em) {
       .hero h1 {
-        font-size: 5.625rem; } }
+        font-size: font-size: 2.25rem; } }
   .hero .subhead {
     margin-top: 0px;
     text-transform: uppercase;
@@ -84,7 +85,7 @@ HERO TEMPLATE STYLES
   .hero p {
     margin-bottom: 5px; }
   .hero h1, .hero h2, .hero h3, .hero h4, .hero p, .hero a {
-    color: #FFFFFF; }
+    color: #BE0A25; }
     .hero h1 span, .hero h2 span, .hero h3 span, .hero h4 span, .hero p span, .hero a span {
       font-weight: bold; }
 

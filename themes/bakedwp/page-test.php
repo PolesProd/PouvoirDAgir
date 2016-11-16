@@ -13,11 +13,6 @@
 <div id="content">
   <div id="inner-content" class="row">
     <div class="medium-6 large-4 columns">
-      <!--<label class="print pull-right">
-        <span class="print-btn hidden-print">Print your list!</span>
-      </label>
-      <h2>Liste Perso</h2>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>-->
       <div class="person-list"></div>
       <div class="list"></div>
     </div>
@@ -44,4 +39,137 @@
     </div>
   </div>
 </div>
+<section id="evenement" class="medium-12">
+  <div class="barre">
+    <ul class="btn-barre">
+      <li>analyse</li>
+      <li>methodologie</li>
+      <li>temoignage</li>
+    </ul>
+    <ul class="barre-cate">
+      <li class="barre-cate">categorie</li>
+      <li>categorie</li>
+      <li>categorie</li>
+      <li>categorie</li>
+    </ul>
+  </div>
+  <div class="article">
+    <ul>
+      <li>02/12/16</li>
+      <li>auteur</li>
+    </ul>
+    <h5>Compte-rendu d’intervention: Jean-Pierre Worms aux rencontres ConvivialistesLe Collectif organise 48</h5>
+    <ul class="even-tag">
+      <li>tag</li>
+      <li>tag</li>
+      <li>tag</li>
+    </ul>
+    <div class="partage">mail T F</div>
+  </div>
+    <div class="article">
+    <ul>
+      <li>02/12/16</li>
+      <li>auteur</li>
+    </ul>
+    <h5>Compte-rendu d’intervention: Jean-Pierre Worms aux rencontres ConvivialistesLe Collectif organise 48</h5>
+    <ul class="even-tag">
+      <li>tag</li>
+      <li>tag</li>
+      <li>tag</li>
+    </ul>
+    <div class="partage">mail T F</div>
+  </div>
+    <div class="article">
+    <ul>
+      <li>02/12/16</li>
+      <li>auteur</li>
+    </ul>
+    <h5>Compte-rendu d’intervention: Jean-Pierre Worms aux rencontres ConvivialistesLe Collectif organise 48</h5>
+    <ul class="even-tag">
+      <li>tag</li>
+      <li>tag</li>
+      <li>tag</li>
+    </ul>
+    <div class="partage">mail T F</div>
+  </div>
+   <div class="article">
+    <ul>
+      <li>02/12/16</li>
+      <li>auteur</li>
+    </ul>
+    <h5>Compte-rendu d’intervention: Jean-Pierre Worms aux rencontres ConvivialistesLe Collectif organise 48</h5>
+    <ul class="even-tag">
+      <li>tag</li>
+      <li>tag</li>
+      <li>tag</li>
+    </ul>
+    <div class="partage">mail T F</div>
+  </div>
+    <div class="article">
+    <ul>
+      <li>02/12/16</li>
+      <li>auteur</li>
+    </ul>
+    <h5>Compte-rendu d’intervention: Jean-Pierre Worms aux rencontres ConvivialistesLe Collectif organise 48</h5>
+    <ul class="even-tag">
+      <li>tag</li>
+      <li>tag</li>
+      <li>tag</li>
+    </ul>
+    <div class="partage">mail T F</div>
+  </div>
+    <div class="article">
+    <ul>
+      <li>02/12/16</li>
+      <li>auteur</li>
+    </ul>
+    <h5>Compte-rendu d’intervention: Jean-Pierre Worms aux rencontres ConvivialistesLe Collectif organise 48</h5>
+    <ul class="even-tag">
+      <li>tag</li>
+      <li>tag</li>
+      <li>tag</li>
+    </ul>
+    <div class="partage">mail T F</div>
+  </div>
+   <div class="article">
+    <ul>
+      <li>02/12/16</li>
+      <li>auteur</li>
+    </ul>
+    <h5>Compte-rendu d’intervention: Jean-Pierre Worms aux rencontres ConvivialistesLe Collectif organise 48</h5>
+    <ul class="even-tag">
+      <li>tag</li>
+      <li>tag</li>
+      <li>tag</li>
+    </ul>
+    <div class="partage">mail T F</div>
+  </div>
+    <div class="article">
+    <ul>
+      <li>02/12/16</li>
+      <li>auteur</li>
+    </ul>
+    <h5>Compte-rendu d’intervention: Jean-Pierre Worms aux rencontres ConvivialistesLe Collectif organise 48</h5>
+    <ul class="even-tag">
+      <li>tag</li>
+      <li>tag</li>
+      <li>tag</li>
+    </ul>
+    <div class="partage">mail T F</div>
+  </div>
+    <div class="article">
+    <ul>
+      <li>02/12/16</li>
+      <li>auteur</li>
+    </ul>
+    <h5>Compte-rendu d’intervention: Jean-Pierre Worms aux rencontres ConvivialistesLe Collectif organise 48</h5>
+    <ul class="even-tag">
+      <li>tag</li>
+      <li>tag</li>
+      <li>tag</li>
+    </ul>
+    <div class="partage">mail T F</div>
+  </div>
+  <button>voir plus d'article</button>
+</section>
 <?php get_footer(); ?>
