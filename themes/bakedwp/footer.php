@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 	<footer class="footer" role="contentinfo">
+=======
+					<footer class="footer" role="contentinfo">
+>>>>>>> 506cc59d01bb85e6817f5691ec68c60235630cb8
 						<div class="small-12 comlomns text-center">
 							<div class="small-offset-1 small-4 columns">
 								<div class="box-height btn-box box-height Back-Black-Light">

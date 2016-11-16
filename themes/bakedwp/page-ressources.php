@@ -1,4 +1,5 @@
 <?php
+
     /* Template Name: Ressources */
 ?>
 <?php get_header(); 
@@ -17,15 +18,13 @@ $tab_array = explode(',',$string_arr);
               ) );
               for($j = 0; $j < sizeof($terms);$j++){
                 $var = str_replace(array(' ','-'),'_',$terms[$j]->slug);
-                if($var === 'hello_world'){
-                  $var = 'hello';
-                }
                 echo '<button  data-filter=".'.$var.'">'.$var.'</button>';
               }
             ?>
           </p>
         </div>
           <div class='button-group float-center'>
+
             <p class="barre-cate">
               <button  data-filter="*">Tous Les Post Type</button><?php
                 foreach($tab_array as $menu){
@@ -58,12 +57,15 @@ $tab_array = explode(',',$string_arr);
                             include get_template_directory().'/parts/loop-posts.php';
                             echo '</div>'
                           ;?>
+                          <a href="?page_id=47">Lire &raquo;</a>
                         </div>
                         <?php     
+
                               }
                             }
                       //}?>
         
+
        </div> 
        </div> 
        </div>
@@ -72,3 +74,4 @@ $tab_array = explode(',',$string_arr);
   </div> 
 </div> 
 <?php get_footer(); ?>
+

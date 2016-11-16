@@ -7,25 +7,28 @@
         $loopy->the_post();
         if($post->post_type == 'analyse'){
           $termsFirst = wp_get_post_terms( $post->ID, 'analyse' );
-          $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
-          if($term === "hello_world"){
-            $term = 'hello';
+          if(!empty($termsFirst)){
+            $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
+            $post_type = 'analyse';
           }
-          $post_type = 'analyse';
         }else if($post->post_type == 'methodologie'){
           $termsFirst = wp_get_post_terms( $post->ID, 'methodologie' );
-          $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
-          $post_type = 'methodologie';
+          if(!empty($termsFirst)){
+            $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
+            $post_type = 'methodologie';
+          }
         }else if($post->post_type == 'temoignage'){
           $termsFirst = wp_get_post_terms( $post->ID, 'temoignage' );
-          $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
-          $post_type = 'temoignage';
+          if(!empty($termsFirst)){
+            $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
+            $post_type = 'temoignage';
+          }
         }
           echo '<div class="ressource grid-item  '.$post_type.' '. $term.' events large-3 medium-3 " data-category="transtition" >';
             $id = get_the_ID();
             $author = get_the_author();
-            $terms = wp_get_post_terms( $id, $taxo , $args );
             $my_date = get_the_date( 'd/m/Y' );
+            $terms = wp_get_post_terms( $id, $taxo , $args );
             $myterms = get_terms($taxo, array( 'parent' => 0, 'hide_empty' => 0 ) );
             ?>
            
@@ -34,8 +37,8 @@
                 <?php echo '<div class="auteurArt">'.$author.'</div>'; ?>
               </div>
               <div class="titreArt">
-                <?php the_title(); ?>
-              </div>
+            <a href="<?php the_permalink();?>" class="titreArt"><?php the_title(); ?></a>
+          </div>
               <div class="tagArt">
                 <ul>
                   <li>Tag</li>

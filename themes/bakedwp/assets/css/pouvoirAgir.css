@@ -56,6 +56,9 @@ MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 .Back-White-Mid{
 	background-color:#fff2df;
 }
+.Back-White{
+	background-color:#fff;
+}
 .Back-White-Dark{
 
 }
@@ -134,7 +137,7 @@ header .thumbnail{
 /*SOCIAL BAR*/
 #social-box span{
 	background: none;
-	width: 45%;
+	width: 42%;
 	height: 85px;
 	background-position: center;
 	background-size: cover;
@@ -148,7 +151,30 @@ header .thumbnail{
 #social-box li{
 	display: inline;
 }
-
+#social-box-02 span {
+    background: none;
+    width: 42%;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+}
+#social-box-02 li{
+    display: inline;
+}
+#social-box-02{
+		padding: 0;
+}
+.btn-box .btn-box{
+	margin: 0;
+}
+.padding-stuff{
+	padding: 0;
+  margin: 5px 0;
+}
+.margin-stuff{
+	padding: 5px;
+	margin: 0;
+}
 				/***********SEARCH***********/
 #headSearch{
 	display: none;
@@ -163,6 +189,9 @@ header .thumbnail{
 /*HOME*/
 #encartRessource h3{
 	text-transform: uppercase;
+}
+#calendar td{
+	width: 73px;
 }
 /* Article
    ========================================================================== */
@@ -325,10 +354,11 @@ header .thumbnail{
 	background-color: white;
   height: 225px;
 }
-#encartRessource img {
-    position: relative;
-    bottom: 41px;
-    width: 100%;
+/**********************\
+    		FOOTER
+\**********************/
+.box-height{
+	height: 7vw;
 }
 /**********************\
     evenement
