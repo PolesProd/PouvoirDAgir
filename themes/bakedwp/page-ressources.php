@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
     /* Template Name: Ressources */
 ?>
@@ -8,15 +7,6 @@ $post_type = get_post_types();
 $string_arr = implode(',',$post_type);
 $tab_array = explode(',',$string_arr);
 ?>
-=======
-    /* Template Name: Ressources */
-?>
-<?php get_header(); 
-$post_type = get_post_types();
-$string_arr = implode(',',$post_type);
-$tab_array = explode(',',$string_arr);
-?>
->>>>>>> modif said 15/11/16
   <div id="content">
     <div class="barre medium-12 large-12 columns" id="btnRessource">
          <div class='button-group float-center'>
@@ -28,22 +18,13 @@ $tab_array = explode(',',$string_arr);
               ) );
               for($j = 0; $j < sizeof($terms);$j++){
                 $var = str_replace(array(' ','-'),'_',$terms[$j]->slug);
-<<<<<<< HEAD
-=======
-                if($var === 'hello_world'){
-                  $var = 'hello';
-                }
->>>>>>> modif said 15/11/16
                 echo '<button  data-filter=".'.$var.'">'.$var.'</button>';
               }
             ?>
           </p>
         </div>
           <div class='button-group float-center'>
-<<<<<<< HEAD
 
-=======
->>>>>>> modif said 15/11/16
             <p class="barre-cate">
               <button  data-filter="*">Tous Les Post Type</button><?php
                 foreach($tab_array as $menu){
@@ -76,23 +57,15 @@ $tab_array = explode(',',$string_arr);
                             include get_template_directory().'/parts/loop-posts.php';
                             echo '</div>'
                           ;?>
-<<<<<<< HEAD
                           <a href="?page_id=47">Lire &raquo;</a>
                         </div>
                         <?php     
 
-=======
-                        </div>
-                        <?php     
->>>>>>> modif said 15/11/16
                               }
                             }
                       //}?>
         
-<<<<<<< HEAD
 
-=======
->>>>>>> modif said 15/11/16
        </div> 
        </div> 
        </div>
@@ -100,8 +73,5 @@ $tab_array = explode(',',$string_arr);
     </div> 
   </div> 
 </div> 
-<<<<<<< HEAD
 <?php get_footer(); ?>
-=======
-<?php get_footer(); ?>
->>>>>>> modif said 15/11/16
+
