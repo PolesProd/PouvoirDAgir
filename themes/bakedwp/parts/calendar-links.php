@@ -8,7 +8,7 @@
   <div class="list"></div>
 </div> -->
 
-  <div class="calendar hidden-print">
+  <div id="calendar" class="calendar hidden-print">
     <header>
       <h2 class="month"></h2>
       <a class="btn-prev fontawesome-angle-left" href="#"></a>

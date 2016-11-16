@@ -1,4 +1,4 @@
-	<footer class="footer" role="contentinfo">
+					<footer class="footer" role="contentinfo">
 						<div class="small-12 comlomns text-center">
 							<div class="small-offset-1 small-4 columns">
 								<div class="box-height btn-box box-height Back-Black-Light">
@@ -38,3 +38,4 @@
 		<?php wp_footer(); ?>
 	</body>
 </html> <!-- end page -->
+

@@ -27,36 +27,42 @@ Template Name: Accueil
 							  <div id="encartRessource" class="Back-Purple-Light text-center small-12 medium-6 large-7 columns">
 									<h3>ressources</h3>
 									<div class="small-4 columns">
-										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/analyse-purple.png" alt="" />
-											<!-- <h5>Analyses</h5> -->
+										<div class="btn-box Back-White" alt="descritption" title="Analyse">
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/analyse-purple.png" alt="" />
+											</a><!-- <h5>Analyses</h5> -->
 											<!-- <p><i class="fi-heart icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-4 columns">
-										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/methodologie-purple.png" alt="" />
+										<div class="btn-box Back-White" alt="descritption" title="Methodologie">
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/methodologie-purple.png" alt="" />
+											</a>
 											<!-- <p><i class="fi-guide-dog icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-4 columns">
-										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/temoignage-purple.png" alt="" />
-
+										<div class="btn-box Back-White" alt="descritption" title="Temoignage">
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/temoignage-purple.png" alt="" />
+											</a>
 											<!-- <p><i class="fi-social-myspace icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-offset-2 small-4 columns margin-top-17px ">
-										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/glossaire-purple.png" alt="" />
-
+										<div class="btn-box Back-White" alt="descritption" title="glossaire">
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/glossaire-purple.png" alt="" />
+											</a>
 											<!-- <p><i class="fi-book icon-size-small"></i></p> -->
 										</div>
 									</div>
 									<div class="small-4 columns end margin-top-17px ">
-										<div class="btn-box ressources-box">
-											<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/galerie-purple.png" alt="" />
-
+										<div class="btn-box Back-White" alt="descritption" title="Gallerie">
+											<a href="#">
+												<img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/galerie-purple.png" alt="" />
+											</a>
 											<!-- <p><i class="fi-photo icon-size-small"></i></p> -->
 										</div>
 									</div>
@@ -76,3 +82,4 @@ Template Name: Accueil
 				</div> <!-- end #inner-content -->
 			</div> <!-- end #content -->
 <?php get_footer(); ?>
+
