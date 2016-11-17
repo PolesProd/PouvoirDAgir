@@ -14,7 +14,8 @@ function joints_scripts_and_styles() {
 
     // Adding scripts file in the footer
     wp_enqueue_script( 'simplecalendar', get_template_directory_uri() . '/assets/js/simplecalendar.js', array( 'jquery' ), '', true );
-
+    // Adding scripts file in the footer
+    wp_enqueue_script( 'isotope', get_template_directory_uri().'/assets/js/isotope.js', array('jquery'), '1.0', true );
     // Register customized Foundation stylesheets, includes normalize
     wp_enqueue_style( 'foundationcss', get_template_directory_uri() . '/assets/css/foundation.css', array(), '', 'all' );
 

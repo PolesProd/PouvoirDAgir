@@ -4,7 +4,7 @@
 		if (ajax) {
 	      // ajax call to print json
 	      $.ajax({
-	  				url: 'wp-content/themes/bakedwp/assets/data/events.json',
+	  				url: 'wp-content/uploads/events.json',
 	  				type: 'GET',
 	  			})
 	  			.done(function(data) {
@@ -38,7 +38,7 @@
 			 */
 			var d = new Date();
 			var strDate = yearNumber + "/" + (d.getMonth() + 1) + "/" + d.getDate();
-			var yearNumber = (new Date).getFullYear();
+			var yearNumber = (new Date()).getFullYear();
 			/**
 			 * Get current month and set as '.current-month' in title
 			 */
@@ -218,7 +218,7 @@
 					sortlist();
 				} else {
 					$(this).next().text('Enregistrer dans la liste perso');
-					$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').slideUp('slow');
+					$('.day[date-month="' + date-month + '"][date-day="' + date-day + '"][data-number="' + date-year + '"]').slideUp('slow');
 					setTimeout(function() {
 						$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
 					}, 1500);
@@ -265,33 +265,3 @@
 		calendar.init('ajax');
 	});
 })(jQuery);
-
-
-
-/*jQuery(document).ready(function(){
-     jQuery('#json_click_handler').click(function(){
-          doAjaxRequest();
-     });
-});
-function doAjaxRequest(){
-
-     jQuery.ajax({
-          url: 'http://localhost/wordpress/wp-admin/admin-ajax.php',
-          data:{
-               'action':'do_ajax',
-               'fn':'get_latest_posts',
-               'count':10
-               },
-          dataType: 'JSON',
-          success:function(data){
-              jQuery("#json_response_box").html(data);
-         },
-          error: function(errorThrown){
-               alert('error');
-               console.log(errorThrown);
-          }
-
-     });
-
-}
-*/
