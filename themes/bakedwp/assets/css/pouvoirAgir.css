@@ -451,10 +451,15 @@ header .thumbnail{
 	display: inline-block;
 	border: solid 1px;
 }
+.adhererFooter h5{
+	padding: 7vh;
+}
 h5{
 	text-align: left;
-	color: #F82034;
+	color: white;
 	margin-left: 20px;
+	text-transform: uppercase;
+	text-align: center;
 }
 .even-tag li {
 	color: grey;
@@ -559,8 +564,10 @@ h5{
 	text-align: center;
 	border:solid 1px grey;
 	display: inline-block;
-	width: 55px;
 	text-transform: uppercase;
+	padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 10px;
 }
 .relativArt{
 	 position: relative;
@@ -583,6 +590,7 @@ h5{
 	color: black;
 	text-transform: uppercase;
 }
+
 /*//////FIN PAGE EVENEMENT/////*/
 
 
@@ -591,4 +599,11 @@ h5{
 .no-size{
 	resize: none;
 	height: 250px !important;
+/*//////FIN PAGE EVENEMENT/////*/;
+/*//////PAGE CATEGORIE/////*/;
+#pageDisplay button{
+	background: rgba(255, 255, 239, 1);
+	margin-left: 5px;
+	color: black;
+	text-transform: uppercase;
 }
