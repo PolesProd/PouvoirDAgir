@@ -8,7 +8,13 @@
 			</h2>
 
     </header> <!-- end article header -->
-<?php if($post->post_type === 'events'){?>
+<?php if($post->post_type === 'events'){
+	 $termsFirst = wp_get_post_terms( $post->ID, 'wpsccategory');
+     $termsSecond = wp_get_post_terms( $post->ID, 'wpsclocation');
+        if(!empty($termsFirst) && !empty($termsSecond)){
+           	$term = $termsFirst[0]->slug;
+            $post_type = $termsSecond[0]->slug;
+          }?>
 <!-- Contenu de l'article -->
     <section class="entry-content" itemprop="articleBody">
     	<div class="row">
@@ -43,7 +49,7 @@
 					<li>Posté le <?php the_time('j F, Y') ?></li>
 					<li>à <?php the_time('H:i') ?></li>
 					<li>Par <?php the_author_posts_link(); ?></li>
-					<li>Dans <?php echo '<strong>'.$terms[0]->slug.'</strong> / <strong>'.$myterms[0]->taxonomy.'</strong>'; ?></li>
+					<li>Dans <?php echo '<strong>'.$term.'</strong> / <strong>'.$post_type.'</strong>'; ?></li>
 					<li><?php the_tags('<span class="tags-title">' . __('Tags:', 'bakedwp') . '</span> ', ', ', ''); ?></li>
 				</ul>
 			</div>
@@ -117,6 +123,35 @@
 
 	<!-- Image, Vidéo à la une-->
 		<?php
+		if($post->post_type == 'analyse'){
+          $termsFirst = wp_get_post_terms( $post->ID, 'analyse' );
+          if(!empty($termsFirst)){
+            $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
+            $post_type = 'analyse';
+          }
+        }else if($post->post_type == 'methodologie'){
+          $termsFirst = wp_get_post_terms( $post->ID, 'methodologie' );
+          if(!empty($termsFirst)){
+            $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
+            $post_type = 'methodologie';
+          }
+        }else if($post->post_type == 'temoignage'){
+          $termsFirst = wp_get_post_terms( $post->ID, 'temoignage' );
+          if(!empty($termsFirst)){
+            $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
+            $post_type = 'temoignage';
+          }
+        }else if($post->post_type == 'post'){
+          	$terms = get_the_category($post->ID);
+          	$term = $terms[0]->name;
+          	$post_type="post";
+        }else if($post->post_type == 'partenaires'){
+        	$term = 'partenaires';
+        	$post_type = 'partenaires';
+        }else if($post->post_type == 'glossary'){
+        	$term = 'glossary';
+        	$post_type = 'glossary';
+        }
 		$taxo = $post->post_type;
 		$args = array( 'post_type' => $taxo,'posts_per_page' => 9);
 		$id = get_the_ID();
@@ -144,7 +179,7 @@
 					<li>Posté le <?php the_time('j F, Y') ?></li>
 					<li>à <?php the_time('H:i') ?></li>
 					<li>Par <?php the_author_posts_link(); ?></li>
-					<li>Dans <?php echo '<strong>'.$terms[0]->slug.'</strong> / <strong>'.$myterms[0]->taxonomy.'</strong>'; ?></li>
+					<li>Dans <?php echo '<strong>'.$term.'</strong> / <strong>'.$post_type.'</strong>'; ?></li>
 					<li><?php the_tags('<span class="tags-title">' . __('Tags:', 'bakedwp') . '</span> ', ', ', ''); ?></li>
 				</ul>
 			</div>

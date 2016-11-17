@@ -62,6 +62,9 @@ MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 .Back-White-Dark{
 
 }
+.menu-item-294{
+	background-color:#F82034 !important;
+}
 /*.Back-White-Dark{
 	background-color:#fff8ee;
 }*/
@@ -581,3 +584,11 @@ h5{
 	text-transform: uppercase;
 }
 /*//////FIN PAGE EVENEMENT/////*/
+
+
+/*Page Contact*/
+
+.no-size{
+	resize: none;
+	height: 250px !important;
+}
