@@ -14,9 +14,10 @@ $argsTaxo = array(
 );
 $posttags = get_the_tags();
 ?>
-<div class="barre medium-12 large-12">
+
+<div class="barre medium-12 large-12 " id="pageDisplay">
 <div class='button-group float-center'>
-  <p>
+  <p class="btn-barre">
 <button  data-filter="*">Toutes Les Catégories</button><?php
   $terms = get_terms( array(
     'taxonomy' => array('category','analyse','methodologie','temoignage','wpsclocation','wpsccategory'),
@@ -28,7 +29,7 @@ $posttags = get_the_tags();
   echo '</p></div>';
    ?>
 <div class='button-group float-center'>
- <p>
+ <p class="barre-cate">
   <button  data-filter="*">Tous Les Post Type</button><?php
   foreach($tab_array as $menu){
     if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form'){
@@ -39,7 +40,7 @@ $posttags = get_the_tags();
   }
 echo '</p></div></div>';
 
-echo '<div class="isotope large-12 centerArt">';
+echo '<div class="isotope large-12 centerArt  ">';
 
 for($i = 0; $i<count($tab_array);$i++){
   $args = array(
@@ -79,8 +80,10 @@ for($i = 0; $i<count($tab_array);$i++){
         if($post->post_type == 'events'){
           $termsFirst = wp_get_post_terms( $post->ID, 'wpsccategory');
           $termsSecond = wp_get_post_terms( $post->ID, 'wpsclocation');
-          $terms = $termsFirst[0]->slug . ' ';
-          $terms .= $termsSecond[0]->slug;
+          if(!empty($termsFirst) && !empty($termsSecond)){
+              $terms = $termsFirst[0]->slug . ' ';
+              $terms .= $termsSecond[0]->slug;
+          }
           //echo '<p>'.$terms.'</p>';
         }else if($post->post_type == 'analyse'){
           $termsFirst = wp_get_post_terms( $post->ID, 'analyse' );
@@ -125,4 +128,5 @@ endwhile;
 endif;
 }
 echo '</div>';
+
 get_footer();
