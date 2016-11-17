@@ -4,14 +4,26 @@
 		if (ajax) {
 	      // ajax call to print json
 	      $.ajax({
-	  				url: 'wp-content/uploads/events.json',
+	  				// url: 'wp-content/uploads/events.json',
+	  				url: 'http://localhost/wordpress/?json=get_posts&post_type=events',
 	  				type: 'GET',
 	  			})
 	  			.done(function(data) {
-	          var events = data.events;
+	          var events = data.posts;
 	          // loop json & append to dom
+
 	          for (var i = 0; i < events.length; i++) {
-	            $('.list').append('<div class="day-event" date-day="'+ events[i].day +'" date-month="' + events[i].month +'" date-year="'+ events[i].year +'" data-number="'+ i +'"><a href="#" class="close fontawesome-remove"></a><h2 class="title">'+ events[i].title +'</h2><p>'+ events[i].description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span>Enresgistrer dans ma liste perso!</span></label></div>');
+	          	var date = events[i].custom_fields['wpsc_start_date'][0];
+	          	var format = date.split("/");
+
+	          	var day = format[1];
+	          	var month = format[0];
+	          	var year = format[2];
+
+	          	var title = events[i].title;
+	          	console.log(title);
+
+	            $('.list').append('<div class="day-event" date-day="'+ day +'" date-month="' + month +'" date-year="'+ year +'" data-number="'+ i +'"><a href="#" class="close fontawesome-remove"></a><h2 class="title">'+ events[i].title +'</h2><p>'+ events[i].description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span>Enresgistrer dans ma liste perso!</span></label></div>');
 	          }
 	          // start calendar
 	          calendar.startCalendar();

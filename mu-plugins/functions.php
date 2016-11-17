@@ -1,4 +1,4 @@
-<?php
+	<?php
 /*
 Plugin Name: Fonctions WordPress
 Description: L'ensemble des fonctions globales du site.
@@ -17,6 +17,7 @@ function query_post_type($query) {
     if($post_type)
       $post_type = $post_type;
     else
+      //
       $post_type = array('nav_menu_item');
     $query->set('post_type',$post_type);
     return $query;
@@ -26,42 +27,42 @@ function query_post_type($query) {
                 Auto Complete
 *************************************************/
 function auto_search(){
-    global $wpdb;
-    // the query
-    $args = array('posts_per_page' => 100, 'order'=> 'ASC', 'orderby' => 'date');
-    $the_query = new WP_Query( $args );
-    echo "<script type='text/javascript'>var availableTags = [";
-    $url_pattern = '/((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\.([a-zA-Z0-9\&\.\/\?\:@\-_=#])*/';
-    $url_replace = ' ';
-    if ( $the_query->have_posts() ) : ?>
-        <?php $completion = '';
-        while ( $the_query->have_posts() ) : $the_query->the_post();
-          $post_id =  get_the_ID();
-          $sqlTitleContent = 'SELECT post_content, post_title
-                              FROM  wp_posts
-                              WHERE  ID ="'.$post_id.'"';
-          $result = $wpdb->get_results($sqlTitleContent);
-          $completion .= strip_tags(strtolower($result[0]->post_title));
-          $completion .= strip_tags(strtolower($result[0]->post_content));
-          $completion = preg_replace('@<a[^>]*?>.*?</a>@si', '', $completion);
-        endwhile;
-          $completionFormat = str_replace( array( '?', ',', '.', ':', '!', '"','/>','&nbsp;'), ' ', $completion );
-          $completion = str_replace( array('É'), 'é', $completionFormat );
-          $completionFormat = str_replace(array("\r\n", "\r", "\n"), "<br />", $completion);
-          $tablComplet = explode(" ", $completionFormat);
-          $cleanTab = array_unique($tablComplet);
-        $tablComplet = [];
-        for( $i=0; $i<count($cleanTab); $i++ ){
-            if(isset($cleanTab[$i]) && !preg_match("/[0-9]{1,2}$/", $cleanTab[$i]) && strlen($cleanTab[$i]) > 3 ){
-                echo '"'.rtrim(strtolower($cleanTab[$i])).'",';
-            }
-        }
-        wp_reset_postdata();
-    endif;
-    echo "];";
-    echo "jQuery('#s').autocomplete({source:availableTags});";
-    echo "jQuery('#s01').autocomplete({source:availableTags});";
-    echo "</script>";
+  global $wpdb;
+  // the query
+  $args = array('posts_per_page' => 100, 'order'=> 'ASC', 'orderby' => 'date');
+  $the_query = new WP_Query( $args );
+  echo "<script type='text/javascript'>var availableTags = [";
+  $url_pattern = '/((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\.([a-zA-Z0-9\&\.\/\?\:@\-_=#])*/';
+  $url_replace = ' ';
+  if ( $the_query->have_posts() ) : ?>
+  	<?php $completion = '';
+  	while ( $the_query->have_posts() ) : $the_query->the_post();
+    	$post_id =  get_the_ID();
+    	$sqlTitleContent = 'SELECT post_content, post_title
+                          FROM  wp_posts
+                          WHERE  ID ="'.$post_id.'"';
+      $result = $wpdb->get_results($sqlTitleContent);
+      $completion .= strip_tags(strtolower($result[0]->post_title));
+      $completion .= strip_tags(strtolower($result[0]->post_content));
+      $completion = preg_replace('@<a[^>]*?>.*?</a>@si', '', $completion);
+    endwhile;
+    $completionFormat = str_replace( array( '?', ',', '.', ':', '!', '"','/>','&nbsp;'), ' ', $completion );
+    $completion = str_replace( array('É'), 'é', $completionFormat );
+    $completionFormat = str_replace(array("\r\n", "\r", "\n"), "<br />", $completion);
+    $tablComplet = explode(" ", $completionFormat);
+    $cleanTab = array_unique($tablComplet);
+    $tablComplet = [];
+    for( $i=0; $i<count($cleanTab); $i++ ){
+      if(isset($cleanTab[$i]) && !preg_match("/[0-9]{1,2}$/", $cleanTab[$i]) && strlen($cleanTab[$i]) > 3 ){
+        echo '"'.rtrim(strtolower($cleanTab[$i])).'",';
+      }
+    }
+    wp_reset_postdata();
+  endif;
+  echo "];";
+  echo "jQuery('#s').autocomplete({source:availableTags});";
+  echo "jQuery('#s01').autocomplete({source:availableTags});";
+  echo "</script>";
 }
 add_action( 'wp_footer', 'auto_search' );
 /*************************************************
@@ -121,101 +122,17 @@ function my_post_queries($query){
     }
 }
 add_action('pre_get_posts', 'my_post_queries');
-/*************************************************
-            Requête Ajax événements.
-*************************************************/
-add_action('wp_enqueue_scripts', 'add_js_scripts');
-function add_js_scripts() {
-	wp_enqueue_script( 'script', get_template_directory_uri().'/assets/js/test.js', array('jquery'), '1.0', true );
-	// Passer Ajax Url à script.js
-	wp_localize_script('script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
-}
-/*************************************************
-        Requête Ajax événements(Partie 2).
-*************************************************/
-add_action( 'wp_ajax_call_events_ajax', 'call_events_ajax' );
-add_action( 'wp_ajax_nopriv_call_events_ajax', 'call_events_ajax' );
-function call_events_ajax() {
-  $offset = $_POST['offset'];
-	$args = array(
-		'post_type' => 'events',
-		'post_status' => 'publish',
-		'posts_per_page' => -1,
-		'meta_key' => 'wpsc_start_date',
-		'offset' => $offset
-	);
-	$loop = new WP_Query($args);
-	$i = 0;
-	$file = plugins_url() . '/test.txt';
-	$array = array();
-	while ($loop->have_posts()) : $loop->the_post();
-		global $events;
-		$date = get_post_meta(get_the_ID(), 'wpsc_start_date', true);
-		$result = explode("/", $date);
-		$day = $result[1];
-		$month = $result[0];
-		$year = $result[2];
-		$array[] = array(
-			'day'=> $day,
-			'month'=> $month,
-			'year'=> $year,
-			'title' => get_the_title(),
-			'description' => get_the_excerpt($post),
-		);
-	endwhile;
-
-	wp_reset_query();
-	ob_clean();
-	// echo wp_json_encode($array);
-
-	echo "=========================";
-	echo "<br />";
-
-	foreach($array as $i => $value){
-    // print($i .':'. $value .',') . '<br />';
-    // print_r($array[$i]);
-    // echo $array[$i]['day'], $array[$i]['month'], $array[$i]['year'], $array[$i]['title'], $array[$i]['description'] . '<br />';
-    // echo "<br />";
-    // print_r($array[$i]);
-    // echo "<br />";
-    // echo json_encode($array[$i]);
-    // echo "<br />";
-    $string = implode(",", $array[$i]) . '<br/>';
-    echo($string);
-	}
-  echo "=========================";
-
-  // Assurons nous que le fichier est accessible en écriture
-if (is_writable($file)) {
-    // Dans notre exemple, nous ouvrons le fichier $filename en mode d'ajout
-    // Le pointeur de fichier est placé à la fin du fichier
-    // c'est là que $somecontent sera placé
-    $handle = fopen($file, 'w');
-    // Ecrivons quelque chose dans notre fichier.
-    if (fwrite($handle, $string) === FALSE) {
-        echo "Impossible d'écrire dans le fichier ($file)";
-        exit;
-    }
-
-    echo "L'écriture de ($string) dans le fichier ($file) a réussi";
-
-    fclose($handle);
-
-} else {
-    echo "Le fichier $file n'est pas accessible en écriture.";
-}
-}
 /*******************************************************
         Création du Custom Post(Evenement).
 *******************************************************/
-add_filter('manage_wpscevents_posts_columns', 'events_add_column');
+add_filter('manage_events_posts_columns', 'events_add_column');
 function events_add_column($defaults) {
 	unset( $defaults['date'] );
 	$new = array();
 	// Changer l'ordre pour que ce soit pas la dernière colonne
 	foreach($defaults as $key => $value) {
 		if ($key=='taxonomy-wpsccategory') {
-			$new['wpsc_start_date'] = 'Event Start Date';
+			$new['wpsc_start_date'] = 'Commence le';
 		}
 		$new[$key] = $value;
 	}
@@ -310,10 +227,10 @@ function events_taxonomies(){
 	register_taxonomy('wpsclocation', array('events'), $args);
 }
 
-add_action('manage_wpscevents_posts_custom_column', 'events_columns_content');
+add_action('manage_events_posts_custom_column', 'events_columns_content');
 function events_columns_content($column_name, $post_ID) {
 	if ($column_name == 'wpsc_start_date') {
-		echo get_post_meta( $post_ID, $column_name, true );
+		echo get_post_meta( $post_ID, $column_name, true);
 	}
 }
 
@@ -816,8 +733,3 @@ function custom_js_to_head() {
     <?php
 }
 add_action('admin_head', 'custom_js_to_head');
-
-add_filter('term_links-post_tag','limit_to_three_tags');
-function limit_to_three_tags($terms) {
-return array_slice($terms,0,3,true);
-}
