@@ -344,8 +344,19 @@ FOOTER STYLES
 .footer {
   clear: both;
   margin-top: 1em;
-  text-align: center; }
+  text-align: center; 
+background: rgb(255, 255, 239);}
 
+.planSite li {
+  list-style: none;
+  background: grey;
+  margin: 0;
+  text-transform: uppercase;
+
+}
+.footershare{
+  display: inline-block;
+}
 /*********************
 PLUGIN STYLES
 *********************/
