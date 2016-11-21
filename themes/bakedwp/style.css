@@ -345,8 +345,15 @@ FOOTER STYLES
   clear: both;
   margin-top: 1em;
   text-align: center; 
-background: rgb(255, 255, 239);}
-
+background: rgb(255, 255, 239);
+}
+.planSite{
+  background: grey;
+}
+.planSite ul{
+  display: inline-block;
+  text-align: left;
+}
 .planSite li {
   list-style: none;
   background: grey;
@@ -354,8 +361,21 @@ background: rgb(255, 255, 239);}
   text-transform: uppercase;
 
 }
+.planSite p{
+  margin-bottom: 0px;
+}
+.planSite li{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+}
+.mc4wp-form-fields input[type="email"]{
+  margin:auto; 
+  text-align: center;
+}
 .footershare{
   display: inline-block;
+border-top: solid 2px black;
 }
 /*********************
 PLUGIN STYLES

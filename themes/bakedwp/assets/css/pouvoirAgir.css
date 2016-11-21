@@ -157,6 +157,7 @@ header .thumbnail{
     background-position: center;
     background-size: cover;
     display: inline-block;
+    height: 100%;
 }
 #social-box-02 li{
     display: inline;
@@ -552,7 +553,7 @@ h5{
 	     font-size: 25px;
 	     margin-bottom: 50px;
 	     text-align: left;
-	     padding-top: 40px;
+	     padding: 15%;
 }
 .tagArt{
 	text-align: left;
