@@ -40,8 +40,8 @@ Template Name: Réseaux Impliqués
         <?php
           $args = array( 'post_type' => 'post', 'posts_per_page' => 3,'orderby' => 'date' );
             $loopy = new WP_Query( $args );
-             include get_template_directory().'/parts/loop-posts.php';?>
-             wp_reset_query();
+             include get_template_directory().'/parts/loop-posts.php';
+             wp_reset_query();?>
         </div>
     </div> <!-- end #inner-content -->
   </div> <!-- end #content -->
