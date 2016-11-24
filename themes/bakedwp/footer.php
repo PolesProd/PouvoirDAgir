@@ -1,4 +1,5 @@
 
+
 <footer class="footer" role="contentinfo">
 	<div class="large-12 footershare">
 		<div class="small-offset-2 small-4 columns">
@@ -57,3 +58,4 @@
 <?php wp_footer(); ?>
 </body>
 </html> <!-- end page -->
+

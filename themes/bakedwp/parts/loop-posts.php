@@ -23,6 +23,9 @@
             $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
             $post_type = 'temoignage';
           }
+        }else if($post->post_type == 'post'){
+          $term = 'post';
+          $post_type = 'post';
         }
           echo '<div class="ressource grid-item  '.$post_type.' '. $term.' events large-3 medium-3 " data-category="transtition" >';
             $id = get_the_ID();
@@ -34,18 +37,16 @@
            
               <div class="dateArt">
                 <?php echo '<div class="positionDate">'.$my_date.'</div>'; ?>
-                <?php echo '<div class="auteurArt">'.$author.'</div>'; ?>
+                <?php echo '<div class="auteurArt"><a href="'.get_author_posts_url( get_the_author_meta( "ID" ), get_the_author_meta( "user_nicename" ) ).'">'.$author.'</div>'; ?>
               </div>
               <div class="titreArt">
             <a href="<?php the_permalink();?>" class="titreArt"><?php the_title(); ?></a>
           </div>
               <div class="tagArt">
-                <ul>
-                  <li>Tag</li>
-                  <li>Tag</li>
-                  <li>Tag</li>
-                </ul>
-              </div>
+                    <ul>
+                      <?php the_tags( '<ul><li>', '</li><li>', '</li></ul>' ); ?>
+                    </ul>
+                </div>
               <div class="shareImg">
                   <p><a href="">  <img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/newsletter-black.png" alt="" /></a></p>
                   <p><a href=""><img src="<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/facebook-black.png" alt="" /></a></p>

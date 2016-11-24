@@ -14,7 +14,6 @@
   <div id="inner-content" class="row">
     <div class="medium-6 large-4 columns">
       <div class="person-list"></div>
-      <div class="list"></div>
     </div>
     <div class="medium-6 large-8 columns">
       <div class="calendar hidden-print">
@@ -36,6 +35,7 @@
           </tbody>
         </table>
       </div>
+      <div class="list"></div>
     </div>
   </div>
 </div>
@@ -173,3 +173,4 @@
   <button>voir plus d'article</button>
 </section>
 <?php get_footer(); ?>
+

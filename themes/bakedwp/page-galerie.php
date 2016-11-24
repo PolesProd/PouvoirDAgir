@@ -11,8 +11,7 @@ Template Name: Galerie
 
      <div id="inner-content" class="row">
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
-          <?php echo do_shortcode('[foogallery id="160"]');?>
-
+        	<?php include get_template_directory().'/include_shortcode/shortcode_gallery.php';?>
         </div> <!-- end #main -->
 
     </div> <!-- end #inner-content -->

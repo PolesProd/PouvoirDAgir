@@ -82,3 +82,4 @@ Template Name: Accueil
 				</div> <!-- end #inner-content -->
 			</div> <!-- end #content -->
 <?php get_footer(); ?>
+

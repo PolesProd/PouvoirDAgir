@@ -28,7 +28,7 @@ $tab_array = explode(',',$string_arr);
             <p class="barre-cate">
               <button  data-filter="*">Tous Les Post Type</button><?php
                 foreach($tab_array as $menu){
-                  if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
+                  if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery' || $menu === 'mc4wp-form'){
                   }else{
                     echo '<button  data-filter=".'.$menu.'">'.$menu.'</button>';
                   }
@@ -41,9 +41,10 @@ $tab_array = explode(',',$string_arr);
       <div id="main" class="large-12 medium-10 small-centered columns" role="main">
         <div class="columns">
             <div class="relativArt"> 
+            <div class="AllPostInOneDiv">
              <?php
                   foreach($tab_array as $menu){
-                    if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
+                    if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery' || $menu === 'mc4wp-form'){
                     }else{
               ?>
               
@@ -52,7 +53,7 @@ $tab_array = explode(',',$string_arr);
                          <?php
                             $var = str_replace(' ','_',$menu);
                             $args = array( 'post_type' => $menu,
-                                    'posts_per_page' => 9,
+                                    'posts_per_page' => 3,
                                     );
                             include get_template_directory().'/parts/loop-posts.php';
                             echo '</div>'
@@ -67,6 +68,7 @@ $tab_array = explode(',',$string_arr);
         
 
        </div> 
+       </div>
        </div> 
        </div>
         </div> 

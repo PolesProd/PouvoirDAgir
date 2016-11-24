@@ -14,8 +14,14 @@ Template Name: Contact
 <div id="content">
   <div id="inner-content" class="row">
     <div id="main" class="large-10 medium-10 small-centered columns" role="main">
-      <br><br>
-      <iframe id="haWidget" src="https://www.helloasso.com/associations/collectif-pouvoir-d-agir/adhesions/adherez-au-collectif-pouvoir-d-agir/widget" style="width:800px;height:750px;border:none;" onload="scroll(0,0);"></iframe>
+    <div class="contact">
+      <?php echo do_shortcode('[contact-form-7 id="52" title="Formulaire de contact 1"]');?>
+    </div>
+   
+   <div id="tag"></div>
+   <div class="iframe">
+        <iframe id="haWidget" src="https://www.helloasso.com/associations/collectif-pouvoir-d-agir/adhesions/adherez-au-collectif-pouvoir-d-agir/widget" style="width:800px;height:1500px;border:none;margin-top: 261px;" onload="scroll(0,0);"></iframe>
+    </div>
     </div> <!-- end #main -->
   </div> <!-- end #inner-content -->
 </div> <!-- end #content -->
