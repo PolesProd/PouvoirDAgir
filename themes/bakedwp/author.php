@@ -14,32 +14,35 @@
         <div id="main" class="large-12 medium-10 small-centered columns" role="main">
             <div class="columns">
                 <div class="row">
-                    <?php
-                    if(isset($_GET['author_name'])) :
-                        $curauth = get_userdatabylogin($author_name);
-                    else :
-                        $curauth = get_userdata(intval($author));
-                    endif;
-                    ?>
+                   <?php
+                     custom_wp_list_authors();
 
+                   $post_type = array('post','events','partenaires','analyse','methodologie','temoignage','glossary');
+                    $args = array(
+                        'post_type'=> $post_type,
+                        'post_per_page' => 1,
+                        'author' => $_GET['author']
+                    );
 
-                    <h2>Liste des Auteurs:</h2>
-                    <ul>
-                        <?php wp_list_authors(); ?>
-                        <?php the_author_meta( 'user_login' ); ?><!--Displays the authors login name. -->
-                        <a href="#"><?php the_author_meta( 'user_email' ); ?></a><!--Displays the authors email address. -->
-                        <?php the_author_meta( 'user_url' ); ?><!--Displays the authors URL. -->
-                    </ul>
-                    <?php while (have_posts()) : the_post(); ?>
-                    <?php the_time('j/n/Y'); ?></span>, <?php $category = get_the_category(); echo $category[0]->cat_name;?>, <?php the_title(); ?>
-                    <h3>
-                        <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>">
-                            <?php the_title(); ?>
-                            <?php the_excerpt(); ?>
-                        </a>
-                    <h3>
-
-                    <?php endwhile; wp_reset_query(); ?>
+                $queryGlossary = new WP_Query( $args );
+                if($queryGlossary->have_posts()){
+                    while ($queryGlossary->have_posts() ) {
+                        echo '<div class="events large-3">'.
+                        //$id = get_the_ID();
+                        //$author = get_the_author();
+                         
+                        $queryGlossary->the_post();?>
+                        <div class="dateArt">
+                            <?php echo '<div class="positionDate">'.get_the_date( 'd/m/Y' ).'</div>'; ?>
+                            <?php echo '<div class="auteurArt"><a href="'.get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ).'">'.get_the_author_link().'</a></div>'; ?>
+                        </div>
+                        <div class="titreArt">
+                            <a href="<?php the_permalink();?>" class="titreArt"><?php the_title(); ?></a>
+                        </div><?php
+                        echo '</div>';
+                    }
+                }
+            ?>
                 </div>
             </div>
         </div>

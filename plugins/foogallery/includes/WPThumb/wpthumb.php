@@ -50,6 +50,7 @@ class WP_Thumb {
 	 */
 	private $args;
 
+
 	/**
 	 * The file path the original image
 	 *

@@ -510,8 +510,8 @@ function analyse(){
 		'has_archive' 				=> true,
 		'hierarchical' 				=> false,
 		'menu_position' 			=> 6,
-		'supports' 						=> array('title','editor','thumbnail','author','category'),
-    'taxonomies'         => array('analyse'),
+		'supports' 						=> array('title','editor','thumbnail','author','category','tags'),
+    'taxonomies'         => array('analyse','post_tag'),
     'show_in_menu' => 'edit.php?post_type=ressources',
 	);
 	register_post_type('analyse',$args);
@@ -606,7 +606,7 @@ function methodologie(){
 		'hierarchical' 				=> false,
 		'menu_position' 			=> 6,
 		'supports' 						=> array('title','editor','thumbnail','author','category'),
-    'taxonomies'         => array('methodologie'),
+    'taxonomies'         => array('methodologie','post_tag'),
     'show_in_menu' => 'edit.php?post_type=ressources',
 	);
 	register_post_type('methodologie',$args);
@@ -700,7 +700,7 @@ function temoignage(){
 		'hierarchical' 				=> false,
 		'menu_position' 			=> 6,
 		'supports' 						=> array('title','editor','thumbnail','author','category'),
-    'taxonomies'         => array('temoignage'),
+    'taxonomies'         => array('temoignage','post_tag'),
     'show_in_menu' => 'edit.php?post_type=ressources',
 	);
 	register_post_type('temoignage',$args);
@@ -820,4 +820,106 @@ add_action('admin_head', 'custom_js_to_head');
 add_filter('term_links-post_tag','limit_to_three_tags');
 function limit_to_three_tags($terms) {
 return array_slice($terms,0,3,true);
+}
+
+
+
+function custom_wp_list_authors( $args = '' ) {
+    global $wpdb;
+ 
+    $defaults = array(
+        'orderby' => 'name', 'order' => 'ASC', 'number' => '',
+        'optioncount' => false, 'exclude_admin' => true,
+        'show_fullname' => false, 'hide_empty' => true,
+        'feed' => '', 'feed_image' => '', 'feed_type' => '', 'echo' => true,
+        'style' => 'list', 'html' => true, 'exclude' => '', 'include' => ''
+    );
+ 
+    $args = wp_parse_args( $args, $defaults );
+ 
+    $return = '';
+ 
+    $query_args = wp_array_slice_assoc( $args, array( 'orderby', 'order', 'number', 'exclude', 'include' ) );
+    $query_args['fields'] = 'ids';
+    $authors = get_users( $query_args );
+ 
+    $author_count = array();
+    $post_type = array('post','events','partenaires','analyse','methodologie','temoignage','glossary');
+    foreach ( (array) $wpdb->get_results( "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE " . get_private_posts_cap_sql($post_type) . " GROUP BY post_author" ) as $row ) {
+        $author_count[$row->post_author] = $row->count;
+    }
+    foreach ( $authors as $author_id ) {
+        $author = get_userdata( $author_id );
+ 
+        if ( $args['exclude_admin'] && 'admin' == $author->display_name ) {
+            continue;
+        }
+ 
+        $posts = isset( $author_count[$author->ID] ) ? $author_count[$author->ID] : 0;
+ 
+        if ( ! $posts && $args['hide_empty'] ) {
+            continue;
+        }
+ 
+        if ( $args['show_fullname'] && $author->first_name && $author->last_name ) {
+            $name = "$author->first_name $author->last_name";
+        } else {
+            $name = $author->display_name;
+        }
+ 
+        if ( ! $args['html'] ) {
+            $return .= $name . ', ';
+ 
+            continue; // No need to go further to process HTML.
+        }
+ 
+        if ( 'list' == $args['style'] ) {
+            $return .= '<li>';
+        }
+ 
+        $link = '<a href="' . get_author_posts_url( $author->ID, $author->user_nicename ) . '" title="' . esc_attr( sprintf(__("Posts by %s"), $author->display_name) ) . '">' . $name . '</a>';
+ 
+        if ( ! empty( $args['feed_image'] ) || ! empty( $args['feed'] ) ) {
+            $link .= ' ';
+            if ( empty( $args['feed_image'] ) ) {
+                $link .= '(';
+            }
+ 
+            $link .= '<a href="' . get_author_feed_link( $author->ID, $args['feed_type'] ) . '"';
+ 
+            $alt = '';
+            if ( ! empty( $args['feed'] ) ) {
+                $alt = ' alt="' . esc_attr( $args['feed'] ) . '"';
+                $name = $args['feed'];
+            }
+ 
+            $link .= '>';
+ 
+            if ( ! empty( $args['feed_image'] ) ) {
+                $link .= '<img src="' . esc_url( $args['feed_image'] ) . '" style="border: none;"' . $alt . ' />';
+            } else {
+                $link .= $name;
+            }
+ 
+            $link .= '</a>';
+ 
+            if ( empty( $args['feed_image'] ) ) {
+                $link .= ')';
+            }
+        }
+ 
+        if ( $args['optioncount'] ) {
+            $link .= ' ('. $posts . ')';
+        }
+ 
+        $return .= $link;
+        $return .= ( 'list' == $args['style'] ) ? '</li>' : ', ';
+    }
+ 
+    $return = rtrim( $return, ', ' );
+ 
+    if ( ! $args['echo'] ) {
+        return $return;
+    }
+    echo $return;
 }

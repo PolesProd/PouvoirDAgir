@@ -608,3 +608,7 @@ h5{
 	color: black;
 	text-transform: uppercase;
 }
+#tag{
+	position: absolute;
+    top: 600px;
+}

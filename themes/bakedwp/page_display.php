@@ -57,7 +57,7 @@ for($i = 0; $i<count($tab_array);$i++){
       // print_r($post);
       // echo '</p>';
       $cat = get_the_category($post->ID);?>
-       <div class="grid-item <?=$tab_array[$i];?> <?=$cat[0]->category_nicename;?> events medium-3" data-category='transtition' style="height: 240px !important;">
+       <div class="grid-item <?=$tab_array[$i];?> <?=$cat[0]->category_nicename;?> events medium-3" data-category='transtition' >
           <div class="dateArt">
             <?php echo '<div class="positionDate">'.$my_date.'</div>'; ?>
             <?php echo '<div class="auteurArt">'.$author.'</div>'; ?>
@@ -104,7 +104,7 @@ for($i = 0; $i<count($tab_array);$i++){
         }
           ?>
         
-      <div class="grid-item <?=$tab_array[$i] .' '. $terms;?> events medium-3" data-category='transtition' style="height: 240px !important;">
+      <div class="grid-item <?=$tab_array[$i] .' '. $terms;?> events medium-3" data-category='transtition'>
         <div class="dateArt">
           <?php echo '<div class="positionDate">'.$my_date.'</div>'; ?>
           <?php echo '<div class="auteurArt">'.$author.'</div>'; ?>
