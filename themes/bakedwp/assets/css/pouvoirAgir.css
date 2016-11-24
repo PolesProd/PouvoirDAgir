@@ -326,7 +326,7 @@ header .thumbnail{
 	width: 50%;
 	right: 25%;
 	height: 250px;
-	top: 250px;
+	top: 100px;
 }
 #Wrap-Header nav section .name{
 	position: relative;
@@ -334,6 +334,21 @@ header .thumbnail{
 }
 #profil{
 	color:#F82034;
+}
+.sliderCont p{
+	color: #ac1624;
+    font-size: 2.3rem;
+}
+.sliderCont h2 a{
+	border:solid 1px #6c5c9f;
+	background: rgba(255, 255, 239, 1);
+	color: black;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+   text-decoration: none;
+   text-transform: uppercase;
+
 }
 /**********************\
     Encart ressource
@@ -455,7 +470,6 @@ header .thumbnail{
 h5{
 	text-align: left;
 	color: white;
-	margin-left: 20px;
 	text-transform: uppercase;
 	text-align: center;
 }

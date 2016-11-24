@@ -10,6 +10,7 @@
 				</div>
 			</div>
 
+	    	<?php get_template_part( 'parts/loop-collectif', 'page' );?>
 			<div id="content">
 				<div id="inner-content" class="row">
 				    <div id="main" class="large-10 medium-10 small-centered columns" role="main">
