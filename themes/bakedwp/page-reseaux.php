@@ -7,7 +7,21 @@ Template Name: Réseaux Impliqués
   <div id="content">
      <div id="inner-content" class="row">
        <?php echo do_shortcode('[gallery]'); ?>
+       
+         <?php get_template_part( 'parts/loop-collectif', 'page' );?>
+          <div id="content">
+            <div id="inner-content" class="row">
+                <div id="main" class="large-12 medium-12 small-centered columns" role="main">
+                    <?php
+                    $args = array( 'post_type' => 'post', 'posts_per_page' => 10 );
+                    $loop = new WP_Query( $args );
+                    while ( $loop->have_posts() ) : $loop->the_post();
+                      the_category();
+                    endwhile;
+              ?>
+       
         <div id="main" class="large-10 medium-10 small-centered columns" role="main">
+
             <?php
             $args = array( 'post_type' => 'partenaires', 'posts_per_page' => 6 );
             $loopy = new WP_Query( $args );
