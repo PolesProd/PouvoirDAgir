@@ -1,8 +1,9 @@
 (function($) {
+	var urlArticle = [];
 	var calendar = {
 		init: function(ajax) {
 		if (ajax) {
-	      // ajax call to print json
+	      // Appel ajax pour imprimer le JSON
 	      $.ajax({
 	  				// url: 'wp-content/uploads/events.json',
 	  				url: 'http://localhost/wordpress/?json=get_posts&post_type=events',
@@ -10,7 +11,7 @@
 	  			})
 	  			.done(function(data) {
 	          var events = data.posts;
-	          // loop json & append to dom
+	          // Boucles dans le tableau events et ajoute le contenu dans le DOM
 
 	          for (var i = 0; i < events.length; i++) {
 	          	var date = events[i].custom_fields['wpsc_start_date'][0];
@@ -21,21 +22,31 @@
 	          	var year = format[2];
 
 	          	var title = events[i].title;
-	          	console.log(title);
+	          	var description = events[i].excerpt;
+	          	var url = events[i].url;
 
-	            $('.list').append('<div class="day-event" date-day="'+ day +'" date-month="' + month +'" date-year="'+ year +'" data-number="'+ i +'"><a href="#" class="close fontawesome-remove"></a><h2 class="title">'+ events[i].title +'</h2><p>'+ events[i].description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span>Enresgistrer dans ma liste perso!</span></label></div>');
+	          	var categorie = events[i].taxonomy_wpsccategory[0].title;
+	          	var tags = events[i].tags[0].title;
+
+	          	var lieu = events[i].taxonomy_wpsclocation[0].title;
+	          	var org = events[i].custom_fields['wpsc_reg_text'][0];
+
+	          	urlArticle.push(url);
+							$('.day-event').click
+	            $('.list').append('<div class="day-event" date-day="'+ day +'" date-month="' + month +'" date-year="'+ year +'" data-number="'+ i +'"><a href="#" class="close"></a><div class="date"><p class="eventDate">'+ events[i].date +'</p><p class="eventLieu">'+ lieu + '</p><p class="eventOrg">' + org + '</p></div><h2 class="title">'+ events[i].title +'</h2><p>'+ description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span><a href="'+ url +'">Voir l\'événement</a></span></label></div>');
 	          }
-	          // start calendar
+	          // Démarre le calendrier
 	          calendar.startCalendar();
 	  			})
 	  			.fail(function(data) {
 	  				console.log(data);
 	  			});
 			} else {
-	      // if not using ajax start calendar
+	      // Si on n'utilise pas ajax: début du calendrier calendrier
 	      calendar.startCalendar();
 	    }
 		},
+
 
 	  startCalendar: function() {
 	    var mon = 'Lundi';
@@ -45,14 +56,17 @@
 			var fri = 'Vendredi';
 			var sat = 'Samedi';
 			var sund = 'Dimanche';
+
+
 			/**
-			 * Get current date
+			 * Obtenir la date actuelle
 			 */
 			var d = new Date();
 			var strDate = yearNumber + "/" + (d.getMonth() + 1) + "/" + d.getDate();
 			var yearNumber = (new Date()).getFullYear();
+
 			/**
-			 * Get current month and set as '.current-month' in title
+			 * Obtenir le mois courant et définir comme '.current-month' dans le titre
 			 */
 			var monthNumber = d.getMonth() + 1;
 
@@ -92,7 +106,7 @@
 			});
 
 			/**
-			 * Get all dates for current month
+			 * Obtenir toutes les dates pour le mois en cours
 			 */
 
 			function printDateNumber(monthNumber, mon, tue, wed, thur, fri, sat, sund) {
@@ -106,7 +120,7 @@
 				});
 
 				function getDaysInMonth(month, year) {
-					// Since no month has fewer than 28 days
+					// Aucun mois n'a moins de 28 jours
 					var date = new Date(year, month, 1);
 					var days = [];
 					while (date.getMonth() === month) {
@@ -149,7 +163,7 @@
 			}
 
 			/**
-			 * Get current day and set as '.current-day'
+			 * Obtenir le jour actuel et définir comme '.current-day'
 			 */
 			function setCurrentDay(month, year) {
 				var viewMonth = $('.month').attr('data-month');
@@ -162,7 +176,7 @@
 			}
 
 			/**
-			 * Add class '.active' on calendar date
+			 * Ajoute la classe '.active' à la date du calendrier
 			 */
 			$('tbody td').on('click', function(e) {
 				if ($(this).hasClass('event')) {
@@ -174,7 +188,7 @@
 			});
 
 			/**
-			 * Add '.event' class to all days that has an event
+			 * Ajoute la classe '.event' à tous les jours qui ont un événement
 			 */
 			function setEvent() {
 				$('.day-event').each(function(i) {
@@ -182,6 +196,7 @@
 					var eventDay = $(this).attr('date-day');
 					var eventYear = $(this).attr('date-year');
 					var eventClass = $(this).attr('event-class');
+					var ecentUrl = $(this).attr('event-url')
 					if (eventClass === undefined) eventClass = 'event';
 					else eventClass = 'event ' + eventClass;
 
@@ -192,87 +207,34 @@
 			}
 
 			/**
-			 * Get current day on click in calendar
-			 * and find day-event to display
+			 * Obtenir le jour en cliquant sur le calendrier
+			 * Et trouver l'événement du jour à afficher
 			 */
 			function displayEvent() {
 				$('tbody.event-calendar td').on('click', function(e) {
-					$('.day-event').slideUp('fast');
+					// $('.day-event').slideUp('fast');
 					var monthEvent = $(this).attr('date-month');
 					var dayEvent = $(this).text();
-					$('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]').slideDown('fast');
-				});
-			}
+					var searchUrl = $('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]');
+					searchUrl = searchUrl[0].attributes[4].value;
+					var url = urlArticle[searchUrl];
 
-			/**
-			 * Close day-event
-			 */
-			$('.close').on('click', function(e) {
-				$(this).parent().slideUp('fast');
-			});
-
-			/**
-			 * Save & Remove to/from personal list
-			 */
-			$('.save').click(function() {
-				if (this.checked) {
-					$(this).next().text('Effacer de la liste perso');
-					var eventHtml = $(this).closest('.day-event').html();
-					var eventMonth = $(this).closest('.day-event').attr('date-month');
-					var eventDay = $(this).closest('.day-event').attr('date-day');
-					var eventNumber = $(this).closest('.day-event').attr('data-number');
-					$('.person-list').append('<div class="day" date-month="' + eventMonth + '" date-day="' + eventDay + '" data-number="' + eventNumber + '" style="display:none;">' + eventHtml + '</div>');
-					$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"]').slideDown('fast');
-					$('.day').find('.close').remove();
-					$('.day').find('.save').removeClass('save').addClass('remove');
-					$('.day').find('.remove').next().addClass('hidden-print');
-					remove();
-					sortlist();
-				} else {
-					$(this).next().text('Enregistrer dans la liste perso');
-					$('.day[date-month="' + date-month + '"][date-day="' + date-day + '"][data-number="' + date-year + '"]').slideUp('slow');
-					setTimeout(function() {
-						$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
-					}, 1500);
-				}
-			});
-
-			function remove() {
-				$('.remove').click(function() {
-					if (this.checked) {
-						$(this).next().text('Effacer de la liste perso');
-						var eventMonth = $(this).closest('.day').attr('date-month');
-						var eventDay = $(this).closest('.day').attr('date-day');
-						var eventNumber = $(this).closest('.day').attr('data-number');
-						$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').slideUp('slow');
-						$('.day-event[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').find('.save').attr('checked', false);
-						$('.day-event[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').find('span').text('Enregistrer dans la liste perso');
-						setTimeout(function() {
-							$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
-						}, 1500);
+					if ($('.home').length == 0) {
+						$('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]').slideDown('fast');
+					}else {
+						window.location.href = url;
 					}
 				});
 			}
 
 			/**
-			 * Sort personal list
+			 * Ferme l'événement du jour
 			 */
-			function sortlist() {
-				var personList = $('.person-list');
-
-				personList.find('.day').sort(function(a, b) {
-					return +a.getAttribute('date-day') - +b.getAttribute('date-day');
-				}).appendTo(personList);
-			}
-
-			/**
-			 * Print button
-			 */
-			$('.print-btn').click(function() {
-				window.print();
+			$('.close').on('click', function(e) {
+				$(this).parent().slideUp('fast');
 			});
-	  },
-	};
+
+	
 	jQuery(function($) {
 		calendar.init('ajax');
 	});

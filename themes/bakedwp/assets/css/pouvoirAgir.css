@@ -148,7 +148,35 @@ header .thumbnail{
 #social-box li{
 	display: inline;
 }
+<<<<<<< HEAD
 
+=======
+#social-box-02 span {
+    background: none;
+    width: 42%;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+    height: 100%;
+}
+#social-box-02 li{
+    display: inline;
+}
+#social-box-02{
+		padding: 0;
+}
+.btn-box .btn-box{
+	margin: 0;
+}
+.padding-stuff{
+	padding: 0;
+  margin: 5px 0;
+}
+.margin-stuff{
+	padding: 5px;
+	margin: 0;
+}
+>>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
 				/***********SEARCH***********/
 #headSearch{
 	display: none;
@@ -630,10 +658,15 @@ h5{
 	display: inline-block;
 	border: solid 1px;
 }
+.adhererFooter h5{
+	padding: 7vh;
+}
 h5{
 	text-align: left;
-	color: #F82034;
+	color: white;
 	margin-left: 20px;
+	text-transform: uppercase;
+	text-align: center;
 }
 .even-tag li {
 	color: grey;
@@ -729,7 +762,7 @@ h5{
 	     font-size: 25px;
 	     margin-bottom: 50px;
 	     text-align: left;
-	     padding-top: 40px;
+	     padding: 15%;
 }
 .tagArt{
 	text-align: left;
@@ -738,8 +771,10 @@ h5{
 	text-align: center;
 	border:solid 1px grey;
 	display: inline-block;
-	width: 55px;
 	text-transform: uppercase;
+	padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 10px;
 }
 .relativArt{
 	 position: relative;
@@ -762,4 +797,15 @@ h5{
 	color: black;
 	text-transform: uppercase;
 }
+<<<<<<< HEAD
 /*//////FIN PAGE EVENEMENT/////*/
+=======
+/*//////FIN PAGE EVENEMENT/////*/;
+/*//////PAGE CATEGORIE/////*/;
+#pageDisplay button{
+	background: rgba(255, 255, 239, 1);
+	margin-left: 5px;
+	color: black;
+	text-transform: uppercase;
+}
+>>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
