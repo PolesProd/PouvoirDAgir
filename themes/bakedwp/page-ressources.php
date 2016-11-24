@@ -42,24 +42,25 @@ $tab_array = explode(',',$string_arr);
         <div class="columns">
             <div class="relativArt"> 
             <div class="AllPostInOneDiv">
+              <div class="isotope">
              <?php
                   foreach($tab_array as $menu){
                     if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery' || $menu === 'mc4wp-form'){
                     }else{
               ?>
               
-                      <div class="  isotope">
-                       <div class="<?=$menu;?>" >
+                      
+                      
                          <?php
                             $var = str_replace(' ','_',$menu);
                             $args = array( 'post_type' => $menu,
                                     'posts_per_page' => 3,
                                     );
                             include get_template_directory().'/parts/loop-posts.php';
-                            echo '</div>'
+                           
                           ;?>
                           
-                        </div>
+                       
                         <?php     
 
                               }
@@ -74,6 +75,6 @@ $tab_array = explode(',',$string_arr);
         </div> 
     </div> 
   </div> 
-</div> 
+
 <?php get_footer(); ?>
 
