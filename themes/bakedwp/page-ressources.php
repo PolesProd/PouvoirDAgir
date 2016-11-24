@@ -28,7 +28,7 @@ $tab_array = explode(',',$string_arr);
             <p class="barre-cate">
               <button  data-filter="*">Tous Les Post Type</button><?php
                 foreach($tab_array as $menu){
-                  if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
+                  if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery' || $menu === 'mc4wp-form'){
                   }else{
                     echo '<button  data-filter=".'.$menu.'">'.$menu.'</button>';
                   }
@@ -44,7 +44,7 @@ $tab_array = explode(',',$string_arr);
             <div class="AllPostInOneDiv">
              <?php
                   foreach($tab_array as $menu){
-                    if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery'){
+                    if($menu === 'page' || $menu === 'attachment' || $menu === 'revision' || $menu === 'nav_menu_item' || $menu === 'ressources' || $menu === 'wpcf7_contact_form' || $menu === 'post' || $menu === 'events' || $menu === 'partenaires' || $menu === 'glossary' || $menu === 'foogallery' || $menu === 'mc4wp-form'){
                     }else{
               ?>
               
