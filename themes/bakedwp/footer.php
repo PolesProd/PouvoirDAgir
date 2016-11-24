@@ -1,8 +1,4 @@
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
 <footer class="footer" role="contentinfo">
 	<div class="large-12 footershare">
 		<div class="small-offset-2 small-4 columns">
@@ -12,11 +8,7 @@
 				<?php  echo do_shortcode("[mc4wp_form id='s291']"); ?>
 			</div>
 		</div>
-<<<<<<< HEAD
-		<div class="small-1 columns box-height">
-=======
 		<div class="small-2 columns box-height">
->>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
 			<ul id="social-box-02" class="box-height btn-box text-White Back-Purple-Light text-Red-Light title-area">
 				<li><a href="https://www.facebook.com/pouvoirdagir/?fref=ts" target="_blank"><span style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/facebook-white.png');"></span></a></li>
 				<li><a href="https://twitter.com/collectif_pa" target="_blank"><span style="background-image:url('<?php echo site_url() ?>/wp-content/themes/bakedwp/assets/images/pyctos/twitter-white.png');"></span></a></li>
@@ -36,21 +28,6 @@
 				<?php get_sidebar('sidebar3'); ?>
 		</div>
 	</div>
-<<<<<<< HEAD
-	<div class="large-12 medium-12 ">
-		<ul class="planSite">
-		<li>mentions légales</li>
-		<li>cookies</li>
-		<li>plan du site</li>
-		<li>contact</li>
-		<li>adresse</li>
-		<li>tel</li>
-		</ul>
-		
-	</div>
-	<div class="large-10 medium-10 small-centered columns">
-		<p class="source-org copyright"><?php echo get_theme_mod( 'footer_text', 'BakedWP Theme. Custom by <a href="http://lepoles.org">LePoleS Prod.</a>' ); ?></p>
-=======
 	<div class="large-12 medium-12 planSite ">
 		<ul class="small-2">
 			<a href="#"><li>cookies</li></a>
@@ -76,8 +53,7 @@
 				<p><a href="http://lepoles.org"> Copyright LePoleS Prod.</a></p>
 	</div>
 	<div class="large-10 medium-10 small-centered columns">
-		
->>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
+
 	</div>
 </footer> <!-- end .footer -->
 </div> <!-- end #container -->
@@ -85,9 +61,4 @@
 </div> <!-- end .off-canvas-wrap -->
 <?php wp_footer(); ?>
 </body>
-<<<<<<< HEAD
 </html> <!-- end page -->
-
-=======
-</html> <!-- end page -->
->>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
