@@ -733,3 +733,6 @@ function custom_js_to_head() {
 	<?php
 }
 add_action('admin_head', 'custom_js_to_head');
+/*************************************************
+						IsotopeJS
+*************************************************/

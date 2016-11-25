@@ -56,6 +56,9 @@ MISE EN PLACE BOXS & COLORS -- Beginning of a Framework
 .Back-White-Mid{
 	background-color:#fff2df;
 }
+.Back-White{
+	background-color:#fff;
+}
 .Back-White-Dark{
 
 }
@@ -134,7 +137,7 @@ header .thumbnail{
 /*SOCIAL BAR*/
 #social-box span{
 	background: none;
-	width: 45%;
+	width: 42%;
 	height: 85px;
 	background-position: center;
 	background-size: cover;
@@ -148,9 +151,6 @@ header .thumbnail{
 #social-box li{
 	display: inline;
 }
-<<<<<<< HEAD
-
-=======
 #social-box-02 span {
     background: none;
     width: 42%;
@@ -176,7 +176,6 @@ header .thumbnail{
 	padding: 5px;
 	margin: 0;
 }
->>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
 				/***********SEARCH***********/
 #headSearch{
 	display: none;
@@ -191,6 +190,9 @@ header .thumbnail{
 /*HOME*/
 #encartRessource h3{
 	text-transform: uppercase;
+}
+#calendar td{
+	width: 73px;
 }
 /* Article
    ========================================================================== */
@@ -324,7 +326,7 @@ header .thumbnail{
 	width: 50%;
 	right: 25%;
 	height: 250px;
-	top: 250px;
+	top: 100px;
 }
 #Wrap-Header nav section .name{
 	position: relative;
@@ -332,6 +334,21 @@ header .thumbnail{
 }
 #profil{
 	color:#F82034;
+}
+.sliderCont p{
+	color: #ac1624;
+    font-size: 2.3rem;
+}
+.sliderCont h2 a{
+	border:solid 1px #6c5c9f;
+	background: rgba(255, 255, 239, 1);
+	color: black;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+   text-decoration: none;
+   text-transform: uppercase;
+
 }
 /**********************\
     Encart ressource
@@ -353,223 +370,12 @@ header .thumbnail{
 	background-color: white;
   height: 225px;
 }
-#encartRessource img {
-    position: relative;
-    bottom: 41px;
-    width: 100%;
-}
 /**********************\
-    evenement
+    		FOOTER
 \**********************/
-.barre{
-	background: #6c5c9f;
-	height: 260px;
+.box-height{
+	height: 7vw;
 }
-.btn-barre li{
-	text-align: center;
-    list-style: none;
-    text-decoration: none;
-    display: inline-block;
-    background: rgba(255, 255, 239, 1);
-    height: 50px;
-    width: 220px;
-    color: black;
-    margin-left: 20px;
-    text-transform: uppercase;
-    font-size: 18px;
-    padding-left: 57px;
-    position: relative;
-    padding-top: 15px;
-
-}
-.plus{
-	position: absolute;
-    float: right;
-    height: 100px;
-    width: 100px;
-    background: white;
-    border-radius: 50%;
-    text-align: center;
-    padding: 10px;
-    font-size: 50px;
-    color: black;
-    margin-left: 70px;
-    display: inline-block;
-}
-.btn-barre{
-	text-align: center;
-	padding-top: 30px;
-}
-.btn-barre img{
-	 width: 62%;
-    position: absolute;
-    left: -38px;
-    top: -24px;
-}
-.barre-cate li {
-	text-align: center;
-    list-style: none;
-    text-decoration: none;
-    display: inline-block;
-    height: 40px;
-    width: 145px;
-    border: solid 1px;
-    margin-left: 11px;
-    color: rgba(255, 255, 239, 1);
-    font-size: 20px;
-    padding-top: 3px;
-
-}
-.barre-cate{
-	text-align: center;
-	text-transform: uppercase;
-}
-#evenement{
-	    background: rgba(255, 255, 239, 1);
-	    text-align: center;
-}
-.article{
-	height: 260px;
-    width: 375px;
-	background:white;
-	border: solid 1px;
-	margin-left: 100px;
-	display: inline-block;
-	margin-bottom: 45px;
-	padding-top: 10px;
-
-}
-.article li {
-	text-align: center;
-	list-style: none;
-	text-decoration: none;
-	display: inline-block;
-	border: solid 1px;
-}
-h5{
-	text-align: left;
-	color: #F82034;
-	margin-left: 20px;
-}
-.even-tag li {
-	color: grey;
-	width:60px;
-	text-transform: uppercase;
-}
-.even-tag {
-	text-align: left;
-	 margin-top: 35px;
-}
-#evenement button{
-	display: block;
-	margin :auto;
-}
-.partage{
-	background: #b9b7b7;
-    height: 35px;
-    margin-top: 22px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 5px;
-}
-.partage img {
-    width: 30%;
-    position: absolute;
-}
-.partage li{
-	list-style: none;
-	position: relative;
-}
-.shareImg p {
-	display: inline-block;
-}
-.shareImg{
-    background: #c3bcbc;
-    height: 42px;
-    width: 100%;
-}
-.shareImg img {
-
-    width: 5.0rem;
-    position: relative;
-    top: -18px;
-}
-.events{
-	background: rgba(255, 255, 239, 1);
-    display: inline-block;
-    margin-bottom: 35px;
-    margin-left: 20px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: solid 1px #6c5c9f;
-    height: 260px;
-    height: 100%;
-    padding-bottom: 15px;
-}
-.events.large-3.medium-3.columns.small-centered {
-    margin-left: 50px;
-}
-.auteurArt{
-	border: solid 1px red;
-    width: 100px;
-    text-align: center;
-    display: inline-block;
-    position: static;
-    float: left;
-}
-.derArt{
-	 height: 495px;
-    background: rgba(255, 255, 239, 1);
-    border: solid 7px;
-}
-.positionDate{
-	display: inline-block;
-	border: solid 1px red;
-	position: static;
-    float: right;
-    padding-left: 10px;
-    padding-right: 10px;
-
-}
-.centerArt{
-	    text-align: center;
-	    background: rgba(255, 255, 239, 1);
-}
-.titreArt{
-	    text-transform: capitalize;
-	    color: #ac1624;
-	     font-size: 25px;
-	     margin-bottom: 50px;
-	     text-align: left;
-	     padding-top: 40px;
-}
-.tagArt{
-	text-align: left;
-}
-.tagArt li{
-	text-align: center;
-	border:solid 1px grey;
-	display: inline-block;
-	width: 55px;
-	text-transform: uppercase;
-}
-.relativArt{
-	 position: relative;
-    top: -105px;
-}
-.btnArt{
-	background: rgb(108, 92, 159);
-    height: 75px;
-    width: 340px;
-    text-transform: uppercase;
-    font-weight: bold;
-     font-size: 1.5rem;
-}
-.calend-color{
-	background: grey;
-}
-
 /**********************\
     evenement
 \**********************/
@@ -664,7 +470,6 @@ h5{
 h5{
 	text-align: left;
 	color: white;
-	margin-left: 20px;
 	text-transform: uppercase;
 	text-align: center;
 }
@@ -752,10 +557,12 @@ h5{
     padding-right: 10px;
 
 }
+
 .centerArt{
 	    text-align: center;
 	    background: rgba(255, 255, 239, 1);
 }
+
 .titreArt{
 	    text-transform: capitalize;
 	    color: #ac1624;
@@ -764,9 +571,11 @@ h5{
 	     text-align: left;
 	     padding: 15%;
 }
+
 .tagArt{
 	text-align: left;
 }
+
 .tagArt li{
 	text-align: center;
 	border:solid 1px grey;
@@ -776,10 +585,23 @@ h5{
     padding-right: 5px;
     margin-left: 10px;
 }
+
+.categoryList{
+	display: inline-flex;
+	margin-left: 32.6%;
+}
+
+.categoryList li{
+	padding-right: 30px;
+	list-style: none;
+	font-size: 1.5em;
+}
+
 .relativArt{
 	 position: relative;
     top: -62px;
 }
+
 .btnArt{
 	background: rgb(108, 92, 159);
     height: 75px;
@@ -788,18 +610,17 @@ h5{
     font-weight: bold;
      font-size: 1.5rem;
 }
+
 .calend-color{
 	background: grey;
 }
+
 #btnRessource button{
 	background: rgba(255, 255, 239, 1);
 	margin-left: 5px;
 	color: black;
 	text-transform: uppercase;
 }
-<<<<<<< HEAD
-/*//////FIN PAGE EVENEMENT/////*/
-=======
 /*//////FIN PAGE EVENEMENT/////*/;
 /*//////PAGE CATEGORIE/////*/;
 #pageDisplay button{
@@ -808,4 +629,56 @@ h5{
 	color: black;
 	text-transform: uppercase;
 }
->>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */

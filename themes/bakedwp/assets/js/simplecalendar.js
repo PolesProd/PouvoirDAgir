@@ -21,20 +21,26 @@
 	          	var month = format[0];
 	          	var year = format[2];
 
+							var dateFormat = day + '/' + month + '/' + year;
+
 	          	var title = events[i].title;
 	          	var description = events[i].excerpt;
+
 	          	var url = events[i].url;
+							var urlOrg = events[i].custom_fields['wpsc_url'];
+							var urlLieu = events[i].taxonomy_wpsclocation[0].slug;
 
 	          	var categorie = events[i].taxonomy_wpsccategory[0].title;
-	          	var tags = events[i].tags[0].title;
+	          	var tags = events[i].tags[0];
 
 	          	var lieu = events[i].taxonomy_wpsclocation[0].title;
 	          	var org = events[i].custom_fields['wpsc_reg_text'][0];
 
 	          	urlArticle.push(url);
-							$('.day-event').click
-	            $('.list').append('<div class="day-event" date-day="'+ day +'" date-month="' + month +'" date-year="'+ year +'" data-number="'+ i +'"><a href="#" class="close"></a><div class="date"><p class="eventDate">'+ events[i].date +'</p><p class="eventLieu">'+ lieu + '</p><p class="eventOrg">' + org + '</p></div><h2 class="title">'+ events[i].title +'</h2><p>'+ description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span><a href="'+ url +'">Voir l\'événement</a></span></label></div>');
-	          }
+
+	            $('.list').append('<div class="day-event" date-day="'+ day +'" date-month="' + month +'" date-year="'+ year +'" data-number="'+ i +'"><a href="#" class="close"></a><div class="date"><p class="eventDate">&#128197;'+ dateFormat +'</p><p class="eventLieu"><a href="http://localhost/wordpress/?wpsclocation='+ urlLieu +'">'+ lieu + '</a></p><p class="eventOrg"><a href="'+ urlOrg +'">&#x260e;' + org + '</a></p></div><h2 class="title">'+ events[i].title +'</h2><p>'+ description +'</p><p>'+ tags +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span><a href="'+ url +'">Voir l\'événement</a></span></label></div>');
+							console.log(tags);
+						}
 	          // Démarre le calendrier
 	          calendar.startCalendar();
 	  			})
@@ -196,7 +202,7 @@
 					var eventDay = $(this).attr('date-day');
 					var eventYear = $(this).attr('date-year');
 					var eventClass = $(this).attr('event-class');
-					var ecentUrl = $(this).attr('event-url')
+					var eventUrl = $(this).attr('event-url');
 					if (eventClass === undefined) eventClass = 'event';
 					else eventClass = 'event ' + eventClass;
 
@@ -212,7 +218,7 @@
 			 */
 			function displayEvent() {
 				$('tbody.event-calendar td').on('click', function(e) {
-					// $('.day-event').slideUp('fast');
+					$('.day-event').slideUp('fast');
 					var monthEvent = $(this).attr('date-month');
 					var dayEvent = $(this).text();
 					var searchUrl = $('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]');
@@ -234,7 +240,72 @@
 				$(this).parent().slideUp('fast');
 			});
 
-	
+			//fonction mapping url
+				//recuperation de la liste des evenements
+
+
+			/**
+			 * Enregistrer & Supprimer de la liste personnelle
+			 */
+			// $('.save').click(function() {
+			// 	if (this.checked) {
+			// 		$(this).next().text('Effacer de la liste perso');
+			// 		var eventHtml = $(this).closest('.day-event').html();
+			// 		var eventMonth = $(this).closest('.day-event').attr('date-month');
+			// 		var eventDay = $(this).closest('.day-event').attr('date-day');
+			// 		var eventNumber = $(this).closest('.day-event').attr('data-number');
+			// 		$('.person-list').append('<div class="day" date-month="' + eventMonth + '" date-day="' + eventDay + '" data-number="' + eventNumber + '" style="display:none;">' + eventHtml + '</div>');
+			// 		$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"]').slideDown('fast');
+			// 		$('.day').find('.close').remove();
+			// 		$('.day').find('.save').removeClass('save').addClass('remove');
+			// 		$('.day').find('.remove').next().addClass('hidden-print');
+			// 		remove();
+			// 		sortlist();
+			// 	} else {
+			// 		$(this).next().text('Enregistrer dans la liste perso');
+			// 		$('.day[date-month="' + date-month + '"][date-day="' + date-day + '"][data-number="' + date-year + '"]').slideUp('slow');
+			// 		setTimeout(function() {
+			// 			$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
+			// 		}, 1500);
+			// 	}
+			// });
+
+			// function remove() {
+			// 	$('.remove').click(function() {
+			// 		if (this.checked) {
+			// 			$(this).next().text('Effacer de la liste perso');
+			// 			var eventMonth = $(this).closest('.day').attr('date-month');
+			// 			var eventDay = $(this).closest('.day').attr('date-day');
+			// 			var eventNumber = $(this).closest('.day').attr('data-number');
+			// 			$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').slideUp('slow');
+			// 			$('.day-event[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').find('.save').attr('checked', false);
+			// 			$('.day-event[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').find('span').text('Enregistrer dans la liste perso');
+			// 			setTimeout(function() {
+			// 				$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
+			// 			}, 1500);
+			// 		}
+			// 	});
+			// }
+
+			/**
+			 * Trier liste personnelle
+			 */
+			// function sortlist() {
+			// 	var personList = $('.person-list');
+
+			// 	personList.find('.day').sort(function(a, b) {
+			// 		return +a.getAttribute('date-day') - +b.getAttribute('date-day');
+			// 	}).appendTo(personList);
+			// }
+
+			/**
+			 * Bonton Imprimer
+			 */
+			// $('.print-btn').click(function() {
+			// 	window.print();
+			// });
+	  },
+	};
 	jQuery(function($) {
 		calendar.init('ajax');
 	});
