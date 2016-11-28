@@ -151,7 +151,7 @@ header .thumbnail{
 #social-box li{
 	display: inline;
 }
-<<<<<<< HEAD
+
 #social-box-02 span {
     background: none;
     width: 42%;
@@ -177,9 +177,7 @@ header .thumbnail{
 	padding: 5px;
 	margin: 0;
 }
-=======
 
->>>>>>> 9b43a93f9f2a640c3865ed1f29b05b0116ed5a1d
 				/***********SEARCH***********/
 #headSearch{
 	display: none;
@@ -831,10 +829,7 @@ h5{
 	color: black;
 	text-transform: uppercase;
 }
-<<<<<<< HEAD
-=======
 #tag{
 	position: absolute;
     top: 600px;
 }
->>>>>>> b7c01d92e0b05e2da2a598aabdec4c0810519a03

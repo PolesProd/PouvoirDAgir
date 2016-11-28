@@ -46,8 +46,8 @@ NAVIGATION STYLES
   .off-canvas-list ul .dropdown {
     margin-left: 20px; }
 
-@media only screen and (max-width: 40em) { 
-	.top-bar .title-area h1 { 
+@media only screen and (max-width: 40em) {
+	.top-bar .title-area h1 {
 		font-size: 1.25rem;
 	}
 }
@@ -344,7 +344,8 @@ FOOTER STYLES
 .footer {
   clear: both;
   margin-top: 1em;
-  text-align: center; 
+  text-align: center;
+
 background: rgb(255, 255, 239);
 }
 .planSite{
@@ -354,6 +355,7 @@ background: rgb(255, 255, 239);
   display: inline-block;
   text-align: left;
 }
+
 .planSite li {
   list-style: none;
   background: grey;
@@ -361,6 +363,7 @@ background: rgb(255, 255, 239);
   text-transform: uppercase;
 
 }
+
 .planSite p{
   margin-bottom: 0px;
 }
@@ -370,7 +373,7 @@ background: rgb(255, 255, 239);
   color: white;
 }
 .mc4wp-form-fields input[type="email"]{
-  margin:auto; 
+  margin:auto;
   text-align: center;
 }
 .footershare{
@@ -383,7 +386,7 @@ PLUGIN STYLES
 .gform_body ul {
   list-style: none outside none;
   margin: 0; }
-  
+
 /*********************
 WORDPRESS GALLERY USE FOUNDATION GRID
 *********************/

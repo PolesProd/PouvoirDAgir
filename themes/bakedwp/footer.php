@@ -29,6 +29,7 @@
 				<?php get_sidebar('sidebar3'); ?>
 		</div>
 	</div>
+
 	<div class="large-12 medium-12 planSite ">
 		<ul class="small-2">
 			<a href="http://localhost/wordpress/?page_id=7"><li>événemets</li></a>
@@ -49,7 +50,22 @@
 				<p><a href="http://lepoles.org"> Copyright LePoleS Prod.</a></p>
 	</div>
 	<div class="large-10 medium-10 small-centered columns">
-		
+
+
+	<div class="large-12 medium-12 ">
+		<ul class="planSite">
+		<li>mentions légales</li>
+		<li>cookies</li>
+		<li>plan du site</li>
+		<li>contact</li>
+		<li>adresse</li>
+		<li>tel</li>
+		</ul>
+
+	</div>
+	<div class="large-10 medium-10 small-centered columns">
+		<p class="source-org copyright"><?php echo get_theme_mod( 'footer_text', 'BakedWP Theme. Custom by <a href="http://lepoles.org">LePoleS Prod.</a>' ); ?></p>
+
 	</div>
 </footer> <!-- end .footer -->
 </div> <!-- end #container -->
@@ -58,4 +74,3 @@
 <?php wp_footer(); ?>
 </body>
 </html> <!-- end page -->
-
