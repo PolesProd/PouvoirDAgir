@@ -111,16 +111,16 @@ table {
 
 .btn-prev,
 .btn-next {
-	border: 2px solid #cbd1d2;
-	border-radius: 50%;
-	color: #cbd1d2;
-	height: 32px;
-	font-size: 22px;
-	line-height: 28px;
-	margin: -16px;
-	position: absolute;
-	top: 50%;
-	width: 32px;
+  border: 2px solid #cbd1d2;
+  border-radius: 50%;
+  color: #cbd1d2;
+  height: 32px;
+  font-size: 22px;
+  line-height: 28px;
+  margin: -16px;
+  position: absolute;
+  top: 50%;
+  width: 32px;
 }
 
 .btn-prev:hover,
@@ -163,9 +163,7 @@ table {
 .day-event {
   background-color: #F2F2F2 ;
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 0px;
-  margin-bottom: 50px;
+  padding-top: 0;
   display:none;
 
 }

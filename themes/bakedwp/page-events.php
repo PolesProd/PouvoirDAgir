@@ -54,20 +54,22 @@ Template Name: Événements
 				temoignage</li>
 				<div class="plus"><a href="">+</a></div>
 			</ul>
-			<?php
-				$args = array( 'hide_empty=0' );
-				$terms = get_terms( 'wpsccategory', $args );
-				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-					$count = count( $terms );
-					$i = 0;
-					$term_list = '<ul class="categoryList">';
-					foreach ( $terms as $term ) {
-						$i++;
-						$term_list .= '<li><a href="' . esc_url( get_term_link( $term ) ) . '" alt="' . esc_attr( sprintf( __( 'View all post filed under %s', 'bakedwp' ), $term->name ) ) . '">' . $term->name . '</a></li>';
-					}
-					echo $term_list;
-				}
-			?>
+			<div class='button-group float-center'>
+				<div id="filters" class="button-group">
+					<div class="btn-barre">
+						<button class="selected" data-filter="*">Tous</button>
+						<?php
+							$filters = get_terms('wpsccategory');
+							foreach ($filters as $filter ) {
+								$category = get_posts('wpsccategory');
+								if(count($category) >= 1){
+									echo '<button class="button" data-filter="'. $filter->name .'">'. $filter->name .'</button>';
+								}
+							}
+						?>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- FIN Barre de navigation des evenemnt "TAG ET CATEGORIE" -->
 		<!-- Les tuiles devenement -->
@@ -82,7 +84,9 @@ Template Name: Événements
 								if($loopy->have_posts()){
 									while ( $loopy->have_posts() ) {
 									$loopy->the_post();
-									echo '<div class="events large-3 medium-3 columns small-centered">';
+									$filter = wp_get_post_terms( $post->ID, 'wpsccategory', array("fields" => "names"));
+									$post_id = $post->ID;
+									echo '<div class="events large-3 medium-3 columns small-centered transition '.$filter[0].'" id="event-'.get_the_ID().'" data-category="transition">';
 									$id = get_the_ID();
 								?>
 								<div class="dateArt">

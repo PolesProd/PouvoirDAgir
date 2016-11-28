@@ -39,7 +39,6 @@
 	          	urlArticle.push(url);
 
 	            $('.list').append('<div class="day-event" date-day="'+ day +'" date-month="' + month +'" date-year="'+ year +'" data-number="'+ i +'"><a href="#" class="close"></a><div class="date"><p class="eventDate">&#128197;'+ dateFormat +'</p><p class="eventLieu"><a href="http://localhost/wordpress/?wpsclocation='+ urlLieu +'">'+ lieu + '</a></p><p class="eventOrg"><a href="'+ urlOrg +'">&#x260e;' + org + '</a></p></div><h2 class="title">'+ events[i].title +'</h2><p>'+ description +'</p><p>'+ tags +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span><a href="'+ url +'">Voir l\'événement</a></span></label></div>');
-							console.log(tags);
 						}
 	          // Démarre le calendrier
 	          calendar.startCalendar();
@@ -224,9 +223,11 @@
 					var searchUrl = $('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]');
 					searchUrl = searchUrl[0].attributes[4].value;
 					var url = urlArticle[searchUrl];
+					console.log("trucmuche");
 
 					if ($('.home').length == 0) {
 						$('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]').slideDown('fast');
+						console.log("tregknnsqc*ù");
 					}else {
 						window.location.href = url;
 					}
@@ -239,71 +240,6 @@
 			$('.close').on('click', function(e) {
 				$(this).parent().slideUp('fast');
 			});
-
-			//fonction mapping url
-				//recuperation de la liste des evenements
-
-
-			/**
-			 * Enregistrer & Supprimer de la liste personnelle
-			 */
-			// $('.save').click(function() {
-			// 	if (this.checked) {
-			// 		$(this).next().text('Effacer de la liste perso');
-			// 		var eventHtml = $(this).closest('.day-event').html();
-			// 		var eventMonth = $(this).closest('.day-event').attr('date-month');
-			// 		var eventDay = $(this).closest('.day-event').attr('date-day');
-			// 		var eventNumber = $(this).closest('.day-event').attr('data-number');
-			// 		$('.person-list').append('<div class="day" date-month="' + eventMonth + '" date-day="' + eventDay + '" data-number="' + eventNumber + '" style="display:none;">' + eventHtml + '</div>');
-			// 		$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"]').slideDown('fast');
-			// 		$('.day').find('.close').remove();
-			// 		$('.day').find('.save').removeClass('save').addClass('remove');
-			// 		$('.day').find('.remove').next().addClass('hidden-print');
-			// 		remove();
-			// 		sortlist();
-			// 	} else {
-			// 		$(this).next().text('Enregistrer dans la liste perso');
-			// 		$('.day[date-month="' + date-month + '"][date-day="' + date-day + '"][data-number="' + date-year + '"]').slideUp('slow');
-			// 		setTimeout(function() {
-			// 			$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
-			// 		}, 1500);
-			// 	}
-			// });
-
-			// function remove() {
-			// 	$('.remove').click(function() {
-			// 		if (this.checked) {
-			// 			$(this).next().text('Effacer de la liste perso');
-			// 			var eventMonth = $(this).closest('.day').attr('date-month');
-			// 			var eventDay = $(this).closest('.day').attr('date-day');
-			// 			var eventNumber = $(this).closest('.day').attr('data-number');
-			// 			$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').slideUp('slow');
-			// 			$('.day-event[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').find('.save').attr('checked', false);
-			// 			$('.day-event[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').find('span').text('Enregistrer dans la liste perso');
-			// 			setTimeout(function() {
-			// 				$('.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"][data-number="' + eventNumber + '"]').remove();
-			// 			}, 1500);
-			// 		}
-			// 	});
-			// }
-
-			/**
-			 * Trier liste personnelle
-			 */
-			// function sortlist() {
-			// 	var personList = $('.person-list');
-
-			// 	personList.find('.day').sort(function(a, b) {
-			// 		return +a.getAttribute('date-day') - +b.getAttribute('date-day');
-			// 	}).appendTo(personList);
-			// }
-
-			/**
-			 * Bonton Imprimer
-			 */
-			// $('.print-btn').click(function() {
-			// 	window.print();
-			// });
 	  },
 	};
 	jQuery(function($) {
