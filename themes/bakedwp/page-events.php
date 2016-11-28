@@ -11,7 +11,7 @@ Template Name: Événements
 				<h1><?php the_title(); ?></h1>
 			</div>
 		</div>
-	<!--FIN sous header titre page -->	
+	<!--FIN sous header titre page -->
 	<!-- Calendrier evenement -->
 		<div id="content">
 			<div id="inner-content" >
@@ -25,8 +25,8 @@ Template Name: Événements
 					<div class="calendar hidden-print">
 						<header>
 							<h2 class="month"></h2>
-							<a class="btn-prev fontawesome-angle-left" href="#"></a>
-							<a class="btn-next fontawesome-angle-right" href="#"></a>
+							<a class="btn-prev" href="#"></a>
+							<a class="btn-next" href="#"></a>
 						</header>
 					<table>
 						<thead class="event-days">
@@ -54,12 +54,22 @@ Template Name: Événements
 				temoignage</li>
 				<div class="plus"><a href="">+</a></div>
 			</ul>
-			<ul class="barre-cate">
-				<li class="barre-cate">categorie</li>
-				<li>categorie</li>
-				<li>categorie</li>
-				<li>categorie</li>
-			</ul>
+			<div class='button-group float-center'>
+				<div id="filters" class="button-group">
+					<div class="btn-barre">
+						<button class="selected" data-filter="*">Tous</button>
+						<?php
+							$filters = get_terms('wpsccategory');
+							foreach ($filters as $filter ) {
+								$category = get_posts('wpsccategory');
+								if(count($category) >= 1){
+									echo '<button class="button" data-filter="'. $filter->name .'">'. $filter->name .'</button>';
+								}
+							}
+						?>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- FIN Barre de navigation des evenemnt "TAG ET CATEGORIE" -->
 		<!-- Les tuiles devenement -->
@@ -74,36 +84,63 @@ Template Name: Événements
 								if($loopy->have_posts()){
 									while ( $loopy->have_posts() ) {
 									$loopy->the_post();
-									echo '<div class="events large-3 medium-3 columns small-centered">';
+									$filter = wp_get_post_terms( $post->ID, 'wpsccategory', array("fields" => "names"));
+									$post_id = $post->ID;
+									echo '<div class="events large-3 medium-3 columns small-centered transition '.$filter[0].'" id="event-'.get_the_ID().'" data-category="transition">';
 									$id = get_the_ID();
 								?>
 								<div class="dateArt">
-									<div class="positionDate">
-										<?php
-											if( !strlen( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) ) {
-												// single day event
-												$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
-											} else {
-												$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
-												$date .= ' / ';
-												$date .= date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) );
-											}
-											echo $date;
-										?>
+										<p class="auteurArt"><?php the_author_posts_link(); ?></p>
+										<p class="lieu">
+											<?php
+												// Lieu
+												$locations = get_the_terms( get_the_ID(), 'wpsclocation' );
+
+												if( isset( $locations ) && is_array( $locations ) ) {
+													foreach ( $locations as $loc ) {
+														$location = $loc->name;
+														if ( strlen( $loc->description ) ) {
+															$location .= '<br />' . $loc->description;
+														}
+													}
+													echo '<a href="' . get_term_link($loc->name, $loc->taxonomy) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'textdomain'), $loc->name)) . '">' . esc_html($loc->name) . '</a>';
+
+												}
+											?>
+										</p>
+
+										<p class="positionDate">
+											<?php
+												if( !strlen( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) ) {
+													// single day event
+													$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
+												} else {
+													$date = date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_start_date', true ) ) );
+													$date .= ' - ';
+													$date .= date_i18n( get_option('date_format'), strtotime( get_post_meta( get_the_ID(), 'wpsc_end_date', true ) ) );
+												}
+												echo $date;
+											?>
+										</p>
 								</div>
-								<div class="auteurArt"><?php the_author(); ?>
-									</div>
-							</div>
-							<br>
+
 							<div class="titreArt">
-								<?php the_title(); ?>
-								<?php the_category(); ?>
+								<h3><a href="<?php echo get_permalink($post); ?>"><?php the_title(); ?></a><br></h3>
+								<p class="categorieArt">
+									<?php
+										$categories = get_the_terms( $post->ID, 'wpsccategory' );
+										// now you can view your category in array:
+										// using var_dump( $categories );
+										// or you can take all with foreach:
+										foreach( $categories as $category ) {
+										  echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+										}
+									?>
+								</p>
 							</div>
 							<div class="tagArt">
-								<ul>
-									<li>Tag</li>
-									<li>Tag</li>
-									<li>Tag</li>
+								<ul class="evenTag">
+									<li><?php the_tags('', ', ', ''); ?></li>
 								</ul>
 							</div>
 								<div class="shareImg">
