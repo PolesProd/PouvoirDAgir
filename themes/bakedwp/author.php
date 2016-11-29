@@ -15,6 +15,13 @@
             <div class="columns">
                 <div class="row">
                    <?php
+                    $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    $results = explode('/', trim($url,'/'));
+                    if(count($results) > 0){
+                        //get the last record
+                        $last = $results[count($results) - 1];
+                        echo $last;
+                    }
                      custom_wp_list_authors();
 
                    $post_type = array('post','events','partenaires','analyse','methodologie','temoignage','glossary');
