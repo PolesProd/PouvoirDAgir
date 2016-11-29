@@ -20,15 +20,15 @@
                     if(count($results) > 0){
                         //get the last record
                         $last = $results[count($results) - 1];
-                        echo $last;
+                        $author = $last;
                     }
-                     custom_wp_list_authors();
+                    custom_wp_list_authors();
 
                    $post_type = array('post','events','partenaires','analyse','methodologie','temoignage','glossary');
                     $args = array(
                         'post_type'=> $post_type,
                         'post_per_page' => 1,
-                        'author' => $_GET['author']
+                        'author_name' => $author
                     );
 
                 $queryGlossary = new WP_Query( $args );
