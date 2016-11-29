@@ -1,6 +1,13 @@
 Changelog
 ============
 
+### 2.0.11 - October 24, 2016
+
+**Fixes**
+
+- Fixed "undefined function" errors when using certain cache plugins.
+
+
 ### 2.0.10 - September 15, 2016
 
 **Improvements**

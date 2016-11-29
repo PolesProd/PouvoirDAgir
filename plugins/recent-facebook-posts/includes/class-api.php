@@ -200,12 +200,12 @@ class RFBP_API {
 		// Add all data to URL
 		$url = add_query_arg( $data, $url );
 
-		$response = wp_remote_get($url, array( 
+		$response = wp_remote_get($url, array(
 			'timeout' => 10,
 			'headers' => array( 'Accept-Encoding' => '' ),
 			'sslverify' => false
-			) 
-		); 
+			)
+		);
 
 		// Did the request succeed?
 		if( is_wp_error( $response ) ) {

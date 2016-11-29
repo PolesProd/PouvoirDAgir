@@ -229,7 +229,7 @@ function events_taxonomies(){
 
 add_action('manage_events_posts_custom_column', 'events_columns_content');
 function events_columns_content($column_name, $post_ID) {
-	if ($column_name == 'wpsc_start_date') {
+	if ($column_name == 'Commence le') {
 		echo get_post_meta( $post_ID, $column_name, true);
 	}
 }

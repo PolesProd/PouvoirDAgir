@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Recent Facebook Posts 2.0.10\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/recent-facebook-posts\n"
-"POT-Creation-Date: 2016-09-15 08:46:29+00:00\n"
+"POT-Creation-Date: 2016-10-24 09:57:11+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Show link previews?"
 msgstr ""
 
-#: includes/functions/global.php:23 includes/views/settings_page.html.php:69
+#: includes/functions/global.php:44 includes/views/settings_page.html.php:69
 msgid "Find us on Facebook"
 msgstr ""
 
