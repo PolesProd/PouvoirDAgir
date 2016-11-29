@@ -70,6 +70,7 @@ $tab_array = explode(',',$string_arr);
 
        </div> 
        </div>
+       <button><a href="/wordpress/ressources/categories/">Voir tous les Articles</a></button>
        </div> 
        </div>
         </div> 
