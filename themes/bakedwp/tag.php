@@ -16,10 +16,16 @@ $tag = wp_tag_cloud( 'format=array' ); ?>
 							  	</div>
 							  	<div>
 							  		<?php
-							  		$brand_name = $_GET['tag'];
+							  		$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    				$results = explode('/', trim($url,'/'));
+                    				if(count($results) > 0){
+                        				//get the last record
+                        				$last = $results[count($results) - 1];
+                        				$tag = $last;
+                    				}
 									$args=array(
 										'posts_per_page'=>5, 
-										'tag' => $brand_name,
+										'tag' => $tag,
 										'post_type' => array('post','events','partenaires','analyse','methodologie','temoignage')
 										);
 									$wp_query = new WP_Query( $args );
