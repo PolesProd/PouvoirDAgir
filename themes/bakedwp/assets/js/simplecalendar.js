@@ -21,8 +21,11 @@
 	          	var month = format[0];
 	          	var year = format[2];
 
+							var dateFormat = day + '/' + month + '/' + year;
+
 	          	var title = events[i].title;
 	          	var description = events[i].excerpt;
+<<<<<<< HEAD
 	          	var url = events[i].url;
 
 	          	var categorie = events[i].taxonomy_wpsccategory[0].title;
@@ -35,6 +38,23 @@
 							$('.day-event').click
 	            $('.list').append('<div class="day-event" date-day="'+ day +'" date-month="' + month +'" date-year="'+ year +'" data-number="'+ i +'"><a href="#" class="close"></a><div class="date"><p class="eventDate">'+ events[i].date +'</p><p class="eventLieu">'+ lieu + '</p><p class="eventOrg">' + org + '</p></div><h2 class="title">'+ events[i].title +'</h2><p>'+ description +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span><a href="'+ url +'">Voir l\'événement</a></span></label></div>');
 	          }
+=======
+
+	          	var url = events[i].url;
+							var urlOrg = events[i].custom_fields['wpsc_url'];
+							var urlLieu = events[i].taxonomy_wpsclocation[0].slug;
+
+	          	var categorie = events[i].taxonomy_wpsccategory[0].title;
+	          	var tags = events[i].tags[0];
+
+	          	var lieu = events[i].taxonomy_wpsclocation[0].title;
+	          	var org = events[i].custom_fields['wpsc_reg_text'][0];
+
+	          	urlArticle.push(url);
+
+	            $('.list').append('<div class="day-event" date-day="'+ day +'" date-month="' + month +'" date-year="'+ year +'" data-number="'+ i +'"><a href="#" class="close"></a><div class="date"><p class="eventDate">&#128197;'+ dateFormat +'</p><p class="eventLieu"><a href="http://localhost/wordpress/?wpsclocation='+ urlLieu +'">'+ lieu + '</a></p><p class="eventOrg"><a href="'+ urlOrg +'">&#x260e;' + org + '</a></p></div><h2 class="title">'+ events[i].title +'</h2><p>'+ description +'</p><p>'+ tags +'</p><label class="check-btn"><input type="checkbox" class="save" id="save" name="" value=""/><span><a href="'+ url +'">Voir l\'événement</a></span></label></div>');
+						}
+>>>>>>> ff9ad70c23a97548fc6d125b1980c0a21c5ed7a0
 	          // Démarre le calendrier
 	          calendar.startCalendar();
 	  			})
@@ -196,7 +216,11 @@
 					var eventDay = $(this).attr('date-day');
 					var eventYear = $(this).attr('date-year');
 					var eventClass = $(this).attr('event-class');
+<<<<<<< HEAD
 					var ecentUrl = $(this).attr('event-url')
+=======
+					var eventUrl = $(this).attr('event-url');
+>>>>>>> ff9ad70c23a97548fc6d125b1980c0a21c5ed7a0
 					if (eventClass === undefined) eventClass = 'event';
 					else eventClass = 'event ' + eventClass;
 
@@ -218,9 +242,17 @@
 					var searchUrl = $('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]');
 					searchUrl = searchUrl[0].attributes[4].value;
 					var url = urlArticle[searchUrl];
+<<<<<<< HEAD
 
 					if ($('.home').length == 0) {
 						$('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]').slideDown('fast');
+=======
+					console.log("trucmuche");
+
+					if ($('.home').length == 0) {
+						$('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]').slideDown('fast');
+						console.log("tregknnsqc*ù");
+>>>>>>> ff9ad70c23a97548fc6d125b1980c0a21c5ed7a0
 					}else {
 						window.location.href = url;
 					}
@@ -233,11 +265,17 @@
 			$('.close').on('click', function(e) {
 				$(this).parent().slideUp('fast');
 			});
+<<<<<<< HEAD
 
+=======
+>>>>>>> ff9ad70c23a97548fc6d125b1980c0a21c5ed7a0
 	  },
 	};
 	jQuery(function($) {
 		calendar.init('ajax');
 	});
 })(jQuery);
+<<<<<<< HEAD
 
+=======
+>>>>>>> ff9ad70c23a97548fc6d125b1980c0a21c5ed7a0

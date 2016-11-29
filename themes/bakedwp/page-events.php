@@ -54,6 +54,7 @@ Template Name: Événements
 				temoignage</li>
 				<div class="plus"><a href="">+</a></div>
 			</ul>
+<<<<<<< HEAD
 			<?php
 				$args = array( 'hide_empty=0' );
 				$terms = get_terms( 'wpsccategory', $args );
@@ -68,6 +69,24 @@ Template Name: Événements
 					echo $term_list;
 				}
 			?>
+=======
+			<div class='button-group float-center'>
+				<div id="filters" class="button-group">
+					<div class="btn-barre">
+						<button class="selected" data-filter="*">Tous</button>
+						<?php
+							$filters = get_terms('wpsccategory');
+							foreach ($filters as $filter ) {
+								$category = get_posts('wpsccategory');
+								if(count($category) >= 1){
+									echo '<button class="button" data-filter="'. $filter->name .'">'. $filter->name .'</button>';
+								}
+							}
+						?>
+					</div>
+				</div>
+			</div>
+>>>>>>> ff9ad70c23a97548fc6d125b1980c0a21c5ed7a0
 		</div>
 		<!-- FIN Barre de navigation des evenemnt "TAG ET CATEGORIE" -->
 		<!-- Les tuiles devenement -->
@@ -82,7 +101,9 @@ Template Name: Événements
 								if($loopy->have_posts()){
 									while ( $loopy->have_posts() ) {
 									$loopy->the_post();
-									echo '<div class="events large-3 medium-3 columns small-centered">';
+									$filter = wp_get_post_terms( $post->ID, 'wpsccategory', array("fields" => "names"));
+									$post_id = $post->ID;
+									echo '<div class="events large-3 medium-3 columns small-centered transition '.$filter[0].'" id="event-'.get_the_ID().'" data-category="transition">';
 									$id = get_the_ID();
 								?>
 								<div class="dateArt">
