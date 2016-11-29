@@ -80,8 +80,10 @@ for($i = 0; $i<count($tab_array);$i++){
         if($post->post_type == 'events'){
           $termsFirst = wp_get_post_terms( $post->ID, 'wpsccategory');
           $termsSecond = wp_get_post_terms( $post->ID, 'wpsclocation');
-          $terms = $termsFirst[0]->slug . ' ';
-          $terms .= $termsSecond[0]->slug;
+          if(!empty($termsFirst) && !empty($termsSecond)){
+              $terms = $termsFirst[0]->slug . ' ';
+              $terms .= $termsSecond[0]->slug;
+          }
           //echo '<p>'.$terms.'</p>';
         }else if($post->post_type == 'analyse'){
           $termsFirst = wp_get_post_terms( $post->ID, 'analyse' );

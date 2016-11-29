@@ -345,6 +345,10 @@ FOOTER STYLES
   clear: both;
   margin-top: 1em;
   text-align: center; 
+<<<<<<< HEAD
+background: rgb(255, 255, 239);}
+
+=======
 background: rgb(255, 255, 239);
 }
 .planSite{
@@ -354,6 +358,7 @@ background: rgb(255, 255, 239);
   display: inline-block;
   text-align: left;
 }
+>>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
 .planSite li {
   list-style: none;
   background: grey;
@@ -361,6 +366,10 @@ background: rgb(255, 255, 239);
   text-transform: uppercase;
 
 }
+<<<<<<< HEAD
+.footershare{
+  display: inline-block;
+=======
 .planSite p{
   margin-bottom: 0px;
 }
@@ -376,6 +385,7 @@ background: rgb(255, 255, 239);
 .footershare{
   display: inline-block;
 border-top: solid 2px black;
+>>>>>>> e101a9b39bce85ddbf786f1108672fd124fabe2b
 }
 /*********************
 PLUGIN STYLES

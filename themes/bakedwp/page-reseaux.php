@@ -5,39 +5,27 @@ Template Name: Réseaux Impliqués
 ?>
 <?php get_header(); ?>
   <div id="content">
-     <div id="inner-content" class="row">
-       <?php echo do_shortcode('[gallery]'); ?>
-       
-         <?php get_template_part( 'parts/loop-collectif', 'page' );?>
-          <div id="content">
-            <div id="inner-content" class="row">
-                <div id="main" class="large-12 medium-12 small-centered columns" role="main">
-                    <?php
-                    $args = array( 'post_type' => 'post', 'posts_per_page' => 10 );
-                    $loop = new WP_Query( $args );
-                    while ( $loop->have_posts() ) : $loop->the_post();
-                      the_category();
-                    endwhile;
-              ?>
-       
-        <div id="main" class="large-10 medium-10 small-centered columns" role="main">
-
+     <div id="inner-content" class="large-9 medium-9 small-centered columns centerArt">
+     <?php echo '<h1>'.get_post_field('post_title', $post->ID).'</h1>'; ?>
+      <?php echo get_post_field('post_content', $post->ID); ?>
+          <h2>Reseaux Impliqués</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis delectus officiis vero doloremque hic quia odio voluptatem maiores quidem. Itaque fugiat laborum hic odit cumque officia iste natus, libero aspernatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sapiente qui, quos eos quam placeat cupiditate, architecto! Facilis nam amet nulla voluptates, rerum harum minus totam officia culpa quod esse!</p>
+            <div id="main" class="small-centered columns" role="main">
             <?php
-            $args = array( 'post_type' => 'partenaires', 'posts_per_page' => 6 );
+            $args = array( 'post_type' => 'partenaires', 'posts_per_page' => -1 );
             $loopy = new WP_Query( $args );
             $count = 1;
             if($loopy->have_posts()){
               while ( $loopy->have_posts() ) {
                   $loopy->the_post();
-                  echo '<div class="partenaire">';
+                  echo '<div class="partenaire events small-3 small-centered columns">';
                       $id = get_the_ID();
                       echo 'Partenaire n<sup>o</sup> '.$count.'<br>';
                       ?>
-                      <div class="imgArticle" id="<?php echo 'post_thumbsnails-'. get_post_thumbnail_id(); ?>" style="font-family: 'Ruda', sans-serif;background-image:url('<?php if ( has_post_thumbnail() ) { echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );} ;?>');width:300px;height:308px;background-size:cover;background-position: center;background-repeat: no-repeat;">
-        							</div><!-- Fin de la div imgArticle --><br>
-                      <?php the_title(); ?><br>
+                      <!-- Fin de la div imgArticle --><br>
+                      <a href="<?php the_permalink();?>" class="titreArt"><?php the_title(); ?></a><br>
                       <?php the_excerpt();?>
-                      <?php echo '<a href='.implode(get_post_meta(get_the_ID(), part_lien_du_site)).' target="__blank">'.implode(get_post_meta(get_the_ID(), part_lien_du_site)).'</a><br><br>';
+                      <?php echo '<a href='.implode(get_post_meta(get_the_ID(), 'part_lien_du_site')).' target="__blank">'.implode(get_post_meta(get_the_ID(), 'part_lien_du_site')).'</a><br><br>';
                       $count++;
                   echo '</div>';
               }
@@ -47,6 +35,13 @@ Template Name: Réseaux Impliqués
             }
              ?>
         </div> <!-- end #main -->
+        <h2>Actions</h2>
+        <div>
+        <?php
+          $args = array( 'post_type' => 'post', 'posts_per_page' => 3,'orderby' => 'date' );
+            $loopy = new WP_Query( $args );
+             include get_template_directory().'/parts/loop-posts.php';?>
+        </div>
     </div> <!-- end #inner-content -->
   </div> <!-- end #content -->
 <?php get_footer(); ?>

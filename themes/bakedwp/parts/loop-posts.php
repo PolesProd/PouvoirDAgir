@@ -23,6 +23,8 @@
             $term = str_replace(array(' ','-'),'_',$termsFirst[0]->slug);
             $post_type = 'temoignage';
           }
+        }else if($post->post_type == 'post'){
+          $term = 'post';
         }
           echo '<div class="ressource grid-item  '.$post_type.' '. $term.' events large-3 medium-3 " data-category="transtition" >';
             $id = get_the_ID();

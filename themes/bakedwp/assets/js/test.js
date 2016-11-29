@@ -1,39 +1,30 @@
-(function($) {
-  /*$.post(
-    ajaxurl,
-    {
-      'action': 'call_events_ajax',
-      'param': 'pouvoir'
-    },
-    function(response){
-      // on affiche la réponse ou l'on veut
-      $('.list').append(response);
-    }
-  );*/
+jQuery(function ($) {
 
-  /*var offset = 10;
-  $('body').on('click','.event', function(){
+	var $container = $('#isotope-list'); //The ID for the list with all the blog posts
+	$container.isotope({ //Isotope options, 'item' matches the class in the PHP
+		itemSelector : '.item',
+  		layoutMode : 'masonry'
+	});
 
-    jQuery.post(
-      ajaxurl,
-      {
-        'action': 'call_events_ajax',
-        'offset': offset
-      },
-      function(response){
-        offset= offset + 10;
-        $('.list').append(response);
-      }
-    );
-  });*/
+	//Add the class selected to the item that is clicked, and remove from the others
+	var $optionSets = $('#filters'),
+	$optionLinks = $optionSets.find('a');
 
-  $.ajaxSetup({cache:false});
-  $(".event").click(function(){
-    var post_link = $(this).attr("href");
+	$optionLinks.click(function(){
+	var $this = $(this);
+	// don't proceed if already selected
+	if ( $this.hasClass('selected') ) {
+	  return false;
+	}
+	var $optionSet = $this.parents('#filters');
+	$optionSets.find('.selected').removeClass('selected');
+	$this.addClass('selected');
 
-    $("#single-post-container").html("content loading");
-    $("#single-post-container").load(post_link);
-    return false;
-  });
+	//When an item is clicked, sort the items.
+	 var selector = $(this).attr('data-filter');
+	$container.isotope({ filter: selector });
 
-})(jQuery);
+	return false;
+	});
+
+});

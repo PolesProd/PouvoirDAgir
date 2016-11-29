@@ -30,25 +30,30 @@
 	</div>
 	<div class="large-12 medium-12 planSite ">
 		<ul class="small-2">
-			<a href="http://localhost/wordpress/?page_id=7"><li>événemets</li></a>
-			<a href="http://localhost/wordpress/?page_id=75"><li>galeries</li></a>
-			<a href="http://localhost/wordpress/?page_id=8"><li>ressources</li></a>
-			<a href="http://localhost/wordpress/?page_id=14"><li>glossaire</li></a>
+			<a href="#"><li>cookies</li></a>
+			<a href="#"><li>plan du site</li></a>
+			<a href="#"><li>contact</li></a>
+			<a href="#"><li>adresse</li></a>
+			<a href="#"><li>tel</li></a>
 		</ul>
 		<ul class="small-2" >
-			<a href="http://localhost/wordpress/?page_id=18"><li>le collectif</li></a>
-			<a href="http://localhost/wordpress/?page_id=125"><li>actions</li></a>
-			<a href="http://localhost/wordpress/?page_id=6#tag"><li>adhérer</li></a>
+			<a href="#"><li>cookies</li></a>
+			<a href="#"><li>plan du site</li></a>
+			<a href="#"><li>contact</li></a>
+			<a href="#"><li>adresse</li></a>
+			<a href="#"><li>tel</li></a>
 		</ul>
 		<ul  class="small-2">
-			<a href="http://localhost/wordpress/?page_id=6"><li>contact</li></a>
-			<a href="https://www.facebook.com/pouvoirdagir/?fref=ts"><li>facebook</li></a>
-			<a href="https://twitter.com/collectif_pa"><li>twitter</li></a>
+			<a href="#"><li>cookies</li></a>
+			<a href="#"><li>plan du site</li></a>
+			<a href="#"><li>contact</li></a>
+			<a href="#"><li>adresse</li></a>
+			<a href="#"><li>tel</li></a>
 		</ul>
 				<p><a href="http://lepoles.org"> Copyright LePoleS Prod.</a></p>
 	</div>
 	<div class="large-10 medium-10 small-centered columns">
-		
+
 	</div>
 </footer> <!-- end .footer -->
 </div> <!-- end #container -->
