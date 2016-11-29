@@ -27,6 +27,10 @@
           $term = 'post';
           $post_type = 'post';
         }
+        else{
+          $term = '';
+          $post_type='';
+        }
           echo '<div class="ressource grid-item  '.$post_type.' '. $term.' events large-3 medium-3 " data-category="transtition" >';
             $id = get_the_ID();
             $author = get_the_author();
